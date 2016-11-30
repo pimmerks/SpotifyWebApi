@@ -29,6 +29,7 @@ namespace SpotifyWebApi.Model
 
         //[JsonProperty("external_ids")]
         //TODO:
+
         //[JsonProperty("external_urls")]
         //TODO:
 
@@ -43,6 +44,7 @@ namespace SpotifyWebApi.Model
 
         //[JsonProperty("linked_from")]
         //TODO
+
         [JsonProperty("name")]
         public String Name { get; set; }
 
@@ -60,6 +62,5 @@ namespace SpotifyWebApi.Model
 
         [JsonProperty("uri")]
         public String Uri { get; set; }
-
     }
 }

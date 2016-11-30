@@ -46,6 +46,10 @@
   <ItemGroup>
     <Compile Include="Auth\ClientCredentialsAuth.cs" />
     <Compile Include="Model\Auth\Token.cs" />
+    <Compile Include="Model\Copyright.cs" />
+    <Compile Include="Model\Cursor.cs" />
+    <Compile Include="Model\Error.cs" />
+    <Compile Include="Model\Followers.cs" />
     <Compile Include="Model\FullPlaylist.cs" />
     <Compile Include="Model\FullTrack.cs" />
     <Compile Include="Model\Image.cs" />
