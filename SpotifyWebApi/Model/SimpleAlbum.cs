@@ -18,9 +18,9 @@ namespace SpotifyWebApi.Model
 
         [JsonProperty("available_markets")]
         public List<String> AvailableMarkets { get; set; }
-
-        //[JsonProperty("external_url")]
-        // TODO
+        
+        [JsonProperty("external_url")]
+        public Dictionary<string, string> ExternUrls { get; set; }
 
         [JsonProperty("href")]
         public String Href { get; set; }

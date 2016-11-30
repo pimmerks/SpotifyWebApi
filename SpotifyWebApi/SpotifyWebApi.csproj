@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -53,8 +54,11 @@
     <Compile Include="Model\FullPlaylist.cs" />
     <Compile Include="Model\FullTrack.cs" />
     <Compile Include="Model\Image.cs" />
+    <Compile Include="Model\LinkedFrom.cs" />
     <Compile Include="Model\Paging.cs" />
     <Compile Include="Model\PlaylistTrack.cs" />
+    <Compile Include="Model\PrivateUser.cs" />
+    <Compile Include="Model\PublicUser.cs" />
     <Compile Include="Model\SimpleAlbum.cs" />
     <Compile Include="Model\SimpleArtist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

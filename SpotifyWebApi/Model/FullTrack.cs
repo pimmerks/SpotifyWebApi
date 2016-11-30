@@ -27,11 +27,11 @@ namespace SpotifyWebApi.Model
         [JsonProperty("explicit")]
         public Boolean Explicit { get; set; }
 
-        //[JsonProperty("external_ids")]
-        //TODO:
+        [JsonProperty("external_ids")]
+        public Dictionary<string, string> ExternalIds { get; set; }
 
-        //[JsonProperty("external_urls")]
-        //TODO:
+        [JsonProperty("external_urls")]
+        public Dictionary<string, string> ExternUrls { get; set; }
 
         [JsonProperty("href")]
         public String Href { get; set; }
@@ -42,8 +42,8 @@ namespace SpotifyWebApi.Model
         [JsonProperty("is_playable")]
         public Boolean IsPlayable { get; set; }
 
-        //[JsonProperty("linked_from")]
-        //TODO
+        [JsonProperty("linked_from")]
+        public LinkedFrom LinkedFrom { get; set; }
 
         [JsonProperty("name")]
         public String Name { get; set; }

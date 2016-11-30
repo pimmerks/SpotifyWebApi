@@ -15,11 +15,12 @@ namespace SpotifyWebApi.Model
         [JsonProperty("description")]
         public String Description { get; set; }
 
-        //[JsonProperty("external_urls")]
-        //TODO:
+        
+        [JsonProperty("external_urls")]
+        public Dictionary<string, string> ExternalUrls { get; set; }
 
-        //[JsonProperty("followers")]
-        //TODO:
+        [JsonProperty("followers")]
+        public Followers Followers { get; set; }
 
         [JsonProperty("href")]
         public String Href { get; set; }
