@@ -45,6 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AlbumApi.cs" />
+    <Compile Include="Api\ApiHelper.cs" />
+    <Compile Include="Api\PlaylistApi.cs" />
+    <Compile Include="Api\TrackApi.cs" />
     <Compile Include="Auth\ClientCredentialsAuth.cs" />
     <Compile Include="Model\Auth\Token.cs" />
     <Compile Include="Model\Copyright.cs" />
