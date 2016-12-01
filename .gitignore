@@ -240,3 +240,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Test project settings
+SpotifyWebApi_Tests/Properties/Settings.Designer.cs
+SpotifyWebApi_Tests/Properties/Settings.settings

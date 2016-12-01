@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyWebApi.Auth
 {
-    public class ClientCredentialsAuth
+    public static class ClientCredentialsAuth
     {
         public static Token RequestToken(string clientId, string clientSecret)
         {
