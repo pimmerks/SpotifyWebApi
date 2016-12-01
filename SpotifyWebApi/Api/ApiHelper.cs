@@ -11,9 +11,14 @@ using System.Threading.Tasks;
 
 namespace SpotifyWebApi.Api
 {
-    public class ApiHelper
+    public static class ApiHelper
     {
         public static string GetJsonFromUrl(string url, Token token)
+        {
+            return GetJsonFromUrl(new Uri(url), token);
+        }
+
+        public static string GetJsonFromUrl(Uri url, Token token)
         {
             string json = "";
 
@@ -37,7 +42,7 @@ namespace SpotifyWebApi.Api
             {
                 return null;
             }
-            
+
             // Get the stream containing content returned by the server.
             Stream dataStream = response.GetResponseStream();
 

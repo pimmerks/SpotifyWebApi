@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyWebApi.Api
 {
-    public class TrackApi
+    public static class TrackApi
     {
         public static FullTrack GetTrack(string id, Token accestoken)
         {

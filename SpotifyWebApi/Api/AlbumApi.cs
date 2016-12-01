@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyWebApi.Api
 {
-    public class AlbumApi
+    public static class AlbumApi
     {
     }
 }

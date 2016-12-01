@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyWebApi.Api
 {
-    public class PlaylistApi
+    public static class PlaylistApi
     {
         public static FullPlaylist GetPlaylist(string playlistId, string userId, Token token)
         {
