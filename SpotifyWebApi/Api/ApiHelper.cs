@@ -57,10 +57,13 @@ namespace SpotifyWebApi.Api
 
         public static T JsonToObject<T>(string json)
         {
-            if (json != null)
-                return JsonConvert.DeserializeObject<T>(json);
+            if (json == null)
+                return default(T);
+            if (json == "")
+                return default(T);
 
-            return default(T);
+            return JsonConvert.DeserializeObject<T>(json);
+
         }
 
         public static T GetObjectFromUrl<T>(string url, Token token)

@@ -31,7 +31,7 @@ namespace SpotifyWebApi.Model
         public Dictionary<string, string> ExternalIds { get; set; }
 
         [JsonProperty("external_urls")]
-        public Dictionary<string, string> ExternUrls { get; set; }
+        public Dictionary<string, string> ExternalUrls { get; set; }
 
         [JsonProperty("href")]
         public String Href { get; set; }

@@ -14,7 +14,6 @@ namespace SpotifyWebApi.Model
 
         [JsonProperty("description")]
         public String Description { get; set; }
-
         
         [JsonProperty("external_urls")]
         public Dictionary<string, string> ExternalUrls { get; set; }
@@ -34,8 +33,8 @@ namespace SpotifyWebApi.Model
         [JsonProperty("name")]
         public String Name { get; set; }
 
-        //[JsonProperty("owner")]
-        //TODO:
+        [JsonProperty("owner")]
+        public PublicUser Owner { get; set; }
 
         [JsonProperty("public")]
         public Boolean Public { get; set; }
