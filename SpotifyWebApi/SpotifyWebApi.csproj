@@ -54,9 +54,11 @@
     <Compile Include="Model\Auth\Token.cs" />
     <Compile Include="Model\Copyright.cs" />
     <Compile Include="Model\Cursor.cs" />
+    <Compile Include="Model\CursorPaging.cs" />
     <Compile Include="Model\Error.cs" />
     <Compile Include="Model\Followers.cs" />
     <Compile Include="Model\FullAlbum.cs" />
+    <Compile Include="Model\FullArtist.cs" />
     <Compile Include="Model\FullPlaylist.cs" />
     <Compile Include="Model\FullTrack.cs" />
     <Compile Include="Model\Image.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Model\PublicUser.cs" />
     <Compile Include="Model\SimpleAlbum.cs" />
     <Compile Include="Model\SimpleArtist.cs" />
+    <Compile Include="Model\SimplePlaylist.cs" />
     <Compile Include="Model\SimpleTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

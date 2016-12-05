@@ -7,22 +7,10 @@ using System.Threading.Tasks;
 
 namespace SpotifyWebApi.Model
 {
-    public class SimpleTrack
+    public class SimplePlaylist
     {
-        [JsonProperty("artists")]
-        public List<SimpleArtist> Artists { get; set; }
-
-        [JsonProperty("available_markets")]
-        public List<string> AvailableMarkets { get; set; }
-
-        [JsonProperty("disc_number")]
-        public int DiscNumber { get; set; }
-
-        [JsonProperty("duration_ms")]
-        public int DurationMs { get; set; }
-
-        [JsonProperty("explicit")]
-        public Boolean Explicit { get; set; }
+        [JsonProperty("collaborative")]
+        public Boolean Collaborative { get; set; }
 
         [JsonProperty("external_urls")]
         public Dictionary<string, string> ExternalUrls { get; set; }
@@ -33,14 +21,23 @@ namespace SpotifyWebApi.Model
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        [JsonProperty("images")]
+        public List<Image> Images { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("preview_url")]
-        public string PreviewUrl { get; set; }
+        [JsonProperty("owner")]
+        public PublicUser Owner { get; set; }
 
-        [JsonProperty("track_number")]
-        public int TrackNumber { get; set; }
+        [JsonProperty("public")]
+        public Boolean Public { get; set; }
+
+        [JsonProperty("snapshot_id")]
+        public string SnapshotId { get; set; }
+
+        [JsonProperty("tracks")]
+        public List<LinkedFrom> Tracks { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
