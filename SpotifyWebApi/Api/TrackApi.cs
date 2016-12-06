@@ -1,5 +1,6 @@
 ﻿using SpotifyWebApi.Model;
 using SpotifyWebApi.Model.Auth;
+using SpotifyWebApi.Model.Uri;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,18 @@ namespace SpotifyWebApi.Api
 {
     public static class TrackApi
     {
-        public static FullTrack GetTrack(string id, Token accestoken)
+        public static FullTrack GetTrack(string uri, Token token)
         {
-            return ApiHelper.GetObjectFromUrl<FullTrack>("https://api.spotify.com/v1/tracks/" + id, accestoken);
+            SpotifyUri su = new SpotifyUri(uri);
+            return GetTrack(su, token);
         }
 
-        public static FullTrack GetTrackFromUri(string uri, Token accestoken)
+        public static FullTrack GetTrack(SpotifyUri uri, Token token)
         {
-            var id = uri.Split(':')[2];
-            return ApiHelper.GetObjectFromUrl<FullTrack>("https://api.spotify.com/v1/tracks/" + id, accestoken);
+            if (uri.Type == UriType.track)
+                return ApiHelper.GetObjectFromUrl<FullTrack>("https://api.spotify.com/v1/tracks/" + uri.Id, token);
+            else
+                return null;
         }
 
 

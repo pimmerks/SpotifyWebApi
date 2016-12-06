@@ -58,5 +58,16 @@ namespace SpotifyWebApi_Example
 
             picAlbumImage.Load(album.Images[0].Url);
         }
+
+        private void btnGetTrack_Click(object sender, EventArgs e)
+        {
+            var track = TrackApi.GetTrack(txtTrackUri.Text, _token);
+
+            picTrack.Load(track.Album.Images[0].Url);
+
+            lblTrackAlbum.Text = track.Album.Name;
+            lblTrackArtist.Text = ArtistsToStringConverter(track.Artists);
+            lblTrackTitle.Text = track.Name;
+        }
     }
 }
