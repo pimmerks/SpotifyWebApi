@@ -73,6 +73,8 @@
     <Compile Include="Model\SimpleArtist.cs" />
     <Compile Include="Model\SimplePlaylist.cs" />
     <Compile Include="Model\SimpleTrack.cs" />
+    <Compile Include="Model\Uri\SpotifyUri.cs" />
+    <Compile Include="Model\Uri\UriType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

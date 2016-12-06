@@ -1,5 +1,6 @@
 ﻿using SpotifyWebApi.Model;
 using SpotifyWebApi.Model.Auth;
+using SpotifyWebApi.Model.Uri;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,13 @@ namespace SpotifyWebApi.Api
     {
         public static FullAlbum GetAlbum(string uri, Token token)
         {
-            var id = uri.Split(':')[2];
-            return ApiHelper.GetObjectFromUrl<FullAlbum>("https://api.spotify.com/v1/albums/" + id, token);
+            var spotifyUri = new SpotifyUri(uri);
+            return GetAlbum(spotifyUri, token);
+        }
+
+        public static FullAlbum GetAlbum(SpotifyUri uri, Token token)
+        {
+            return ApiHelper.GetObjectFromUrl<FullAlbum>("https://api.spotify.com/v1/albums/" + uri.Id, token);
         }
     }
 }
