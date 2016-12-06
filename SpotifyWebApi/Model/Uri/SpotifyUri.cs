@@ -30,7 +30,11 @@ namespace SpotifyWebApi.Model.Uri
                 if (split.Length == 5)
                     Type = UriType.playlist;
                 else
-                    Type = (UriType)Enum.Parse(typeof(UriType), split[1]);
+                {
+                    UriType type;
+                    Enum.TryParse(split[1], true, out type);
+                    Type = type;
+                }
                 
                 switch (Type)
                 {
