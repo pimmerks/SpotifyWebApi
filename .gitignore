@@ -244,3 +244,5 @@ ModelManifest.xml
 # Test project settings
 SpotifyWebApi_Tests/Properties/Settings.Designer.cs
 SpotifyWebApi_Tests/Properties/Settings.settings
+/SpotifyWebApi_Example/Properties/Settings.settings
+/SpotifyWebApi_Example/Properties/Settings.Designer.cs
