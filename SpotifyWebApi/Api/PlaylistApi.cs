@@ -1,5 +1,6 @@
 ﻿using SpotifyWebApi.Model;
 using SpotifyWebApi.Model.Auth;
+using SpotifyWebApi.Model.Uri;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,47 +11,77 @@ namespace SpotifyWebApi.Api
 {
     public static class PlaylistApi
     {
-        public static FullPlaylist GetPlaylist(string playlistId, string userId, Token token)
+        public static List<PlaylistTrack> GetPlaylistTracks(SpotifyUri uri, Token token)
         {
-
-            FullPlaylist playlist = null;
-
-            var json = ApiHelper.GetJsonFromUrl("https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId, token);
-            
-            playlist = ApiHelper.JsonToObject<FullPlaylist>(json);
-            
-            return playlist;
-        }
-
-        public static List<PlaylistTrack> GetPlaylistTracks(string playlistId, string userId, Token token)
-        {
-            //https://api.spotify.com/v1/users/{user_id}/playlists/{playlist_id}/tracks
-
-            List<PlaylistTrack> tracks = null;
+            List<PlaylistTrack> tracks = new List<PlaylistTrack>();
 
             int offset = 0;
 
-            var json = ApiHelper.GetJsonFromUrl("https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks&limit=100&offset=" + offset, token);
+            var paging = GetPlaylistTracksPaging(uri, offset, 100, token);
 
-            var paging = ApiHelper.JsonToObject<Paging<PlaylistTrack>>(json);
+            tracks.AddRange(paging.Items);
+            offset = tracks.Count;
 
-
-            while(paging.Next != null)
+            while (paging.Next != null)
             {
+                paging = GetPlaylistTracksPaging(uri, offset, 100, token);
                 tracks.AddRange(paging.Items);
-                //TODO:
-                offset += paging.Limit;
+                offset = tracks.Count;
             }
+            
+            return tracks;
+        }
 
+        public static List<PlaylistTrack> GetMinimalPlaylistTracks(SpotifyUri uri, Token token)
+        {
+            List<PlaylistTrack> tracks = new List<PlaylistTrack>();
 
+            int offset = 0;
+
+            var fields = "limit,next,offset,previous,total,items(track(id,uri))";
+
+            var paging = GetPlaylistTracksPaging(uri, offset, 100, token, fields);
+
+            tracks.AddRange(paging.Items);
+            offset = tracks.Count;
+
+            while (paging.Next != null)
+            {
+                paging = GetPlaylistTracksPaging(uri, offset, 100, token, fields);
+                tracks.AddRange(paging.Items);
+                offset = tracks.Count;
+            }
 
             return tracks;
         }
 
-        public static FullPlaylist GetPlaylistFromUri(string uri, Token token)
+        private static Paging<PlaylistTrack> GetPlaylistTracksPaging(SpotifyUri uri, int offset, int limit, Token token, string fields = "")
         {
-            return null;
+            var url = "https://api.spotify.com/v1/users/" + uri.UserId +
+                "/playlists/" + uri.Id +
+                "/tracks" + 
+                (fields != "" ? ("?fields=" + fields + "&") : "?") + 
+                "limit=" + limit +
+                "&offset=" + offset;
 
+
+            var json = ApiHelper.GetJsonFromUrl(url, token);
+
+            var paging = ApiHelper.JsonToObject<Paging<PlaylistTrack>>(json);
+            return paging;
+        }
+
+        public static FullPlaylist GetPlaylistWithoutTracks(SpotifyUri uri, Token token)
+        {
+            //collaborative,description,external_urls,href,id,images,name,owner,public,type,uri
+
+            FullPlaylist playlist = null;
+
+            var json = ApiHelper.GetJsonFromUrl("https://api.spotify.com/v1/users/" + uri.UserId + "/playlists/" + uri.Id + "?fields=collaborative,description,external_urls,href,id,images,name,owner,public,type,uri", token);
+
+            playlist = ApiHelper.JsonToObject<FullPlaylist>(json);
+
+            return playlist;
         }
     }
 }

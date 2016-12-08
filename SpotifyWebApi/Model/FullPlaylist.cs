@@ -50,5 +50,7 @@ namespace SpotifyWebApi.Model
 
         [JsonProperty("uri")]
         public String Uri { get; set; }
+
+        public List<PlaylistTrack> TrackList { get; set; }
     }
 }

@@ -62,5 +62,18 @@ namespace SpotifyWebApi.Model
 
         [JsonProperty("uri")]
         public String Uri { get; set; }
+
+        public override int GetHashCode()
+        {
+            if (Id != null)
+                return Id.GetHashCode();
+            else
+                return 0;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Id.Equals(obj);
+        }
     }
 }
