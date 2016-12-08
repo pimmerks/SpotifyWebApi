@@ -12,6 +12,7 @@ using SpotifyWebApi.Model.Auth;
 using SpotifyWebApi.Factory;
 using SpotifyWebApi.Api;
 using SpotifyWebApi.Model;
+using SpotifyWebApi.Model.Uri;
 
 namespace SpotifyWebApi_Example
 {
@@ -36,6 +37,8 @@ namespace SpotifyWebApi_Example
             {
                 tabControl1.Enabled = true;
             }
+
+            txtAccesToken.Text = _token.Type + " " + _token.AccessToken;
         }
 
         private static string ArtistsToStringConverter(List<SimpleArtist> artist)
@@ -68,6 +71,23 @@ namespace SpotifyWebApi_Example
             lblTrackAlbum.Text = track.Album.Name;
             lblTrackArtist.Text = ArtistsToStringConverter(track.Artists);
             lblTrackTitle.Text = track.Name;
+        }
+
+        private void btnGetPlaylist_Click(object sender, EventArgs e)
+        {
+            var playlist = PlaylistApi.GetPlaylistWithoutTracks(new SpotifyUri(txtPlaylistUri.Text), _token);
+            playlist.TrackList = PlaylistApi.GetPlaylistTracks(new SpotifyUri(txtPlaylistUri.Text), _token);
+
+            picPlaylist.Load(playlist.Images[0].Url);
+
+            listPlaylistTracks.Items.Clear();
+            playlist.TrackList.ForEach(item => {
+                if(item.Track != null)
+                    listPlaylistTracks.Items.Add(item.Track.Name + " - " + ArtistsToStringConverter(item.Track.Artists));
+                });
+
+            lblPlaylistName.Text = playlist.Name;
+            lblPlaylistOwner.Text = "ID:" + playlist.Owner.Id + " DisplayName:" + playlist.Owner.DisplayName;
         }
     }
 }

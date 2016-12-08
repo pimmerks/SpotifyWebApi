@@ -40,22 +40,33 @@
             this.btnGetAlbum = new System.Windows.Forms.Button();
             this.albumUrl = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblTrackAlbum = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblTrackArtist = new System.Windows.Forms.Label();
+            this.lblTrackTitle = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.picTrack = new System.Windows.Forms.PictureBox();
+            this.btnGetTrack = new System.Windows.Forms.Button();
+            this.txtTrackUri = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.txtTrackUri = new System.Windows.Forms.TextBox();
-            this.btnGetTrack = new System.Windows.Forms.Button();
-            this.picTrack = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTrackTitle = new System.Windows.Forms.Label();
-            this.lblTrackArtist = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblTrackAlbum = new System.Windows.Forms.Label();
+            this.txtPlaylistUri = new System.Windows.Forms.TextBox();
+            this.btnGetPlaylist = new System.Windows.Forms.Button();
+            this.picPlaylist = new System.Windows.Forms.PictureBox();
+            this.listPlaylistTracks = new System.Windows.Forms.ListBox();
+            this.txtAccesToken = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblPlaylistName = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblPlaylistOwner = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAlbumImage)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picTrack)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlaylist)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_GetAccessToken
@@ -199,78 +210,24 @@
             this.tabPage2.Text = "Track";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // lblTrackAlbum
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1082, 485);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Artist";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.lblTrackAlbum.AutoSize = true;
+            this.lblTrackAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrackAlbum.Location = new System.Drawing.Point(80, 79);
+            this.lblTrackAlbum.Name = "lblTrackAlbum";
+            this.lblTrackAlbum.Size = new System.Drawing.Size(70, 25);
+            this.lblTrackAlbum.TabIndex = 9;
+            this.lblTrackAlbum.Text = "album";
             // 
-            // tabPage4
+            // label6
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1082, 485);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Playlist";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // txtTrackUri
-            // 
-            this.txtTrackUri.Location = new System.Drawing.Point(7, 6);
-            this.txtTrackUri.Name = "txtTrackUri";
-            this.txtTrackUri.Size = new System.Drawing.Size(185, 20);
-            this.txtTrackUri.TabIndex = 0;
-            // 
-            // btnGetTrack
-            // 
-            this.btnGetTrack.Location = new System.Drawing.Point(198, 4);
-            this.btnGetTrack.Name = "btnGetTrack";
-            this.btnGetTrack.Size = new System.Drawing.Size(75, 23);
-            this.btnGetTrack.TabIndex = 1;
-            this.btnGetTrack.Text = "Get Track";
-            this.btnGetTrack.UseVisualStyleBackColor = true;
-            this.btnGetTrack.Click += new System.EventHandler(this.btnGetTrack_Click);
-            // 
-            // picTrack
-            // 
-            this.picTrack.BackColor = System.Drawing.Color.Gainsboro;
-            this.picTrack.Location = new System.Drawing.Point(604, 6);
-            this.picTrack.Name = "picTrack";
-            this.picTrack.Size = new System.Drawing.Size(470, 470);
-            this.picTrack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picTrack.TabIndex = 3;
-            this.picTrack.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Title:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Artists";
-            // 
-            // lblTrackTitle
-            // 
-            this.lblTrackTitle.AutoSize = true;
-            this.lblTrackTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrackTitle.Location = new System.Drawing.Point(80, 29);
-            this.lblTrackTitle.Name = "lblTrackTitle";
-            this.lblTrackTitle.Size = new System.Drawing.Size(46, 25);
-            this.lblTrackTitle.TabIndex = 6;
-            this.lblTrackTitle.Text = "title";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 88);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Album:";
             // 
             // lblTrackArtist
             // 
@@ -282,30 +239,173 @@
             this.lblTrackArtist.TabIndex = 7;
             this.lblTrackArtist.Text = "artists";
             // 
-            // label6
+            // lblTrackTitle
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 88);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Album:";
+            this.lblTrackTitle.AutoSize = true;
+            this.lblTrackTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrackTitle.Location = new System.Drawing.Point(80, 29);
+            this.lblTrackTitle.Name = "lblTrackTitle";
+            this.lblTrackTitle.Size = new System.Drawing.Size(46, 25);
+            this.lblTrackTitle.TabIndex = 6;
+            this.lblTrackTitle.Text = "title";
             // 
-            // lblTrackAlbum
+            // label5
             // 
-            this.lblTrackAlbum.AutoSize = true;
-            this.lblTrackAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrackAlbum.Location = new System.Drawing.Point(80, 79);
-            this.lblTrackAlbum.Name = "lblTrackAlbum";
-            this.lblTrackAlbum.Size = new System.Drawing.Size(70, 25);
-            this.lblTrackAlbum.TabIndex = 9;
-            this.lblTrackAlbum.Text = "album";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Artists";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Title:";
+            // 
+            // picTrack
+            // 
+            this.picTrack.BackColor = System.Drawing.Color.Gainsboro;
+            this.picTrack.Location = new System.Drawing.Point(604, 6);
+            this.picTrack.Name = "picTrack";
+            this.picTrack.Size = new System.Drawing.Size(470, 470);
+            this.picTrack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picTrack.TabIndex = 3;
+            this.picTrack.TabStop = false;
+            // 
+            // btnGetTrack
+            // 
+            this.btnGetTrack.Location = new System.Drawing.Point(198, 4);
+            this.btnGetTrack.Name = "btnGetTrack";
+            this.btnGetTrack.Size = new System.Drawing.Size(75, 23);
+            this.btnGetTrack.TabIndex = 1;
+            this.btnGetTrack.Text = "Get Track";
+            this.btnGetTrack.UseVisualStyleBackColor = true;
+            this.btnGetTrack.Click += new System.EventHandler(this.btnGetTrack_Click);
+            // 
+            // txtTrackUri
+            // 
+            this.txtTrackUri.Location = new System.Drawing.Point(7, 6);
+            this.txtTrackUri.Name = "txtTrackUri";
+            this.txtTrackUri.Size = new System.Drawing.Size(185, 20);
+            this.txtTrackUri.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1082, 485);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Artist";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.lblPlaylistOwner);
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.lblPlaylistName);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.listPlaylistTracks);
+            this.tabPage4.Controls.Add(this.picPlaylist);
+            this.tabPage4.Controls.Add(this.btnGetPlaylist);
+            this.tabPage4.Controls.Add(this.txtPlaylistUri);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1082, 485);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Playlist";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // txtPlaylistUri
+            // 
+            this.txtPlaylistUri.Location = new System.Drawing.Point(7, 12);
+            this.txtPlaylistUri.Name = "txtPlaylistUri";
+            this.txtPlaylistUri.Size = new System.Drawing.Size(190, 20);
+            this.txtPlaylistUri.TabIndex = 0;
+            // 
+            // btnGetPlaylist
+            // 
+            this.btnGetPlaylist.Location = new System.Drawing.Point(203, 10);
+            this.btnGetPlaylist.Name = "btnGetPlaylist";
+            this.btnGetPlaylist.Size = new System.Drawing.Size(75, 23);
+            this.btnGetPlaylist.TabIndex = 1;
+            this.btnGetPlaylist.Text = "Get Playlist";
+            this.btnGetPlaylist.UseVisualStyleBackColor = true;
+            this.btnGetPlaylist.Click += new System.EventHandler(this.btnGetPlaylist_Click);
+            // 
+            // picPlaylist
+            // 
+            this.picPlaylist.Location = new System.Drawing.Point(7, 204);
+            this.picPlaylist.Name = "picPlaylist";
+            this.picPlaylist.Size = new System.Drawing.Size(271, 271);
+            this.picPlaylist.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picPlaylist.TabIndex = 2;
+            this.picPlaylist.TabStop = false;
+            // 
+            // listPlaylistTracks
+            // 
+            this.listPlaylistTracks.FormattingEnabled = true;
+            this.listPlaylistTracks.Items.AddRange(new object[] {
+            "item1",
+            "item2"});
+            this.listPlaylistTracks.Location = new System.Drawing.Point(284, 3);
+            this.listPlaylistTracks.Name = "listPlaylistTracks";
+            this.listPlaylistTracks.Size = new System.Drawing.Size(790, 472);
+            this.listPlaylistTracks.TabIndex = 3;
+            // 
+            // txtAccesToken
+            // 
+            this.txtAccesToken.Location = new System.Drawing.Point(152, 12);
+            this.txtAccesToken.Name = "txtAccesToken";
+            this.txtAccesToken.Size = new System.Drawing.Size(859, 20);
+            this.txtAccesToken.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 35);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Name:";
+            // 
+            // lblPlaylistName
+            // 
+            this.lblPlaylistName.AutoSize = true;
+            this.lblPlaylistName.Location = new System.Drawing.Point(90, 35);
+            this.lblPlaylistName.Name = "lblPlaylistName";
+            this.lblPlaylistName.Size = new System.Drawing.Size(64, 13);
+            this.lblPlaylistName.TabIndex = 5;
+            this.lblPlaylistName.Text = "playlistname";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Owner:";
+            // 
+            // lblPlaylistOwner
+            // 
+            this.lblPlaylistOwner.AutoSize = true;
+            this.lblPlaylistOwner.Location = new System.Drawing.Point(90, 61);
+            this.lblPlaylistOwner.Name = "lblPlaylistOwner";
+            this.lblPlaylistOwner.Size = new System.Drawing.Size(36, 13);
+            this.lblPlaylistOwner.TabIndex = 7;
+            this.lblPlaylistOwner.Text = "owner";
             // 
             // SpotifyWebApiExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1091, 551);
+            this.Controls.Add(this.txtAccesToken);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btn_GetAccessToken);
             this.Name = "SpotifyWebApiExample";
@@ -317,7 +417,11 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picTrack)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlaylist)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -346,6 +450,15 @@
         private System.Windows.Forms.Label lblTrackArtist;
         private System.Windows.Forms.Label lblTrackTitle;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox picPlaylist;
+        private System.Windows.Forms.Button btnGetPlaylist;
+        private System.Windows.Forms.TextBox txtPlaylistUri;
+        private System.Windows.Forms.ListBox listPlaylistTracks;
+        private System.Windows.Forms.TextBox txtAccesToken;
+        private System.Windows.Forms.Label lblPlaylistOwner;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblPlaylistName;
+        private System.Windows.Forms.Label label7;
     }
 }
 
