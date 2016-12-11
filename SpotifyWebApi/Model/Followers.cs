@@ -10,7 +10,7 @@ namespace SpotifyWebApi.Model
     public class Followers
     {
         [JsonProperty("href")]
-        public String Href { get; set; }
+        public string Href { get; set; }
 
         [JsonProperty("total")]
         public int Total { get; set; }

@@ -13,7 +13,7 @@ namespace SpotifyWebApi.Model
         public int? Height { get; set; }
 
         [JsonProperty("url")]
-        public String Url { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("width")]
         public int? Width { get; set; }

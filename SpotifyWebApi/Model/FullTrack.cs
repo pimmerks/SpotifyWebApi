@@ -16,7 +16,7 @@ namespace SpotifyWebApi.Model
         public List<SimpleArtist> Artists { get; set; }
 
         [JsonProperty("available_markets")]
-        public List<String> AvailableMarkets { get; set; }
+        public List<string> AvailableMarkets { get; set; }
 
         [JsonProperty("disc_number")]
         public int DiscNumber { get; set; }
@@ -25,7 +25,7 @@ namespace SpotifyWebApi.Model
         public int DurationMs { get; set; }
 
         [JsonProperty("explicit")]
-        public Boolean Explicit { get; set; }
+        public string Explicit { get; set; }
 
         [JsonProperty("external_ids")]
         public Dictionary<string, string> ExternalIds { get; set; }
@@ -34,34 +34,34 @@ namespace SpotifyWebApi.Model
         public Dictionary<string, string> ExternalUrls { get; set; }
 
         [JsonProperty("href")]
-        public String Href { get; set; }
+        public string Href { get; set; }
 
         [JsonProperty("id")]
-        public String Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("is_playable")]
-        public Boolean IsPlayable { get; set; }
+        public bool IsPlayable { get; set; }
 
         [JsonProperty("linked_from")]
         public LinkedFrom LinkedFrom { get; set; }
 
         [JsonProperty("name")]
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty("popularity")]
         public int Popularity { get; set; }
 
         [JsonProperty("preview_url")]
-        public String PreviewUrl { get; set; }
+        public string PreviewUrl { get; set; }
 
         [JsonProperty("track_number")]
         public int TrackNumber { get; set; }
 
         [JsonProperty("type")]
-        public String Type { get; set; }
+        public string Type { get; set; }
 
         [JsonProperty("uri")]
-        public String Uri { get; set; }
+        public string Uri { get; set; }
 
         public override int GetHashCode()
         {

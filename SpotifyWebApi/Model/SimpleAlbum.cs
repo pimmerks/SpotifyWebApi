@@ -11,19 +11,19 @@ namespace SpotifyWebApi.Model
     {
 
         [JsonProperty("album_type")]
-        public String AlbumType { get; set; }
+        public string AlbumType { get; set; }
 
         [JsonProperty("artists")]
         public List<SimpleArtist> Artists { get; set; }
 
         [JsonProperty("available_markets")]
-        public List<String> AvailableMarkets { get; set; }
+        public List<string> AvailableMarkets { get; set; }
         
         [JsonProperty("external_url")]
         public Dictionary<string, string> ExternalUrls { get; set; }
 
         [JsonProperty("href")]
-        public String Href { get; set; }
+        public string Href { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -32,13 +32,13 @@ namespace SpotifyWebApi.Model
         public List<Image> Images { get; set; }
 
         [JsonProperty("name")]
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty("type")]
-        public String Type { get; set; }
+        public string Type { get; set; }
 
         [JsonProperty("uri")]
-        public String Uri { get; set; }
+        public string Uri { get; set; }
 
 
     }

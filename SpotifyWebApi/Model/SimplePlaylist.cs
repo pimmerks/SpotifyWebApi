@@ -10,7 +10,7 @@ namespace SpotifyWebApi.Model
     public class SimplePlaylist
     {
         [JsonProperty("collaborative")]
-        public Boolean Collaborative { get; set; }
+        public bool Collaborative { get; set; }
 
         [JsonProperty("external_urls")]
         public Dictionary<string, string> ExternalUrls { get; set; }

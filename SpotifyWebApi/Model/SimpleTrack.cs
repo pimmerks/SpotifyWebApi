@@ -22,7 +22,7 @@ namespace SpotifyWebApi.Model
         public int DurationMs { get; set; }
 
         [JsonProperty("explicit")]
-        public Boolean Explicit { get; set; }
+        public bool Explicit { get; set; }
 
         [JsonProperty("external_urls")]
         public Dictionary<string, string> ExternalUrls { get; set; }

@@ -16,7 +16,7 @@ namespace SpotifyWebApi.Model
         //TODO:
 
         [JsonProperty("is_local")]
-        public Boolean IsLocal { get; set; }
+        public bool IsLocal { get; set; }
 
         [JsonProperty("track")]
         public FullTrack Track { get; set; }

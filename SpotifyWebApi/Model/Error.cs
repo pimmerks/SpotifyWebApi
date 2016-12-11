@@ -13,6 +13,6 @@ namespace SpotifyWebApi.Model
         public int Status { get; set; }
 
         [JsonProperty("message")]
-        public String Message { get; set; }
+        public string Message { get; set; }
     }
 }

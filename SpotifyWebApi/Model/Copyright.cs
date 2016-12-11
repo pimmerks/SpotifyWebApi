@@ -10,9 +10,9 @@ namespace SpotifyWebApi.Model
     public class Copyright
     {
         [JsonProperty("text")]
-        public String Text { get; set; }
+        public string Text { get; set; }
         [JsonProperty("type")]
-        public String Type { get; set; }
+        public string Type { get; set; }
 
     }
 }

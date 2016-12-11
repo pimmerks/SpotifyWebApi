@@ -10,6 +10,6 @@ namespace SpotifyWebApi.Model
     public class Cursor
     {
         [JsonProperty("after")]
-        public String After { get; set; }
+        public string After { get; set; }
     }
 }
