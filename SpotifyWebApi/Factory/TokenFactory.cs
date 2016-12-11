@@ -14,6 +14,12 @@ namespace SpotifyWebApi.Factory
         public string ClientSecret { get; private set; }
         public TokenMethod Method { get; private set; }
 
+        /// <summary>
+        /// Token Factory constructor
+        /// </summary>
+        /// <param name="clientId">Your client id</param>
+        /// <param name="clientSecret">Your client secret</param>
+        /// <param name="method">The token generator method you wish to use</param>
         public TokenFactory(string clientId, string clientSecret, TokenMethod method)
         {
             ClientId = clientId;
