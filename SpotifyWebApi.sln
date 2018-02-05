@@ -1,13 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebApi", "SpotifyWebApi\SpotifyWebApi.csproj", "{47C20DAB-A64A-4CCC-8DF4-A470229073C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebApi_Tests", "SpotifyWebApi_Tests\SpotifyWebApi_Tests.csproj", "{3DF6272E-7A49-489D-B832-B3BAE48CAA95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "SpotifyWebApi.Test\Test.csproj", "{3DF6272E-7A49-489D-B832-B3BAE48CAA95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebApi_Example", "SpotifyWebApi_Example\SpotifyWebApi_Example.csproj", "{D9AD5788-519C-4EDD-A34B-FBD8686CF579}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{D9AD5788-519C-4EDD-A34B-FBD8686CF579}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{97E26EA3-A0C4-43CE-BE7F-F95EF00A8C8F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E7EFD29-F859-429A-96CE-F86E8E713110}
 	EndGlobalSection
 EndGlobal

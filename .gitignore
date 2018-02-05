@@ -242,7 +242,5 @@ ModelManifest.xml
 .fake/
 
 # Test project settings
-SpotifyWebApi_Tests/Properties/Settings.Designer.cs
-SpotifyWebApi_Tests/Properties/Settings.settings
-/SpotifyWebApi_Example/Properties/Settings.settings
-/SpotifyWebApi_Example/Properties/Settings.Designer.cs
+SpotifyWebApi.Test/Properties/Settings.settings
+Example/Properties/Settings.settings

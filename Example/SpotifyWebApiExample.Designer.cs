@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi_Example
+﻿namespace Example
 {
     partial class SpotifyWebApiExample
     {
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -77,7 +77,7 @@
             this.btn_GetAccessToken.TabIndex = 0;
             this.btn_GetAccessToken.Text = "Get Access token";
             this.btn_GetAccessToken.UseVisualStyleBackColor = true;
-            this.btn_GetAccessToken.Click += new System.EventHandler(this.btn_GetAccessToken_Click);
+            this.btn_GetAccessToken.Click += new System.EventHandler(this.Btn_GetAccessToken_Click);
             // 
             // tabControl1
             // 
@@ -181,7 +181,7 @@
             this.btnGetAlbum.TabIndex = 1;
             this.btnGetAlbum.Text = "GetAlbum";
             this.btnGetAlbum.UseVisualStyleBackColor = true;
-            this.btnGetAlbum.Click += new System.EventHandler(this.btnGetAlbum_Click);
+            this.btnGetAlbum.Click += new System.EventHandler(this.BtnGetAlbum_Click);
             // 
             // albumUrl
             // 
@@ -285,7 +285,7 @@
             this.btnGetTrack.TabIndex = 1;
             this.btnGetTrack.Text = "Get Track";
             this.btnGetTrack.UseVisualStyleBackColor = true;
-            this.btnGetTrack.Click += new System.EventHandler(this.btnGetTrack_Click);
+            this.btnGetTrack.Click += new System.EventHandler(this.BtnGetTrack_Click);
             // 
             // txtTrackUri
             // 
@@ -335,7 +335,7 @@
             this.btnGetPlaylist.TabIndex = 1;
             this.btnGetPlaylist.Text = "Get Playlist";
             this.btnGetPlaylist.UseVisualStyleBackColor = true;
-            this.btnGetPlaylist.Click += new System.EventHandler(this.btnGetPlaylist_Click);
+            this.btnGetPlaylist.Click += new System.EventHandler(this.BtnGetPlaylist_Click);
             // 
             // picPlaylist
             // 
