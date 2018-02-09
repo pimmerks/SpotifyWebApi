@@ -1,0 +1,10 @@
+stages:
+ - build
+ - test
+ - doc
+ - deploy
+
+build:
+  stage: build
+  script:
+    - 'echo testing'
