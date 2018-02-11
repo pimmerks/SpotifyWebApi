@@ -31,7 +31,7 @@ namespace SpotifyWebApi.Api.Album
         public FullAlbum GetAlbum(SpotifyUri albumUri, string market = "")
         {
             var res = ApiHelper.GetObjectFromUrl<FullAlbum>(
-                ApiHelper.GetUri($"/albums/{albumUri.Id}{this.AddMarketCode("?", market)}"),
+                ApiHelper.GetUri($"/albums/{albumUri.Id}{AddMarketCode("?", market)}"),
                 this.Token);
 
             return res.Response;
@@ -44,7 +44,7 @@ namespace SpotifyWebApi.Api.Album
             var l = string.Join(",", albumUris.Select(x => x.Id).ToArray());
 
             var res = ApiHelper.GetObjectFromUrl<MultipleAlbums>(
-                ApiHelper.GetUri($"/albums?ids={l}{this.AddMarketCode("&", market)}"),
+                ApiHelper.GetUri($"/albums?ids={l}{AddMarketCode("&", market)}"),
                 this.Token);
 
             return res.Response.Albums;
@@ -56,7 +56,7 @@ namespace SpotifyWebApi.Api.Album
             Validation.ValidateInteger(limit, 1, 50);
 
             var res = ApiHelper.GetObjectFromUrl<Paging<SimpleTrack>>(
-                ApiHelper.GetUri($"/albums/{albumUri.Id}/tracks?limit={limit}&offset={offset}{this.AddMarketCode("&", market)}"),
+                ApiHelper.GetUri($"/albums/{albumUri.Id}/tracks?limit={limit}&offset={offset}{AddMarketCode("&", market)}"),
                 this.Token);
 
             return res.Response;

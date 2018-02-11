@@ -21,14 +21,16 @@ namespace SpotifyWebApi
     using Model.Auth;
 
     /// <summary>
-    /// The <see cref="SpotifyWebApi"/>.
+    /// The main Api class.
     /// </summary>
     public class SpotifyWebApi : BaseApi, ISpotifyWebApi
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpotifyWebApi"/> class.
+        /// Initializes a new instance of the <see cref="SpotifyWebApi" /> class.
         /// </summary>
-        public SpotifyWebApi(Token token) : base(token)
+        /// <param name="token">A valid <see cref="Token"/>.</param>
+        public SpotifyWebApi(Token token)
+            : base(token)
         {
         }
 

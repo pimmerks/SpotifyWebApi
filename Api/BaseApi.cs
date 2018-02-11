@@ -1,10 +1,5 @@
 namespace SpotifyWebApi.Api
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Model.Auth;
 
     /// <summary>
@@ -13,21 +8,28 @@ namespace SpotifyWebApi.Api
     public abstract class BaseApi
     {
         /// <summary>
-        /// Gets the <see cref="Token"/>.
-        /// </summary>
-        protected Token Token { get; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="BaseApi"/> class.
         /// </summary>
+        /// <param name="token">A valid <see cref="Token"/>.</param>
         protected BaseApi(Token token)
         {
             this.Token = token;
         }
 
-        protected string AddMarketCode(string sign, string market)
+        /// <summary>
+        /// Gets the <see cref="Token"/>.
+        /// </summary>
+        protected Token Token { get; }
+
+        /// <summary>
+        /// An helper function to add a market code at the end of a query string.
+        /// </summary>
+        /// <param name="sign">The sign to add, usually '&' or '?'.</param>
+        /// <param name="market">The market string to add.</param>
+        /// <returns>A new query containing the sign with the market.</returns>
+        protected static string AddMarketCode(string sign, string market)
         {
-            return market.Equals("") ? "" : $"{sign}market=" + market;
+            return market.Equals(string.Empty) ? string.Empty : $"{sign}market=" + market;
         }
     }
 }
