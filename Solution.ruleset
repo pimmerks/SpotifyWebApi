@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Solution Default Rules" Description="Contains the default rules used for this solution." ToolsVersion="15.0">
+<RuleSet Name="Spotify Web Api Ruleset" Description="Contains the default rules used for this solution." ToolsVersion="15.0">
   <Include Path="minimumrecommendedrules.ruleset" Action="Default" />
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
     <Rule Id="IDE0003" Action="None" />

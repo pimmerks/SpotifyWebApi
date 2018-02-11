@@ -5,6 +5,9 @@
     using Model.Enum;
     using Model.Uri;
 
+    /// <summary>
+    /// The artist api.
+    /// </summary>
     public interface IArtistApi
     {
         /// <summary>

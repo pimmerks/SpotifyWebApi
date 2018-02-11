@@ -33,9 +33,10 @@ namespace SpotifyWebApi.Auth.AuthorizationCode
         /// <returns>The url that the user can use to authenticate this application.</returns>
         public static string GetUrl(AuthParameters parameters, string state)
         {
-            var scopes = string.Join(" ",
+            var scopes = string.Join(
+                " ",
                 parameters.Scopes.ToString()
-                    .Split(new [] { ", " }, StringSplitOptions.None)
+                    .Split(new[] { ", " }, StringSplitOptions.None)
                     .Select(i => (int)Enum.Parse(parameters.Scopes.GetType(), i))
                     .Cast<Scope>()
                     .Select(x => x.AsString())
@@ -56,10 +57,10 @@ namespace SpotifyWebApi.Auth.AuthorizationCode
         /// <param name="parameters">The parameters used in <see cref="GetUrl"/>.</param>
         /// <param name="code">The retrieved code.</param>
         /// <param name="error">The retrieved error.</param>
-        /// <returns></returns>
+        /// <returns>TODO</returns>
         public static Token ProcessCallback(AuthParameters parameters, string code, string error)
         {
-            var req = ApiHelper.CreateRequest(new Uri("https://accounts.spotify.com/api/token"), null);
+            var req = ApiHelper.CreateRequest(new Uri("https://accounts.spotify.com/api/token"));
 
             var headers = new NameValueCollection
             {
@@ -98,17 +99,5 @@ namespace SpotifyWebApi.Auth.AuthorizationCode
 
             return ApiHelper.JsonToObject<Token>(json);
         }
-    }
-
-    internal class AccessTokenRequest
-    {
-        [JsonProperty("grant_type")]
-        public string GrantType { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("redirect_uri")]
-        public string RedirectUri { get; set; }
     }
 }

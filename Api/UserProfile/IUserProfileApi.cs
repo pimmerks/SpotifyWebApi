@@ -1,9 +1,12 @@
 ﻿namespace SpotifyWebApi.Api.UserProfile
 {
     using Model;
-    using Model.Uri;
     using Model.Enum;
+    using Model.Uri;
 
+    /// <summary>
+    /// The user profile api.
+    /// </summary>
     public interface IUserProfileApi
     {
         /// <summary>

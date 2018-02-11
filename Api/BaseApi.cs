@@ -24,7 +24,7 @@ namespace SpotifyWebApi.Api
         /// <summary>
         /// An helper function to add a market code at the end of a query string.
         /// </summary>
-        /// <param name="sign">The sign to add, usually '&' or '?'.</param>
+        /// <param name="sign">The sign to add, usually '&amp;' or '?'.</param>
         /// <param name="market">The market string to add.</param>
         /// <returns>A new query containing the sign with the market.</returns>
         protected static string AddMarketCode(string sign, string market)

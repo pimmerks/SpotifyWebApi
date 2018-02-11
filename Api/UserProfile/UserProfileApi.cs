@@ -14,6 +14,7 @@ namespace SpotifyWebApi.Api.UserProfile
     using Model.Auth;
     using Model.Uri;
 
+    /// <inheritdoc cref="BaseApi"/>
     /// <summary>
     /// The <see cref="UserProfileApi"/>.
     /// </summary>
@@ -22,7 +23,9 @@ namespace SpotifyWebApi.Api.UserProfile
         /// <summary>
         /// Initializes a new instance of the <see cref="UserProfileApi"/> class.
         /// </summary>
-        public UserProfileApi(Token token) : base(token)
+        /// <param name="token">A valid <see cref="Token"/>.</param>
+        public UserProfileApi(Token token)
+            : base(token)
         {
         }
 

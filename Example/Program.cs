@@ -1,24 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using System.Net.Sockets;
-
-namespace Example
+﻿namespace Example
 {
+    using System;
     using System.Configuration;
     using System.Diagnostics;
-    using System.Runtime.CompilerServices;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Threading.Tasks;
     using SpotifyWebApi;
     using SpotifyWebApi.Auth;
     using SpotifyWebApi.Auth.AuthorizationCode;
     using SpotifyWebApi.Model.Enum;
 
-    class Program
+    /// <summary>
+    /// TODO
+    /// </summary>
+    public class Program
     {
-        static async Task Main(string[] args)
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="args">TODO</param>
+        /// <returns>TODO</returns>
+        public static async Task Main(string[] args)
         {
             var param = new AuthParameters
             {
@@ -34,7 +38,7 @@ namespace Example
             Process.Start(AuthorizationCode.GetUrl(param, "test"));
             var r = await GetResponse();
 
-            var token = AuthorizationCode.ProcessCallback(param, r, "");
+            var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
 
             ISpotifyWebApi api = new SpotifyWebApi(token);
 
@@ -45,17 +49,21 @@ namespace Example
             Console.ReadLine();
         }
 
-        static async Task<string> GetResponse()
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <returns>TODO</returns>
+        public static async Task<string> GetResponse()
         {
             var webserver = new TcpListener(IPAddress.Any, 8080);
             webserver.Start();
 
             var s = await webserver.AcceptSocketAsync();
 
-            var bReceive = new Byte[1024];
+            var bReceive = new byte[1024];
             int i = s.Receive(bReceive, bReceive.Length, 0);
 
-            //Convert Byte to String
+            // Convert Byte to String
             string sBuffer = Encoding.ASCII.GetString(bReceive);
 
             s.Shutdown(SocketShutdown.Both);

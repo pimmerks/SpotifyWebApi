@@ -14,7 +14,7 @@
             switch (scope)
             {
                 case Scope.None:
-                    return "";
+                    return string.Empty;
                 case Scope.PlaylistReadPrivate:
                     return "playlist-read-private";
                 case Scope.PlaylistReadCollaborative:
