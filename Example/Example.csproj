@@ -80,7 +80,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>powershell -ExecutionPolicy ByPass -File $(ProjectDir)prebuild.ps1
-</PreBuildEvent>
+    <PreBuildEvent>powershell -ExecutionPolicy ByPass -File $(ProjectDir)prebuild.ps1</PreBuildEvent>
   </PropertyGroup>
 </Project>
