@@ -33,7 +33,7 @@ doc:
   stage: doc
   script:
     - 'msbuild /p:Configuration=Release Sandcastle.shfbproj'
-    - 'cd Docs/ && git init && git remote add origin https://%GIT_USERNAME%:%GIT_TOKEN%@gitlab.com/pimmerks/SpotifyWebApi.git && git checkout -b gh-pages && git add . && git commit -m "SHA: %CI_COMMIT_SHA% TAG: %CI_COMMIT_TAG% " && git push --set-upstream origin gh-pages -f && cd ..'
+  #  - 'cd Docs/ && git init && git remote add origin https://%GIT_USERNAME%:%GIT_TOKEN%@gitlab.com/pimmerks/SpotifyWebApi.git && git checkout -b gh-pages && git add . && git commit -m "SHA: %CI_COMMIT_SHA% TAG: %CI_COMMIT_TAG% " && git push --set-upstream origin gh-pages -f && cd ..'
   variables:
     GIT_STRATEGY: none
   dependencies:

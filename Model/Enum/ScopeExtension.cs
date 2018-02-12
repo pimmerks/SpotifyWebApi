@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// The <see cref="ScopeExtension" /> class.
+    /// </summary>
     public static class ScopeExtension
     {
         /// <summary>

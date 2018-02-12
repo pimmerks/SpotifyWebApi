@@ -5,19 +5,14 @@
 namespace SpotifyWebApi.Auth.AuthorizationCode
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.IO;
     using System.Linq;
     using System.Net;
     using System.Text;
-    using System.Threading.Tasks;
     using Business;
-    using Model;
     using Model.Auth;
     using Model.Enum;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Serialization;
 
     /// <summary>
     /// The <see cref="AuthorizationCode"/>.

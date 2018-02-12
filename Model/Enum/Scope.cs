@@ -1,10 +1,10 @@
-﻿//  <copyright file="Scope.cs" company="Pim Merks">
-//  Copyright (c) SpotifyWebApi. All rights reserved.
-//  </copyright>
-namespace SpotifyWebApi.Model.Enum
+﻿namespace SpotifyWebApi.Model.Enum
 {
     using System;
 
+    /// <summary>
+    /// Enum Scope
+    /// </summary>
     [Flags]
     public enum Scope
     {

@@ -1,20 +1,18 @@
-// <copyright file="EnumExtensions.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Model.Enum
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
-    /// The <see cref="EnumExtensions"/>.
+    /// The <see cref="EnumExtensions" />.
     /// </summary>
     public static class EnumExtensions
     {
+        /// <summary>
+        /// Ases the string.
+        /// </summary>
+        /// <param name="albumType">Type of the album.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">albumType - null</exception>
         public static string AsString(this AlbumType albumType)
         {
             switch (albumType)

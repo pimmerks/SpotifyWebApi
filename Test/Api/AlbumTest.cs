@@ -4,11 +4,6 @@
 
 namespace Test.Api
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using SpotifyWebApi.Model.Auth;
     using SpotifyWebApi;
@@ -22,6 +17,9 @@ namespace Test.Api
         private Token token;
         private ISpotifyWebApi api;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Init()
         {
@@ -34,14 +32,23 @@ namespace Test.Api
             this.api = new SpotifyWebApi(this.token);
         }
 
+        /// <summary>
+        /// The album test.
+        /// </summary>
         public void GetAlbumTest()
         {
         }
 
+        /// <summary>
+        /// The albums test.
+        /// </summary>
         public void GetAlbumsTest()
         {
         }
 
+        /// <summary>
+        /// The album tracks test.
+        /// </summary>
         public void GetAlbumTracksTest()
         {
         }

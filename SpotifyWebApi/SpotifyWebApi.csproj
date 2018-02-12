@@ -41,6 +41,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>bin\Release\SpotifyWebApi.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

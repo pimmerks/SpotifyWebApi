@@ -4,9 +4,15 @@ namespace Test.Business
     using SpotifyWebApi.Business;
     using System;
 
+    /// <summary>
+    /// The <see cref="ApiHelperTests" /> class.
+    /// </summary>
     [TestClass]
     public class ApiHelperTests
     {
+        /// <summary>
+        /// Gets the URI test.
+        /// </summary>
         [TestMethod]
         public void GetUriTest()
         {
