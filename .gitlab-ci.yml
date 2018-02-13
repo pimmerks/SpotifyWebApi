@@ -12,6 +12,7 @@ build_master:
     - 'msbuild /p:Configuration=Release /WarnAsError SpotifyWebApi.sln' # build the project
   only:
     - master
+    - tags
 
 # Building on any other branch.
 build:
@@ -19,6 +20,9 @@ build:
   script:
     - 'nuget restore' # restore Nuget dependencies
     - 'msbuild /p:Configuration=Release SpotifyWebApi.sln' # build the project
+  except:
+    - tags
+    - master
 
 test:
   stage: test
