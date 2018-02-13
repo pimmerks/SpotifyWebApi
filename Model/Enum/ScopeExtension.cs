@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// The <see cref="ScopeExtension" /> class.
+    /// </summary>
     public static class ScopeExtension
     {
         /// <summary>
@@ -14,7 +17,7 @@
             switch (scope)
             {
                 case Scope.None:
-                    return "";
+                    return string.Empty;
                 case Scope.PlaylistReadPrivate:
                     return "playlist-read-private";
                 case Scope.PlaylistReadCollaborative:

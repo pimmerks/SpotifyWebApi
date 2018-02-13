@@ -5,10 +5,16 @@ namespace Test.Auth.AuthCode
     using SpotifyWebApi.Auth.AuthorizationCode;
     using SpotifyWebApi.Model.Enum;
 
+    /// <summary>
+    /// The <see cref="AuthorizationCodeTests" /> class.
+    /// </summary>
     [TestClass]
     public class AuthorizationCodeTests
     {
-        [TestMethod()]
+        /// <summary>
+        /// Gets the URL test.
+        /// </summary>
+        [TestMethod]
         public void GetUrlTest()
         {
             var code = AuthorizationCode.GetUrl(new AuthParameters

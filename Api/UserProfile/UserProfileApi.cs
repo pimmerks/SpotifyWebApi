@@ -5,15 +5,12 @@
 namespace SpotifyWebApi.Api.UserProfile
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Business;
     using Model;
     using Model.Auth;
     using Model.Uri;
 
+    /// <inheritdoc cref="BaseApi"/>
     /// <summary>
     /// The <see cref="UserProfileApi"/>.
     /// </summary>
@@ -22,7 +19,9 @@ namespace SpotifyWebApi.Api.UserProfile
         /// <summary>
         /// Initializes a new instance of the <see cref="UserProfileApi"/> class.
         /// </summary>
-        public UserProfileApi(Token token) : base(token)
+        /// <param name="token">A valid <see cref="Token"/>.</param>
+        public UserProfileApi(Token token)
+            : base(token)
         {
         }
 

@@ -4,7 +4,52 @@ stages:
  - doc
  - deploy
 
+ # Building on master branch, treating warnings as errors.
+build_master:
+  stage: build
+  script:
+    - 'nuget restore' # restore Nuget dependencies
+    - 'msbuild /p:Configuration=Release /WarnAsError SpotifyWebApi.sln' # build the project
+  only:
+    - master
+
+# Building on any other branch.
 build:
   stage: build
   script:
-    - 'echo testing'
+    - 'nuget restore' # restore Nuget dependencies
+    - 'msbuild /p:Configuration=Release SpotifyWebApi.sln' # build the project
+
+test:
+  stage: test
+  script:
+    - 'echo Testing not implemented!'
+  variables:
+    GIT_STRATEGY: none
+  dependencies:
+    - build
+
+doc:
+  stage: doc
+  script:
+    - 'msbuild /p:Configuration=Release Sandcastle.shfbproj'
+  #  - 'cd Docs/ && git init && git remote add origin https://%GIT_USERNAME%:%GIT_TOKEN%@gitlab.com/pimmerks/SpotifyWebApi.git && git checkout -b gh-pages && git add . && git commit -m "SHA: %CI_COMMIT_SHA% TAG: %CI_COMMIT_TAG% " && git push --set-upstream origin gh-pages -f && cd ..'
+  variables:
+    GIT_STRATEGY: none
+  dependencies:
+    - build
+  when: manual
+
+# Deploys the nuget package
+deploy_api:
+  stage: deploy
+  script:
+    - 'nuget pack SpotifyWebApi\SpotifyWebApi.csproj -properties Configuration=Release -IncludeReferencedProjects -OutputDirectory nuget'
+    - 'nuget push nuget\SpotifyWebApi-NET.*.nupkg -ApiKey %NUGET_API_KEY%' -Source https://api.nuget.org/v3/index.json'
+  when: manual
+  variables:
+    GIT_STRATEGY: none
+  only:
+    - master
+  dependencies:
+    - test

@@ -6,14 +6,12 @@ namespace SpotifyWebApi.Api.Artist
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Model;
     using Model.Auth;
     using Model.Enum;
     using Model.Uri;
 
+    /// <inheritdoc cref="BaseApi"/>
     /// <summary>
     /// The <see cref="ArtistApi"/>.
     /// </summary>
@@ -22,7 +20,9 @@ namespace SpotifyWebApi.Api.Artist
         /// <summary>
         /// Initializes a new instance of the <see cref="ArtistApi"/> class.
         /// </summary>
-        public ArtistApi(Token token) : base(token)
+        /// <param name="token">A valid <see cref="Token"/>.</param>
+        public ArtistApi(Token token)
+            : base(token)
         {
         }
 

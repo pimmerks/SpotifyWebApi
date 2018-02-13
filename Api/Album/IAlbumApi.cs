@@ -4,6 +4,9 @@
     using Model;
     using Model.Uri;
 
+    /// <summary>
+    /// The album api.
+    /// </summary>
     public interface IAlbumApi
     {
         /// <summary>

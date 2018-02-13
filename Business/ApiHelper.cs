@@ -1,17 +1,9 @@
-// <copyright file="ApiHelper.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Business
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.IO;
-    using System.Linq;
     using System.Net;
-    using System.Text;
-    using System.Threading.Tasks;
     using Model;
     using Model.Auth;
     using Newtonsoft.Json;
@@ -21,6 +13,9 @@ namespace SpotifyWebApi.Business
     /// </summary>
     public class ApiHelper
     {
+        /// <summary>
+        /// The base uri for all api requests.
+        /// </summary>
         public const string BaseUri = "https://api.spotify.com/v1";
 
         /// <summary>
@@ -30,18 +25,30 @@ namespace SpotifyWebApi.Business
         {
         }
 
-        public static HttpWebRequest CreateRequest(Uri uri, Token token)
+        /// <summary>
+        /// Creates a new <see cref="HttpWebRequest"/> from the specified <paramref name="uri"/>.
+        /// </summary>
+        /// <param name="uri">The uri of the request.</param>
+        /// <returns>A new <see cref="HttpWebRequest"/> from the specified uri.</returns>
+        public static HttpWebRequest CreateRequest(Uri uri)
         {
             var request = WebRequest.CreateHttp(uri);
             request.ContentType = "application/x-www-form-urlencoded";
             return request;
         }
 
+        /// <summary>
+        /// Retrieves json from an url.
+        /// </summary>
+        /// <param name="url">The url to retrieve json from.</param>
+        /// <param name="token">A valid <see cref="Token"/>.</param>
+        /// <returns>A <see cref="WebResponse{T}"/> object containing response information and the retrieved json.
+        /// </returns>
         public static WebResponse<string> GetJsonFromUrl(Uri url, Token token)
         {
-            var json = "";
+            var json = string.Empty;
 
-            var request = CreateRequest(url, token);
+            var request = CreateRequest(url);
 
             var headers = new NameValueCollection
             {
@@ -71,6 +78,12 @@ namespace SpotifyWebApi.Business
             };
         }
 
+        /// <summary>
+        /// Converts an <see cref="WebResponse"/> of <see cref="string"/> to an object.
+        /// </summary>
+        /// <typeparam name="T">The expected type to return.</typeparam>
+        /// <param name="json">The json string wrapped in a <see cref="WebResponse"/>.</param>
+        /// <returns>The <see cref="WebResponse{T}"/>.</returns>
         public static WebResponse<T> JsonToObject<T>(WebResponse<string> json)
         {
             if (json == null)
@@ -85,6 +98,12 @@ namespace SpotifyWebApi.Business
             };
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="T">TODO</typeparam>
+        /// <param name="json">TODO</param>
+        /// <returns>TODO</returns>
         public static T JsonToObject<T>(string json)
         {
             if (json == null)
@@ -95,26 +114,37 @@ namespace SpotifyWebApi.Business
             return JsonConvert.DeserializeObject<T>(json);
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="T">TODO</typeparam>
+        /// <param name="url">TODO</param>
+        /// <param name="token">TODO</param>
+        /// <returns>TODO</returns>
         public static WebResponse<T> GetObjectFromUrl<T>(Uri url, Token token)
         {
             return JsonToObject<T>(GetJsonFromUrl(url, token));
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="endpoint">TODO</param>
+        /// <returns>TODO</returns>
         public static Uri GetUri(string endpoint)
         {
             return new Uri(BaseUri + endpoint, UriKind.Absolute);
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="plainText">TODO</param>
+        /// <returns>TODO</returns>
         public static string Base64Encode(string plainText)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
             return System.Convert.ToBase64String(plainTextBytes);
-        }
-
-        public static string Base64Decode(string base64EncodedData)
-        {
-            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
     }
 }

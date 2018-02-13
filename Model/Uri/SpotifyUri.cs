@@ -1,26 +1,23 @@
-﻿using System;
-using System.Runtime.Serialization;
-
-namespace SpotifyWebApi.Model.Uri
+﻿namespace SpotifyWebApi.Model.Uri
 {
+    using System;
+    using System.Runtime.Serialization;
+
+    /// <summary>
+    /// The <see cref="SpotifyUri" /> class.
+    /// </summary>
     [DataContract]
     public class SpotifyUri
     {
-        [DataMember]
-        public string Domain { get; private set; }
-
-        [DataMember]
-        public UriType Type { get; private set; }
-
-        [DataMember]
-        public string UserId { get; private set; }
-
-        [DataMember]
-        public string Id { get; private set; }
-
-        [DataMember]
-        public string FullUri { get; private set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpotifyUri"/> class.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <exception cref="Exception">
+        /// Uri was not correct!
+        /// or
+        /// Uri was not a spotify uri!
+        /// </exception>
         public SpotifyUri(string uri)
         {
             this.FullUri = uri;
@@ -31,11 +28,12 @@ namespace SpotifyWebApi.Model.Uri
             if (this.Domain.Equals("spotify"))
             {
                 if (split.Length == 5)
+                {
                     this.Type = UriType.Playlist;
+                }
                 else
                 {
-                    UriType type;
-                    System.Enum.TryParse(split[1], true, out type);
+                    Enum.TryParse(split[1], true, out UriType type);
                     this.Type = type;
                 }
 
@@ -68,11 +66,41 @@ namespace SpotifyWebApi.Model.Uri
         }
 
         /// <summary>
+        /// Gets the domain.
+        /// </summary>
+        [DataMember]
+        public string Domain { get; private set; }
+
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
+        [DataMember]
+        public UriType Type { get; private set; }
+
+        /// <summary>
+        /// Gets the user identifier.
+        /// </summary>
+        [DataMember]
+        public string UserId { get; private set; }
+
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        [DataMember]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Gets the full URI.
+        /// </summary>
+        [DataMember]
+        public string FullUri { get; private set; }
+
+        /// <summary>
         /// This method is called after the object is completely deserialized. Use it instead of the constructror.
         /// </summary>
         /// <param name="context">The streaming context.</param>
         [OnDeserialized]
-        void OnDeserialized(StreamingContext context)
+        private void OnDeserialized(StreamingContext context)
         {
             var i = new SpotifyUri(this.FullUri);
             this.Domain = i.Domain;
@@ -81,6 +109,5 @@ namespace SpotifyWebApi.Model.Uri
             this.Type = i.Type;
             this.UserId = i.UserId;
         }
-
     }
 }

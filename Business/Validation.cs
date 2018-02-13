@@ -1,13 +1,11 @@
-﻿//  <copyright file="Validation.cs" company="Pim Merks">
-//  Copyright (c) SpotifyWebApi. All rights reserved.
-//  </copyright>
-namespace SpotifyWebApi.Business
+﻿namespace SpotifyWebApi.Business
 {
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    /// <summary>
+    /// A static class used for validation a variance of objects.
+    /// </summary>
     public static class Validation
     {
         /// <summary>
@@ -16,6 +14,7 @@ namespace SpotifyWebApi.Business
         /// <param name="list">The list to validate</param>
         /// <param name="min">The minimum number of items in the list.</param>
         /// <param name="max">The maximum number of items in the list.</param>
+        /// <typeparam name="T">TODO</typeparam>
         /// <exception cref="ValidationException">Throws a validation exception when the list is null or invalid.</exception>
         public static void ValidateList<T>(ICollection<T> list, int min = -1, int max = -1)
         {

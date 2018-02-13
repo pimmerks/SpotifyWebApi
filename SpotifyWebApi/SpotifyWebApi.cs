@@ -4,8 +4,6 @@
 
 namespace SpotifyWebApi
 {
-    using System;
-    using System.Runtime.Remoting.Messaging;
     using Api;
     using Api.Album;
     using Api.Artist;
@@ -21,14 +19,16 @@ namespace SpotifyWebApi
     using Model.Auth;
 
     /// <summary>
-    /// The <see cref="SpotifyWebApi"/>.
+    /// The main Api class.
     /// </summary>
     public class SpotifyWebApi : BaseApi, ISpotifyWebApi
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpotifyWebApi"/> class.
+        /// Initializes a new instance of the <see cref="SpotifyWebApi" /> class.
         /// </summary>
-        public SpotifyWebApi(Token token) : base(token)
+        /// <param name="token">A valid <see cref="Token"/>.</param>
+        public SpotifyWebApi(Token token)
+            : base(token)
         {
         }
 
@@ -39,28 +39,28 @@ namespace SpotifyWebApi
         public IArtistApi Artist => new ArtistApi(this.Token);
 
         /// <inheritdoc />
-        public IBrowseApi Browse => throw new NotImplementedException();
+        public IBrowseApi Browse => null;
 
         /// <inheritdoc />
-        public IFollowApi Follow => throw new NotImplementedException();
+        public IFollowApi Follow => null;
 
         /// <inheritdoc />
-        public IPersonalizationApi Personalization => throw new NotImplementedException();
+        public IPersonalizationApi Personalization => null;
 
         /// <inheritdoc />
-        public IPlayerApi Player => throw new NotImplementedException();
+        public IPlayerApi Player => null;
 
         /// <inheritdoc />
-        public IPlaylistApi Playlist => throw new NotImplementedException();
+        public IPlaylistApi Playlist => null;
 
         /// <inheritdoc />
-        public ISearchApi Search => throw new NotImplementedException();
+        public ISearchApi Search => null;
 
         /// <inheritdoc />
-        public ITrackApi Track => throw new NotImplementedException();
+        public ITrackApi Track => null;
 
         /// <inheritdoc />
-        public IUserLibraryApi UserLibrary => throw new NotImplementedException();
+        public IUserLibraryApi UserLibrary => null;
 
         /// <inheritdoc />
         public IUserProfileApi UserProfile => new UserProfileApi(this.Token);

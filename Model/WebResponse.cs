@@ -1,19 +1,11 @@
-// <copyright file="WebResponse.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Model
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Net;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
-    /// The <see cref="WebResponse{T}"/>.
+    /// The <see cref="WebResponse{T}" />.
     /// </summary>
+    /// <typeparam name="T">The type of <see cref="WebResponse{T}"/></typeparam>
     public class WebResponse<T>
     {
         /// <summary>
