@@ -39,6 +39,7 @@ doc:
   dependencies:
     - build
   when: manual
+  allow_failure: false
 
 # Deploys the nuget package
 deploy_api:
@@ -51,5 +52,7 @@ deploy_api:
     GIT_STRATEGY: none
   only:
     - master
+    - tags
   dependencies:
     - test
+  allow_failure: false
