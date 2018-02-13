@@ -14,13 +14,6 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <NrtResolveSimpleAttributes>true</NrtResolveSimpleAttributes>
-    <NrtResolveInformationalAttribute>true</NrtResolveInformationalAttribute>
-    <NrtResolveCopyright>true</NrtResolveCopyright>
-    <NrtTagMatch>v[0-9]*</NrtTagMatch>
-    <NrtRemoveTagV>true</NrtRemoveTagV>
-    <NrtRequiredVcs>git</NrtRequiredVcs>
-    <NrtShowRevision>true</NrtShowRevision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,12 +75,4 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.props'))" />
-    <Error Condition="!Exists('..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.targets'))" />
-  </Target>
-  <Import Project="..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.targets" Condition="Exists('..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.targets')" />
 </Project>

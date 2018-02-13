@@ -65,13 +65,19 @@
       <Project>{97bbf2b1-e26f-4462-96cb-8cfe6e92c5a2}</Project>
       <Name>Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Auth\Auth.csproj">
+      <Project>{0f06316b-9a73-46f9-849b-1c96df61018b}</Project>
+      <Name>Auth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{bd46d6a3-5176-45f1-b31d-71811e40c1eb}</Project>
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
