@@ -45,7 +45,7 @@ deploy_api:
   stage: deploy
   script:
     - 'nuget pack SpotifyWebApi\SpotifyWebApi.csproj -properties Configuration=Release -IncludeReferencedProjects -OutputDirectory nuget'
-    - 'nuget push nuget\SpotifyWebApi-NET.*.nupkg -ApiKey %NUGET_API_KEY%' -Source https://api.nuget.org/v3/index.json'
+    - 'nuget push nuget\SpotifyWebApi-NET.*.nupkg -ApiKey %NUGET_API_KEY% -Source https://api.nuget.org/v3/index.json'
   when: manual
   variables:
     GIT_STRATEGY: none
