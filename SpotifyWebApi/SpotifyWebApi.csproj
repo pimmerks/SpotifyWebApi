@@ -1,95 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.props" Condition="Exists('..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0E69928E-0754-47A8-AFFC-52476DB29D9E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpotifyWebApi</RootNamespace>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>SpotifyWebApi</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <NrtResolveSimpleAttributes>true</NrtResolveSimpleAttributes>
-    <NrtResolveInformationalAttribute>true</NrtResolveInformationalAttribute>
-    <NrtResolveCopyright>true</NrtResolveCopyright>
-    <NrtTagMatch>v[0-9]*</NrtTagMatch>
-    <NrtRemoveTagV>true</NrtRemoveTagV>
-    <NrtRequiredVcs>git</NrtRequiredVcs>
-    <NrtShowRevision>true</NrtShowRevision>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\SpotifyWebApi.xml</DocumentationFile>
+    <RootNamespace>SpotifyWebApi</RootNamespace>
+    <Authors>Pim Merks</Authors>
+    <Company>Pim Merks</Company>
+    <PackageId>SpotifyWebApi-Core</PackageId>
+    <Description>A Spotify web api wrapper for .net Core 2.0.</Description>
+    <Copyright>Pim Merks</Copyright>
     <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <DocumentationFile>bin\Release\SpotifyWebApi.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\SpotifyWebApi.xml</DocumentationFile>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="ISpotifyWebApi.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpotifyWebApi.cs" />
+    <ProjectReference Include="..\Api\Api.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Api\Api.csproj">
-      <Project>{97bbf2b1-e26f-4462-96cb-8cfe6e92c5a2}</Project>
-      <Name>Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Auth\Auth.csproj">
-      <Project>{0f06316b-9a73-46f9-849b-1c96df61018b}</Project>
-      <Name>Auth</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{bd46d6a3-5176-45f1-b31d-71811e40c1eb}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.props'))" />
-    <Error Condition="!Exists('..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.targets'))" />
-  </Target>
-  <Import Project="..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.targets" Condition="Exists('..\packages\Unclassified.NetRevisionTask.0.2.2-beta\build\Unclassified.NetRevisionTask.targets')" />
+
 </Project>

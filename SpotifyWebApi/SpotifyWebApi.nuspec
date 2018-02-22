@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>SpotifyWebApi-NET</id>
+    <id>SpotifyWebApi-Core</id>
     <version>$version$</version>
     <title>$title$</title>
     <authors>Pim Merks</authors>

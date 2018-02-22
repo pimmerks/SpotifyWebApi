@@ -4,7 +4,6 @@ namespace SpotifyWebApi.Business
     using System.Collections.Specialized;
     using System.IO;
     using System.Net;
-    using System.Runtime.Remoting.Messaging;
     using Model;
     using Model.Auth;
     using Model.Exception;
