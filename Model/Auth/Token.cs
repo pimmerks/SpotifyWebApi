@@ -55,5 +55,14 @@
         /// Gets a value indicating whether this instance is expired.
         /// </summary>
         public bool IsExpired => DateTime.Now > this.TokenGenerated.AddSeconds(this.ExpiresIn);
+
+        /// <summary>
+        /// Creates a header string from this instance.
+        /// </summary>
+        /// <returns>The web header string.</returns>
+        public string ToHeaderString()
+        {
+            return this.Type + " " + this.AccessToken;
+        }
     }
 }

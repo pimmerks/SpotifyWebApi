@@ -56,7 +56,9 @@
   <ItemGroup>
     <Compile Include="Api\AlbumTest.cs" />
     <Compile Include="Auth\AuthCode\AuthorizationCodeTests.cs" />
+    <Compile Include="BaseTest.cs" />
     <Compile Include="Business\ApiHelperTests.cs" />
+    <Compile Include="Business\WebRequestHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

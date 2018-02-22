@@ -22,12 +22,11 @@
         /// </summary>
         /// <param name="args">TODO</param>
         /// <returns>TODO</returns>
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var param = new AuthParameters
             {
-                Scopes = Scope.UserReadPrivate | Scope.UserReadEmail | Scope.UserReadBirthdate | Scope.UserReadCurrentlyPlaying |
-                Scope.UserTopRead | Scope.UserLibraryRead,
+                Scopes = Scope.All,
 
                 ClientId = ConfigurationManager.AppSettings["clientId"],
                 ClientSecret = ConfigurationManager.AppSettings["clientSecret"],
@@ -36,7 +35,7 @@
             };
 
             Process.Start(AuthorizationCode.GetUrl(param, "test"));
-            var r = await GetResponse();
+            var r = GetResponse().GetAwaiter().GetResult();
 
             var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
 

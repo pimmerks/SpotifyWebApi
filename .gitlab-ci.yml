@@ -46,7 +46,7 @@ doc:
   allow_failure: false
 
 # Deploys the nuget package
-deploy_api:
+deploy_nuget:
   stage: deploy
   script:
     - 'nuget pack SpotifyWebApi\SpotifyWebApi.csproj -properties Configuration=Release -IncludeReferencedProjects -OutputDirectory nuget'

@@ -1,7 +1,3 @@
-// <copyright file="SpotifyWebApi.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi
 {
     using Api;

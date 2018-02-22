@@ -51,14 +51,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auth\Token.cs" />
+    <Compile Include="Context.cs" />
     <Compile Include="Copyright.cs" />
+    <Compile Include="CurrentlyPlaying.cs" />
+    <Compile Include="CurrentlyPlayingContext.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="CursorPaging.cs" />
+    <Compile Include="Device.cs" />
     <Compile Include="Enum\AlbumType.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="Enum\Scope.cs" />
     <Compile Include="Enum\ScopeExtension.cs" />
     <Compile Include="Error.cs" />
+    <Compile Include="Exception\NotFoundException.cs" />
+    <Compile Include="Exception\UserNotPremiumException.cs" />
     <Compile Include="Followers.cs" />
     <Compile Include="FullAlbum.cs" />
     <Compile Include="FullArtist.cs" />

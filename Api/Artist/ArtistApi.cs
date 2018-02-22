@@ -1,7 +1,3 @@
-// <copyright file="ArtistApi.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Api.Artist
 {
     using System;

@@ -52,6 +52,8 @@
                     return "user-read-currently-playing";
                 case Scope.UserReadRecentlyPlayed:
                     return "user-read-recently-played";
+                case Scope.All:
+                    return "playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private ugc-image-upload user-follow-modify user-follow-read user-library-modify user-read-private user-read-birthdate user-read-email user-top-read user-read-playback-state user-modify-playback-state user-read-currently-playing user-read-recently-played";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(scope), scope, null);
             }

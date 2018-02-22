@@ -55,6 +55,7 @@
     <Compile Include="Follow\IFollowApi.cs" />
     <Compile Include="Personalization\IPersonalizationApi.cs" />
     <Compile Include="Player\IPlayerApi.cs" />
+    <Compile Include="Player\PlayerApi.cs" />
     <Compile Include="Playlist\IPlaylistApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\ISearchApi.cs" />

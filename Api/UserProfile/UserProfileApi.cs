@@ -1,7 +1,3 @@
-// <copyright file="UserProfileApi.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Api.UserProfile
 {
     using System;
@@ -32,7 +28,7 @@ namespace SpotifyWebApi.Api.UserProfile
                 ApiHelper.GetUri($"/me"),
                 this.Token);
 
-            return res.Response;
+            throw new NotImplementedException(); // return res.Response;
         }
 
         /// <inheritdoc />
