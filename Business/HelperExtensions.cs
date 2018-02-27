@@ -3,6 +3,7 @@ namespace SpotifyWebApi.Business
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Model;
     using Model.Auth;
 
@@ -18,17 +19,20 @@ namespace SpotifyWebApi.Business
         /// <param name="paging">The paging object.</param>
         /// <param name="token">The token.</param>
         /// <returns>The final list{T}</returns>
-        public static IList<T> LoadToList<T>(Paging<T> paging, Token token)
+        public static async Task<IList<T>> LoadToList<T>(Paging<T> paging, Token token)
         {
             var curPage = paging;
-            var result = new List<T>();
+            var result = curPage.Items;
+
             while (curPage.Next != null)
             {
-                result.AddRange(curPage.Items);
+                var next = await ApiClient.GetAsync<Paging<T>>(new Uri(curPage.Next), token);
 
-                var nextPage = ApiHelper.GetObjectFromUrl<Paging<T>>(new Uri(curPage.Next), token);
-
-                throw new NotImplementedException(); // curPage = nextPage.Response;
+                if (next.Response is Paging<T> nextPage)
+                {
+                    result.AddRange(nextPage.Items);
+                    curPage = nextPage;
+                }
             }
 
             return result;
@@ -48,6 +52,17 @@ namespace SpotifyWebApi.Business
                 .GroupBy(x => x.Index / chunkSize)
                 .Select(x => x.Select(v => v.Value).ToList())
                 .ToList();
+        }
+
+        /// <summary>
+        /// Converts a list of strings to a single string with a separator.
+        /// </summary>
+        /// <param name="list">The list to convert.</param>
+        /// <param name="separator">The separator to put between the list items.</param>
+        /// <returns>The created string.</returns>
+        public static string AsSingleString(this List<string> list, string separator = ",")
+        {
+            return string.Join(separator, list);
         }
     }
 }

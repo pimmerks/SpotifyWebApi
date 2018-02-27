@@ -5,6 +5,7 @@ namespace SpotifyWebApi.Model
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Enum;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -34,6 +35,6 @@ namespace SpotifyWebApi.Model
         /// Gets or sets the object type of the item's context. Can be one of "album", "artist" or "playlist".
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public ContextType Type { get; set; }
     }
 }

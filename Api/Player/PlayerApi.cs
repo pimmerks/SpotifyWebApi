@@ -9,6 +9,8 @@ namespace SpotifyWebApi.Api.Player
     using Business;
     using Model;
     using Model.Auth;
+    using Model.Enum;
+    using Model.Uri;
 
     /// <summary>
     /// The <see cref="PlayerApi"/>.
@@ -25,55 +27,94 @@ namespace SpotifyWebApi.Api.Player
         }
 
         /// <inheritdoc />
-        public List<Device> GetAvailableDevices()
+        public async Task<List<Device>> GetAvailableDevices()
+        {
+            var r = await ApiClient.GetAsync<List<Device>>(
+                        MakeUri("me/player/devices"), this.Token);
+
+            if (r.Response is List<Device> res)
+            {
+                return res;
+            }
+            return new List<Device>();
+        }
+
+        /// <inheritdoc />
+        public async Task<CurrentlyPlayingContext> GetCurrentlyPlayingContext(string market = "")
+        {
+            var r = await ApiClient.GetAsync<CurrentlyPlayingContext>(
+                        MakeUri($"me/player{AddMarketCode("?", market)}"), this.Token);
+
+            if (r.Response is CurrentlyPlayingContext res)
+            {
+                return res;
+            }
+            return new CurrentlyPlayingContext();
+        }
+
+        /// <inheritdoc />
+        public async Task<CurrentlyPlaying> GetCurrentlyPlaying(string market = "")
+        {
+            var r = await ApiClient.GetAsync<CurrentlyPlaying>(
+                        MakeUri($"me/player/currently-playing{AddMarketCode("?", market)}"), this.Token);
+
+            if (r.Response is CurrentlyPlaying res)
+            {
+                return res;
+            }
+            return new CurrentlyPlaying();
+        }
+
+        /// <inheritdoc />
+        public async Task TransferPlayback(List<Device> devices, bool? play = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public CurrentlyPlayingContext GetCurrentlyPlayingContext(string market)
+        public async Task StartPlayback(Device device = null, SpotifyUri contextUri = null, List<SpotifyUri> uris = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public CurrentlyPlaying GetCurrentlyPlaying(string market)
+        public async Task PausePlayback(Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public void Next()
+        public async Task Next(Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public void Previous()
+        public async Task Previous(Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public void Seek(int positionMs, Device device)
+        public async Task Seek(int positionMs, Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public void SetRepeat(string state, Device device)
+        public async Task SetRepeat(RepeatState state, Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public void SetVolume(int volumePercent, Device device)
+        public async Task SetVolume(int volumePercent, Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public void SetShuffle(bool state, Device device)
+        public async Task SetShuffle(bool state, Device device = null)
         {
             throw new NotImplementedException();
         }

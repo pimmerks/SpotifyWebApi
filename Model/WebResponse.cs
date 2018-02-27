@@ -24,6 +24,9 @@ namespace SpotifyWebApi.Model
         /// </summary>
         public object Response { get; set; }
 
+        /// <summary>
+        /// Gets the type of the response.
+        /// </summary>
         public Type Type => this.Response.GetType();
 
         /// <summary>

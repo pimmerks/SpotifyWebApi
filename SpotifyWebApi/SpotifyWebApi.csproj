@@ -1,25 +1,51 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+
     <AssemblyName>SpotifyWebApi</AssemblyName>
     <RootNamespace>SpotifyWebApi</RootNamespace>
+
     <Authors>Pim Merks</Authors>
     <Company>Pim Merks</Company>
     <PackageId>SpotifyWebApi-Core</PackageId>
-    <Description>A Spotify web api wrapper for .net Core 2.0.</Description>
+    <Description>A Spotify web api wrapper.</Description>
     <Copyright>Pim Merks</Copyright>
-    <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+    <RepositoryType>Github</RepositoryType>
+    <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
+
+    <PackageIconUrl>https://github.com/pimmerks/SpotifyWebApi/blob/master/SpotifyIcon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/pimmerks/SpotifyWebApi</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/pimmerks/SpotifyWebApi/blob/master/LICENSE</PackageLicenseUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.2.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <PackageTags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</PackageTags>
+    <NeutralLanguage>en-001</NeutralLanguage>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.0\SpotifyWebApi.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
+  <!-- net461 Nuget packages -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
 
+  <!-- netstandard2.0 Nuget packages -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <!-- Net standard properties -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <DocumentationFile>bin\Debug\netstandard2.0\SpotifyWebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <!-- Net framework properties -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net461'">
+    <DocumentationFile>bin\Debug\net461\SpotifyWebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <!-- Include project files. -->
   <ItemGroup>
     <ProjectReference Include="..\Api\Api.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />

@@ -8,6 +8,7 @@ namespace SpotifyWebApi.Business
     using Model;
     using Model.Auth;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The <see cref="ApiClient"/> class used for communicating with a REST service.
@@ -29,8 +30,8 @@ namespace SpotifyWebApi.Business
                 var responseString = await response.Content.ReadAsStringAsync();
 
                 return response.IsSuccessStatusCode
-                    ? WebResponse.Make(JsonConvert.DeserializeObject<T>(responseString), response.StatusCode)
-                    : WebResponse.Make(JsonConvert.DeserializeObject<Error>(responseString), response.StatusCode);
+                    ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
+                    : WebResponse.Make(DeserializeObject<Error>(responseString), response.StatusCode);
             }
         }
 
@@ -46,14 +47,14 @@ namespace SpotifyWebApi.Business
         {
             using (var client = MakeHttpClient(token))
             {
-                var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+                var content = new StringContent(SerializeObject(body), Encoding.UTF8, "application/json");
 
                 var response = await client.PostAsync(uri, content);
                 var responseString = await response.Content.ReadAsStringAsync();
 
                 return response.IsSuccessStatusCode
-                           ? WebResponse.Make(JsonConvert.DeserializeObject<T>(responseString), response.StatusCode)
-                           : WebResponse.Make(JsonConvert.DeserializeObject<Error>(responseString), response.StatusCode);
+                           ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
+                           : WebResponse.Make(DeserializeObject<Error>(responseString), response.StatusCode);
             }
         }
 
@@ -69,14 +70,14 @@ namespace SpotifyWebApi.Business
         {
             using (var client = MakeHttpClient(token))
             {
-                var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+                var content = new StringContent(SerializeObject(body), Encoding.UTF8, "application/json");
 
                 var response = await client.PutAsync(uri, content);
                 var responseString = await response.Content.ReadAsStringAsync();
 
                 return response.IsSuccessStatusCode
-                           ? WebResponse.Make(JsonConvert.DeserializeObject<T>(responseString), response.StatusCode)
-                           : WebResponse.Make(JsonConvert.DeserializeObject<Error>(responseString), response.StatusCode);
+                           ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
+                           : WebResponse.Make(DeserializeObject<Error>(responseString), response.StatusCode);
             }
         }
 
@@ -95,8 +96,8 @@ namespace SpotifyWebApi.Business
                 var responseString = await response.Content.ReadAsStringAsync();
 
                 return response.IsSuccessStatusCode
-                           ? WebResponse.Make(JsonConvert.DeserializeObject<T>(responseString), response.StatusCode)
-                           : WebResponse.Make(JsonConvert.DeserializeObject<Error>(responseString), response.StatusCode);
+                           ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
+                           : WebResponse.Make(DeserializeObject<Error>(responseString), response.StatusCode);
             }
         }
 
@@ -115,6 +116,27 @@ namespace SpotifyWebApi.Business
                 client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(token.ToHeaderString());
 
             return client;
+        }
+
+        /// <summary>
+        /// Custom deserialization with StringEnumConverter.
+        /// </summary>
+        /// <typeparam name="T">The type of the expected object.</typeparam>
+        /// <param name="json">The json to deserialize.</param>
+        /// <returns>The deserialized object.</returns>
+        private static T DeserializeObject<T>(string json)
+        {
+            return JsonConvert.DeserializeObject<T>(json, new StringEnumConverter(true));
+        }
+
+        /// <summary>
+        /// Custom serialization with StringEnumConverter.
+        /// </summary>
+        /// <param name="obj">The object to serialize.</param>
+        /// <returns>The serialized JSON.</returns>
+        private static string SerializeObject(object obj)
+        {
+            return JsonConvert.SerializeObject(obj, new StringEnumConverter(true));
         }
     }
 }

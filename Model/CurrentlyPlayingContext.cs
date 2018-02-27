@@ -1,5 +1,7 @@
 namespace SpotifyWebApi.Model
 {
+    using System;
+    using System.Globalization;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -35,7 +37,12 @@ namespace SpotifyWebApi.Model
         /// Gets or sets the Unix Millisecond Timestamp when data was fetched
         /// </summary>
         [JsonProperty("timestamp")]
-        public int Timestamp { get; set; }
+        public long TimestampMs { get; set; }
+
+        /// <summary>
+        /// Gets the <see cref="DateTime"/> object of the <see cref="TimestampMs"/>
+        /// </summary>
+        public DateTime Timestamp => DateTimeOffset.FromUnixTimeMilliseconds(this.TimestampMs).LocalDateTime;
 
         /// <summary>
         /// Gets or sets the progress into the currently playing track. Can be null.

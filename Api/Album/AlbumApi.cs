@@ -1,6 +1,5 @@
 namespace SpotifyWebApi.Api.Album
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -26,13 +25,7 @@ namespace SpotifyWebApi.Api.Album
         }
 
         /// <inheritdoc />
-        public FullAlbum GetAlbum(SpotifyUri albumUri, string market)
-        {
-            return this.GetAlbumAsync(albumUri, market).GetAwaiter().GetResult();
-        }
-
-        /// <inheritdoc />
-        public async Task<FullAlbum> GetAlbumAsync(SpotifyUri albumUri, string market)
+        public async Task<FullAlbum> GetAlbum(SpotifyUri albumUri, string market)
         {
             var r = await ApiClient.GetAsync<FullAlbum>(
                         MakeUri($"albums/{albumUri.Id}{AddMarketCode("?", market)}"),
@@ -46,13 +39,7 @@ namespace SpotifyWebApi.Api.Album
         }
 
         /// <inheritdoc />
-        public IList<FullAlbum> GetAlbums(IList<SpotifyUri> albumUris, string market)
-        {
-            return this.GetAlbumsAsync(albumUris, market).GetAwaiter().GetResult();
-        }
-
-        /// <inheritdoc />
-        public async Task<IList<FullAlbum>> GetAlbumsAsync(IList<SpotifyUri> albumUris, string market)
+        public async Task<IList<FullAlbum>> GetAlbums(IList<SpotifyUri> albumUris, string market)
         {
             var lists = albumUris.ChunkBy(50);
 
@@ -63,8 +50,8 @@ namespace SpotifyWebApi.Api.Album
                 var s = string.Join(",", l.Select(x => x.Id).ToArray());
 
                 var r = await ApiClient.GetAsync<MultipleAlbums>(
-                    MakeUri($"albums?ids={s}{AddMarketCode("&", market)}"),
-                    this.Token);
+                        MakeUri($"albums?ids={s}{AddMarketCode("&", market)}"),
+                        this.Token);
 
                 if (r.Response is MultipleAlbums albums)
                 {
@@ -76,13 +63,7 @@ namespace SpotifyWebApi.Api.Album
         }
 
         /// <inheritdoc />
-        public IList<SimpleTrack> GetAlbumTracks(SpotifyUri albumUri, string market)
-        {
-            return this.GetAlbumTracksAsync(albumUri, market).GetAwaiter().GetResult();
-        }
-
-        /// <inheritdoc />
-        public async Task<IList<SimpleTrack>> GetAlbumTracksAsync(SpotifyUri albumUri, string market)
+        public async Task<IList<SimpleTrack>> GetAlbumTracks(SpotifyUri albumUri, string market)
         {
             var r = await ApiClient.GetAsync<Paging<SimpleTrack>>(
                         MakeUri($"albums/{albumUri.Id}/tracks?limit={50}&offset={0}{AddMarketCode("&", market)}"),
@@ -90,7 +71,7 @@ namespace SpotifyWebApi.Api.Album
 
             if (r.Response is Paging<SimpleTrack> tracks)
             {
-                return HelperExtensions.LoadToList(tracks, this.Token);
+                return await HelperExtensions.LoadToList(tracks, this.Token);
             }
             return new List<SimpleTrack>();
         }
