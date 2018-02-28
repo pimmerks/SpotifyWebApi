@@ -10,25 +10,27 @@
     <Authors>Pim Merks</Authors>
     <Company>Pim Merks</Company>
     <PackageId>SpotifyWebApi-Core</PackageId>
-    <Description>A Spotify web api wrapper.</Description>
+    <Description>A Spotify Web API wrapper.</Description>
     <Copyright>Pim Merks</Copyright>
     <RepositoryType>Github</RepositoryType>
     <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
-
-    <PackageIconUrl>https://github.com/pimmerks/SpotifyWebApi/blob/master/SpotifyIcon.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/pimmerks/SpotifyWebApi/master/SpotifyIcon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/pimmerks/SpotifyWebApi</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/pimmerks/SpotifyWebApi/blob/master/LICENSE</PackageLicenseUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.2.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
     <PackageTags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</PackageTags>
-    <NeutralLanguage>en-001</NeutralLanguage>
+
+    <Version>0.1.0-prerelease-dirty-17579d6</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
 
   <!-- net461 Nuget packages -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
 
   <!-- netstandard2.0 Nuget packages -->
@@ -49,6 +51,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Api\Api.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\Auth\Auth.csproj" />
   </ItemGroup>
 
 </Project>

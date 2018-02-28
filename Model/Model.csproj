@@ -5,15 +5,19 @@
     <AssemblyName>SpotifyWebApi.Model</AssemblyName>
     <RootNamespace>SpotifyWebApi.Model</RootNamespace>
     <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+
+    <Version>0.1.0-prerelease-dirty-17579d6</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
 
   <!-- net461 Nuget packages -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
 
   <!-- netstandard2.0 Nuget packages -->

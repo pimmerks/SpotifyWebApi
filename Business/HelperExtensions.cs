@@ -18,9 +18,14 @@ namespace SpotifyWebApi.Business
         /// <typeparam name="T">The type of the paging object.</typeparam>
         /// <param name="paging">The paging object.</param>
         /// <param name="token">The token.</param>
+        /// <param name="maxItems">The maximum items to return.</param>
         /// <returns>The final list{T}</returns>
-        public static async Task<IList<T>> LoadToList<T>(Paging<T> paging, Token token)
+        public static async Task<IList<T>> LoadToList<T>(this Paging<T> paging, Token token, int maxItems = 100)
         {
+            if (paging == null)
+            {
+                return new List<T>();
+            }
             var curPage = paging;
             var result = curPage.Items;
 

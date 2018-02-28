@@ -51,7 +51,7 @@ namespace SpotifyWebApi
         public IPlaylistApi Playlist => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
-        public ISearchApi Search => throw new NotImplementedException("This api is not yet implemented!");
+        public ISearchApi Search => new SearchApi(this.Token);
 
         /// <inheritdoc />
         public ITrackApi Track => throw new NotImplementedException("This api is not yet implemented!");

@@ -46,31 +46,25 @@
             ISpotifyWebApi api = new SpotifyWebApi(token);
 
             var task1 = api.UserProfile.GetMe();
-            var task2 = api.Player.GetCurrentlyPlayingContextAsync();
+            var task2 = api.Player.GetCurrentlyPlayingContext();
 
-            task1.Wait();
+            Task.WhenAll(task1, task2).GetAwaiter().GetResult();
             var me = task1.Result;
-            task2.Wait();
             var t = task2.Result;
 
-            var task3 = api.Artist.GetArtistAlbums(new SpotifyUri(t.Item.Artists.First().Uri));
-            task3.Wait();
+
+            var search = api.Search.Search("Test").GetAwaiter().GetResult();
 
             Console.WriteLine($"Hello {me.DisplayName}, This is an example application!");
             Console.WriteLine($"You are listening to {t.Item.Name} on {t.Device.Name}");
-
-            foreach (var simpleAlbum in task3.Result)
-            {
-                Console.WriteLine(simpleAlbum.Name);
-            }
 
             Console.ReadLine();
         }
 
         /// <summary>
-        /// TODO
+        /// Start a webserver that listens on 8080 and retrieve the access code.
         /// </summary>
-        /// <returns>TODO</returns>
+        /// <returns>The access code.</returns>
         public static async Task<string> GetResponse()
         {
             var webserver = new TcpListener(IPAddress.Any, 8080);
