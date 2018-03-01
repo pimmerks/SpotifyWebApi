@@ -1,7 +1,3 @@
-// <copyright file="AuthorizationCode.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Auth.AuthorizationCode
 {
     using System;
@@ -13,6 +9,7 @@ namespace SpotifyWebApi.Auth.AuthorizationCode
     using Business;
     using Model.Auth;
     using Model.Enum;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The <see cref="AuthorizationCode"/>.
@@ -92,7 +89,7 @@ namespace SpotifyWebApi.Auth.AuthorizationCode
             // Read the content.
             var json = reader.ReadToEnd();
 
-            return ApiHelper.JsonToObject<Token>(json);
+            return JsonConvert.DeserializeObject<Token>(json);
         }
     }
 }

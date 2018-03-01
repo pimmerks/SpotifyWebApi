@@ -1,10 +1,7 @@
-// <copyright file="UserProfileApi.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Api.UserProfile
 {
     using System;
+    using System.Threading.Tasks;
     using Business;
     using Model;
     using Model.Auth;
@@ -26,19 +23,29 @@ namespace SpotifyWebApi.Api.UserProfile
         }
 
         /// <inheritdoc />
-        public PrivateUser GetMe()
+        public async Task<PrivateUser> GetMe()
         {
-            var res = ApiHelper.GetObjectFromUrl<PrivateUser>(
-                ApiHelper.GetUri($"/me"),
-                this.Token);
+            var r = await ApiClient.GetAsync<PrivateUser>(
+                          MakeUri("me"), this.Token);
 
-            return res.Response;
+            if (r.Response is PrivateUser res)
+            {
+                return res;
+            }
+            return new PrivateUser();
         }
 
         /// <inheritdoc />
-        public PublicUser GetUser(SpotifyUri userUri)
+        public async Task<PublicUser> GetUser(SpotifyUri userUri)
         {
-            throw new NotImplementedException();
+            var r = await ApiClient.GetAsync<PrivateUser>(
+                        MakeUri($"users/{userUri.Id}"), this.Token);
+
+            if (r.Response is PublicUser res)
+            {
+                return res;
+            }
+            return new PublicUser();
         }
     }
 }

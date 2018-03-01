@@ -1,18 +1,22 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>SpotifyWebApi-NET</id>
-    <version>$version$</version>
-    <title>$title$</title>
+    <version>0.1.0-beta-test</version>
+
+    <id>SpotifyWebApi-Core</id>
+    <title>Spotify Web API</title>
+
     <authors>Pim Merks</authors>
-    <owners>$author$</owners>
-    <licenseUrl>https://github.com/pimmerks/SpotifyWebApi/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/pimmerks/SpotifyWebApi</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/pimmerks/SpotifyWebApi/master/SpotifyIcon.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A Spotify Web Api wrapper.</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <owners>Pim Merks</owners>
+    <description>A Spotify Web API wrapper.</description>
     <copyright>Copyright 2018</copyright>
-    <tags>Spotify SpotifyWeb SpotifyWebApi Web Api Net</tags>
+
+    <iconUrl>https://raw.githubusercontent.com/pimmerks/SpotifyWebApi/master/SpotifyIcon.png</iconUrl>
+    <projectUrl>https://github.com/pimmerks/SpotifyWebApi</projectUrl>
+    <licenseUrl>https://github.com/pimmerks/SpotifyWebApi/blob/master/LICENSE</licenseUrl>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</tags>
+    <releaseNotes>Release notes.</releaseNotes>
   </metadata>
 </package>

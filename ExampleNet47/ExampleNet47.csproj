@@ -1,18 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{92B4AABF-78BC-4CA8-9EFB-6C66C17A1818}</ProjectGuid>
+    <ProjectGuid>{78EAA9AB-8FF2-4F3D-86ED-206445BCC02D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Example</RootNamespace>
-    <AssemblyName>Example</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <RootNamespace>Example2</RootNamespace>
+    <AssemblyName>Example2</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <LangVersion>latest</LangVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,8 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\Example.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,12 +30,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <DocumentationFile>bin\Release\Example.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,7 +39,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -57,37 +46,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="App.template.config" />
-    <None Include="packages.config" />
-    <None Include="Properties\prebuild.ps1" />
+    <None Include="App.config" />
+    <None Include="App.Template.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Api\Api.csproj">
-      <Project>{97BBF2B1-E26F-4462-96CB-8CFE6E92C5A2}</Project>
+      <Project>{4ED8B43C-A3FB-47E9-8C81-594BEB09F5BB}</Project>
       <Name>Api</Name>
     </ProjectReference>
     <ProjectReference Include="..\Auth\Auth.csproj">
-      <Project>{0f06316b-9a73-46f9-849b-1c96df61018b}</Project>
+      <Project>{59669587-a1dd-4f0d-9029-77c7a7401bb2}</Project>
       <Name>Auth</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{432194e9-74cb-4e1b-9fa2-ef11ebc5d88b}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{BD46D6A3-5176-45F1-B31D-71811E40C1EB}</Project>
+      <Project>{3e9578be-a297-4b3c-8315-66057b919d9d}</Project>
       <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\SpotifyWebApi\SpotifyWebApi.csproj">
-      <Project>{0e69928e-0754-47a8-affc-52476db29d9e}</Project>
+      <Project>{ccd1caf9-1e3e-42c7-8bba-a9522c56942d}</Project>
       <Name>SpotifyWebApi</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>powershell -ExecutionPolicy ByPass -File $(ProjectDir)prebuild.ps1</PreBuildEvent>
-  </PropertyGroup>
 </Project>
