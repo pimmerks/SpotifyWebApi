@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -48,6 +48,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="App.Template.config" />
+    <None Include="prebuild.ps1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Api\Api.csproj">
@@ -72,4 +73,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>powershell -ExecutionPolicy ByPass -File $(ProjectDir)prebuild.ps1</PreBuildEvent>
+  </PropertyGroup>
 </Project>
