@@ -28,7 +28,7 @@ deploy_prerelease:
   script:
     - 'GitVersionerNet' # version files according to latest tag
     - 'dotnet pack -c Release --output ../nuget SpotifyWebApi/SpotifyWebApi.csproj'
-    - 'nuget push nuget\SpotifyWebApi-.*.nupkg -ApiKey %NUGET_API_KEY% -Source %NUGET_SOURCE%' # https://api.nuget.org/v3/index.json
+    - 'nuget push .\nuget\SpotifyWebApi-Core.*.nupkg -ApiKey %NUGET_API_KEY% -Source %NUGET_SOURCE%'
   variables:
     GIT_STRATEGY: none
   dependencies:
@@ -43,7 +43,7 @@ deploy:
   script:
     - 'GitVersionerNet --short' # version files according to latest tag
     - 'dotnet pack -c Release --output ../nuget SpotifyWebApi/SpotifyWebApi.csproj'
-    - 'nuget push nuget\SpotifyWebApi-.*.nupkg -ApiKey %NUGET_API_KEY% -Source %NUGET_SOURCE%' # https://api.nuget.org/v3/index.json
+    - 'nuget push .\nuget\SpotifyWebApi-Core.*.nupkg -ApiKey %NUGET_API_KEY% -Source %NUGET_SOURCE%'
   variables:
     GIT_STRATEGY: none
   dependencies:
