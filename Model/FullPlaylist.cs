@@ -66,7 +66,7 @@
         /// Gets or sets a value indicating whether this <see cref="FullPlaylist"/> is public.
         /// </summary>
         [JsonProperty("public")]
-        public bool Public { get; set; }
+        public bool? Public { get; set; }
 
         /// <summary>
         /// Gets or sets the snapshot identifier.

@@ -97,5 +97,10 @@
         /// Read access to a user's recently played items.
         /// </summary>
         UserReadRecentlyPlayed = 65568,
+
+        /// <summary>
+        /// Request access to all scopes.
+        /// </summary>
+        All = ~1,
     }
 }

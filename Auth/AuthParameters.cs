@@ -1,7 +1,3 @@
-// <copyright file="AuthParameters.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Auth
 {
     using Model.Enum;

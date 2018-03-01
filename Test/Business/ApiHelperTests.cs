@@ -1,8 +1,8 @@
 namespace Test.Business
 {
+    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using SpotifyWebApi.Business;
-    using System;
 
     /// <summary>
     /// The <see cref="ApiHelperTests" /> class.

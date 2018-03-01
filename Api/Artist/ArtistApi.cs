@@ -1,11 +1,9 @@
-// <copyright file="ArtistApi.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Api.Artist
 {
-    using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Business;
     using Model;
     using Model.Auth;
     using Model.Enum;
@@ -27,38 +25,83 @@ namespace SpotifyWebApi.Api.Artist
         }
 
         /// <inheritdoc />
-        public FullArtist GetArtist(SpotifyUri artistUri)
+        public async Task<FullArtist> GetArtist(SpotifyUri artistUri)
         {
-            throw new NotImplementedException();
+            var r = await ApiClient.GetAsync<FullArtist>(
+                        MakeUri($"artists/{artistUri.Id}"),
+                        this.Token);
+
+            if (r.Response is FullArtist res)
+            {
+                return res;
+            }
+            return new FullArtist();
         }
 
         /// <inheritdoc />
-        public IList<FullArtist> GetArtists(IList<SpotifyUri> artistUris)
+        public async Task<IList<FullArtist>> GetArtists(IList<SpotifyUri> artistUris)
         {
-            throw new NotImplementedException();
+            Validation.ValidateList(artistUris, 0, 50);
+            var ids = artistUris.Select(x => x.Id).ToList().AsSingleString();
+            var r = await ApiClient.GetAsync<FullArtist>(
+                        MakeUri($"artists?ids={ids}"),
+                        this.Token);
+
+            if (r.Response is List<FullArtist> res)
+            {
+                return res;
+            }
+            return new List<FullArtist>();
         }
 
         /// <inheritdoc />
-        public Paging<SimpleAlbum> GetArtistAlbums(
-            SpotifyUri artistUri,
-            AlbumType albumTypes = AlbumType.Album | AlbumType.AppearsOn | AlbumType.Compilation | AlbumType.Single,
-            string market = "",
-            int limit = 20,
-            int offset = 0)
+        public async Task<IList<SimpleAlbum>> GetArtistAlbums(SpotifyUri artistUri, AlbumType albumTypes, string market, int limit, int offset)
         {
-            throw new NotImplementedException();
+            // TODO: Move this to Model.Enum or something.
+            var albumTypeString = "album_type=";
+            if (albumTypes.HasFlag(AlbumType.Album)) albumTypeString += "album,";
+            if (albumTypes.HasFlag(AlbumType.AppearsOn)) albumTypeString += "appears_on,";
+            if (albumTypes.HasFlag(AlbumType.Compilation)) albumTypeString += "compilation,";
+            if (albumTypes.HasFlag(AlbumType.Single)) albumTypeString += "compilation,";
+            albumTypeString = albumTypeString.Remove(albumTypeString.Length - 1);
+
+            var r = await ApiClient.GetAsync<Paging<SimpleAlbum>>(
+                        MakeUri($"artists/{artistUri.Id}/albums?{albumTypeString}&limit={limit}&offset={offset}{AddMarketCode("&", market)}"),
+                        this.Token);
+
+            if (r.Response is Paging<SimpleAlbum> res)
+            {
+                return await HelperExtensions.LoadToList(res, this.Token);
+            }
+            return new List<SimpleAlbum>();
         }
 
         /// <inheritdoc />
-        public IList<FullTrack> GetArtistsTopTracks(SpotifyUri artistUri, string market)
+        public async Task<IList<FullTrack>> GetArtistsTopTracks(SpotifyUri artistUri, string market)
         {
-            throw new NotImplementedException();
+            var r = await ApiClient.GetAsync<List<FullTrack>>(
+                        MakeUri($"artists/{artistUri.Id}/top-tracks{AddMarketCode("?", market)}"),
+                        this.Token);
+
+            if (r.Response is List<FullTrack> res)
+            {
+                return res;
+            }
+            return new List<FullTrack>();
         }
 
         /// <inheritdoc />
-        public IList<FullArtist> GetArtistsRelatedArtists(SpotifyUri artistUri)
+        public async Task<IList<FullArtist>> GetArtistsRelatedArtists(SpotifyUri artistUri)
         {
-            throw new NotImplementedException();
+            var r = await ApiClient.GetAsync<List<FullArtist>>(
+                        MakeUri($"artists/{artistUri.Id}/related-artists"),
+                        this.Token);
+
+            if (r.Response is List<FullArtist> res)
+            {
+                return res;
+            }
+            return new List<FullArtist>();
         }
     }
 }

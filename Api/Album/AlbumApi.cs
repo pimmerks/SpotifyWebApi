@@ -1,11 +1,8 @@
-// <copyright file="AlbumApi.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Api.Album
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Business;
     using Model;
     using Model.Auth;
@@ -28,38 +25,55 @@ namespace SpotifyWebApi.Api.Album
         }
 
         /// <inheritdoc />
-        public FullAlbum GetAlbum(SpotifyUri albumUri, string market = "")
+        public async Task<FullAlbum> GetAlbum(SpotifyUri albumUri, string market)
         {
-            var res = ApiHelper.GetObjectFromUrl<FullAlbum>(
-                ApiHelper.GetUri($"/albums/{albumUri.Id}{AddMarketCode("?", market)}"),
-                this.Token);
+            var r = await ApiClient.GetAsync<FullAlbum>(
+                        MakeUri($"albums/{albumUri.Id}{AddMarketCode("?", market)}"),
+                        this.Token);
 
-            return res.Response;
+            if (r.Response is FullAlbum album)
+            {
+                return album;
+            }
+            return new FullAlbum();
         }
 
         /// <inheritdoc />
-        public IList<FullAlbum> GetAlbums(IList<SpotifyUri> albumUris, string market = "")
+        public async Task<IList<FullAlbum>> GetAlbums(IList<SpotifyUri> albumUris, string market)
         {
-            Validation.ValidateList(albumUris, 1, 50);
-            var l = string.Join(",", albumUris.Select(x => x.Id).ToArray());
+            var lists = albumUris.ChunkBy(50);
 
-            var res = ApiHelper.GetObjectFromUrl<MultipleAlbums>(
-                ApiHelper.GetUri($"/albums?ids={l}{AddMarketCode("&", market)}"),
-                this.Token);
+            var res = new List<FullAlbum>();
 
-            return res.Response.Albums;
+            foreach (var l in lists)
+            {
+                var s = string.Join(",", l.Select(x => x.Id).ToArray());
+
+                var r = await ApiClient.GetAsync<MultipleAlbums>(
+                        MakeUri($"albums?ids={s}{AddMarketCode("&", market)}"),
+                        this.Token);
+
+                if (r.Response is MultipleAlbums albums)
+                {
+                    res.AddRange(albums.Albums);
+                }
+            }
+
+            return res;
         }
 
         /// <inheritdoc />
-        public Paging<SimpleTrack> GetAlbumTracks(SpotifyUri albumUri, int limit = 20, int offset = 0, string market = "")
+        public async Task<IList<SimpleTrack>> GetAlbumTracks(SpotifyUri albumUri, string market)
         {
-            Validation.ValidateInteger(limit, 1, 50);
+            var r = await ApiClient.GetAsync<Paging<SimpleTrack>>(
+                        MakeUri($"albums/{albumUri.Id}/tracks?limit={50}&offset={0}{AddMarketCode("&", market)}"),
+                        this.Token);
 
-            var res = ApiHelper.GetObjectFromUrl<Paging<SimpleTrack>>(
-                ApiHelper.GetUri($"/albums/{albumUri.Id}/tracks?limit={limit}&offset={offset}{AddMarketCode("&", market)}"),
-                this.Token);
-
-            return res.Response;
+            if (r.Response is Paging<SimpleTrack> tracks)
+            {
+                return await HelperExtensions.LoadToList(tracks, this.Token);
+            }
+            return new List<SimpleTrack>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace SpotifyWebApi.Business
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    using Model.Exception;
 
     /// <summary>
     /// A static class used for validation a variance of objects.

@@ -1,9 +1,6 @@
-// <copyright file="SpotifyWebApi.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi
 {
+    using System;
     using Api;
     using Api.Album;
     using Api.Artist;
@@ -39,28 +36,28 @@ namespace SpotifyWebApi
         public IArtistApi Artist => new ArtistApi(this.Token);
 
         /// <inheritdoc />
-        public IBrowseApi Browse => null;
+        public IBrowseApi Browse => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
-        public IFollowApi Follow => null;
+        public IFollowApi Follow => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
-        public IPersonalizationApi Personalization => null;
+        public IPersonalizationApi Personalization => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
-        public IPlayerApi Player => null;
+        public IPlayerApi Player => new PlayerApi(this.Token);
 
         /// <inheritdoc />
-        public IPlaylistApi Playlist => null;
+        public IPlaylistApi Playlist => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
-        public ISearchApi Search => null;
+        public ISearchApi Search => new SearchApi(this.Token);
 
         /// <inheritdoc />
-        public ITrackApi Track => null;
+        public ITrackApi Track => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
-        public IUserLibraryApi UserLibrary => null;
+        public IUserLibraryApi UserLibrary => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
         public IUserProfileApi UserProfile => new UserProfileApi(this.Token);
