@@ -66,55 +66,55 @@ namespace SpotifyWebApi.Api.Player
         }
 
         /// <inheritdoc />
-        public async Task TransferPlayback(List<Device> devices, bool? play = null)
+        public Task TransferPlayback(List<Device> devices, bool? play = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public async Task StartPlayback(Device device = null, SpotifyUri contextUri = null, List<SpotifyUri> uris = null)
+        public Task StartPlayback(Device device = null, SpotifyUri contextUri = null, List<SpotifyUri> uris = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public async Task PausePlayback(Device device = null)
+        public Task PausePlayback(Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public async Task Next(Device device = null)
+        public Task Next(Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public async Task Previous(Device device = null)
+        public Task Previous(Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public async Task Seek(int positionMs, Device device = null)
+        public Task Seek(int positionMs, Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public async Task SetRepeat(RepeatState state, Device device = null)
+        public Task SetRepeat(RepeatState state, Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public async Task SetVolume(int volumePercent, Device device = null)
+        public Task SetVolume(int volumePercent, Device device = null)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public async Task SetShuffle(bool state, Device device = null)
+        public Task SetShuffle(bool state, Device device = null)
         {
             throw new NotImplementedException();
         }

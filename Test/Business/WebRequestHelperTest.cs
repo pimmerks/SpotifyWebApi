@@ -19,6 +19,9 @@ namespace Test.Business
     {
         private Token token;
 
+        /// <summary>
+        /// TODO
+        /// </summary>
         [TestMethod]
         public void TestGet()
         {
@@ -35,6 +38,9 @@ namespace Test.Business
             }
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
         [TestMethod]
         public void TestCreateUpdateDeletePlaylist()
         {
@@ -71,6 +77,9 @@ namespace Test.Business
                 this.token).GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
         [TestInitialize]
         public void InitializeTests()
         {
@@ -78,7 +87,7 @@ namespace Test.Business
             {
                 ExpiresIn = 3600,
                 AccessToken = "BQDT0Kjb_pHHfEge7ieU5EmaqxFi1jQyli5SB7DMz2GcQBYhBEFEQpZUL8FraK_ITfMj72YqgKxE2l6y-OHAn0RK0FydZZYF2NCHD885AjUvPIB0XCYHEvZ52Lyt0kGMbIeBLuO5FCjz842GWjj8Tt1XlTaScMsFYZKBfUwUIbObuz0W080Kb_Fv8dXLEITe1or3PxC7XxhfHscClWA7EsQVmi-9tRThP-ZKCJQU6ZsD_Ib7i3yeodf2z-9hZSiAObCjO-OSwg",
-                RefreshToken = "",
+                RefreshToken = string.Empty,
                 Type = "Bearer"
             };
         }

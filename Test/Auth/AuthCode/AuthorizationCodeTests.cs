@@ -17,14 +17,16 @@ namespace Test.Auth.AuthCode
         [TestMethod]
         public void GetUrlTest()
         {
-            var code = AuthorizationCode.GetUrl(new AuthParameters
-            {
-                Scopes = Scope.PlaylistModifyPrivate | Scope.UserLibraryRead,
-                RedirectUri = "test",
-                ClientId = "test",
-                ShowDialog = true,
-                ClientSecret = "tests"
-            }, "test");
+            var code = AuthorizationCode.GetUrl(
+                new AuthParameters
+                {
+                    Scopes = Scope.PlaylistModifyPrivate | Scope.UserLibraryRead,
+                    RedirectUri = "test",
+                    ClientId = "test",
+                    ShowDialog = true,
+                    ClientSecret = "tests"
+                },
+                "test");
         }
     }
 }

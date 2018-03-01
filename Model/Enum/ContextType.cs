@@ -11,8 +11,19 @@ namespace SpotifyWebApi.Model.Enum
     /// </summary>
     public enum ContextType
     {
+        /// <summary>
+        /// TODO
+        /// </summary>
         Album,
+
+        /// <summary>
+        /// TODO
+        /// </summary>
         Artist,
+
+        /// <summary>
+        /// TODO
+        /// </summary>
         Playlist,
     }
 }

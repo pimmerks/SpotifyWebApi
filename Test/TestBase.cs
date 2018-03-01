@@ -13,9 +13,19 @@ namespace SpotifyWebApiTest
     [TestClass]
     public class TestBase
     {
-        protected Token Token;
-        protected ISpotifyWebApi Api;
+        /// <summary>
+        /// TODO
+        /// </summary>
+        protected Token Token { get; set; }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        protected ISpotifyWebApi Api { get; set; }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
         [TestInitialize]
         public void BaseTestInit()
         {

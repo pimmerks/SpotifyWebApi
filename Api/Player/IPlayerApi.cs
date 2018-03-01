@@ -70,7 +70,7 @@
         /// <summary>
         /// Skips to previous track in the user’s queue.
         /// Note that this will ALWAYS skip to the previous track, regardless of the current track’s progress.
-        /// Returning to the start of the current track should be performed using the <see cref="SeekAsync"/> function.
+        /// Returning to the start of the current track should be performed using the <see cref="Seek"/> function.
         /// </summary>
         /// <param name="device">Optional. The device this command is targeting. If not supplied, the user's currently active device is the target.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>

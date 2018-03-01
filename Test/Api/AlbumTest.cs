@@ -21,7 +21,7 @@ namespace SpotifyWebApiTest.Api
         {
             this.Token = new Token
             {
-                AccessToken = "",
+                AccessToken = string.Empty,
                 Type = "Bearer"
             };
 
