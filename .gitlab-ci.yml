@@ -3,7 +3,7 @@ stages:
  - deploy
 
  # Building on master branch, treating warnings as errors.
-build_master:
+build_on_master_job:
   stage: build
   script:
     - 'dotnet restore' # restore Nuget dependencies
@@ -13,7 +13,7 @@ build_master:
     - tags
 
 # Building on any other branch.
-build:
+build_job:
   stage: build
   script:
     - 'dotnet restore' # restore Nuget dependencies
@@ -23,22 +23,7 @@ build:
     - master
 
 # Deploys the nuget package
-deploy_prerelease:
-  stage: deploy
-  script:
-    - 'GitVersionerNet' # version files according to latest tag
-    - 'dotnet pack -c Release --output ../nuget SpotifyWebApi/SpotifyWebApi.csproj'
-    - 'nuget push .\nuget\SpotifyWebApi-Core.*.nupkg -ApiKey %NUGET_API_KEY% -Source %NUGET_SOURCE%'
-  variables:
-    GIT_STRATEGY: none
-  dependencies:
-    - build
-  only:
-    - develop
-  allow_failure: false
-
-# Deploys the nuget package
-deploy:
+deploy_job:
   stage: deploy
   script:
     - 'GitVersionerNet --short' # version files according to latest tag
