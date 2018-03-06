@@ -32,7 +32,7 @@ deploy_job:
   variables:
     GIT_STRATEGY: none
   dependencies:
-    - build
+    - build_on_master_job
   only:
     - tags
   allow_failure: false
