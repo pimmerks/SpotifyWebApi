@@ -1,7 +1,6 @@
 namespace SpotifyWebApi.Model
 {
     using System;
-    using System.Globalization;
     using Newtonsoft.Json;
 
     /// <summary>

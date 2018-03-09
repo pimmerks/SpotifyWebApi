@@ -2,9 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Model;
     using Model.Enum;
-    using Model.Search;
 
     /// <summary>
     /// The search api.

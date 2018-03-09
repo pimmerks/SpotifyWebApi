@@ -1,6 +1,5 @@
 namespace SpotifyWebApi.Model.Search
 {
-    using System;
     using Newtonsoft.Json;
 
     /// <summary>

@@ -8,12 +8,6 @@
     using System.Net.Sockets;
     using System.Text;
     using System.Threading.Tasks;
-    using SpotifyWebApi;
-    using SpotifyWebApi.Api;
-    using SpotifyWebApi.Auth;
-    using SpotifyWebApi.Auth.AuthorizationCode;
-    using SpotifyWebApi.Model.Enum;
-    using SpotifyWebApi.Model.Uri;
 
     /// <summary>
     /// TODO
@@ -51,9 +45,6 @@
             Task.WhenAll(task1, task2).GetAwaiter().GetResult();
             var me = task1.Result;
             var t = task2.Result;
-
-
-            var search = api.Search.Search("Test").GetAwaiter().GetResult();
 
             Console.WriteLine($"Hello {me.DisplayName}, This is an example application!");
             Console.WriteLine($"You are listening to {t.Item.Name} on {t.Device.Name}");

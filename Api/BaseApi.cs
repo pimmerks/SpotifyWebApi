@@ -1,9 +1,6 @@
 namespace SpotifyWebApi.Api
 {
     using System;
-    using System.Collections.Specialized;
-    using System.Net;
-    using System.Net.Http;
     using Model.Auth;
 
     /// <summary>

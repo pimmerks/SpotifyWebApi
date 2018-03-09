@@ -51,23 +51,23 @@
     <None Include="prebuild.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Api\Api.csproj">
+    <ProjectReference Include="..\..\Api\Api.csproj">
       <Project>{4ED8B43C-A3FB-47E9-8C81-594BEB09F5BB}</Project>
       <Name>Api</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Auth\Auth.csproj">
+    <ProjectReference Include="..\..\Auth\Auth.csproj">
       <Project>{59669587-a1dd-4f0d-9029-77c7a7401bb2}</Project>
       <Name>Auth</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Business\Business.csproj">
+    <ProjectReference Include="..\..\Business\Business.csproj">
       <Project>{432194e9-74cb-4e1b-9fa2-ef11ebc5d88b}</Project>
       <Name>Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
+    <ProjectReference Include="..\..\Model\Model.csproj">
       <Project>{3e9578be-a297-4b3c-8315-66057b919d9d}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SpotifyWebApi\SpotifyWebApi.csproj">
+    <ProjectReference Include="..\..\SpotifyWebApi\SpotifyWebApi.csproj">
       <Project>{ccd1caf9-1e3e-42c7-8bba-a9522c56942d}</Project>
       <Name>SpotifyWebApi</Name>
     </ProjectReference>

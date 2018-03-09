@@ -6,11 +6,8 @@ namespace SpotifyWebApi.Api.Search
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
     using Business;
-    using Model;
     using Model.Auth;
     using Model.Enum;
     using Model.Search;

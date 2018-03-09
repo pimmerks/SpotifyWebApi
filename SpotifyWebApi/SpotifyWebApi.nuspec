@@ -17,6 +17,6 @@
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</tags>
-    <releaseNotes>Release notes.</releaseNotes>
+    <releaseNotes>View the changelog here: https://raw.githubusercontent.com/pimmerks/SpotifyWebApi/master/CHANGELOG.md</releaseNotes>
   </metadata>
 </package>

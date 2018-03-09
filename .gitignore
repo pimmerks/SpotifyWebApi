@@ -259,4 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-ExampleNet47/App.config
+
+# Custom project ignore
+Examples/ExampleNet47/App.config

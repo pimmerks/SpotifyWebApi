@@ -1,8 +1,5 @@
 namespace SpotifyWebApiTest
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using SpotifyWebApi;
     using SpotifyWebApi.Model.Auth;

@@ -1,13 +1,8 @@
 namespace SpotifyWebApi.Business
 {
     using System;
-    using System.Collections.Specialized;
-    using System.IO;
     using System.Net;
-    using Model;
     using Model.Auth;
-    using Model.Exception;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The <see cref="ApiHelper"/>.
