@@ -8,6 +8,10 @@
     using System.Net.Sockets;
     using System.Text;
     using System.Threading.Tasks;
+    using SpotifyWebApi;
+    using SpotifyWebApi.Auth;
+    using SpotifyWebApi.Auth.AuthorizationCode;
+    using SpotifyWebApi.Model.Enum;
 
     /// <summary>
     /// TODO

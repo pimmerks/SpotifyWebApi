@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Api\Api.csproj">
-      <Project>{4ED8B43C-A3FB-47E9-8C81-594BEB09F5BB}</Project>
+      <Project>{4ed8b43c-a3fb-47e9-8c81-594beb09f5bb}</Project>
       <Name>Api</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Auth\Auth.csproj">
