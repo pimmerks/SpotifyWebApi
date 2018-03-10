@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>SpotifyWebApi.Auth</AssemblyName>
     <RootNamespace>SpotifyWebApi.Auth</RootNamespace>
     <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\$(TargetFramework)\SpotifyWebApi.Auth.xml</DocumentationFile>
 
     <Version>0.0.1-pre</Version>
   </PropertyGroup>
@@ -26,15 +27,10 @@
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
 
-  <!-- Net standard properties -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <DocumentationFile>bin\Debug\netstandard2.0\SpotifyWebApi.Auth.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <!-- Net framework properties -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net461'">
-    <DocumentationFile>bin\Debug\net461\SpotifyWebApi.Auth.xml</DocumentationFile>
-  </PropertyGroup>
+  <!-- netcoreapp 2.0 Nuget packages -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+  </ItemGroup>
 
   <!-- Include project files. -->
   <ItemGroup>

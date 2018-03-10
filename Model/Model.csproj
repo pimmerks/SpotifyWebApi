@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>SpotifyWebApi.Model</AssemblyName>
     <RootNamespace>SpotifyWebApi.Model</RootNamespace>
     <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\$(TargetFramework)\SpotifyWebApi.Model.xml</DocumentationFile>
 
     <Version>0.0.1-pre</Version>
   </PropertyGroup>
@@ -15,23 +16,4 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
-
-  <!-- net461 Nuget packages -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-  </ItemGroup>
-
-  <!-- netstandard2.0 Nuget packages -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-  </ItemGroup>
-
-  <!-- Net standard properties -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <DocumentationFile>bin\Debug\netstandard2.0\SpotifyWebApi.Model.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <!-- Net framework properties -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net461'">
-    <DocumentationFile>bin\Debug\net461\SpotifyWebApi.Model.xml</DocumentationFile>
-  </PropertyGroup>
-
 </Project>

@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>SpotifyWebApi.Api</AssemblyName>
     <RootNamespace>SpotifyWebApi.Api</RootNamespace>
     <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\$(TargetFramework)\SpotifyWebApi.Api.xml</DocumentationFile>
 
     <Version>0.0.1-pre</Version>
   </PropertyGroup>
@@ -26,15 +27,11 @@
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
 
-  <!-- Net standard properties -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <DocumentationFile>bin\Debug\netstandard2.0\SpotifyWebApi.Api.xml</DocumentationFile>
-  </PropertyGroup>
+  <!-- netcoreapp 2.0 Nuget packages -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+  </ItemGroup>
 
-  <!-- Net framework properties -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net461'">
-    <DocumentationFile>bin\Debug\net461\SpotifyWebApi.Api.xml</DocumentationFile>
-  </PropertyGroup>
 
   <!-- Include project files. -->
   <ItemGroup>
