@@ -1,6 +1,7 @@
 namespace SpotifyWebApi.Api
 {
     using System;
+    using Business;
     using Model.Auth;
 
     /// <summary>
@@ -19,6 +20,13 @@ namespace SpotifyWebApi.Api
         /// <param name="token">A valid <see cref="Token"/>.</param>
         protected BaseApi(Token token = null)
         {
+            if (token == null)
+            {
+                return;
+            }
+
+            // Validate token
+            Validation.ValidateToken(token);
             this.Token = token;
         }
 

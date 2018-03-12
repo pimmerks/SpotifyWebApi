@@ -1,6 +1,7 @@
 ﻿namespace SpotifyWebApi.Business
 {
     using System.Collections.Generic;
+    using Model.Auth;
     using Model.Exception;
 
     /// <summary>
@@ -9,7 +10,7 @@
     public static class Validation
     {
         /// <summary>
-        /// Validates a list.
+        /// Validates a list and throws a <see cref="ValidationException"/> when failed.
         /// </summary>
         /// <param name="list">The list to validate</param>
         /// <param name="min">The minimum number of items in the list.</param>
@@ -27,7 +28,7 @@
         }
 
         /// <summary>
-        /// Validates a list.
+        /// Validates a integer and throws a <see cref="ValidationException"/> when failed.
         /// </summary>
         /// <param name="value">The value to validate</param>
         /// <param name="min">The minimum of the value.</param>
@@ -35,9 +36,27 @@
         /// <exception cref="ValidationException">Throws a validation exception when the value is invalid.</exception>
         public static void ValidateInteger(int value, int min = int.MinValue, int max = int.MaxValue)
         {
-            var c = value;
-            if (c < min) { throw new ValidationException("The value is too small."); }
-            if (c > max) { throw new ValidationException("The value is too big."); }
+            if (value < min) { throw new ValidationException("The value is too small."); }
+            if (value > max) { throw new ValidationException("The value is too big."); }
+        }
+
+        /// <summary>
+        /// Validates a <see cref="Token"/>.
+        /// Note this function does not check for expired tokens!
+        /// </summary>
+        /// <param name="token">The token to validate.</param>
+        /// <exception cref="ValidationException">Throws a validation exception when the value is invalid.</exception>
+        public static void ValidateToken(Token token)
+        {
+            if (token == null) { throw new ValidationException("The token is null."); }
+
+            if (token.Type != "Bearer") throw new ValidationException("The token type is not \"Bearer\".");
+
+            if (string.IsNullOrWhiteSpace(token.AccessToken))
+                throw new ValidationException("The token's 'AccessToken' is empty or null");
+
+            if (string.IsNullOrWhiteSpace(token.RefreshToken))
+                throw new ValidationException("The token's 'RefreshToken' is empty or null");
         }
     }
 }
