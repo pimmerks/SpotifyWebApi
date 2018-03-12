@@ -13,7 +13,7 @@ namespace SpotifyWebApiTest.Business
     public class ValidationTest
     {
         /// <summary>
-        /// Test method for  <see cref="Validation.ValidateList{T}"/>
+        /// Test method for <see cref="Validation.ValidateList{T}"/>.
         /// </summary>
         [TestMethod]
         public void ValidateValidListTest()
@@ -25,7 +25,7 @@ namespace SpotifyWebApiTest.Business
         }
 
         /// <summary>
-        /// Test method for  <see cref="Validation.ValidateList{T}"/>
+        /// Test method for <see cref="Validation.ValidateList{T}"/>.
         /// </summary>
         [TestMethod]
         public void ValidateNonValidListTest()
@@ -37,7 +37,7 @@ namespace SpotifyWebApiTest.Business
         }
 
         /// <summary>
-        /// Test method for <see cref="Validation.ValidateInteger"/>
+        /// Test method for <see cref="Validation.ValidateInteger"/>.
         /// </summary>
         [TestMethod]
         public void ValidateIntegerTest()
@@ -52,6 +52,9 @@ namespace SpotifyWebApiTest.Business
             Assert.ThrowsException<ValidationException>(() => Validation.ValidateInteger(5, 0, 2));
         }
 
+        /// <summary>
+        /// Test method for <see cref="Validation.ValidateToken"/>.
+        /// </summary>
         [TestMethod]
         public void ValidateTokenTest()
         {
