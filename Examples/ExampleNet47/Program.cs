@@ -3,7 +3,6 @@
     using System;
     using System.Configuration;
     using System.Diagnostics;
-    using System.Linq;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
@@ -14,15 +13,14 @@
     using SpotifyWebApi.Model.Enum;
 
     /// <summary>
-    /// TODO
+    /// Example console application using the SpotifyWebApi
     /// </summary>
     public class Program
     {
         /// <summary>
-        /// TODO
+        /// Main entry point.
         /// </summary>
-        /// <param name="args">TODO</param>
-        /// <returns>TODO</returns>
+        /// <param name="args">Command line arguments.</param>
         public static void Main(string[] args)
         {
             var param = new AuthParameters
@@ -32,7 +30,7 @@
                 ClientId = ConfigurationManager.AppSettings["clientId"],
                 ClientSecret = ConfigurationManager.AppSettings["clientSecret"],
                 RedirectUri = ConfigurationManager.AppSettings["redirectUri"],
-                ShowDialog = true,
+                ShowDialog = false, // Set to true to login each time.
             };
 
             var url = AuthorizationCode.GetUrl(param, "test");
@@ -45,13 +43,20 @@
 
             var task1 = api.UserProfile.GetMe();
             var task2 = api.Player.GetCurrentlyPlayingContext();
+            var task3 = api.Playlist.GetMyPlaylists(200);
 
-            Task.WhenAll(task1, task2).GetAwaiter().GetResult();
+            Task.WhenAll(task1, task2, task3).GetAwaiter().GetResult();
             var me = task1.Result;
             var t = task2.Result;
+            var p = task3.Result;
 
             Console.WriteLine($"Hello {me.DisplayName}, This is an example application!");
             Console.WriteLine($"You are listening to {t.Item.Name} on {t.Device.Name}");
+
+            foreach (var simplePlaylist in p)
+            {
+                Console.WriteLine($"{simplePlaylist.Id}, {simplePlaylist.Name}");
+            }
 
             Console.ReadLine();
         }
