@@ -8,9 +8,11 @@
     using System.Text;
     using System.Threading.Tasks;
     using SpotifyWebApi;
+    using SpotifyWebApi.Api;
     using SpotifyWebApi.Auth;
     using SpotifyWebApi.Auth.AuthorizationCode;
     using SpotifyWebApi.Model.Enum;
+    using SpotifyWebApi.Model.Uri;
 
     /// <summary>
     /// Example console application using the SpotifyWebApi

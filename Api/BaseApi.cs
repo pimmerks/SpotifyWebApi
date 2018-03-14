@@ -43,7 +43,7 @@ namespace SpotifyWebApi.Api
         /// <returns>A new query containing the sign with the market.</returns>
         protected static string AddMarketCode(string sign, string market)
         {
-            return market.Equals(string.Empty) ? string.Empty : $"{sign}market=" + market;
+            return string.IsNullOrEmpty(market) ? string.Empty : $"{sign}market=" + market;
         }
 
         /// <summary>

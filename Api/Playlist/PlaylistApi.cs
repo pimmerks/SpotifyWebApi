@@ -69,7 +69,7 @@ namespace SpotifyWebApi.Api.Playlist
             SpotifyUri playlistUri, int maxResults, int offset, string market)
         {
             var r = await ApiClient.GetAsync<Paging<PlaylistTrack>>(
-                        MakeUri($"users/{playlistUri.UserId}/playlists/{playlistUri.Id}?limit=100&offset={offset}{AddMarketCode("&", market)}"), this.Token);
+                        MakeUri($"users/{playlistUri.UserId}/playlists/{playlistUri.Id}/tracks?limit=100&offset={offset}{AddMarketCode("&", market)}"), this.Token);
 
             if (r.Response is Paging<PlaylistTrack> res)
             {

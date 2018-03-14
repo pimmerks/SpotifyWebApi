@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.4
+ - Removed `SpotifyUri` constructor (You can now use `SpotifyUri.Make()` for various uris and ids)
+ - Fixed `AddMarketCode` exception
+ - `GetPlaylistTracks` now returns proper `PlaylistTracks`
+
 ## v0.0.3
  - Added Playlist api
 

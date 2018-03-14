@@ -34,7 +34,7 @@ namespace SpotifyWebApiTest.Api
         [TestMethod]
         public void GetAlbumTest()
         {
-            var album = this.Api.Album.GetAlbum(new SpotifyUri("spotify:album:0sNOF9WDwhWunNAHPD3Baj")).NonAsync();
+            var album = this.Api.Album.GetAlbum(SpotifyUri.Make("0sNOF9WDwhWunNAHPD3Baj", UriType.Album)).NonAsync();
 
             Assert.AreEqual("0sNOF9WDwhWunNAHPD3Baj", album.Id);
             Assert.AreEqual("Epic/Legacy", album.Label);

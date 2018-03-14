@@ -14,8 +14,11 @@
         [JsonProperty("added_at")]
         public DateTime AddedAt { get; set; }
 
-        // [JsonProperty("added_by")]
-        // TODO:
+        /// <summary>
+        /// Gets or sets the added by.
+        /// </summary>
+        [JsonProperty("added_by")]
+        public PublicUser AddedBy { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is local.
