@@ -118,6 +118,11 @@
         public string Uri { get; set; }
 
         /// <summary>
+        /// Gets the <see cref="Model.Uri.SpotifyUri"/> of this object.
+        /// </summary>
+        public SpotifyUri SpotifyUri => SpotifyUri.Make(this.Uri);
+
+        /// <summary>
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
@@ -138,10 +143,5 @@
         {
             return this.Id.Equals(obj);
         }
-
-        /// <summary>
-        /// Gets the <see cref="Model.Uri.SpotifyUri"/> of this object.
-        /// </summary>
-        public SpotifyUri SpotifyUri => SpotifyUri.Make(this.Uri);
     }
 }
