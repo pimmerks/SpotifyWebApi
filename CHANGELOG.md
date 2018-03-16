@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.5
+ - Added TrackApi
+ - Added Token.Make()
+ - Added getter for SpotifyUri on Spotify objects.
+
 ## v0.0.4
  - Removed `SpotifyUri` constructor (You can now use `SpotifyUri.Make()` for various uris and ids)
  - Fixed `AddMarketCode` exception
