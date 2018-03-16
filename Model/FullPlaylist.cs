@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Uri;
 
     /// <summary>
     /// The <see cref="FullPlaylist" /> class.
@@ -96,5 +97,10 @@
         /// Gets or sets the track list.
         /// </summary>
         public List<PlaylistTrack> TrackList { get; set; }
+
+        /// <summary>
+        /// Gets the <see cref="Model.Uri.SpotifyUri"/> of this object.
+        /// </summary>
+        public SpotifyUri SpotifyUri => SpotifyUri.Make(this.Uri);
     }
 }

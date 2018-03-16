@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Uri;
 
     /// <summary>
     /// The <see cref="FullTrack" /> class.
@@ -137,5 +138,10 @@
         {
             return this.Id.Equals(obj);
         }
+
+        /// <summary>
+        /// Gets the <see cref="Model.Uri.SpotifyUri"/> of this object.
+        /// </summary>
+        public SpotifyUri SpotifyUri => SpotifyUri.Make(this.Uri);
     }
 }
