@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.0.7
+ - Added implicit grant flow.
+
 ## v0.0.6
  - Updated Token with a `CanAccessPersonalData` boolean.
  - Moved Authorization code and added Client credentials auth.

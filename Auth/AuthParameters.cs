@@ -14,6 +14,7 @@ namespace SpotifyWebApi.Auth
 
         /// <summary>
         /// Gets or sets the authentication client secret.
+        /// Note that this is only used for the <see cref="AuthorizationCode"/> flow.
         /// </summary>
         public string ClientSecret { get; set; }
 
