@@ -1,8 +1,7 @@
-namespace Test.Auth.AuthCode
+namespace SpotifyWebApiTest.Auth.AuthCode
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using SpotifyWebApi.Auth;
-    using SpotifyWebApi.Auth.AuthorizationCode;
     using SpotifyWebApi.Model.Enum;
 
     /// <summary>
