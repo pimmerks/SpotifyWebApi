@@ -1,26 +1,26 @@
-namespace SpotifyWebApi.Auth.AuthorizationCode
+namespace SpotifyWebApi.Auth.AuthCode
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO
+    /// The <see cref="AccessTokenRequest"/> class.
     /// </summary>
     internal class AccessTokenRequest
     {
         /// <summary>
-        /// TODO
+        /// The grant type.
         /// </summary>
         [JsonProperty("grant_type")]
         public string GrantType { get; set; }
 
         /// <summary>
-        /// TODO
+        /// The code.
         /// </summary>
         [JsonProperty("code")]
         public string Code { get; set; }
 
         /// <summary>
-        /// TODO
+        /// The redirect uri.
         /// </summary>
         [JsonProperty("redirect_uri")]
         public string RedirectUri { get; set; }

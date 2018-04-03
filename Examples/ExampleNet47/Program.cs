@@ -10,7 +10,6 @@
     using SpotifyWebApi;
     using SpotifyWebApi.Api;
     using SpotifyWebApi.Auth;
-    using SpotifyWebApi.Auth.AuthorizationCode;
     using SpotifyWebApi.Model.Enum;
     using SpotifyWebApi.Model.Uri;
 
@@ -35,11 +34,13 @@
                 ShowDialog = false, // Set to true to login each time.
             };
 
-            var url = AuthorizationCode.GetUrl(param, "test");
-            Process.Start(url);
-            var r = GetResponse().GetAwaiter().GetResult();
+            //var url = AuthorizationCode.GetUrl(param, "test");
+            //Process.Start(url);
+            //var r = GetResponse().GetAwaiter().GetResult();
 
-            var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
+            //var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
+
+            var token = ClientCredentials.GetToken(param);
 
             ISpotifyWebApi api = new SpotifyWebApi(token);
 

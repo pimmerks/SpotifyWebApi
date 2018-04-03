@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Auth.AuthorizationCode
+namespace SpotifyWebApi.Auth
 {
     using System;
     using System.Collections.Specialized;
@@ -49,8 +49,8 @@ namespace SpotifyWebApi.Auth.AuthorizationCode
         /// <param name="parameters">The parameters used in <see cref="GetUrl"/>.</param>
         /// <param name="code">The retrieved code.</param>
         /// <param name="error">The retrieved error.</param>
-        /// <returns>TODO</returns>
-        public static Token ProcessCallback(AuthParameters parameters, string code, string error)
+        /// <returns>The new token.</returns>
+        public static Token ProcessCallback(AuthParameters parameters, string code, string error = "")
         {
             var req = ApiHelper.CreateRequest(new Uri("https://accounts.spotify.com/api/token"));
 

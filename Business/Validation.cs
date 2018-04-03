@@ -55,8 +55,8 @@
             if (string.IsNullOrWhiteSpace(token.AccessToken))
                 throw new ValidationException("The token's 'AccessToken' is empty or null");
 
-            if (string.IsNullOrWhiteSpace(token.RefreshToken))
-                throw new ValidationException("The token's 'RefreshToken' is empty or null");
+            // if (string.IsNullOrWhiteSpace(token.RefreshToken))
+            //    throw new ValidationException("The token's 'RefreshToken' is empty or null");
         }
     }
 }

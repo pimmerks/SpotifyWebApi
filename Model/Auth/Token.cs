@@ -1,4 +1,7 @@
-﻿namespace SpotifyWebApi.Model.Auth
+﻿using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("SpotifyWebApi.Auth")]
+
+namespace SpotifyWebApi.Model.Auth
 {
     using System;
     using Newtonsoft.Json;
@@ -58,6 +61,11 @@
         public bool IsExpired => DateTime.Now > this.TokenGenerated.AddSeconds(this.ExpiresIn);
 
         /// <summary>
+        /// Gets a value indicating wheter this token can be used to access personal data.
+        /// </summary>
+        public bool CanAccessPersonalData { get; internal set; } = true;
+
+        /// <summary>
         /// Creates a token.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
@@ -66,6 +74,7 @@
         /// <param name="expiresIn">The expires in value.</param>
         /// <param name="tokenGenerated">The datetime the token was generated.</param>
         /// <param name="scope">The scope of the token.</param>
+        /// <param name="canAccessPersonalData">If the token can access personal data.</param>
         /// <returns>The newly made <see cref="Token"/>.</returns>
         public static Token Make(
             string accessToken,
@@ -73,7 +82,8 @@
             string tokenType = "Bearer",
             int expiresIn = 3600,
             DateTime? tokenGenerated = null,
-            string scope = null)
+            string scope = null,
+            bool canAccessPersonalData = true)
         {
             return new Token
             {
@@ -82,7 +92,8 @@
                 Type = tokenType,
                 ExpiresIn = expiresIn,
                 TokenGenerated = tokenGenerated ?? DateTime.Now,
-                Scope = scope ?? string.Empty
+                Scope = scope ?? string.Empty,
+                CanAccessPersonalData = canAccessPersonalData
             };
         }
 
