@@ -43,7 +43,7 @@ namespace SpotifyWebApi.Api.Search
 
             var r = await ApiClient.GetAsync<SearchResult>(
                         MakeUri($"search?q={query}{searchTypeString}&offset={offset}{AddMarketCode("&", market)}"),
-                        this.Token);
+                        this.Token).ConfigureAwait(false);
 
             if (r.Response is SearchResult res)
             {
@@ -56,7 +56,7 @@ namespace SpotifyWebApi.Api.Search
                     var tracks = res.Tracks.LoadToList(this.Token);
 
                     // Await all tasks finished...
-                    await Task.WhenAll(artists, albums, playlists, tracks);
+                    await Task.WhenAll(artists, albums, playlists, tracks).ConfigureAwait(false);
 
                     result.AddRange(artists.Result);
                     result.AddRange(albums.Result);

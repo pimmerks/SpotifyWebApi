@@ -29,7 +29,7 @@ namespace SpotifyWebApi.Api.Album
         {
             var r = await ApiClient.GetAsync<FullAlbum>(
                         MakeUri($"albums/{albumUri.Id}{AddMarketCode("?", market)}"),
-                        this.Token);
+                        this.Token).ConfigureAwait(false);
 
             if (r.Response is FullAlbum album)
             {
@@ -51,7 +51,7 @@ namespace SpotifyWebApi.Api.Album
 
                 var r = await ApiClient.GetAsync<MultipleAlbums>(
                         MakeUri($"albums?ids={s}{AddMarketCode("&", market)}"),
-                        this.Token);
+                        this.Token).ConfigureAwait(false);
 
                 if (r.Response is MultipleAlbums albums)
                 {
@@ -67,11 +67,11 @@ namespace SpotifyWebApi.Api.Album
         {
             var r = await ApiClient.GetAsync<Paging<SimpleTrack>>(
                         MakeUri($"albums/{albumUri.Id}/tracks?limit={50}&offset={0}{AddMarketCode("&", market)}"),
-                        this.Token);
+                        this.Token).ConfigureAwait(false);
 
             if (r.Response is Paging<SimpleTrack> tracks)
             {
-                return await HelperExtensions.LoadToList(tracks, this.Token);
+                return await HelperExtensions.LoadToList(tracks, this.Token).ConfigureAwait(false);
             }
             return new List<SimpleTrack>();
         }

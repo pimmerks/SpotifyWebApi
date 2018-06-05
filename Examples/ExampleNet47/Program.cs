@@ -34,24 +34,24 @@
                 ShowDialog = false, // Set to true to login each time.
             };
 
-            //var url = AuthorizationCode.GetUrl(param, "test");
-            //Process.Start(url);
-            //var r = GetResponse().GetAwaiter().GetResult();
+            var url = AuthorizationCode.GetUrl(param, "test");
+            Process.Start(url);
+            var r = GetResponse().GetAwaiter().GetResult();
 
-            //var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
+            var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
 
-            var token = ClientCredentials.GetToken(param);
-
-            ISpotifyWebApi api = new SpotifyWebApi(token);
+            var api = new SpotifyWebApi(token);
 
             var task1 = api.UserProfile.GetMe();
             var task2 = api.Player.GetCurrentlyPlayingContext();
             var task3 = api.Playlist.GetMyPlaylists(200);
+            var task4 = api.Player.GetAvailableDevices();
 
-            Task.WhenAll(task1, task2, task3).GetAwaiter().GetResult();
+            Task.WhenAll(task1, task2, task3, task4).GetAwaiter().GetResult();
             var me = task1.Result;
             var t = task2.Result;
             var p = task3.Result;
+            var d = task4.Result;
 
             Console.WriteLine($"Hello {me.DisplayName}, This is an example application!");
             Console.WriteLine($"You are listening to {t.Item.Name} on {t.Device.Name}");

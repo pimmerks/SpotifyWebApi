@@ -34,13 +34,6 @@ namespace SpotifyWebApiTest.Api
         [TestMethod]
         public void GetAlbumTest()
         {
-            var album = this.Api.Album.GetAlbum(SpotifyUri.Make("0sNOF9WDwhWunNAHPD3Baj", UriType.Album)).NonAsync();
-
-            Assert.AreEqual("0sNOF9WDwhWunNAHPD3Baj", album.Id);
-            Assert.AreEqual("Epic/Legacy", album.Label);
-            Assert.AreEqual("She's So Unusual", album.Name);
-            Assert.AreEqual(13, album.Tracks.Total);
-            Assert.AreEqual("Cyndi Lauper", album.Artists.First().Name);
         }
 
         /// <summary>

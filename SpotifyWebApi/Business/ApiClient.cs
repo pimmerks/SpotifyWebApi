@@ -26,8 +26,8 @@ namespace SpotifyWebApi.Business
         {
             using (var client = MakeHttpClient(token))
             {
-                var response = await client.GetAsync(uri);
-                var responseString = await response.Content.ReadAsStringAsync();
+                var response = await client.GetAsync(uri).ConfigureAwait(false);
+                var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 return response.IsSuccessStatusCode
                     ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
@@ -49,8 +49,8 @@ namespace SpotifyWebApi.Business
             {
                 var content = new StringContent(SerializeObject(body), Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync(uri, content);
-                var responseString = await response.Content.ReadAsStringAsync();
+                var response = await client.PostAsync(uri, content).ConfigureAwait(false);
+                var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 return response.IsSuccessStatusCode
                            ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
@@ -72,8 +72,8 @@ namespace SpotifyWebApi.Business
             {
                 var content = new StringContent(SerializeObject(body), Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync(uri, content);
-                var responseString = await response.Content.ReadAsStringAsync();
+                var response = await client.PutAsync(uri, content).ConfigureAwait(false);
+                var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 return response.IsSuccessStatusCode
                            ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
@@ -92,8 +92,8 @@ namespace SpotifyWebApi.Business
         {
             using (var client = MakeHttpClient(token))
             {
-                var response = await client.DeleteAsync(uri);
-                var responseString = await response.Content.ReadAsStringAsync();
+                var response = await client.DeleteAsync(uri).ConfigureAwait(false);
+                var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 return response.IsSuccessStatusCode
                            ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)

@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;netcoreapp2.0</TargetFrameworks>
     <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
-    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeP2POutput</TargetsForTfmSpecificBuildOutput>
     <DocumentationFile>bin\Debug\$(TargetFramework)\SpotifyWebApi.xml</DocumentationFile>
 
     <AssemblyName>SpotifyWebApi</AssemblyName>
@@ -22,7 +21,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</PackageTags>
 
-    <Version>0.0.1-pre</Version>
+    <Version>0.0.8-beta4</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -47,25 +46,4 @@
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
 
-  <!-- Include project files. -->
-  <ItemGroup>
-    <ProjectReference Include="..\Api\Api.csproj" PrivateAssets="All" />
-    <ProjectReference Include="..\Auth\Auth.csproj" PrivateAssets="All" />
-    <ProjectReference Include="..\Business\Business.csproj" PrivateAssets="All" />
-    <ProjectReference Include="..\Model\Model.csproj" PrivateAssets="All" />
-  </ItemGroup>
-
-  <Target Name="IncludeP2POutput">
-    <ItemGroup>
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Api.dll" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Auth.dll" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Business.dll" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Model.dll" />
-
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Api.xml" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Auth.xml" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Business.xml" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Model.xml" />
-    </ItemGroup>
-  </Target>
 </Project>

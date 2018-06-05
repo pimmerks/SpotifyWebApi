@@ -25,7 +25,7 @@ namespace SpotifyWebApi.Api.UserProfile
         public async Task<PrivateUser> GetMe()
         {
             var r = await ApiClient.GetAsync<PrivateUser>(
-                          MakeUri("me"), this.Token);
+                          MakeUri("me"), this.Token).ConfigureAwait(false);
 
             if (r.Response is PrivateUser res)
             {
@@ -38,7 +38,7 @@ namespace SpotifyWebApi.Api.UserProfile
         public async Task<PublicUser> GetUser(SpotifyUri userUri)
         {
             var r = await ApiClient.GetAsync<PrivateUser>(
-                        MakeUri($"users/{userUri.Id}"), this.Token);
+                        MakeUri($"users/{userUri.Id}"), this.Token).ConfigureAwait(false);
 
             if (r.Response is PublicUser res)
             {
