@@ -7,7 +7,7 @@ namespace SpotifyWebApi.Business
     /// <summary>
     /// The <see cref="ApiHelper"/>.
     /// </summary>
-    public static class ApiHelper
+    internal static class ApiHelper
     {
         /// <summary>
         /// The base uri for all api requests.

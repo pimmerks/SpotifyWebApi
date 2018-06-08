@@ -7,7 +7,7 @@
     /// <summary>
     /// A static class used for validation a variance of objects.
     /// </summary>
-    public static class Validation
+    internal static class Validation
     {
         /// <summary>
         /// Validates a list and throws a <see cref="ValidationException"/> when failed.

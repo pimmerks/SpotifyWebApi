@@ -1,4 +1,4 @@
-namespace Test.Business
+namespace SpotifyWebApiTest.Business
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

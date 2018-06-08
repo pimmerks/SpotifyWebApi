@@ -10,7 +10,7 @@ namespace SpotifyWebApi.Business
     /// <summary>
     /// The <see cref="HelperExtensions"/>.
     /// </summary>
-    public static class HelperExtensions
+    internal static class HelperExtensions
     {
         /// <summary>
         /// Loads to list.
