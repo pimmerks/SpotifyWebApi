@@ -71,7 +71,7 @@ namespace SpotifyWebApi.Api.Artist
 
             if (r.Response is Paging<SimpleAlbum> res)
             {
-                return await HelperExtensions.LoadToList(res, this.Token).ConfigureAwait(false);
+                return await res.LoadToList(this.Token).ConfigureAwait(false);
             }
             return new List<SimpleAlbum>();
         }
