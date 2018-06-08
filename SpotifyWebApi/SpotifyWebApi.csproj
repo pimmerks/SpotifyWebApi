@@ -21,7 +21,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</PackageTags>
 
-    <Version>0.0.8-beta4</Version>
+    <Version>0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
