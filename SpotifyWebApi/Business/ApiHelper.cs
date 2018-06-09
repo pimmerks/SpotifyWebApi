@@ -29,28 +29,6 @@ namespace SpotifyWebApi.Business
         /// <summary>
         /// TODO
         /// </summary>
-        /// <typeparam name="T">TODO</typeparam>
-        /// <param name="url">TODO</param>
-        /// <param name="token">TODO</param>
-        /// <returns>TODO</returns>
-        public static Model.WebResponse GetObjectFromUrl<T>(Uri url, Token token)
-        {
-            return null; // JsonToObject<T>(GetJsonFromUrl(url, token));
-        }
-
-        /// <summary>
-        /// TODO
-        /// </summary>
-        /// <param name="endpoint">TODO</param>
-        /// <returns>TODO</returns>
-        public static Uri GetUri(string endpoint)
-        {
-            return new Uri(BaseUri + endpoint, UriKind.Absolute);
-        }
-
-        /// <summary>
-        /// TODO
-        /// </summary>
         /// <param name="plainText">TODO</param>
         /// <returns>TODO</returns>
         public static string Base64Encode(string plainText)
