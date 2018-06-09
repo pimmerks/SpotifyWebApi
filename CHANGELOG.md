@@ -1,7 +1,7 @@
 # Changelog
 
 ## v0.0.8
- - Moved to one project.
+ - Merged all projects to one project.
 
 ## v0.0.7
  - Added implicit grant flow.

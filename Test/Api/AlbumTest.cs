@@ -19,13 +19,6 @@ namespace SpotifyWebApiTest.Api
         [TestInitialize]
         public void Init()
         {
-            this.Token = new Token
-            {
-                AccessToken = string.Empty,
-                Type = "Bearer"
-            };
-
-            this.Api = new SpotifyWebApi(this.Token);
         }
 
         /// <summary>
@@ -34,6 +27,7 @@ namespace SpotifyWebApiTest.Api
         [TestMethod]
         public void GetAlbumTest()
         {
+            Assert.IsTrue(true);
         }
 
         /// <summary>
@@ -42,6 +36,7 @@ namespace SpotifyWebApiTest.Api
         [TestMethod]
         public void GetAlbumsTest()
         {
+            Assert.IsTrue(true);
         }
 
         /// <summary>
@@ -50,6 +45,7 @@ namespace SpotifyWebApiTest.Api
         [TestMethod]
         public void GetAlbumTracksTest()
         {
+            Assert.IsTrue(true);
         }
     }
 }
