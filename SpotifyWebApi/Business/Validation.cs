@@ -15,7 +15,7 @@
         /// <param name="list">The list to validate</param>
         /// <param name="min">The minimum number of items in the list.</param>
         /// <param name="max">The maximum number of items in the list.</param>
-        /// <typeparam name="T">TODO</typeparam>
+        /// <typeparam name="T">Type of the list to validate.</typeparam>
         /// <exception cref="ValidationException">Throws a validation exception when the list is null or invalid.</exception>
         public static void ValidateList<T>(ICollection<T> list, int min = -1, int max = -1)
         {

@@ -24,6 +24,7 @@
         /// <param name="args">Command line arguments.</param>
         public static void Main(string[] args)
         {
+            // First, lets create our auth parameters.
             var param = new AuthParameters
             {
                 Scopes = Scope.All,
@@ -34,14 +35,20 @@
                 ShowDialog = false, // Set to true to login each time.
             };
 
+            // Get the auth url, and start to process in the default web browser.
             var url = AuthorizationCode.GetUrl(param, "test");
             Process.Start(url);
+
+            // Listen on our callback site for a response.
             var r = GetResponse().GetAwaiter().GetResult();
 
+            // Use authorization code to get a token.
             var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
 
+            // Once we have a token, create an api.
             var api = new SpotifyWebApi(token);
 
+            // All API's return task's and are all async.
             var task1 = api.UserProfile.GetMe();
             var task2 = api.Player.GetCurrentlyPlayingContext();
             var task3 = api.Playlist.GetMyPlaylists(200);
@@ -55,11 +62,25 @@
 
             Console.WriteLine($"Hello {me.DisplayName}, This is an example application!");
             Console.WriteLine($"You are listening to {t.Item.Name} on {t.Device.Name}");
+            Console.Write("Available devices: ");
+            foreach (var device in d)
+            {
+                Console.Write($"{device.Name}");
+            }
+            Console.WriteLine();
 
+            Console.WriteLine("Your playlists:");
             foreach (var simplePlaylist in p)
             {
                 Console.WriteLine($"{simplePlaylist.Id}, {simplePlaylist.Name}");
             }
+
+            Console.ReadLine();
+
+            // Lets try to refresh our token.
+            Console.WriteLine($"Old token: {token.AccessToken}");
+            token = AuthorizationCode.RefreshToken(param, token);
+            Console.WriteLine($"New token: {token.AccessToken}");
 
             Console.ReadLine();
         }

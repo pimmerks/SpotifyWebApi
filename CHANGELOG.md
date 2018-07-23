@@ -1,7 +1,11 @@
 # Changelog
 
-## v0.0.8
+## v0.1.0
+**Note:** This version might introduce some breaking changes.
  - Merged all projects to one project.
+ - Added `RefreshToken` to `AuthorizationCode`.
+ - Updated Continious integration to support deployment to nuget.
+ - Updated Player api.
 
 ## v0.0.7
  - Added implicit grant flow.

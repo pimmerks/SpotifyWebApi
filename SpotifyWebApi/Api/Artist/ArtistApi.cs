@@ -57,7 +57,6 @@ namespace SpotifyWebApi.Api.Artist
         /// <inheritdoc />
         public async Task<IList<SimpleAlbum>> GetArtistAlbums(SpotifyUri artistUri, AlbumType albumTypes, string market, int limit, int offset)
         {
-            // TODO: Move this to Model.Enum or something.
             var albumTypeString = "album_type=";
             if (albumTypes.HasFlag(AlbumType.Album)) albumTypeString += "album,";
             if (albumTypes.HasFlag(AlbumType.AppearsOn)) albumTypeString += "appears_on,";
