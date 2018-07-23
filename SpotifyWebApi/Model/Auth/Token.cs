@@ -68,6 +68,12 @@ namespace SpotifyWebApi.Model.Auth
         public bool CanAccessPersonalData { get; internal set; } = true;
 
         /// <summary>
+        /// Gets a value indicating the authentication type of this token.
+        /// </summary>
+        [JsonProperty("token_authentication_type")]
+        public TokenAuthenticationType AuthenticationType { get; internal set; }
+
+        /// <summary>
         /// Creates a token.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
@@ -77,6 +83,7 @@ namespace SpotifyWebApi.Model.Auth
         /// <param name="tokenGenerated">The datetime the token was generated.</param>
         /// <param name="scope">The scope of the token.</param>
         /// <param name="canAccessPersonalData">If the token can access personal data.</param>
+        /// <param name="authenticationType">The authentication type of the token.</param>
         /// <returns>The newly made <see cref="Token"/>.</returns>
         public static Token Make(
             string accessToken,
@@ -85,7 +92,8 @@ namespace SpotifyWebApi.Model.Auth
             int expiresIn = 3600,
             DateTime? tokenGenerated = null,
             string scope = null,
-            bool canAccessPersonalData = true)
+            bool canAccessPersonalData = true,
+            TokenAuthenticationType authenticationType = TokenAuthenticationType.AuthorizationCode)
         {
             return new Token
             {
@@ -95,7 +103,8 @@ namespace SpotifyWebApi.Model.Auth
                 ExpiresIn = expiresIn,
                 TokenGenerated = tokenGenerated ?? DateTime.Now,
                 Scope = scope ?? string.Empty,
-                CanAccessPersonalData = canAccessPersonalData
+                CanAccessPersonalData = canAccessPersonalData,
+                AuthenticationType = authenticationType
             };
         }
 

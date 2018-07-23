@@ -90,7 +90,9 @@ namespace SpotifyWebApi.Auth
             // Read the content.
             var json = reader.ReadToEnd();
 
-            return JsonConvert.DeserializeObject<Token>(json);
+            var result = JsonConvert.DeserializeObject<Token>(json);
+            result.AuthenticationType = TokenAuthenticationType.AuthorizationCode;
+            return result;
         }
 
         /// <summary>
@@ -144,7 +146,7 @@ namespace SpotifyWebApi.Auth
 
             var newToken = JsonConvert.DeserializeObject<Token>(json);
             newToken.RefreshToken = oldToken.RefreshToken;
-
+            newToken.AuthenticationType = TokenAuthenticationType.AuthorizationCode;
             return newToken;
         }
     }

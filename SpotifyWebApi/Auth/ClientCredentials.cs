@@ -61,6 +61,7 @@ namespace SpotifyWebApi.Auth
 
             var token = JsonConvert.DeserializeObject<Token>(json);
             token.CanAccessPersonalData = false;
+            token.AuthenticationType = TokenAuthenticationType.ClientCredentials;
 
             return token;
         }
