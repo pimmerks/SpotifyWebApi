@@ -58,7 +58,7 @@ namespace SpotifyWebApi.Auth
                 null,
                 tokenType,
                 expiresIn,
-                AuthenticationType: TokenAuthenticationType.ImplicitGrant);
+                authenticationType: TokenAuthenticationType.ImplicitGrant);
         }
     }
 }
