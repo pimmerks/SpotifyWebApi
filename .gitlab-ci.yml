@@ -1,0 +1,34 @@
+stages:
+  - build
+  - test
+  - deploy
+
+# Build job
+Build:
+  stage: build
+  script:
+    - "versioner -o ./SpotifyWebApi/SpotifyWebApi.csproj -c"
+    - "dotnet build -c Release"
+    - "dotnet pack -c Release -o ../Publish --no-build --include-symbols --include-source ./SpotifyWebApi/SpotifyWebApi.csproj"
+  artifacts:
+    untracked: true
+
+# Integration tests
+Test:
+  stage: test
+  dependencies:
+    - Build
+  script:
+    - "dotnet test Test -c Release --no-build"
+
+Deploy:
+  stage: deploy
+  dependencies:
+    - Build
+    - Test
+  script:
+    - "echo deploying"
+  artifacts:
+    paths:
+    - "./Publish"
+    name: Nuget package

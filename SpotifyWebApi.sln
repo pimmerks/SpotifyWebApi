@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Folder", "Solution
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		.gitlab-ci.yml = .gitlab-ci.yml
 		CHANGELOG.md = CHANGELOG.md
 		LICENSE = LICENSE
 		README.md = README.md
@@ -19,8 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Folder", "Solution
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleNet47", "Examples\ExampleNet47\ExampleNet47.csproj", "{78EAA9AB-8FF2-4F3D-86ED-206445BCC02D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{CA5ADFAD-1E36-4E8F-AB54-DAB902C5F045}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,9 +42,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{78EAA9AB-8FF2-4F3D-86ED-206445BCC02D} = {CA5ADFAD-1E36-4E8F-AB54-DAB902C5F045}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16D90C67-7447-4F44-A250-6CA7BD2358F9}

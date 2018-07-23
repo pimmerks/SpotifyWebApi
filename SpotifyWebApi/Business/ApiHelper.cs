@@ -27,10 +27,10 @@ namespace SpotifyWebApi.Business
         }
 
         /// <summary>
-        /// TODO
+        /// Encodes a string to Base64.
         /// </summary>
-        /// <param name="plainText">TODO</param>
-        /// <returns>TODO</returns>
+        /// <param name="plainText">The string to encode.</param>
+        /// <returns>The base 64 encoded string.</returns>
         public static string Base64Encode(string plainText)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
