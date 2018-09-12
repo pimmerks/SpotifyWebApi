@@ -27,7 +27,7 @@ namespace SpotifyWebApi.Api.Player
         public async Task<List<Device>> GetAvailableDevices()
         {
             var r = await ApiClient.GetAsync<DeviceList>(
-                        MakeUri("me/player/devices"), this.Token).ConfigureAwait(false);
+                        MakeUri("me/player/devices"), this.Token);
 
             if (r.Response is DeviceList res)
             {
@@ -40,7 +40,7 @@ namespace SpotifyWebApi.Api.Player
         public async Task<CurrentlyPlayingContext> GetCurrentlyPlayingContext(string market = "")
         {
             var r = await ApiClient.GetAsync<CurrentlyPlayingContext>(
-                        MakeUri($"me/player{AddMarketCode("?", market)}"), this.Token).ConfigureAwait(false);
+                        MakeUri($"me/player{AddMarketCode("?", market)}"), this.Token);
 
             if (r.Response is CurrentlyPlayingContext res)
             {
@@ -53,7 +53,7 @@ namespace SpotifyWebApi.Api.Player
         public async Task<CurrentlyPlaying> GetCurrentlyPlaying(string market = "")
         {
             var r = await ApiClient.GetAsync<CurrentlyPlaying>(
-                        MakeUri($"me/player/currently-playing{AddMarketCode("?", market)}"), this.Token).ConfigureAwait(false);
+                        MakeUri($"me/player/currently-playing{AddMarketCode("?", market)}"), this.Token);
 
             if (r.Response is CurrentlyPlaying res)
             {

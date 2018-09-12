@@ -54,6 +54,7 @@
             var task3 = api.Playlist.GetMyPlaylists(200);
             var task4 = api.Player.GetAvailableDevices();
 
+            // Lets wait for all tasks to complete.
             Task.WhenAll(task1, task2, task3, task4).GetAwaiter().GetResult();
             var me = task1.Result;
             var t = task2.Result;
@@ -97,10 +98,10 @@
             var s = await webserver.AcceptSocketAsync();
 
             var bReceive = new byte[1024];
-            int i = s.Receive(bReceive, bReceive.Length, 0);
+            var i = s.Receive(bReceive, bReceive.Length, 0);
 
             // Convert Byte to String
-            string sBuffer = Encoding.ASCII.GetString(bReceive);
+            var sBuffer = Encoding.ASCII.GetString(bReceive);
 
             s.Shutdown(SocketShutdown.Both);
             webserver.Stop();

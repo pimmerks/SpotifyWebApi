@@ -29,7 +29,7 @@ namespace SpotifyWebApi.Api.Artist
         {
             var r = await ApiClient.GetAsync<FullArtist>(
                         MakeUri($"artists/{artistUri.Id}"),
-                        this.Token).ConfigureAwait(false);
+                        this.Token);
 
             if (r.Response is FullArtist res)
             {
@@ -45,7 +45,7 @@ namespace SpotifyWebApi.Api.Artist
             var ids = artistUris.Select(x => x.Id).ToList().AsSingleString();
             var r = await ApiClient.GetAsync<FullArtist>(
                         MakeUri($"artists?ids={ids}"),
-                        this.Token).ConfigureAwait(false);
+                        this.Token);
 
             if (r.Response is List<FullArtist> res)
             {
@@ -66,11 +66,11 @@ namespace SpotifyWebApi.Api.Artist
 
             var r = await ApiClient.GetAsync<Paging<SimpleAlbum>>(
                         MakeUri($"artists/{artistUri.Id}/albums?{albumTypeString}&limit={limit}&offset={offset}{AddMarketCode("&", market)}"),
-                        this.Token).ConfigureAwait(false);
+                        this.Token);
 
             if (r.Response is Paging<SimpleAlbum> res)
             {
-                return await res.LoadToList(this.Token).ConfigureAwait(false);
+                return await res.LoadToList(this.Token);
             }
             return new List<SimpleAlbum>();
         }
@@ -80,7 +80,7 @@ namespace SpotifyWebApi.Api.Artist
         {
             var r = await ApiClient.GetAsync<List<FullTrack>>(
                         MakeUri($"artists/{artistUri.Id}/top-tracks{AddMarketCode("?", market)}"),
-                        this.Token).ConfigureAwait(false);
+                        this.Token);
 
             if (r.Response is List<FullTrack> res)
             {
@@ -94,7 +94,7 @@ namespace SpotifyWebApi.Api.Artist
         {
             var r = await ApiClient.GetAsync<List<FullArtist>>(
                         MakeUri($"artists/{artistUri.Id}/related-artists"),
-                        this.Token).ConfigureAwait(false);
+                        this.Token);
 
             if (r.Response is List<FullArtist> res)
             {

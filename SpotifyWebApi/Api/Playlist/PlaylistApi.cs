@@ -28,11 +28,11 @@ namespace SpotifyWebApi.Api.Playlist
         public async Task<IList<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults = 100, int offset = 0)
         {
             var r = await ApiClient.GetAsync<Paging<SimplePlaylist>>(
-                        MakeUri($"users{user.Id}/playlists?limit=50&offset={offset}"), this.Token).ConfigureAwait(false);
+                        MakeUri($"users{user.Id}/playlists?limit=50&offset={offset}"), this.Token);
 
             if (r.Response is Paging<SimplePlaylist> res)
             {
-                return await res.LoadToList(this.Token, maxResults).ConfigureAwait(false);
+                return await res.LoadToList(this.Token, maxResults);
             }
             return new List<SimplePlaylist>();
         }
@@ -41,11 +41,11 @@ namespace SpotifyWebApi.Api.Playlist
         public async Task<IList<SimplePlaylist>> GetMyPlaylists(int maxResults = 100, int offset = 0)
         {
             var r = await ApiClient.GetAsync<Paging<SimplePlaylist>>(
-                        MakeUri($"me/playlists?limit=50&offset={offset}"), this.Token).ConfigureAwait(false);
+                        MakeUri($"me/playlists?limit=50&offset={offset}"), this.Token);
 
             if (r.Response is Paging<SimplePlaylist> res)
             {
-                return await res.LoadToList(this.Token, maxResults).ConfigureAwait(false);
+                return await res.LoadToList(this.Token, maxResults);
             }
             return new List<SimplePlaylist>();
         }
@@ -55,7 +55,7 @@ namespace SpotifyWebApi.Api.Playlist
         {
             var r = await ApiClient.GetAsync<FullPlaylist>(
                         MakeUri($"users/{playlistUri.UserId}/playlists/{playlistUri.Id}{AddMarketCode("?", market)}"),
-                        this.Token).ConfigureAwait(false);
+                        this.Token);
 
             if (r.Response is FullPlaylist res)
             {
@@ -69,11 +69,11 @@ namespace SpotifyWebApi.Api.Playlist
             SpotifyUri playlistUri, int maxResults, int offset, string market)
         {
             var r = await ApiClient.GetAsync<Paging<PlaylistTrack>>(
-                        MakeUri($"users/{playlistUri.UserId}/playlists/{playlistUri.Id}/tracks?limit=100&offset={offset}{AddMarketCode("&", market)}"), this.Token).ConfigureAwait(false);
+                        MakeUri($"users/{playlistUri.UserId}/playlists/{playlistUri.Id}/tracks?limit=100&offset={offset}{AddMarketCode("&", market)}"), this.Token);
 
             if (r.Response is Paging<PlaylistTrack> res)
             {
-                return await res.LoadToList(this.Token, maxResults).ConfigureAwait(false);
+                return await res.LoadToList(this.Token, maxResults);
             }
             return new List<PlaylistTrack>();
         }

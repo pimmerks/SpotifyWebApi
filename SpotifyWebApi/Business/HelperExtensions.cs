@@ -31,7 +31,7 @@ namespace SpotifyWebApi.Business
 
             while (curPage.Next != null)
             {
-                var next = await ApiClient.GetAsync<Paging<T>>(new Uri(curPage.Next), token).ConfigureAwait(false);
+                var next = await ApiClient.GetAsync<Paging<T>>(new Uri(curPage.Next), token);
 
                 if (next.Response is Paging<T> nextPage)
                 {
