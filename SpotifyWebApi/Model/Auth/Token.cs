@@ -116,5 +116,11 @@ namespace SpotifyWebApi.Model.Auth
         {
             return this.Type + " " + this.AccessToken;
         }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return $"AccessToken: {this.AccessToken}, RefreshToken: {this.RefreshToken}";
+        }
     }
 }

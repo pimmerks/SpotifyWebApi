@@ -6,8 +6,9 @@ stages:
 # Build job
 Build:
   stage: build
-  script:
+  before_script:
     - "versioner -o ./SpotifyWebApi/SpotifyWebApi.csproj -c"
+  script:
     - "dotnet build -c Release"
     - "dotnet pack -c Release -o ../Publish --no-build --include-symbols --include-source ./SpotifyWebApi/SpotifyWebApi.csproj"
   artifacts:
@@ -18,8 +19,25 @@ Test:
   stage: test
   dependencies:
     - Build
+  artifacts:
+    paths:
+     - "Web.IntegrationTests/TestResults/"
+    reports:
+      junit: "Web.IntegrationTests/TestResults/testResults.xml"
   script:
-    - "dotnet test Test -c Release --no-build"
+    - "dotnet test Test -c Release --no-build  --logger 'trx;LogFileName=testResults.trx'"
+    - "trx2junit Test/TestResults/testResults.trx"
+
+# Coverage
+Coverage:
+  stage: test
+  dependencies:
+    - Build
+  artifacts:
+    paths:
+     - "coverage.json"
+  script:
+    - "coverlet Test/bin/Release/netcoreapp2.0/SpotifyWebApiTest.dll --target 'dotnet' --targetargs 'test Test -c Release --no-build'"
 
 Deploy:
   stage: deploy
