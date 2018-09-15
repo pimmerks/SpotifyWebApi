@@ -1,42 +1,35 @@
 namespace SpotifyWebApiTest.Business
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using SpotifyWebApi.Business;
     using SpotifyWebApi.Model;
     using SpotifyWebApi.Model.Auth;
+    using Xunit;
 
     /// <summary>
     /// The <see cref="WebRequestHelperTest"/>.
     /// </summary>
-    [TestClass]
     public class WebRequestHelperTest
     {
 
         /// <summary>
         /// TODO
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void TestGet()
         {
-            Assert.IsTrue(true);
+            // TODO: Add test.
+            Assert.True(true);
         }
 
         /// <summary>
         /// TODO
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void TestCreateUpdateDeletePlaylist()
         {
-            Assert.IsTrue(true);
-        }
-
-        /// <summary>
-        /// TODO
-        /// </summary>
-        [TestInitialize]
-        public void InitializeTests()
-        {
+            // TODO: Add test.
+            Assert.True(true);
         }
     }
 }

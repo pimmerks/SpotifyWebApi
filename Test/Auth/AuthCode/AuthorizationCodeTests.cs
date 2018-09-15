@@ -1,22 +1,22 @@
 namespace SpotifyWebApiTest.Auth.AuthCode
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using SpotifyWebApi.Auth;
     using SpotifyWebApi.Model.Enum;
+    using Xunit;
 
     /// <summary>
     /// The <see cref="AuthorizationCodeTests" /> class.
     /// </summary>
-    [TestClass]
     public class AuthorizationCodeTests
     {
         /// <summary>
         /// Gets the URL test.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void GetUrlTest()
         {
-            Assert.IsTrue(true);
+            // TODO: Add test.
+            Assert.True(true);
         }
     }
 }

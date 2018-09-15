@@ -1,32 +1,31 @@
 namespace SpotifyWebApiTest
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using SpotifyWebApi;
-    using SpotifyWebApi.Model.Auth;
+    using Xunit;
+    using Xunit.Abstractions;
 
     /// <summary>
     /// The <see cref="TestBase"/>.
     /// </summary>
-    [TestClass]
-    public class TestBase
+    public class TestBase : IClassFixture<TestData>
     {
         /// <summary>
-        /// TODO
+        /// An instance of test data.
         /// </summary>
-        protected Token Token { get; set; }
+        protected readonly TestData TestData;
 
         /// <summary>
-        /// TODO
+        /// An instance of <see cref="ITestOutputHelper"/> to provide logging while testing.
         /// </summary>
-        protected ISpotifyWebApi Api { get; set; }
+        protected readonly ITestOutputHelper Output;
 
         /// <summary>
-        /// TODO
+        /// The base test class.
         /// </summary>
-        [TestInitialize]
-        public void BaseTestInit()
+        public TestBase(TestData testData, ITestOutputHelper output)
         {
-            // TODO: Initialize Token and Apis...
+            this.TestData = testData;
+            this.Output = output;
+            this.Output.WriteLine(testData.Token.ToString());
         }
     }
 }
