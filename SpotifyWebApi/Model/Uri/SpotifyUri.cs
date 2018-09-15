@@ -12,6 +12,8 @@
     [DataContract]
     public class SpotifyUri
     {
+        #region Constructor
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SpotifyUri"/> class.
         /// </summary>
@@ -68,6 +70,10 @@
             }
         }
 
+        #endregion Constructor
+
+        #region Properties
+
         /// <summary>
         /// Gets the domain.
         /// </summary>
@@ -98,6 +104,10 @@
         [DataMember]
         public string FullUri { get; private set; }
 
+        #endregion Properties
+
+        #region Conversion
+
         /// <summary>
         /// Implicit operator to convert a string to a <see cref="SpotifyUri"/>.
         /// </summary>
@@ -106,6 +116,10 @@
         {
             return SpotifyUri.Make(uri);
         }
+
+        #endregion Conversion
+
+        #region Methods
 
         /// <summary>
         /// Creates a <see cref="SpotifyUri"/> from the given id and type.
@@ -172,6 +186,9 @@
             return uri.Select(SpotifyUri.Make).ToList();
         }
 
+        /// <inheritdoc />
+        public override string ToString() => this.FullUri;
+
         /// <summary>
         /// This method is called after the object is completely deserialized. Use it instead of the constructror.
         /// </summary>
@@ -186,5 +203,7 @@
             this.Type = i.Type;
             this.UserId = i.UserId;
         }
+
+        #endregion Methods
     }
 }

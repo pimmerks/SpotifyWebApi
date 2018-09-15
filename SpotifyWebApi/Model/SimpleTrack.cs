@@ -85,11 +85,6 @@
         /// Gets or sets the URI.
         /// </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
-
-        /// <summary>
-        /// Gets the <see cref="Model.Uri.SpotifyUri"/> of this object.
-        /// </summary>
-        public SpotifyUri SpotifyUri => SpotifyUri.Make(this.Uri);
+        public SpotifyUri Uri { get; set; }
     }
 }
