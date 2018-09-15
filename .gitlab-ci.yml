@@ -19,17 +19,16 @@ Test:
   stage: test
   dependencies:
     - Build
-  artifacts:
-    paths:
-     - "Web.IntegrationTests/TestResults/"
-    reports:
-      junit: "Web.IntegrationTests/TestResults/testResults.xml"
+#  artifacts:
+#    paths:
+#     - "Web.IntegrationTests/TestResults/"
+#    reports:
+#      junit: "Web.IntegrationTests/TestResults/testResults.xml"
   script:
-    - "dotnet test Test -c Release --no-build  --logger 'trx;LogFileName=testResults.trx'"
-    - "trx2junit Test/TestResults/testResults.trx"
+    - "dotnet test Test -c Release --no-build"
 
 # Coverage
-Coverage:
+.Coverage:
   stage: test
   dependencies:
     - Build
