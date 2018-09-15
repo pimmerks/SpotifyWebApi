@@ -9,6 +9,7 @@ namespace SpotifyWebApi.Auth
     using Business;
     using Model.Auth;
     using Model.Enum;
+    using Model.Exception;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -89,7 +90,64 @@ namespace SpotifyWebApi.Auth
             // Read the content.
             var json = reader.ReadToEnd();
 
-            return JsonConvert.DeserializeObject<Token>(json);
+            var result = JsonConvert.DeserializeObject<Token>(json);
+            result.AuthenticationType = TokenAuthenticationType.AuthorizationCode;
+            return result;
+        }
+
+        /// <summary>
+        /// Requests a refresh token from the spotify web api.
+        /// </summary>
+        /// <param name="parameters">The authentication parameters.</param>
+        /// <param name="oldToken">The old token.</param>
+        /// <returns>A new refreshed token.</returns>
+        public static Token RefreshToken(AuthParameters parameters, Token oldToken)
+        {
+            if (string.IsNullOrEmpty(oldToken.RefreshToken))
+            {
+                throw new ValidationException("Refresh token was null or empty!");
+            }
+
+            var req = ApiHelper.CreateRequest(new Uri("https://accounts.spotify.com/api/token"));
+
+            var headers = new NameValueCollection
+            {
+                ["Authorization"] = "Basic " + ApiHelper.Base64Encode($"{parameters.ClientId}:{parameters.ClientSecret}"),
+            };
+
+            req.Headers = new WebHeaderCollection
+            {
+                headers
+            };
+
+            var postData = "grant_type=refresh_token" +
+                           $"&refresh_token={oldToken.RefreshToken}";
+            var data = Encoding.ASCII.GetBytes(postData);
+
+            req.Method = "POST";
+            req.ContentType = "application/x-www-form-urlencoded";
+            req.ContentLength = data.Length;
+
+            using (var stream = req.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            var response = (HttpWebResponse)req.GetResponse();
+
+            // Get the stream containing content returned by the server.
+            var dataStream = response.GetResponseStream();
+
+            // Open the stream using a StreamReader for easy access.
+            var reader = new StreamReader(dataStream ?? throw new InvalidOperationException());
+
+            // Read the content.
+            var json = reader.ReadToEnd();
+
+            var newToken = JsonConvert.DeserializeObject<Token>(json);
+            newToken.RefreshToken = oldToken.RefreshToken;
+            newToken.AuthenticationType = TokenAuthenticationType.AuthorizationCode;
+            return newToken;
         }
     }
 }

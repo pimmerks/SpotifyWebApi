@@ -1,6 +1,9 @@
 ﻿namespace SpotifyWebApi.Model.Uri
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -148,6 +151,16 @@
         {
             if (string.IsNullOrEmpty(uri)) throw new ArgumentException("uri is null or empty.");
             return new SpotifyUri(uri);
+        }
+
+        /// <summary>
+        /// Creates a list of <see cref="SpotifyUri"/>s for the given uris.
+        /// </summary>
+        /// <param name="uri">A list of uris.</param>
+        /// <returns>A list of <see cref="SpotifyUri"/>.</returns>
+        public static IList<SpotifyUri> MakeList(params string[] uri)
+        {
+            return uri.Select(SpotifyUri.Make).ToList();
         }
 
         /// <summary>

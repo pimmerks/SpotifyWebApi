@@ -24,6 +24,7 @@
         /// <param name="args">Command line arguments.</param>
         public static void Main(string[] args)
         {
+            // First, lets create our auth parameters.
             var param = new AuthParameters
             {
                 Scopes = Scope.All,
@@ -34,32 +35,53 @@
                 ShowDialog = false, // Set to true to login each time.
             };
 
-            //var url = AuthorizationCode.GetUrl(param, "test");
-            //Process.Start(url);
-            //var r = GetResponse().GetAwaiter().GetResult();
+            // Get the auth url, and start to process in the default web browser.
+            var url = AuthorizationCode.GetUrl(param, "test");
+            Process.Start(url);
 
-            //var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
+            // Listen on our callback site for a response.
+            var r = GetResponse().GetAwaiter().GetResult();
 
-            var token = ClientCredentials.GetToken(param);
+            // Use authorization code to get a token.
+            var token = AuthorizationCode.ProcessCallback(param, r, string.Empty);
 
-            ISpotifyWebApi api = new SpotifyWebApi(token);
+            // Once we have a token, create an api.
+            var api = new SpotifyWebApi(token);
 
+            // All API's return task's and are all async.
             var task1 = api.UserProfile.GetMe();
             var task2 = api.Player.GetCurrentlyPlayingContext();
             var task3 = api.Playlist.GetMyPlaylists(200);
+            var task4 = api.Player.GetAvailableDevices();
 
-            Task.WhenAll(task1, task2, task3).GetAwaiter().GetResult();
+            // Lets wait for all tasks to complete.
+            Task.WhenAll(task1, task2, task3, task4).GetAwaiter().GetResult();
             var me = task1.Result;
             var t = task2.Result;
             var p = task3.Result;
+            var d = task4.Result;
 
             Console.WriteLine($"Hello {me.DisplayName}, This is an example application!");
             Console.WriteLine($"You are listening to {t.Item.Name} on {t.Device.Name}");
+            Console.Write("Available devices: ");
+            foreach (var device in d)
+            {
+                Console.Write($"{device.Name}");
+            }
+            Console.WriteLine();
 
+            Console.WriteLine("Your playlists:");
             foreach (var simplePlaylist in p)
             {
                 Console.WriteLine($"{simplePlaylist.Id}, {simplePlaylist.Name}");
             }
+
+            Console.ReadLine();
+
+            // Lets try to refresh our token.
+            Console.WriteLine($"Old token: {token.AccessToken}");
+            token = AuthorizationCode.RefreshToken(param, token);
+            Console.WriteLine($"New token: {token.AccessToken}");
 
             Console.ReadLine();
         }
@@ -76,10 +98,10 @@
             var s = await webserver.AcceptSocketAsync();
 
             var bReceive = new byte[1024];
-            int i = s.Receive(bReceive, bReceive.Length, 0);
+            var i = s.Receive(bReceive, bReceive.Length, 0);
 
             // Convert Byte to String
-            string sBuffer = Encoding.ASCII.GetString(bReceive);
+            var sBuffer = Encoding.ASCII.GetString(bReceive);
 
             s.Shutdown(SocketShutdown.Both);
             webserver.Stop();

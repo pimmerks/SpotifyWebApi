@@ -71,7 +71,7 @@ namespace SpotifyWebApi.Api.Album
 
             if (r.Response is Paging<SimpleTrack> tracks)
             {
-                return await HelperExtensions.LoadToList(tracks, this.Token);
+                return await tracks.LoadToList(this.Token);
             }
             return new List<SimpleTrack>();
         }

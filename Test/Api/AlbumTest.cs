@@ -1,62 +1,59 @@
 namespace SpotifyWebApiTest.Api
 {
-    using System.Linq;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using SpotifyWebApi;
-    using SpotifyWebApi.Api;
-    using SpotifyWebApi.Model.Auth;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
     using SpotifyWebApi.Model.Uri;
+    using Xunit;
+    using Xunit.Abstractions;
 
     /// <summary>
     /// The <see cref="AlbumTest"/>.
     /// </summary>
-    [TestClass]
     public class AlbumTest : TestBase
     {
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
-        [TestInitialize]
-        public void Init()
+        /// <inheritdoc />
+        public AlbumTest(TestData testData, ITestOutputHelper output) : base(testData, output)
         {
-            this.Token = new Token
-            {
-                AccessToken = string.Empty,
-                Type = "Bearer"
-            };
-
-            this.Api = new SpotifyWebApi(this.Token);
         }
 
         /// <summary>
         /// The album test.
         /// </summary>
-        [TestMethod]
-        public void GetAlbumTest()
+        [Theory]
+        [InlineData("spotify:album:44tJAQ21VUkgwjRDbNeJtB", "Funky Freddy")]
+        [InlineData("spotify:album:1JG04tRkcORA9RP3p06oGp", "Palmas")]
+        public async Task GetAlbumTest(string uri, string expectedName)
         {
-            var album = this.Api.Album.GetAlbum(SpotifyUri.Make("0sNOF9WDwhWunNAHPD3Baj", UriType.Album)).NonAsync();
-
-            Assert.AreEqual("0sNOF9WDwhWunNAHPD3Baj", album.Id);
-            Assert.AreEqual("Epic/Legacy", album.Label);
-            Assert.AreEqual("She's So Unusual", album.Name);
-            Assert.AreEqual(13, album.Tracks.Total);
-            Assert.AreEqual("Cyndi Lauper", album.Artists.First().Name);
+            var album = await this.TestData.Api.Album.GetAlbum(SpotifyUri.Make(uri));
+            Assert.True(album.Name == expectedName);
+            Assert.NotNull(album);
         }
 
         /// <summary>
         /// The albums test.
         /// </summary>
-        [TestMethod]
-        public void GetAlbumsTest()
+        [Fact]
+        public async Task GetAlbumsTest()
         {
+            var albums = await this.TestData.Api.Album.GetAlbums(
+                    SpotifyUri.MakeList(
+                        "spotify:album:44tJAQ21VUkgwjRDbNeJtB",
+                        "spotify:album:1JG04tRkcORA9RP3p06oGp"));
+            Assert.Equal(2, albums.Count);
+            Assert.True(albums[0].Name == "Funky Freddy");
+            Assert.True(albums[1].Name == "Palmas");
         }
 
         /// <summary>
         /// The album tracks test.
         /// </summary>
-        [TestMethod]
-        public void GetAlbumTracksTest()
+        [Theory]
+        [InlineData("spotify:album:44tJAQ21VUkgwjRDbNeJtB", 1)]
+        [InlineData("spotify:album:1JG04tRkcORA9RP3p06oGp", 21)]
+        public async Task GetAlbumTracksTest(string uri, int expectedTrackCount)
         {
+            var tracks = await this.TestData.Api.Album.GetAlbumTracks(SpotifyUri.Make(uri));
+            Assert.Equal(expectedTrackCount, tracks.Count);
         }
     }
 }

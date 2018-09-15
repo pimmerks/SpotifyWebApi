@@ -1,10 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
-    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeP2POutput</TargetsForTfmSpecificBuildOutput>
-    <DocumentationFile>bin\Debug\$(TargetFramework)\SpotifyWebApi.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\SpotifyWebApi.xml</DocumentationFile>
 
     <AssemblyName>SpotifyWebApi</AssemblyName>
     <RootNamespace>SpotifyWebApi</RootNamespace>
@@ -21,51 +20,30 @@
     <PackageLicenseUrl>https://github.com/pimmerks/SpotifyWebApi/blob/master/LICENSE</PackageLicenseUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</PackageTags>
-
-    <Version>0.0.1-pre</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ConfigureAwait.Fody" Version="2.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
 
-  <!-- net461 Nuget packages -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <!-- Do not warn for nuget incorrect package version -->
+    <NoWarn>NU5105</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
 
-  <!-- netstandard2.0 Nuget packages -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Net.Http" Version="4.3.3" />
-  </ItemGroup>
+  <!-- Version information will be filled in by a custom CI tool. -->
+  <PropertyGroup Label="Versioner">
+    <Version>0.0.0</Version>
+    <AssemblyVersion>0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0</FileVersion>
+    <InformationalVersion>0.0.0</InformationalVersion>
+  </PropertyGroup>
 
-  <!-- netcoreapp 2.0 Nuget packages -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-    <PackageReference Include="System.Net.Http" Version="4.3.3" />
-  </ItemGroup>
-
-  <!-- Include project files. -->
-  <ItemGroup>
-    <ProjectReference Include="..\Api\Api.csproj" PrivateAssets="All" />
-    <ProjectReference Include="..\Auth\Auth.csproj" PrivateAssets="All" />
-    <ProjectReference Include="..\Business\Business.csproj" PrivateAssets="All" />
-    <ProjectReference Include="..\Model\Model.csproj" PrivateAssets="All" />
-  </ItemGroup>
-
-  <Target Name="IncludeP2POutput">
-    <ItemGroup>
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Api.dll" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Auth.dll" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Business.dll" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Model.dll" />
-
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Api.xml" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Auth.xml" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Business.xml" />
-      <BuildOutputInPackage Include="$(OutputPath)SpotifyWebApi.Model.xml" />
-    </ItemGroup>
-  </Target>
 </Project>

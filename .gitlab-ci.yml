@@ -1,38 +1,54 @@
 stages:
- - build
- - deploy
+  - build
+  - test
+  - deploy
 
- # Building on master branch, treating warnings as errors.
-build_on_master_job:
+# Build job
+Build:
   stage: build
+  before_script:
+    - "versioner -o ./SpotifyWebApi/SpotifyWebApi.csproj -c"
   script:
-    - 'dotnet restore' # restore Nuget dependencies
-    - 'dotnet msbuild /p:Configuration=Release /WarnAsError SpotifyWebApi.sln' # build the project
-  only:
-    - master
-    - tags
+    - "dotnet build -c Release"
+    - "dotnet pack -c Release -o ../Publish --no-build --include-symbols --include-source ./SpotifyWebApi/SpotifyWebApi.csproj"
+  artifacts:
+    untracked: true
 
-# Building on any other branch.
-build_job:
-  stage: build
-  script:
-    - 'dotnet restore' # restore Nuget dependencies
-    - 'dotnet build -c Release SpotifyWebApi.sln' # build the project
-  except:
-    - tags
-    - master
-
-# Deploys the nuget package
-deploy_job:
-  stage: deploy
-  script:
-    - 'GitVersionerNet --short' # version files according to latest tag
-    - 'dotnet pack -c Release --output ../nuget SpotifyWebApi/SpotifyWebApi.csproj'
-    - 'nuget push .\nuget\SpotifyWebApi-Core.*.nupkg -ApiKey %NUGET_API_KEY% -Source %NUGET_SOURCE%'
-  variables:
-    GIT_STRATEGY: none
+# Integration tests
+Test:
+  stage: test
   dependencies:
-    - build_on_master_job
+    - Build
+#  artifacts:
+#    paths:
+#     - "Web.IntegrationTests/TestResults/"
+#    reports:
+#      junit: "Web.IntegrationTests/TestResults/testResults.xml"
+  script:
+    - "dotnet test Test -c Release --no-build"
+
+# Coverage
+.Coverage:
+  stage: test
+  dependencies:
+    - Build
+  artifacts:
+    paths:
+     - "coverage.json"
+  script:
+    - "coverlet Test/bin/Release/netcoreapp2.0/SpotifyWebApiTest.dll --target 'dotnet' --targetargs 'test Test -c Release --no-build'"
+
+Deploy:
+  stage: deploy
+  dependencies:
+    - Build
+    - Test
+  script:
+    - "dotnet nuget push Publish/**/*.nupkg -s https://api.nuget.org/v3/index.json -k %NUGET_API_KEY%"
+  artifacts:
+    paths:
+    - "./Publish"
+    name: Nuget package
   only:
-    - tags
-  allow_failure: false
+   - "master"
+   - "tags"

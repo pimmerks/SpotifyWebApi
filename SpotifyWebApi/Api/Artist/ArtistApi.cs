@@ -57,7 +57,6 @@ namespace SpotifyWebApi.Api.Artist
         /// <inheritdoc />
         public async Task<IList<SimpleAlbum>> GetArtistAlbums(SpotifyUri artistUri, AlbumType albumTypes, string market, int limit, int offset)
         {
-            // TODO: Move this to Model.Enum or something.
             var albumTypeString = "album_type=";
             if (albumTypes.HasFlag(AlbumType.Album)) albumTypeString += "album,";
             if (albumTypes.HasFlag(AlbumType.AppearsOn)) albumTypeString += "appears_on,";
@@ -71,7 +70,7 @@ namespace SpotifyWebApi.Api.Artist
 
             if (r.Response is Paging<SimpleAlbum> res)
             {
-                return await HelperExtensions.LoadToList(res, this.Token);
+                return await res.LoadToList(this.Token);
             }
             return new List<SimpleAlbum>();
         }

@@ -8,7 +8,7 @@
 A .net Core wrapper for the Spotify Web Api.
 
 # Nuget package
-Installing the package is easy.  
+Installing the package is easy.
 
 Using the package manager console:
 > `PM> Install-Package SpotifyWebApi-Core`

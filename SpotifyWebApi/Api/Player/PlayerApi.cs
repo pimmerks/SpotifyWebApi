@@ -26,12 +26,12 @@ namespace SpotifyWebApi.Api.Player
         /// <inheritdoc />
         public async Task<List<Device>> GetAvailableDevices()
         {
-            var r = await ApiClient.GetAsync<List<Device>>(
+            var r = await ApiClient.GetAsync<DeviceList>(
                         MakeUri("me/player/devices"), this.Token);
 
-            if (r.Response is List<Device> res)
+            if (r.Response is DeviceList res)
             {
-                return res;
+                return res.Devices;
             }
             return new List<Device>();
         }

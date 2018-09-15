@@ -50,11 +50,15 @@ namespace SpotifyWebApi.Auth
         /// <param name="accessToken">The accesstoken.</param>
         /// <param name="tokenType">The tokentype.</param>
         /// <param name="expiresIn">The expires in.</param>
-        /// <param name="state">The state</param>
         /// <returns>A valid <see cref="Token"/>.</returns>
-        public static Token Callback(string accessToken, string tokenType, int expiresIn, string state)
+        public static Token Callback(string accessToken, string tokenType, int expiresIn)
         {
-            return Token.Make(accessToken, null, tokenType, expiresIn);
+            return Token.Make(
+                accessToken,
+                null,
+                tokenType,
+                expiresIn,
+                authenticationType: TokenAuthenticationType.ImplicitGrant);
         }
     }
 }
