@@ -99,6 +99,15 @@
         public string FullUri { get; private set; }
 
         /// <summary>
+        /// Implicit operator to convert a string to a <see cref="SpotifyUri"/>.
+        /// </summary>
+        /// <param name="uri">The uri to convert.</param>
+        public static implicit operator SpotifyUri(string uri)
+        {
+            return SpotifyUri.Make(uri);
+        }
+
+        /// <summary>
         /// Creates a <see cref="SpotifyUri"/> from the given id and type.
         /// </summary>
         /// <param name="id">The id.</param>
