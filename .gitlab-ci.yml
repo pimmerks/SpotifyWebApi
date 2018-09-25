@@ -27,7 +27,7 @@ Test:
       junit: "Test/TestResults/testResults.xml"
   script:
 #    - "dotnet test Test -c Release --no-build --logger trx;LogFileName=testResults.trx"
-    - "coverlet Test/bin/Release/netcoreapp2.1/SpotifyWebApiTest.dll --target 'dotnet' --targetargs 'test Test -c Release --no-build  --logger trx'"
+    - "coverlet Test/bin/Release/netcoreapp2.1/SpotifyWebApiTest.dll --target 'dotnet' --targetargs 'test Test -c Release --no-build  --logger trx;LogFileName=testResults.trx'"
   after_script:
     - "trx2junit Test/TestResults/testResults.trx"
 
