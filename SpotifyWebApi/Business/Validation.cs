@@ -1,6 +1,9 @@
 ﻿namespace SpotifyWebApi.Business
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net;
+    using System.Net.Http;
     using Model.Auth;
     using Model.Exception;
 
@@ -57,6 +60,38 @@
 
             // if (string.IsNullOrWhiteSpace(token.RefreshToken))
             //    throw new ValidationException("The token's 'RefreshToken' is empty or null");
+        }
+
+        /// <summary>
+        /// Validates a <see cref="HttpStatusCode"/> and throws errors based on the code.
+        /// </summary>
+        /// <param name="statusCode">The status code to validate.</param>
+        /// <param name="response">The response of the http request.</param>
+        public static void ValidateResponseCode(HttpStatusCode statusCode, string response)
+        {
+            switch (statusCode)
+            {
+                case HttpStatusCode.BadRequest:
+                    throw new BadRequestException(response);
+                case HttpStatusCode.Unauthorized:
+                    throw new UnauthorizedAccessException(response);
+                case HttpStatusCode.Forbidden:
+                    throw new ForbiddenException(response);
+                case HttpStatusCode.NotFound:
+                    throw new NotFoundException(response);
+                case HttpStatusCode.InternalServerError:
+                    throw new InternalServerErrorException(response);
+                case HttpStatusCode.BadGateway:
+                    throw new BadGatewayException(response);
+                case HttpStatusCode.ServiceUnavailable:
+                    throw new ServiceUnavailableException(response);
+            }
+
+            // This status code is not in the HttpStatusCode Enum
+            if ((int)statusCode == 429)
+            {
+                throw new TooManyRequestsException(response);
+            }
         }
     }
 }

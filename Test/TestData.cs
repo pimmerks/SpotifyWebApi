@@ -30,7 +30,7 @@ namespace SpotifyWebApiTest
         {
             // So to make the tests work, we need to get a Client Id and Secret.
             // I have chosen to save that data in environment variables.
-            // Like so: Key: 'SpotifyWebApiTestData' Value: 'ClientId:ClientSecret'
+            // Key: 'SpotifyWebApiTestData' Value: 'ClientId:ClientSecret'
             var variables = Environment.GetEnvironmentVariable("SpotifyWebApiTestData")?.Split(':');
             if (variables == null)
             {

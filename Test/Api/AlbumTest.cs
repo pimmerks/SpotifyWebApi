@@ -1,7 +1,10 @@
 namespace SpotifyWebApiTest.Api
 {
+    using System;
     using System.Diagnostics;
     using System.Threading.Tasks;
+    using SpotifyWebApi.Api.Album;
+    using SpotifyWebApi.Model.Exception;
     using SpotifyWebApi.Model.Uri;
     using Xunit;
     using Xunit.Abstractions;
@@ -24,7 +27,7 @@ namespace SpotifyWebApiTest.Api
         [InlineData("spotify:album:1JG04tRkcORA9RP3p06oGp", "Palmas")]
         public async Task GetAlbumTest(string uri, string expectedName)
         {
-            var album = await this.TestData.Api.Album.GetAlbum(SpotifyUri.Make(uri));
+            var album = await this.Api.Album.GetAlbum(uri);
             Assert.True(album.Name == expectedName);
             Assert.NotNull(album);
         }
@@ -35,7 +38,7 @@ namespace SpotifyWebApiTest.Api
         [Fact]
         public async Task GetAlbumsTest()
         {
-            var albums = await this.TestData.Api.Album.GetAlbums(
+            var albums = await this.Api.Album.GetAlbums(
                     SpotifyUri.MakeList(
                         "spotify:album:44tJAQ21VUkgwjRDbNeJtB",
                         "spotify:album:1JG04tRkcORA9RP3p06oGp"));
@@ -52,8 +55,28 @@ namespace SpotifyWebApiTest.Api
         [InlineData("spotify:album:1JG04tRkcORA9RP3p06oGp", 21)]
         public async Task GetAlbumTracksTest(string uri, int expectedTrackCount)
         {
-            var tracks = await this.TestData.Api.Album.GetAlbumTracks(SpotifyUri.Make(uri));
+            var tracks = await this.Api.Album.GetAlbumTracks(SpotifyUri.Make(uri));
             Assert.Equal(expectedTrackCount, tracks.Count);
+        }
+
+        /// <summary>
+        /// Tests to see if the validation works.
+        /// </summary>
+        [Fact]
+        public async Task GetAlbumTrackExceptionTest()
+        {
+            await Assert.ThrowsAsync<BadRequestException>(
+                async () => await this.Api.Album.GetAlbum("spotify:album:fdsajkfdsjkha"));
+        }
+
+        /// <summary>
+        /// Tests to see if the validation works.
+        /// </summary>
+        [Fact]
+        public async Task UnauthorizedExceptionTest()
+        {
+            await Assert.ThrowsAsync<UnauthorizedAccessException>(
+                async () => await new AlbumApi(null).GetAlbum("spotify:album:fdsajkfdsjkha", ""));
         }
     }
 }

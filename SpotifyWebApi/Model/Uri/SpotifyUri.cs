@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Runtime.Serialization;
+    using Exception;
 
     /// <summary>
     /// The <see cref="SpotifyUri" /> class.
@@ -38,8 +39,14 @@
                 }
                 else
                 {
-                    Enum.TryParse(split[1], true, out UriType type);
-                    this.Type = type;
+                    try
+                    {
+                        this.Type = (UriType)Enum.Parse(typeof(UriType), split[1], true);
+                    }
+                    catch (Exception)
+                    {
+                        throw new InvalidUriException("Uri was not correct!");
+                    }
                 }
 
                 switch (this.Type)
@@ -60,13 +67,11 @@
                         this.UserId = split[2];
                         this.Id = split[4];
                         break;
-                    default:
-                        throw new Exception("Uri was not correct!");
                 }
             }
             else
             {
-                throw new Exception("Uri was not a spotify uri!");
+                throw new InvalidUriException("Uri was not a spotify uri!");
             }
         }
 

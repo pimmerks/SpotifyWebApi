@@ -1,11 +1,7 @@
-// <copyright file="SearchApi.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Api.Search
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Business;
     using Model.Auth;
@@ -27,49 +23,41 @@ namespace SpotifyWebApi.Api.Search
         }
 
         /// <inheritdoc />
-        public async Task<IList<object>> Search(
+        public async Task<SearchResult> Search(
             string query,
-            SearchType searchTypes = SearchType.Album | SearchType.Artist | SearchType.Playlist | SearchType.Track,
-            string market = "",
-            int offset = 0,
-            int resultLimit = 100)
+            SearchType searchTypes,
+            string market,
+            int offset,
+            int resultLimit)
         {
-            var searchTypeString = "&type=";
+            var searchTypeString = string.Empty;
             if (searchTypes.HasFlag(SearchType.Album)) searchTypeString += "album,";
             if (searchTypes.HasFlag(SearchType.Artist)) searchTypeString += "artist,";
             if (searchTypes.HasFlag(SearchType.Playlist)) searchTypeString += "playlist,";
             if (searchTypes.HasFlag(SearchType.Track)) searchTypeString += "track,";
-            searchTypeString = searchTypeString.Remove(searchTypeString.Length - 1);
 
-            var r = await ApiClient.GetAsync<SearchResult>(
-                        MakeUri($"search?q={query}{searchTypeString}&offset={offset}{AddMarketCode("&", market)}"),
+            var r = await ApiClient.GetAsync<ApiSearchResult>(
+                        MakeUri(
+                            "search",
+                            ("q", query.Replace(' ', '+')),
+                            ("type", searchTypeString.Remove(searchTypeString.Length - 1)),
+                            ("offset", offset.ToString()),
+                            ("market", market)),
                         this.Token);
 
-            if (r.Response is SearchResult res)
+            if (r.Response is ApiSearchResult res)
             {
-                var result = new List<object>();
-                try
+                var result = new SearchResult
                 {
-                    var artists = res.Artists.LoadToList(this.Token);
-                    var albums = res.Albums.LoadToList(this.Token);
-                    var playlists = res.Playlists.LoadToList(this.Token);
-                    var tracks = res.Tracks.LoadToList(this.Token);
+                    Albums = res.Albums.Items,
+                    Playlists = res.Playlists.Items,
+                    Tracks = res.Tracks.Items,
+                    Artists = res.Artists.Items
+                };
 
-                    // Await all tasks finished...
-                    await Task.WhenAll(artists, albums, playlists, tracks);
-
-                    result.AddRange(artists.Result);
-                    result.AddRange(albums.Result);
-                    result.AddRange(playlists.Result);
-                    result.AddRange(tracks.Result);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
                 return result;
             }
-            return new List<object>();
+            return new SearchResult();
         }
     }
 }

@@ -1,5 +1,6 @@
 namespace SpotifyWebApiTest
 {
+    using SpotifyWebApi;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -19,13 +20,17 @@ namespace SpotifyWebApiTest
         protected readonly ITestOutputHelper Output;
 
         /// <summary>
+        /// Gets the api from the test data.
+        /// </summary>
+        protected ISpotifyWebApi Api => this.TestData.Api;
+
+        /// <summary>
         /// The base test class.
         /// </summary>
         public TestBase(TestData testData, ITestOutputHelper output)
         {
             this.TestData = testData;
             this.Output = output;
-            this.Output.WriteLine(testData.Token.ToString());
         }
     }
 }

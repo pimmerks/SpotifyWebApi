@@ -55,9 +55,9 @@ namespace SpotifyWebApi.Api.Artist
         }
 
         /// <inheritdoc />
-        public async Task<IList<SimpleAlbum>> GetArtistAlbums(SpotifyUri artistUri, AlbumType albumTypes, string market, int limit, int offset)
+        public async Task<IList<SimpleAlbum>> GetArtistAlbums(SpotifyUri artistUri, AlbumType albumTypes, string market, int maxResults, int offset)
         {
-            var albumTypeString = "album_type=";
+            var albumTypeString = string.Empty;
             if (albumTypes.HasFlag(AlbumType.Album)) albumTypeString += "album,";
             if (albumTypes.HasFlag(AlbumType.AppearsOn)) albumTypeString += "appears_on,";
             if (albumTypes.HasFlag(AlbumType.Compilation)) albumTypeString += "compilation,";
@@ -65,7 +65,12 @@ namespace SpotifyWebApi.Api.Artist
             albumTypeString = albumTypeString.Remove(albumTypeString.Length - 1);
 
             var r = await ApiClient.GetAsync<Paging<SimpleAlbum>>(
-                        MakeUri($"artists/{artistUri.Id}/albums?{albumTypeString}&limit={limit}&offset={offset}{AddMarketCode("&", market)}"),
+                        MakeUri(
+                            $"artists/{artistUri.Id}/albums?{albumTypeString}",
+                            ("album_type", albumTypeString),
+                            ("limit", "50"),
+                            ("offset", offset.ToString()),
+                            ("market", market)),
                         this.Token);
 
             if (r.Response is Paging<SimpleAlbum> res)
@@ -79,7 +84,9 @@ namespace SpotifyWebApi.Api.Artist
         public async Task<IList<FullTrack>> GetArtistsTopTracks(SpotifyUri artistUri, string market)
         {
             var r = await ApiClient.GetAsync<List<FullTrack>>(
-                        MakeUri($"artists/{artistUri.Id}/top-tracks{AddMarketCode("?", market)}"),
+                        MakeUri(
+                            $"artists/{artistUri.Id}/top-tracks",
+                            ("market", market)),
                         this.Token);
 
             if (r.Response is List<FullTrack> res)

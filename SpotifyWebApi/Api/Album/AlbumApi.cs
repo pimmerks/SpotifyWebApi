@@ -28,7 +28,9 @@ namespace SpotifyWebApi.Api.Album
         public async Task<FullAlbum> GetAlbum(SpotifyUri albumUri, string market)
         {
             var r = await ApiClient.GetAsync<FullAlbum>(
-                        MakeUri($"albums/{albumUri.Id}{AddMarketCode("?", market)}"),
+                        MakeUri(
+                            $"albums/{albumUri.Id}",
+                            ("market", market)),
                         this.Token);
 
             if (r.Response is FullAlbum album)
@@ -41,6 +43,9 @@ namespace SpotifyWebApi.Api.Album
         /// <inheritdoc />
         public async Task<IList<FullAlbum>> GetAlbums(IList<SpotifyUri> albumUris, string market)
         {
+            // Because we support more then 50 albums uris as input.
+            // but the spotify api only supports a maximum of 50,
+            // lets fix that by creating multiple lists of 50.
             var lists = albumUris.ChunkBy(50);
 
             var res = new List<FullAlbum>();
@@ -50,7 +55,10 @@ namespace SpotifyWebApi.Api.Album
                 var s = string.Join(",", l.Select(x => x.Id).ToArray());
 
                 var r = await ApiClient.GetAsync<MultipleAlbums>(
-                        MakeUri($"albums?ids={s}{AddMarketCode("&", market)}"),
+                        MakeUri(
+                            $"albums",
+                            ("ids", s),
+                            ("market", market)),
                         this.Token);
 
                 if (r.Response is MultipleAlbums albums)
@@ -66,7 +74,11 @@ namespace SpotifyWebApi.Api.Album
         public async Task<IList<SimpleTrack>> GetAlbumTracks(SpotifyUri albumUri, string market)
         {
             var r = await ApiClient.GetAsync<Paging<SimpleTrack>>(
-                        MakeUri($"albums/{albumUri.Id}/tracks?limit={50}&offset={0}{AddMarketCode("&", market)}"),
+                        MakeUri(
+                            $"albums/{albumUri.Id}/tracks",
+                            ("limit", "50"),
+                            ("offset", "0"), // TODO: Offset
+                            ("market", market)),
                         this.Token);
 
             if (r.Response is Paging<SimpleTrack> tracks)

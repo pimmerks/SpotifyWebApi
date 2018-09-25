@@ -25,7 +25,7 @@ namespace SpotifyWebApi.Api.Playlist
         }
 
         /// <inheritdoc />
-        public async Task<IList<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults = 100, int offset = 0)
+        public async Task<IList<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults, int offset = 0)
         {
             var r = await ApiClient.GetAsync<Paging<SimplePlaylist>>(
                         MakeUri($"users{user.Id}/playlists?limit=50&offset={offset}"), this.Token);
@@ -38,7 +38,7 @@ namespace SpotifyWebApi.Api.Playlist
         }
 
         /// <inheritdoc />
-        public async Task<IList<SimplePlaylist>> GetMyPlaylists(int maxResults = 100, int offset = 0)
+        public async Task<IList<SimplePlaylist>> GetMyPlaylists(int maxResults, int offset = 0)
         {
             var r = await ApiClient.GetAsync<Paging<SimplePlaylist>>(
                         MakeUri($"me/playlists?limit=50&offset={offset}"), this.Token);
@@ -54,7 +54,9 @@ namespace SpotifyWebApi.Api.Playlist
         public async Task<FullPlaylist> GetPlaylist(SpotifyUri playlistUri, string market)
         {
             var r = await ApiClient.GetAsync<FullPlaylist>(
-                        MakeUri($"users/{playlistUri.UserId}/playlists/{playlistUri.Id}{AddMarketCode("?", market)}"),
+                        MakeUri(
+                            $"users/{playlistUri.UserId}/playlists/{playlistUri.Id}",
+                            ("market", market)),
                         this.Token);
 
             if (r.Response is FullPlaylist res)
@@ -69,7 +71,10 @@ namespace SpotifyWebApi.Api.Playlist
             SpotifyUri playlistUri, int maxResults, int offset, string market)
         {
             var r = await ApiClient.GetAsync<Paging<PlaylistTrack>>(
-                        MakeUri($"users/{playlistUri.UserId}/playlists/{playlistUri.Id}/tracks?limit=100&offset={offset}{AddMarketCode("&", market)}"), this.Token);
+                        MakeUri(
+                            $"users/{playlistUri.UserId}/playlists/{playlistUri.Id}/tracks?limit=100&offset={offset}",
+                            ("market", market)),
+                        this.Token);
 
             if (r.Response is Paging<PlaylistTrack> res)
             {

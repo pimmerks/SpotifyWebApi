@@ -20,7 +20,7 @@ namespace SpotifyWebApi.Business
         /// <param name="token">The token.</param>
         /// <param name="maxItems">The maximum items to return.</param>
         /// <returns>The final list{T}</returns>
-        public static async Task<IList<T>> LoadToList<T>(this Paging<T> paging, Token token, int maxItems = 100)
+        public static async Task<IList<T>> LoadToList<T>(this Paging<T> paging, Token token, int maxItems = -1)
         {
             if (paging == null)
             {

@@ -15,22 +15,22 @@
         /// Get a list of the playlists owned or followed by a Spotify user.
         /// </summary>
         /// <param name="user">The <see cref="SpotifyUri"/> of the user.</param>
-        /// <param name="maxResults">The maximum items to retrieve.</param>
+        /// <param name="maxResults">Optional. The maximum results to return, or -1 to retrieve all items.</param>
         /// <param name="offset">Optional. The index of the first playlist to return.
         /// Default: 0 (the first object).
         /// Maximum offset: 100.000. Use with limit to get the next set of playlists.</param>
         /// <returns>A list of <see cref="SimplePlaylist"/>s.</returns>
-        Task<IList<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults = 100, int offset = 0);
+        Task<IList<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults = -1, int offset = 0);
 
         /// <summary>
         /// Get a list of the playlists owned or followed by the current Spotify user.
         /// </summary>
-        /// <param name="maxResults">The maximum items to retrieve.</param>
+        /// <param name="maxResults">Optional. The maximum results to return, or -1 to retrieve all items.</param>
         /// <param name="offset">Optional. The index of the first playlist to return.
         /// Default: 0 (the first object).
         /// Maximum offset: 100.000. Use with limit to get the next set of playlists.</param>
         /// <returns>A list of <see cref="SimplePlaylist"/>s.</returns>
-        Task<IList<SimplePlaylist>> GetMyPlaylists(int maxResults = 100, int offset = 0);
+        Task<IList<SimplePlaylist>> GetMyPlaylists(int maxResults = -1, int offset = 0);
 
         /// <summary>
         /// Get a playlist owned by a Spotify user.
@@ -44,12 +44,12 @@
         /// Get full details of the tracks of a playlist owned by a Spotify user.
         /// </summary>
         /// <param name="playlistUri">The <see cref="SpotifyUri"/> for the playlist.</param>
-        /// <param name="maxResults">Optional. The maximum results to return.</param>
+        /// <param name="maxResults">Optional. The maximum results to return, or -1 to retrieve all items.</param>
         /// <param name="offset">Optional. The index of the first track to return. Default: 0 (the first object).</param>
         /// <param name="market">Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
         /// <returns>A list of <see cref="PlaylistTrack"/> objects.</returns>
         Task<IList<PlaylistTrack>> GetPlaylistTracks(
-            SpotifyUri playlistUri, int maxResults = 100, int offset = 0, string market = null);
+            SpotifyUri playlistUri, int maxResults = -1, int offset = 0, string market = null);
 
         /// <summary>
         /// Create a playlist for a Spotify user.

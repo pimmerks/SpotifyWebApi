@@ -22,16 +22,16 @@ namespace SpotifyWebApi.Business
         /// <param name="uri">The request URI.</param>
         /// <param name="token">Optional. A valid <see cref="Token"/>.</param>
         /// <returns>The response of the HTTP GET.</returns>
-        public static async Task<WebResponse> GetAsync<T>(Uri uri, Token token = null)
+        public static async Task<WebResponse> GetAsync<T>(Uri uri, Token token)
         {
             using (var client = MakeHttpClient(token))
             {
                 var response = await client.GetAsync(uri);
                 var responseString = await response.Content.ReadAsStringAsync();
 
-                return response.IsSuccessStatusCode
-                    ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
-                    : WebResponse.Make(DeserializeObject<Error>(responseString), response.StatusCode);
+                Validation.ValidateResponseCode(response.StatusCode, responseString);
+
+                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
             }
         }
 
@@ -52,9 +52,9 @@ namespace SpotifyWebApi.Business
                 var response = await client.PostAsync(uri, content);
                 var responseString = await response.Content.ReadAsStringAsync();
 
-                return response.IsSuccessStatusCode
-                           ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
-                           : WebResponse.Make(DeserializeObject<Error>(responseString), response.StatusCode);
+                Validation.ValidateResponseCode(response.StatusCode, responseString);
+
+                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
             }
         }
 
@@ -75,9 +75,9 @@ namespace SpotifyWebApi.Business
                 var response = await client.PutAsync(uri, content);
                 var responseString = await response.Content.ReadAsStringAsync();
 
-                return response.IsSuccessStatusCode
-                           ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
-                           : WebResponse.Make(DeserializeObject<Error>(responseString), response.StatusCode);
+                Validation.ValidateResponseCode(response.StatusCode, responseString);
+
+                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
             }
         }
 
@@ -95,9 +95,9 @@ namespace SpotifyWebApi.Business
                 var response = await client.DeleteAsync(uri);
                 var responseString = await response.Content.ReadAsStringAsync();
 
-                return response.IsSuccessStatusCode
-                           ? WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode)
-                           : WebResponse.Make(DeserializeObject<Error>(responseString), response.StatusCode);
+                Validation.ValidateResponseCode(response.StatusCode, responseString);
+
+                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
             }
         }
 

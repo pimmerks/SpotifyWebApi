@@ -32,14 +32,14 @@
         /// <param name="albumTypes">Optional. A list of <see cref="AlbumType"/>s that will be used to filter the response. If not supplied, all album types will be returned.
         /// Note multiple types can be selected like so: 'AlbumType.Album | AlbumType.AppearsOn'.</param>
         /// <param name="market">Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
-        /// <param name="limit">Optional. The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="maxResults">Optional. The maximum results to return, or -1 to retrieve all items.</param>
         /// <param name="offset">Optional. The index of the first album to return. Default: 0 (i.e., the first album).</param>
         /// <returns>The artists albums.</returns>
         Task<IList<SimpleAlbum>> GetArtistAlbums(
             SpotifyUri artistUri,
             AlbumType albumTypes = AlbumType.Album | AlbumType.AppearsOn | AlbumType.Compilation | AlbumType.Single,
             string market = "",
-            int limit = 50,
+            int maxResults = -1,
             int offset = 0);
 
         /// <summary>

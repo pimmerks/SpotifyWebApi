@@ -6,6 +6,7 @@
     <Rule Id="IDE0004" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1009" Action="None" />
     <Rule Id="SA1118" Action="None" />
     <Rule Id="SA1124" Action="None" />
     <Rule Id="SA1303" Action="None" />

@@ -32,7 +32,9 @@ namespace SpotifyWebApi.Api.Track
         public async Task<FullTrack> GetTrack(SpotifyUri uri, string market)
         {
             var r = await ApiClient.GetAsync<FullTrack>(
-                        MakeUri($"tracks/{uri.Id}{AddMarketCode("?", market)}"),
+                        MakeUri(
+                            $"tracks/{uri.Id}",
+                            ("market", market)),
                         this.Token);
 
             if (r.Response is FullTrack res)
@@ -47,7 +49,10 @@ namespace SpotifyWebApi.Api.Track
         {
             Validation.ValidateList(uris, 1, 50);
             var r = await ApiClient.GetAsync<List<FullTrack>>(
-                        MakeUri($"tracks?ids={string.Join(",", uris.Select(x => x.Id))}{AddMarketCode("&", market)}"),
+                        MakeUri(
+                            $"tracks",
+                            ("ids", string.Join(",", uris.Select(x => x.Id))),
+                            ("market", market)),
                         this.Token);
 
             if (r.Response is List<FullTrack> res)

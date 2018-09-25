@@ -40,7 +40,10 @@ namespace SpotifyWebApi.Api.Player
         public async Task<CurrentlyPlayingContext> GetCurrentlyPlayingContext(string market = "")
         {
             var r = await ApiClient.GetAsync<CurrentlyPlayingContext>(
-                        MakeUri($"me/player{AddMarketCode("?", market)}"), this.Token);
+                        MakeUri(
+                            $"me/player",
+                            ("market", market)),
+                        this.Token);
 
             if (r.Response is CurrentlyPlayingContext res)
             {
@@ -53,7 +56,10 @@ namespace SpotifyWebApi.Api.Player
         public async Task<CurrentlyPlaying> GetCurrentlyPlaying(string market = "")
         {
             var r = await ApiClient.GetAsync<CurrentlyPlaying>(
-                        MakeUri($"me/player/currently-playing{AddMarketCode("?", market)}"), this.Token);
+                        MakeUri(
+                            $"me/player/currently-playing",
+                            ("market", market)),
+                        this.Token);
 
             if (r.Response is CurrentlyPlaying res)
             {
