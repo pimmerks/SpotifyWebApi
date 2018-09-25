@@ -14,7 +14,7 @@ Build:
   artifacts:
     untracked: true
 
-# Integration tests
+# Test and coverage
 Test:
   stage: test
   dependencies:
@@ -22,13 +22,14 @@ Test:
   artifacts:
     paths:
      - "Test/TestResults/"
+     - "coverage.json"
     reports:
       junit: "Test/TestResults/testResults.xml"
   script:
-    - "dotnet test Test -c Release --no-build --logger 'trx;LogFileName=testResults.trx'"
+#    - "dotnet test Test -c Release --no-build --logger trx;LogFileName=testResults.trx"
+    - "coverlet Test/bin/Release/netcoreapp2.1/SpotifyWebApiTest.dll --target 'dotnet' --targetargs 'test Test -c Release --no-build  --logger trx'"
   after_script:
     - "trx2junit Test/TestResults/testResults.trx"
-
 
 # Coverage
 .Coverage:
@@ -39,7 +40,7 @@ Test:
     paths:
      - "coverage.json"
   script:
-    - "coverlet Test/bin/Release/netcoreapp2.1/SpotifyWebApiTest.dll --target 'dotnet' --targetargs 'test Test -c Release --no-build'"
+    - "coverlet Test/bin/Release/netcoreapp2.1/SpotifyWebApiTest.dll --target 'dotnet' --targetargs 'test Test -c Release --no-build  --logger trx'"
 
 Deploy:
   stage: deploy
