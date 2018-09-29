@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <version>0.1.0-beta-test</version>
-
     <id>SpotifyWebApi-Core</id>
     <title>Spotify Web API</title>
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.0.8
+**Note:** This version might introduce some breaking changes.
+ - Merged all projects to one project.
+ - Added `RefreshToken()` to `AuthorizationCode`.
+ - Updated Continious integration to support deployment to nuget.
+ - Updated Player api.
+ - Initial release that supports unit testing.
+ - Initial release of the Browse api.
+ - Initial release of the Search api (might not work).
+
 ## v0.0.7
  - Added implicit grant flow.
 

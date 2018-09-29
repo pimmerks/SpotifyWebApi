@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Example2</RootNamespace>
     <AssemblyName>Example2</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -48,25 +52,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="App.Template.config" />
+    <None Include="packages.config" />
     <None Include="prebuild.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Api\Api.csproj">
-      <Project>{4ed8b43c-a3fb-47e9-8c81-594beb09f5bb}</Project>
-      <Name>Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Auth\Auth.csproj">
-      <Project>{59669587-a1dd-4f0d-9029-77c7a7401bb2}</Project>
-      <Name>Auth</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Business\Business.csproj">
-      <Project>{432194e9-74cb-4e1b-9fa2-ef11ebc5d88b}</Project>
-      <Name>Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Model\Model.csproj">
-      <Project>{3e9578be-a297-4b3c-8315-66057b919d9d}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\SpotifyWebApi\SpotifyWebApi.csproj">
       <Project>{ccd1caf9-1e3e-42c7-8bba-a9522c56942d}</Project>
       <Name>SpotifyWebApi</Name>
