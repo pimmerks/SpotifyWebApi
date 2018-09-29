@@ -48,7 +48,7 @@ Deploy:
     - Build
     - Test
   script:
-    - "dotnet nuget push Publish/**/*.nupkg -s https://api.nuget.org/v3/index.json -k %NUGET_API_KEY%"
+    - "dotnet nuget push Publish/**/*.nupkg -s https://api.nuget.org/v3/index.json -k $env:NUGET_API_KEY"
   artifacts:
     paths:
     - "./Publish"
