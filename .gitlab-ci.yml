@@ -48,12 +48,14 @@ Deploy:
     - Build
     - Test
   script:
-    - "dotnet nuget push Publish/**/*.nupkg -s https://api.nuget.org/v3/index.json -k $env:NUGET_API_KEY --no-symbols true"
+    - "dotnet nuget push Publish/**/*.nupkg -s https://api.nuget.org/v3/index.json -k $env:NUGET_API_KEY -n true"
+  after_script:
     - "dotnet nuget push Publish/**/*.symbols.nupkg -s https://nuget.smbsrc.net -k $env:NUGET_API_KEY"
   artifacts:
     paths:
     - "./Publish"
     name: Nuget package
+  allow_failure: true
   only:
    - "master"
    - "tags"
