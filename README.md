@@ -19,6 +19,7 @@ Using the package manager console:
 Using the dotnet CLI:
 > `> dotnet add package SpotifyWebApi-Core`
 
-
-___
-[Project board](https://github.com/pimmerks/SpotifyWebApi/projects/1)
+# How to
+ - TODO: Add documentation  
+ - TODO: Add auth examples  
+ - TODO: Add api examples
