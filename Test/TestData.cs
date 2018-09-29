@@ -14,14 +14,14 @@ namespace SpotifyWebApiTest
     public class TestData
     {
         /// <summary>
-        /// An instance of <see cref="Token"/>.
+        /// An instance of a <see cref="Token"/> without access to personal information.
         /// </summary>
-        public Token Token { get; }
+        public Token ClientCredentialsToken { get; }
 
         /// <summary>
-        /// An instance of <see cref="ISpotifyWebApi"/>.
+        /// An instance of a <see cref="Token"/> with access to personal information.
         /// </summary>
-        public ISpotifyWebApi Api { get; }
+        public Token PersonalToken { get; }
 
         /// <summary>
         /// Initializes the test data.
@@ -40,13 +40,23 @@ namespace SpotifyWebApiTest
             var clientId = variables[0];
             var clientSecret = variables[1];
 
-            this.Token = ClientCredentials.GetToken(new AuthParameters
+            this.ClientCredentialsToken = this.GetClientCredentialsToken(clientId, clientSecret);
+            // this.PersonalToken = this.GetImplicitGrantToken(clientId);
+        }
+
+        private Token GetClientCredentialsToken(string clientId, string clientSecret)
+        {
+            return ClientCredentials.GetToken(new AuthParameters
             {
                 ClientId = clientId,
                 ClientSecret = clientSecret,
                 Scopes = Scope.All
             });
-            this.Api = new SpotifyWebApi(this.Token);
+        }
+
+        private Token GetImplicitGrantToken(string clientId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace SpotifyWebApiTest
         /// <summary>
         /// Gets the api from the test data.
         /// </summary>
-        protected ISpotifyWebApi Api => this.TestData.Api;
+        protected ISpotifyWebApi Api { get; }
 
         /// <summary>
         /// The base test class.
@@ -31,6 +31,7 @@ namespace SpotifyWebApiTest
         {
             this.TestData = testData;
             this.Output = output;
+            this.Api = new SpotifyWebApi(this.TestData.ClientCredentialsToken);
         }
     }
 }
