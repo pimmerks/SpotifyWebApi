@@ -7,7 +7,7 @@ namespace SpotifyWebApi.Model.Exception
     /// <summary>
     /// The server was acting as a gateway or proxy and received an invalid response from the upstream server.
     /// </summary>
-    public class BadGatewayException : Exception
+    public class BadGatewayException : BaseErrorException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BadGatewayException"/> class.

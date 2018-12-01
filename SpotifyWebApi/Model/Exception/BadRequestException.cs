@@ -5,7 +5,7 @@ namespace SpotifyWebApi.Model.Exception
     /// <summary>
     /// The request could not be understood by the server due to malformed syntax.
     /// </summary>
-    public class BadRequestException : Exception
+    public class BadRequestException : BaseErrorException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BadRequestException"/> class.

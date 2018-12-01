@@ -5,7 +5,7 @@ namespace SpotifyWebApi.Model.Exception
     /// <summary>
     /// The server is currently unable to handle the request due to a temporary condition which will be alleviated after some delay.
     /// </summary>
-    public class ServiceUnavailableException : Exception
+    public class ServiceUnavailableException : BaseErrorException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceUnavailableException"/> class.

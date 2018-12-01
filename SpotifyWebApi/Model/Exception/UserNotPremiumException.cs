@@ -5,7 +5,7 @@ namespace SpotifyWebApi.Model.Exception
     /// <summary>
     /// The <see cref="UserNotPremiumException"/>.
     /// </summary>
-    public class UserNotPremiumException : Exception
+    public class UserNotPremiumException : BaseErrorException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UserNotPremiumException"/> class.

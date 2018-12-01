@@ -6,7 +6,7 @@ namespace SpotifyWebApi.Model.Exception
     /// Rate limiting has been applied.
     /// See <see href="https://developer.spotify.com/documentation/web-api/#rate-limiting">here</see>.
     /// </summary>
-    public class TooManyRequestsException : Exception
+    public class TooManyRequestsException : BaseErrorException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TooManyRequestsException"/> class.

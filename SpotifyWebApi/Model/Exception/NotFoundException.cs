@@ -5,7 +5,7 @@ namespace SpotifyWebApi.Model.Exception
     /// <summary>
     /// The <see cref="NotFoundException"/>.
     /// </summary>
-    public class NotFoundException : Exception
+    public class NotFoundException : BaseErrorException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NotFoundException"/> class.

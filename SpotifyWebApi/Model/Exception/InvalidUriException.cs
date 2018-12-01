@@ -5,7 +5,7 @@
     /// <summary>
     /// Exception that gets thrown when creating a spotify uri from a non valid string.
     /// </summary>
-    public class InvalidUriException : Exception
+    public class InvalidUriException : BaseErrorException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidUriException"/> class.
