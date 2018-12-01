@@ -10,7 +10,7 @@ Build:
     - "versioner -o ./SpotifyWebApi/SpotifyWebApi.csproj -c"
   script:
     - "dotnet build -c Release"
-    - "dotnet pack -c Release -o ../Publish --no-build --include-symbols  -p:SymbolPackageFormat=snupkg --include-source ./SpotifyWebApi/SpotifyWebApi.csproj"
+    - "dotnet pack -c Release -o ../Publish --no-build --include-symbols -p:SymbolPackageFormat=snupkg ./SpotifyWebApi/SpotifyWebApi.csproj"
   artifacts:
     untracked: true
 
