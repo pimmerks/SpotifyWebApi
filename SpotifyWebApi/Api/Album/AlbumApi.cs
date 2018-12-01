@@ -29,11 +29,10 @@ namespace SpotifyWebApi.Api.Album
         /// <inheritdoc />
         public async Task<FullAlbum> GetAlbum(SpotifyUri albumUri, string market)
         {
-            var r = await ApiClient.GetAsync<FullAlbum>(
+            var r = await this.GetAsync<FullAlbum>(
                         MakeUri(
                             $"albums/{albumUri.Id}",
-                            ("market", market)),
-                        this.Token);
+                            ("market", market)));
 
             if (r.Response is FullAlbum album)
             {
@@ -56,12 +55,11 @@ namespace SpotifyWebApi.Api.Album
             {
                 var s = string.Join(",", l.Select(x => x.Id).ToArray());
 
-                var r = await ApiClient.GetAsync<MultipleAlbums>(
+                var r = await this.GetAsync<MultipleAlbums>(
                         MakeUri(
                             $"albums",
                             ("ids", s),
-                            ("market", market)),
-                        this.Token);
+                            ("market", market)));
 
                 if (r.Response is MultipleAlbums albums)
                 {
@@ -75,17 +73,16 @@ namespace SpotifyWebApi.Api.Album
         /// <inheritdoc />
         public async Task<IList<SimpleTrack>> GetAlbumTracks(SpotifyUri albumUri, string market)
         {
-            var r = await ApiClient.GetAsync<Paging<SimpleTrack>>(
+            var r = await this.GetAsync<Paging<SimpleTrack>>(
                         MakeUri(
                             $"albums/{albumUri.Id}/tracks",
                             ("limit", "50"),
                             ("offset", "0"), // TODO: Offset
-                            ("market", market)),
-                        this.Token);
+                            ("market", market)));
 
             if (r.Response is Paging<SimpleTrack> tracks)
             {
-                return await tracks.LoadToList(this.Token);
+                return await tracks.LoadToList(this);
             }
             return new List<SimpleTrack>();
         }

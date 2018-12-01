@@ -33,13 +33,12 @@
             int maxResults,
             int offset)
         {
-            var r = await ApiClient.GetAsync<FeaturedPlaylistResponse>(
+            var r = await this.GetAsync<FeaturedPlaylistResponse>(
                        MakeUri(
                            $"browse/featured-playlists",
                            ("locale", locale),
                            ("country", country),
-                           ("timestamp", $"{timeStamp:O}")),
-                       this.Token);
+                           ("timestamp", $"{timeStamp:O}")));
 
             if (r.Response is FeaturedPlaylistResponse res)
             {

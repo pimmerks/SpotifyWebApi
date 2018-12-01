@@ -29,9 +29,8 @@ namespace SpotifyWebApi.Api.Artist
         /// <inheritdoc />
         public async Task<FullArtist> GetArtist(SpotifyUri artistUri)
         {
-            var r = await ApiClient.GetAsync<FullArtist>(
-                        MakeUri($"artists/{artistUri.Id}"),
-                        this.Token);
+            var r = await this.GetAsync<FullArtist>(
+                        MakeUri($"artists/{artistUri.Id}"));
 
             if (r.Response is FullArtist res)
             {
@@ -45,9 +44,8 @@ namespace SpotifyWebApi.Api.Artist
         {
             Validation.ValidateList(artistUris, 0, 50);
             var ids = artistUris.Select(x => x.Id).ToList().AsSingleString();
-            var r = await ApiClient.GetAsync<List<FullArtist>>(
-                        MakeUri($"artists?ids={ids}"),
-                        this.Token);
+            var r = await this.GetAsync<List<FullArtist>>(
+                        MakeUri($"artists?ids={ids}"));
 
             if (r.Response is List<FullArtist> res)
             {
@@ -66,18 +64,17 @@ namespace SpotifyWebApi.Api.Artist
             if (albumTypes.HasFlag(AlbumType.Single)) albumTypeString += "compilation,";
             albumTypeString = albumTypeString.Remove(albumTypeString.Length - 1);
 
-            var r = await ApiClient.GetAsync<Paging<SimpleAlbum>>(
+            var r = await this.GetAsync<Paging<SimpleAlbum>>(
                         MakeUri(
                             $"artists/{artistUri.Id}/albums?{albumTypeString}",
                             ("album_type", albumTypeString),
                             ("limit", "50"),
                             ("offset", offset.ToString()),
-                            ("market", market)),
-                        this.Token);
+                            ("market", market)));
 
             if (r.Response is Paging<SimpleAlbum> res)
             {
-                return await res.LoadToList(this.Token);
+                return await res.LoadToList(this);
             }
             return new List<SimpleAlbum>();
         }
@@ -85,11 +82,10 @@ namespace SpotifyWebApi.Api.Artist
         /// <inheritdoc />
         public async Task<IList<FullTrack>> GetArtistsTopTracks(SpotifyUri artistUri, string market)
         {
-            var r = await ApiClient.GetAsync<List<FullTrack>>(
+            var r = await this.GetAsync<List<FullTrack>>(
                         MakeUri(
                             $"artists/{artistUri.Id}/top-tracks",
-                            ("market", market)),
-                        this.Token);
+                            ("market", market)));
 
             if (r.Response is List<FullTrack> res)
             {
@@ -101,9 +97,8 @@ namespace SpotifyWebApi.Api.Artist
         /// <inheritdoc />
         public async Task<IList<FullArtist>> GetArtistsRelatedArtists(SpotifyUri artistUri)
         {
-            var r = await ApiClient.GetAsync<List<FullArtist>>(
-                        MakeUri($"artists/{artistUri.Id}/related-artists"),
-                        this.Token);
+            var r = await this.GetAsync<List<FullArtist>>(
+                        MakeUri($"artists/{artistUri.Id}/related-artists"));
 
             if (r.Response is List<FullArtist> res)
             {

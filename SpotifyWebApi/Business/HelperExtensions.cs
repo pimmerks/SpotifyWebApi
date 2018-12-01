@@ -3,7 +3,9 @@ namespace SpotifyWebApi.Business
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Threading.Tasks;
+    using Api;
     using Model;
     using Model.Auth;
 
@@ -17,10 +19,10 @@ namespace SpotifyWebApi.Business
         /// </summary>
         /// <typeparam name="T">The type of the paging object.</typeparam>
         /// <param name="paging">The paging object.</param>
-        /// <param name="token">The token.</param>
+        /// <param name="baseApi">An instance of <see cref="BaseApi"/>.</param>
         /// <param name="maxItems">The maximum items to return.</param>
         /// <returns>The final list{T}</returns>
-        public static async Task<IList<T>> LoadToList<T>(this Paging<T> paging, Token token, int maxItems = -1)
+        public static async Task<IList<T>> LoadToList<T>(this Paging<T> paging, BaseApi baseApi, int maxItems = -1)
         {
             if (paging == null)
             {
@@ -31,7 +33,7 @@ namespace SpotifyWebApi.Business
 
             while (curPage.Next != null)
             {
-                var next = await ApiClient.GetAsync<Paging<T>>(new Uri(curPage.Next), token);
+                var next = await baseApi.GetAsync<Paging<T>>(new Uri(curPage.Next));
 
                 if (next.Response is Paging<T> nextPage)
                 {

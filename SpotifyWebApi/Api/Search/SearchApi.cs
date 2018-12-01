@@ -38,14 +38,13 @@ namespace SpotifyWebApi.Api.Search
             if (searchTypes.HasFlag(SearchType.Playlist)) searchTypeString += "playlist,";
             if (searchTypes.HasFlag(SearchType.Track)) searchTypeString += "track,";
 
-            var r = await ApiClient.GetAsync<ApiSearchResult>(
+            var r = await this.GetAsync<ApiSearchResult>(
                         MakeUri(
                             "search",
                             ("q", query.Replace(' ', '+')),
                             ("type", searchTypeString.Remove(searchTypeString.Length - 1)),
                             ("offset", offset.ToString()),
-                            ("market", market)),
-                        this.Token);
+                            ("market", market)));
 
             if (r.Response is ApiSearchResult res)
             {

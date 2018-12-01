@@ -29,12 +29,11 @@ namespace SpotifyWebApi.Api.Playlist
         /// <inheritdoc />
         public async Task<IList<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults, int offset = 0)
         {
-            var r = await ApiClient.GetAsync<Paging<SimplePlaylist>>(
-                        MakeUri($"users{user.Id}/playlists?limit=50&offset={offset}"), this.Token);
+            var r = await this.GetAsync<Paging<SimplePlaylist>>(MakeUri($"users{user.Id}/playlists?limit=50&offset={offset}"));
 
             if (r.Response is Paging<SimplePlaylist> res)
             {
-                return await res.LoadToList(this.Token, maxResults);
+                return await res.LoadToList(this, maxResults);
             }
             return new List<SimplePlaylist>();
         }
@@ -42,12 +41,11 @@ namespace SpotifyWebApi.Api.Playlist
         /// <inheritdoc />
         public async Task<IList<SimplePlaylist>> GetMyPlaylists(int maxResults, int offset = 0)
         {
-            var r = await ApiClient.GetAsync<Paging<SimplePlaylist>>(
-                        MakeUri($"me/playlists?limit=50&offset={offset}"), this.Token);
+            var r = await this.GetAsync<Paging<SimplePlaylist>>(MakeUri($"me/playlists?limit=50&offset={offset}"));
 
             if (r.Response is Paging<SimplePlaylist> res)
             {
-                return await res.LoadToList(this.Token, maxResults);
+                return await res.LoadToList(this, maxResults);
             }
             return new List<SimplePlaylist>();
         }
@@ -55,11 +53,10 @@ namespace SpotifyWebApi.Api.Playlist
         /// <inheritdoc />
         public async Task<FullPlaylist> GetPlaylist(SpotifyUri playlistUri, string market)
         {
-            var r = await ApiClient.GetAsync<FullPlaylist>(
+            var r = await this.GetAsync<FullPlaylist>(
                         MakeUri(
                             $"users/{playlistUri.UserId}/playlists/{playlistUri.Id}",
-                            ("market", market)),
-                        this.Token);
+                            ("market", market)));
 
             if (r.Response is FullPlaylist res)
             {
@@ -72,15 +69,14 @@ namespace SpotifyWebApi.Api.Playlist
         public async Task<IList<PlaylistTrack>> GetPlaylistTracks(
             SpotifyUri playlistUri, int maxResults, int offset, string market)
         {
-            var r = await ApiClient.GetAsync<Paging<PlaylistTrack>>(
+            var r = await this.GetAsync<Paging<PlaylistTrack>>(
                         MakeUri(
                             $"users/{playlistUri.UserId}/playlists/{playlistUri.Id}/tracks?limit=100&offset={offset}",
-                            ("market", market)),
-                        this.Token);
+                            ("market", market)));
 
             if (r.Response is Paging<PlaylistTrack> res)
             {
-                return await res.LoadToList(this.Token, maxResults);
+                return await res.LoadToList(this, maxResults);
             }
             return new List<PlaylistTrack>();
         }
