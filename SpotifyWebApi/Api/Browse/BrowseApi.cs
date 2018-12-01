@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
     using global::SpotifyWebApi.Business;
@@ -18,8 +19,9 @@
         /// Initializes a new instance of the <see cref="BrowseApi"/> class.
         /// </summary>
         /// <param name="token">A valid <see cref="Token"/>.</param>
-        public BrowseApi(Token token)
-            : base(token)
+        /// <param name="httpClient">The <see cref="HttpClient"/> to be used for every request.</param>
+        public BrowseApi(Token token, HttpClient httpClient)
+            : base(token, httpClient)
         {
         }
 

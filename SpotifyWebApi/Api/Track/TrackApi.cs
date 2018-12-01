@@ -7,6 +7,7 @@ namespace SpotifyWebApi.Api.Track
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
     using Business;
@@ -23,8 +24,9 @@ namespace SpotifyWebApi.Api.Track
         /// Initializes a new instance of the <see cref="TrackApi"/> class.
         /// </summary>
         /// <param name="token">A valid access token.</param>
-        public TrackApi(Token token)
-            : base(token)
+        /// <param name="httpClient">The <see cref="HttpClient"/> to be used for every request.</param>
+        public TrackApi(Token token, HttpClient httpClient)
+            : base(token, httpClient)
         {
         }
 

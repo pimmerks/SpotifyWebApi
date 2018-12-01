@@ -4,6 +4,7 @@ namespace SpotifyWebApi.Api
     using System.Collections.Generic;
     using System.Dynamic;
     using System.Linq;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using Business;
     using Model.Auth;
@@ -22,12 +23,15 @@ namespace SpotifyWebApi.Api
         /// Initializes a new instance of the <see cref="BaseApi"/> class.
         /// </summary>
         /// <param name="token">A valid <see cref="Token"/>.</param>
-        protected BaseApi(Token token)
+        /// <param name="httpClient">The <see cref="System.Net.Http.HttpClient"/> to be used for every request to the api.</param>
+        protected BaseApi(Token token, HttpClient httpClient)
         {
             if (token == null)
             {
                 return;
             }
+
+            this.HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
             // Validate token
             Validation.ValidateToken(token);
@@ -38,6 +42,11 @@ namespace SpotifyWebApi.Api
         /// Gets the <see cref="Token"/>.
         /// </summary>
         protected Token Token { get; }
+
+        /// <summary>
+        /// Gets the <see cref="System.Net.Http.HttpClient"/>.
+        /// </summary>
+        protected HttpClient HttpClient { get; }
 
         // TODO: Add Api GET,POST,ETC methods here.
 

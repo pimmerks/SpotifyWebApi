@@ -1,5 +1,6 @@
 namespace SpotifyWebApi.Api.UserProfile
 {
+    using System.Net.Http;
     using System.Threading.Tasks;
     using Business;
     using Model;
@@ -16,8 +17,9 @@ namespace SpotifyWebApi.Api.UserProfile
         /// Initializes a new instance of the <see cref="UserProfileApi"/> class.
         /// </summary>
         /// <param name="token">A valid <see cref="Token"/>.</param>
-        public UserProfileApi(Token token)
-            : base(token)
+        /// <param name="httpClient">The <see cref="HttpClient"/> to be used for every request.</param>
+        public UserProfileApi(Token token, HttpClient httpClient)
+            : base(token, httpClient)
         {
         }
 

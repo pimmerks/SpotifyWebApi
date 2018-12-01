@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 namespace SpotifyWebApi
 {
     using System;
+    using System.Net.Http;
     using Api;
     using Api.Album;
     using Api.Artist;
@@ -28,16 +29,17 @@ namespace SpotifyWebApi
         /// Initializes a new instance of the <see cref="SpotifyWebApi" /> class.
         /// </summary>
         /// <param name="token">A valid <see cref="Token"/>.</param>
-        public SpotifyWebApi(Token token)
-            : base(token)
+        /// <param name="httpClient">The <see cref="HttpClient"/> to be used by the api.</param>
+        public SpotifyWebApi(Token token, HttpClient httpClient)
+            : base(token, httpClient)
         {
         }
 
         /// <inheritdoc />
-        public IAlbumApi Album => new AlbumApi(this.Token);
+        public IAlbumApi Album => new AlbumApi(this.Token, this.HttpClient);
 
         /// <inheritdoc />
-        public IArtistApi Artist => new ArtistApi(this.Token);
+        public IArtistApi Artist => new ArtistApi(this.Token, this.HttpClient);
 
         /// <inheritdoc />
         public IBrowseApi Browse => throw new NotImplementedException("This api is not yet implemented!");
@@ -49,21 +51,21 @@ namespace SpotifyWebApi
         public IPersonalizationApi Personalization => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
-        public IPlayerApi Player => new PlayerApi(this.Token);
+        public IPlayerApi Player => new PlayerApi(this.Token, this.HttpClient);
 
         /// <inheritdoc />
-        public IPlaylistApi Playlist => new PlaylistApi(this.Token);
+        public IPlaylistApi Playlist => new PlaylistApi(this.Token, this.HttpClient);
 
         /// <inheritdoc />
-        public ISearchApi Search => new SearchApi(this.Token);
+        public ISearchApi Search => new SearchApi(this.Token, this.HttpClient);
 
         /// <inheritdoc />
-        public ITrackApi Track => new TrackApi(this.Token);
+        public ITrackApi Track => new TrackApi(this.Token, this.HttpClient);
 
         /// <inheritdoc />
         public IUserLibraryApi UserLibrary => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
-        public IUserProfileApi UserProfile => new UserProfileApi(this.Token);
+        public IUserProfileApi UserProfile => new UserProfileApi(this.Token, this.HttpClient);
     }
 }

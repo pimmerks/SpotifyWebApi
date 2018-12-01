@@ -2,6 +2,7 @@ namespace SpotifyWebApi.Api.Artist
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using Business;
     using Model;
@@ -19,8 +20,9 @@ namespace SpotifyWebApi.Api.Artist
         /// Initializes a new instance of the <see cref="ArtistApi"/> class.
         /// </summary>
         /// <param name="token">A valid <see cref="Token"/>.</param>
-        public ArtistApi(Token token)
-            : base(token)
+        /// <param name="httpClient">The <see cref="HttpClient"/> to be used for every request.</param>
+        public ArtistApi(Token token, HttpClient httpClient)
+            : base(token, httpClient)
         {
         }
 

@@ -2,6 +2,7 @@ namespace SpotifyWebApi.Api.Search
 {
     using System;
     using System.Linq;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using Business;
     using Model.Auth;
@@ -17,8 +18,9 @@ namespace SpotifyWebApi.Api.Search
         /// Initializes a new instance of the <see cref="SearchApi"/> class.
         /// </summary>
         /// <param name="token">A valid <see cref="Token"/>.</param>
-        public SearchApi(Token token)
-            : base(token)
+        /// <param name="httpClient">The <see cref="HttpClient"/> to be used for every request.</param>
+        public SearchApi(Token token, HttpClient httpClient)
+        : base(token, httpClient)
         {
         }
 
