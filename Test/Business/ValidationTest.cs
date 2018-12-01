@@ -45,10 +45,10 @@ namespace SpotifyWebApiTest.Business
             Validation.ValidateInteger(1, 0, 2);
             Validation.ValidateInteger(2, 0, 2);
 
-            Assert.Throws<ValidationException>(() => Validation.ValidateInteger(5, 0, 2));
-            Assert.Throws<ValidationException>(() => Validation.ValidateInteger(5, 0, 2));
-            Assert.Throws<ValidationException>(() => Validation.ValidateInteger(5, 0, 2));
-            Assert.Throws<ValidationException>(() => Validation.ValidateInteger(5, 0, 2));
+            Assert.Throws<ValidationException>(() => Validation.ValidateInteger(5, 1, 2));
+            Assert.Throws<ValidationException>(() => Validation.ValidateInteger(5, 1, 2));
+            Assert.Throws<ValidationException>(() => Validation.ValidateInteger(5, 1, 2));
+            Assert.Throws<ValidationException>(() => Validation.ValidateInteger(5, 1, 2));
         }
 
         /// <summary>

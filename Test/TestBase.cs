@@ -1,5 +1,6 @@
 namespace SpotifyWebApiTest
 {
+    using System.Net.Http;
     using SpotifyWebApi;
     using Xunit;
     using Xunit.Abstractions;
@@ -31,7 +32,7 @@ namespace SpotifyWebApiTest
         {
             this.TestData = testData;
             this.Output = output;
-            this.Api = new SpotifyWebApi(this.TestData.ClientCredentialsToken);
+            this.Api = new SpotifyWebApi(this.TestData.ClientCredentialsToken, new HttpClient());
         }
     }
 }

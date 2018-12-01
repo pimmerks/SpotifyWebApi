@@ -2,6 +2,7 @@ namespace SpotifyWebApiTest.Api
 {
     using System;
     using System.Diagnostics;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using SpotifyWebApi.Api.Album;
     using SpotifyWebApi.Model.Exception;
@@ -76,7 +77,7 @@ namespace SpotifyWebApiTest.Api
         public async Task UnauthorizedExceptionTest()
         {
             await Assert.ThrowsAsync<UnauthorizedAccessException>(
-                async () => await new AlbumApi(null).GetAlbum("spotify:album:fdsajkfdsjkha", ""));
+                async () => await new AlbumApi(null, new HttpClient()).GetAlbum("spotify:album:fdsajkfdsjkha", ""));
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Text;
 
 namespace SpotifyWebApiTest.Api
 {
+    using System.Net.Http;
     using SpotifyWebApi.Api;
     using SpotifyWebApi.Model.Auth;
     using Xunit;
@@ -18,7 +19,7 @@ namespace SpotifyWebApiTest.Api
         /// Initializes this test class.
         /// </summary>
         public BaseApiTest()
-            : base(null)
+            : base(null, new HttpClient())
         {
         }
 
