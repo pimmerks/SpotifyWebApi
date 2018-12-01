@@ -13,6 +13,7 @@ namespace SpotifyWebApi.Business
     /// <summary>
     /// The <see cref="ApiClient"/> class used for communicating with a REST service.
     /// </summary>
+    [Obsolete("Please use the BaseApi functions")]
     internal static class ApiClient
     {
         /// <summary>
