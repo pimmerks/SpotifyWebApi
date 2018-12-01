@@ -22,7 +22,7 @@ namespace SpotifyWebApi.Business
         /// <param name="uri">The request URI.</param>
         /// <param name="token">Optional. A valid <see cref="Token"/>.</param>
         /// <returns>The response of the HTTP GET.</returns>
-        public static async Task<WebResponse> GetAsync<T>(Uri uri, Token token)
+        public static async Task<WebResponse<T>> GetAsync<T>(Uri uri, Token token)
         {
             using (var client = MakeHttpClient(token))
             {
@@ -31,7 +31,7 @@ namespace SpotifyWebApi.Business
 
                 Validation.ValidateResponseCode(response.StatusCode, responseString);
 
-                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
+                return WebResponse<T>.Make(DeserializeObject<T>(responseString), response.StatusCode);
             }
         }
 
@@ -43,7 +43,7 @@ namespace SpotifyWebApi.Business
         /// <param name="body">The body of the request.</param>
         /// <param name="token">Optional. A valid <see cref="Token"/>.</param>
         /// <returns>The response of the HTTP POST.</returns>
-        public static async Task<WebResponse> PostAsync<T>(Uri uri, object body, Token token = null)
+        public static async Task<WebResponse<T>> PostAsync<T>(Uri uri, object body, Token token = null)
         {
             using (var client = MakeHttpClient(token))
             {
@@ -54,7 +54,7 @@ namespace SpotifyWebApi.Business
 
                 Validation.ValidateResponseCode(response.StatusCode, responseString);
 
-                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
+                return WebResponse<T>.Make(DeserializeObject<T>(responseString), response.StatusCode);
             }
         }
 
@@ -66,7 +66,7 @@ namespace SpotifyWebApi.Business
         /// <param name="body">The body of the request.</param>
         /// <param name="token">Optional. A valid <see cref="Token"/>.</param>
         /// <returns>The response of the HTTP PUT.</returns>
-        public static async Task<WebResponse> PutAsync<T>(Uri uri, object body, Token token = null)
+        public static async Task<WebResponse<T>> PutAsync<T>(Uri uri, object body, Token token = null)
         {
             using (var client = MakeHttpClient(token))
             {
@@ -77,7 +77,7 @@ namespace SpotifyWebApi.Business
 
                 Validation.ValidateResponseCode(response.StatusCode, responseString);
 
-                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
+                return WebResponse<T>.Make(DeserializeObject<T>(responseString), response.StatusCode);
             }
         }
 
@@ -88,7 +88,7 @@ namespace SpotifyWebApi.Business
         /// <param name="uri">The request URI.</param>
         /// <param name="token">Optional. A valid <see cref="Token"/>.</param>
         /// <returns>The response of the HTTP DELETE.</returns>
-        public static async Task<WebResponse> DeleteAsync<T>(Uri uri, Token token = null)
+        public static async Task<WebResponse<T>> DeleteAsync<T>(Uri uri, Token token = null)
         {
             using (var client = MakeHttpClient(token))
             {
@@ -97,7 +97,7 @@ namespace SpotifyWebApi.Business
 
                 Validation.ValidateResponseCode(response.StatusCode, responseString);
 
-                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
+                return WebResponse<T>.Make(DeserializeObject<T>(responseString), response.StatusCode);
             }
         }
 

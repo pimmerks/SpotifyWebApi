@@ -39,7 +39,7 @@ namespace SpotifyWebApi.Api.UserProfile
         /// <inheritdoc />
         public async Task<PublicUser> GetUser(SpotifyUri userUri)
         {
-            var r = await ApiClient.GetAsync<PrivateUser>(
+            var r = await ApiClient.GetAsync<PublicUser>(
                         MakeUri($"users/{userUri.Id}"), this.Token);
 
             if (r.Response is PublicUser res)

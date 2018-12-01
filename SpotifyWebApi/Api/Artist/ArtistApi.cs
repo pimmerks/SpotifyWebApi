@@ -45,7 +45,7 @@ namespace SpotifyWebApi.Api.Artist
         {
             Validation.ValidateList(artistUris, 0, 50);
             var ids = artistUris.Select(x => x.Id).ToList().AsSingleString();
-            var r = await ApiClient.GetAsync<FullArtist>(
+            var r = await ApiClient.GetAsync<List<FullArtist>>(
                         MakeUri($"artists?ids={ids}"),
                         this.Token);
 
