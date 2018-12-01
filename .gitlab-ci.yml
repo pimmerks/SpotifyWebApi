@@ -10,7 +10,7 @@ Build:
     - "versioner -o ./SpotifyWebApi/SpotifyWebApi.csproj -c"
   script:
     - "dotnet build -c Release"
-    - "dotnet pack -c Release -o ../Publish --no-build --include-symbols --include-source ./SpotifyWebApi/SpotifyWebApi.csproj"
+    - "dotnet pack -c Release -o ../Publish --no-build --include-symbols  -p:SymbolPackageFormat=snupkg --include-source ./SpotifyWebApi/SpotifyWebApi.csproj"
   artifacts:
     untracked: true
 
@@ -48,9 +48,7 @@ Deploy:
     - Build
     - Test
   script:
-    - "dotnet nuget push Publish/**/*.nupkg -s https://api.nuget.org/v3/index.json -k $env:NUGET_API_KEY -n true"
-  after_script:
-    - "dotnet nuget push Publish/**/*.symbols.nupkg -s https://nuget.smbsrc.net -k $env:NUGET_API_KEY"
+    - "dotnet nuget push Publish/**/*.nupkg -s https://api.nuget.org/v3/index.json -k $env:NUGET_API_KEY"
   artifacts:
     paths:
     - "./Publish"
