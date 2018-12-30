@@ -67,6 +67,8 @@
                         this.UserId = split[2];
                         this.Id = split[4];
                         break;
+                    case UriType.Local:
+                        break;
                 }
             }
             else

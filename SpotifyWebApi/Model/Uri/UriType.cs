@@ -37,5 +37,11 @@
         /// </summary>
         [EnumMember]
         Playlist,
+
+        /// <summary>
+        /// A local uri.
+        /// </summary>
+        [EnumMember]
+        Local,
     }
 }
