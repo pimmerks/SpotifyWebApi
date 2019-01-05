@@ -22,7 +22,7 @@ namespace SpotifyWebApiTest.Api
         /// <summary>
         /// The album test.
         /// </summary>
-        [Theory]
+        [Theory(Skip = "Unsupported")]
         [InlineData("spotify:album:44tJAQ21VUkgwjRDbNeJtB", "Funky Freddy")]
         [InlineData("spotify:album:1JG04tRkcORA9RP3p06oGp", "Palmas")]
         public async Task GetAlbumTest(string uri, string expectedName)
@@ -35,7 +35,7 @@ namespace SpotifyWebApiTest.Api
         /// <summary>
         /// The albums test.
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Unsupported")]
         public async Task GetAlbumsTest()
         {
             var albums = await this.Api.Album.GetAlbums(
@@ -50,7 +50,7 @@ namespace SpotifyWebApiTest.Api
         /// <summary>
         /// The album tracks test.
         /// </summary>
-        [Theory]
+        [Theory(Skip = "Unsupported")]
         [InlineData("spotify:album:44tJAQ21VUkgwjRDbNeJtB", 1)]
         [InlineData("spotify:album:1JG04tRkcORA9RP3p06oGp", 21)]
         public async Task GetAlbumTracksTest(string uri, int expectedTrackCount)
@@ -62,7 +62,7 @@ namespace SpotifyWebApiTest.Api
         /// <summary>
         /// Tests to see if the validation works.
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Unsupported")]
         public async Task GetAlbumTrackExceptionTest()
         {
             await Assert.ThrowsAsync<BadRequestException>(
@@ -72,7 +72,7 @@ namespace SpotifyWebApiTest.Api
         /// <summary>
         /// Tests to see if the validation works.
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Unsupported")]
         public async Task UnauthorizedExceptionTest()
         {
             await Assert.ThrowsAsync<UnauthorizedAccessException>(
