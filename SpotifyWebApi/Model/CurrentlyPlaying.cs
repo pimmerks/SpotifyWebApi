@@ -17,7 +17,7 @@ namespace SpotifyWebApi.Model
         /// Gets or sets unix Millisecond Timestamp when data was fetched
         /// </summary>
         [JsonProperty("timestamp")]
-        public int Timestamp { get; set; }
+        public long Timestamp { get; set; }
 
         /// <summary>
         /// Gets or sets progress into the currently playing track. Can be null.
