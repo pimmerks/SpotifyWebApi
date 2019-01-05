@@ -18,7 +18,7 @@
         /// <summary>
         /// Tests the <see cref="ISearchApi.Search"/> function.
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Unsupported")]
         public async Task Search()
         {
             var result = await this.Api.Search.Search("test");

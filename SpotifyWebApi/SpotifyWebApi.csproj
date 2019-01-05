@@ -17,10 +17,14 @@
     <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/pimmerks/SpotifyWebApi/master/SpotifyIcon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/pimmerks/SpotifyWebApi</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/pimmerks/SpotifyWebApi/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />

@@ -22,7 +22,7 @@ namespace SpotifyWebApiTest.Api
         /// </summary>
         /// <param name="uri">A playlist uri.</param>
         /// <param name="expectedTrackCount">The expected track count.</param>
-        [Theory]
+        [Theory(Skip = "Unsupported")]
         [InlineData("spotify:user:1141820105:playlist:26JXqOmOpnO3hJ4Ij1EEKL", 20)]
         [InlineData("spotify:user:1141820105:playlist:4ReouBjlGOwe1btf1CAvIh", 100)]
         [InlineData("spotify:user:1141820105:playlist:2Iiwx1mspBbv9eV3gah2B9", 200)]
@@ -40,7 +40,7 @@ namespace SpotifyWebApiTest.Api
         /// <summary>
         /// A test for correct retrieval of a playlist.
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Unsupported")]
         public async Task GetPlaylistTest()
         {
             var pl = await this.Api.Playlist.GetPlaylist(
