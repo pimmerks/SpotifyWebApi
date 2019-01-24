@@ -1,9 +1,8 @@
-﻿namespace SpotifyWebApi.Business
+﻿namespace Spotify.Business
 {
     using System;
     using System.Collections.Generic;
     using System.Net;
-    using System.Net.Http;
     using Model.Auth;
     using Model.Exception;
 

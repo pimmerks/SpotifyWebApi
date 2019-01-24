@@ -6,7 +6,7 @@
     <DocumentationFile>bin\Debug\netstandard2.0\SpotifyWebApi.xml</DocumentationFile>
 
     <AssemblyName>SpotifyWebApi</AssemblyName>
-    <RootNamespace>SpotifyWebApi</RootNamespace>
+    <RootNamespace>Spotify</RootNamespace>
 
     <Authors>Pim Merks</Authors>
     <Company>Pim Merks</Company>
@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+    <None Include="..\LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>

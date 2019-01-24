@@ -1,6 +1,5 @@
-﻿namespace SpotifyWebApi.Api.Track
+﻿namespace Spotify.Api.Track
 {
-    using System.Collections;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Model;

@@ -1,10 +1,9 @@
-﻿namespace SpotifyWebApi.Api.Browse
+﻿namespace Spotify.Api.Browse
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
-    using global::SpotifyWebApi.Business;
+    using Business;
     using Model;
     using Model.Auth;
 

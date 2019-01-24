@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi.Api.Personalization
+﻿namespace Spotify.Api.Personalization
 {
     /// <summary>
     /// The personalization api.

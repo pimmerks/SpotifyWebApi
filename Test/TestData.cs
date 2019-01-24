@@ -2,10 +2,9 @@ namespace SpotifyWebApiTest
 {
     using System;
     using System.Diagnostics;
-    using SpotifyWebApi;
-    using SpotifyWebApi.Auth;
-    using SpotifyWebApi.Model.Auth;
-    using SpotifyWebApi.Model.Enum;
+    using Spotify.Auth;
+    using Spotify.Model.Auth;
+    using Spotify.Model.Enum;
     using Xunit.Abstractions;
 
     /// <summary>

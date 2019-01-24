@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi.Api.UserProfile
+﻿namespace Spotify.Api.UserProfile
 {
     using System.Threading.Tasks;
     using Model;

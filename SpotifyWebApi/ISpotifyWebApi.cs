@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi
+﻿namespace Spotify
 {
     using Api.Album;
     using Api.Artist;

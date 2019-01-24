@@ -2,13 +2,10 @@
 // Copyright (c) companyPlaceholder. All rights reserved.
 // </copyright>
 
-namespace SpotifyWebApi.Auth
+namespace Spotify.Auth
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Model.Auth;
     using Model.Enum;
 

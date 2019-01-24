@@ -1,10 +1,7 @@
-namespace SpotifyWebApi.Api
+namespace Spotify.Api
 {
     using System;
-    using System.Collections.Generic;
-    using System.Dynamic;
     using System.Linq;
-    using System.Threading.Tasks;
     using Business;
     using Model.Auth;
 

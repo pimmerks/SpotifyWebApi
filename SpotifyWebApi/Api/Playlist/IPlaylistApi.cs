@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi.Api.Playlist
+﻿namespace Spotify.Api.Playlist
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

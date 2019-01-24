@@ -1,11 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
+
 [assembly: InternalsVisibleTo("SpotifyWebApi.Auth")]
 
-namespace SpotifyWebApi.Model.Auth
+namespace Spotify.Model.Auth
 {
     using System;
     using Newtonsoft.Json;
-    using Uri;
 
     /// <summary>
     /// The <see cref="Token" /> class.

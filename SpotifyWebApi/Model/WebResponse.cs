@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Model
+namespace Spotify.Model
 {
     using System;
     using System.Net;

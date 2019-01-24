@@ -1,6 +1,6 @@
 namespace SpotifyWebApiTest
 {
-    using SpotifyWebApi;
+    using Spotify;
     using Xunit;
     using Xunit.Abstractions;
 

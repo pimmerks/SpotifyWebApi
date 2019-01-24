@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi.Api.Follow
+﻿namespace Spotify.Api.Follow
 {
     /// <summary>
     /// The follow api.

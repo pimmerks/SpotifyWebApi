@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi.Api.Browse
+﻿namespace Spotify.Api.Browse
 {
     using System;
     using System.Collections.Generic;

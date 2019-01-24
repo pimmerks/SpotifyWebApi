@@ -1,9 +1,6 @@
 namespace SpotifyWebApiTest.Business
 {
     using System;
-    using SpotifyWebApi.Business;
-    using SpotifyWebApi.Model;
-    using SpotifyWebApi.Model.Auth;
     using Xunit;
 
     /// <summary>

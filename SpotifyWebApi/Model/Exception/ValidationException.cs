@@ -2,7 +2,7 @@
 // Copyright (c) companyPlaceholder. All rights reserved.
 // </copyright>
 
-namespace SpotifyWebApi.Model.Exception
+namespace Spotify.Model.Exception
 {
     using System;
 

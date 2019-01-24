@@ -1,8 +1,6 @@
-namespace SpotifyWebApi.Model.Exception
+namespace Spotify.Model.Exception
 {
     using System;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The server was acting as a gateway or proxy and received an invalid response from the upstream server.

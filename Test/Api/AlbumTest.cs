@@ -3,9 +3,9 @@ namespace SpotifyWebApiTest.Api
     using System;
     using System.Diagnostics;
     using System.Threading.Tasks;
-    using SpotifyWebApi.Api.Album;
-    using SpotifyWebApi.Model.Exception;
-    using SpotifyWebApi.Model.Uri;
+    using Spotify.Api.Album;
+    using Spotify.Model.Exception;
+    using Spotify.Model.Uri;
     using Xunit;
     using Xunit.Abstractions;
 

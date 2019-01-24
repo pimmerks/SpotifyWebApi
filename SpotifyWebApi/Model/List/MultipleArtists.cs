@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Model.List
+namespace Spotify.Model.List
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;

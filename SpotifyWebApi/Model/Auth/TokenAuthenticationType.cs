@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi.Model.Auth
+﻿namespace Spotify.Model.Auth
 {
     /// <summary>
     /// Enum defining token types.

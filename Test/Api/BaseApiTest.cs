@@ -4,8 +4,7 @@ using System.Text;
 
 namespace SpotifyWebApiTest.Api
 {
-    using SpotifyWebApi.Api;
-    using SpotifyWebApi.Model.Auth;
+    using Spotify.Api;
     using Xunit;
 
     /// <summary>

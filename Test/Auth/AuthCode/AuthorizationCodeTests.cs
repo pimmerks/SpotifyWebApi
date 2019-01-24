@@ -1,7 +1,5 @@
 namespace SpotifyWebApiTest.Auth.AuthCode
 {
-    using SpotifyWebApi.Auth;
-    using SpotifyWebApi.Model.Enum;
     using Xunit;
 
     /// <summary>

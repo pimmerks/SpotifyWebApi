@@ -1,9 +1,9 @@
 namespace SpotifyWebApiTest.Business
 {
     using System.Collections.Generic;
-    using SpotifyWebApi.Business;
-    using SpotifyWebApi.Model.Auth;
-    using SpotifyWebApi.Model.Exception;
+    using Spotify.Business;
+    using Spotify.Model.Auth;
+    using Spotify.Model.Exception;
     using Xunit;
 
     /// <summary>

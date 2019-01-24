@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Model.Enum
+namespace Spotify.Model.Enum
 {
     using System;
 

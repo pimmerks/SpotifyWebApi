@@ -1,8 +1,7 @@
-namespace SpotifyWebApi.Business
+namespace Spotify.Business
 {
     using System;
     using System.Net;
-    using Model.Auth;
 
     /// <summary>
     /// The <see cref="ApiHelper"/>.

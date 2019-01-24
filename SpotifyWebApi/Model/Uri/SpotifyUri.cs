@@ -1,7 +1,6 @@
-﻿namespace SpotifyWebApi.Model.Uri
+﻿namespace Spotify.Model.Uri
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Runtime.Serialization;

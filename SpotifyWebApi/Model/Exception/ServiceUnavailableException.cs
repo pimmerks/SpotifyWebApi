@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Model.Exception
+namespace Spotify.Model.Exception
 {
     using System;
 

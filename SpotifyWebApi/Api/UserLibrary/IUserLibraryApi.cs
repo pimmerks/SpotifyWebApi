@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi.Api.UserLibrary
+﻿namespace Spotify.Api.UserLibrary
 {
     /// <summary>
     /// The user library api.

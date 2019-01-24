@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Api.Player
+namespace Spotify.Api.Player
 {
     using System;
     using System.Collections.Generic;

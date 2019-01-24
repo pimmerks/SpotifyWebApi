@@ -1,7 +1,5 @@
-namespace SpotifyWebApi.Api.Search
+namespace Spotify.Api.Search
 {
-    using System;
-    using System.Linq;
     using System.Threading.Tasks;
     using Business;
     using Model.Auth;

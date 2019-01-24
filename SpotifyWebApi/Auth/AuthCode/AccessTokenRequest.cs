@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Auth.AuthCode
+namespace Spotify.Auth.AuthCode
 {
     using Newtonsoft.Json;
 

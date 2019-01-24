@@ -1,7 +1,7 @@
 ﻿namespace SpotifyWebApiTest.Api
 {
     using System.Threading.Tasks;
-    using SpotifyWebApi.Api.Search;
+    using Spotify.Api.Search;
     using Xunit;
     using Xunit.Abstractions;
 

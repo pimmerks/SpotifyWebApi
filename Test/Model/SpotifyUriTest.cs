@@ -4,8 +4,8 @@ using System.Text;
 
 namespace SpotifyWebApiTest.Model
 {
-    using SpotifyWebApi.Model.Exception;
-    using SpotifyWebApi.Model.Uri;
+    using Spotify.Model.Exception;
+    using Spotify.Model.Uri;
     using Xunit;
 
     /// <summary>

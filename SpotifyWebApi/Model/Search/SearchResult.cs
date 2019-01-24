@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Model.Search
+namespace Spotify.Model.Search
 {
     using System.Collections.Generic;
 

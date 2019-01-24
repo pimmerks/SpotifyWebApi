@@ -1,4 +1,4 @@
-﻿namespace SpotifyWebApi.Api.Search
+﻿namespace Spotify.Api.Search
 {
     using System.Threading.Tasks;
     using Model.Enum;

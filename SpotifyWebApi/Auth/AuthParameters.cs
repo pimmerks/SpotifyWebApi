@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Auth
+namespace Spotify.Auth
 {
     using Model.Enum;
 
