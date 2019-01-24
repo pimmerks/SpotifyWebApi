@@ -1,4 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Weavers>
-  <ConfigureAwait/>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="FodyWeavers.xsd"
+         VerifyAssembly="true"
+         VerifyIgnoreCodes="0x80131869">
+  <ConfigureAwait />
 </Weavers>
