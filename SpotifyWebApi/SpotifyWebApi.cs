@@ -1,9 +1,3 @@
-// Internals only visible for testing purpose.
-
-using System.Runtime.CompilerServices;
-
-[assembly:InternalsVisibleTo("SpotifyWebApiTest")]
-
 namespace Spotify
 {
     using System;

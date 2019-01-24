@@ -11,7 +11,7 @@
     <Authors>Pim Merks</Authors>
     <Company>Pim Merks</Company>
     <PackageId>SpotifyWebApi-Core</PackageId>
-    <Description>A Spotify Web API wrapper.</Description>
+    <Description>A Spotify Web API wrapper for C#.</Description>
     <Copyright>Pim Merks</Copyright>
     <RepositoryType>Github</RepositoryType>
     <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
@@ -42,14 +42,6 @@
     <NoWarn>NU5105</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-  </PropertyGroup>
-
-  <!-- Version information will be filled in by a custom CI tool. -->
-  <PropertyGroup Label="Versioner">
-    <Version>0.0.0</Version>
-    <AssemblyVersion>0.0.0</AssemblyVersion>
-    <FileVersion>0.0.0</FileVersion>
-    <InformationalVersion>0.0.0</InformationalVersion>
   </PropertyGroup>
 
 </Project>
