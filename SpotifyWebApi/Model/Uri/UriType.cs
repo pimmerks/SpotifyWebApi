@@ -9,33 +9,39 @@
     public enum UriType
     {
         /// <summary>
-        /// The user
+        /// The user.
         /// </summary>
         [EnumMember]
         User,
 
         /// <summary>
-        /// The track
+        /// The track.
         /// </summary>
         [EnumMember]
         Track,
 
         /// <summary>
-        /// The artist
+        /// The artist.
         /// </summary>
         [EnumMember]
         Artist,
 
         /// <summary>
-        /// The album
+        /// The album.
         /// </summary>
         [EnumMember]
         Album,
 
         /// <summary>
-        /// The playlist
+        /// The playlist.
         /// </summary>
         [EnumMember]
         Playlist,
+
+        /// <summary>
+        /// A local uri.
+        /// </summary>
+        [EnumMember]
+        Local,
     }
 }

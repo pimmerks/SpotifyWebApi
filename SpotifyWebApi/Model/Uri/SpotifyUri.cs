@@ -67,11 +67,13 @@
                         this.UserId = split[2];
                         this.Id = split[4];
                         break;
+                    case UriType.Local:
+                        break;
                 }
             }
             else
             {
-                throw new InvalidUriException("Uri was not a spotify uri!");
+                throw new InvalidUriException($"The provided uri is not a spotify uri (uri: {uri}).");
             }
         }
 
@@ -150,6 +152,8 @@
                     return new SpotifyUri($"spotify:album:{id}");
                 case UriType.Playlist:
                     throw new NotSupportedException("UriType Playlist is not supported.");
+                case UriType.Local:
+                    throw new NotSupportedException("UriType Local is not supported.");
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
