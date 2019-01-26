@@ -17,13 +17,13 @@
     <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/pimmerks/SpotifyWebApi/master/SpotifyIcon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/pimmerks/SpotifyWebApi</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE" Pack="true" PackagePath="" />
+    <None Include="..\LICENSE.md" Pack="true" PackagePath="LICENSE.md" />
   </ItemGroup>
 
   <ItemGroup>
