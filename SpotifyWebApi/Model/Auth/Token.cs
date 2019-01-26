@@ -53,13 +53,13 @@ namespace SpotifyWebApi.Model.Auth
         /// Gets the token generated.
         /// </summary>
         [JsonProperty("token_generated")]
-        public DateTime TokenGenerated { get; private set; }
+        public DateTime TokenGenerated { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         /// Gets a value indicating whether this instance is expired.
         /// </summary>
         [JsonIgnore]
-        public bool IsExpired => DateTime.Now > this.TokenGenerated.AddSeconds(this.ExpiresIn);
+        public bool IsExpired => DateTime.UtcNow > this.TokenGenerated.AddSeconds(this.ExpiresIn);
 
         /// <summary>
         /// Gets a value indicating wheter this token can be used to access personal data.
@@ -101,7 +101,7 @@ namespace SpotifyWebApi.Model.Auth
                 RefreshToken = refreshToken,
                 Type = tokenType,
                 ExpiresIn = expiresIn,
-                TokenGenerated = tokenGenerated ?? DateTime.Now,
+                TokenGenerated = tokenGenerated ?? DateTime.UtcNow,
                 Scope = scope ?? string.Empty,
                 CanAccessPersonalData = canAccessPersonalData,
                 AuthenticationType = authenticationType
