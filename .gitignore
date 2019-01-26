@@ -263,3 +263,4 @@ __pycache__/
 # Custom project ignore
 Examples/ExampleNet47/App.config
 coverage.json
+SpotifyWebApi/FodyWeavers.xsd

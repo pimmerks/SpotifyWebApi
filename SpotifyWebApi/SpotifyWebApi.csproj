@@ -11,7 +11,7 @@
     <Authors>Pim Merks</Authors>
     <Company>Pim Merks</Company>
     <PackageId>SpotifyWebApi-Core</PackageId>
-    <Description>A Spotify Web API wrapper.</Description>
+    <Description>A Spotify Web API wrapper for C#.</Description>
     <Copyright>Pim Merks</Copyright>
     <RepositoryType>Github</RepositoryType>
     <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
@@ -23,13 +23,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+    <None Include="..\LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
-    <PackageReference Include="ConfigureAwait.Fody" Version="2.1.1">
+  </ItemGroup>
+
+  <!-- Development packages -->
+  <ItemGroup>
+    <PackageReference Include="Fody" Version="3.3.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="ConfigureAwait.Fody" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
@@ -43,13 +51,4 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
-
-  <!-- Version information will be filled in by a custom CI tool. -->
-  <PropertyGroup Label="Versioner">
-    <Version>0.0.0</Version>
-    <AssemblyVersion>0.0.0</AssemblyVersion>
-    <FileVersion>0.0.0</FileVersion>
-    <InformationalVersion>0.0.0</InformationalVersion>
-  </PropertyGroup>
-
 </Project>
