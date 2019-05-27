@@ -16,91 +16,91 @@
         /// <summary>
         /// Read access to user's private playlists.
         /// </summary>
-        PlaylistReadPrivate = 1,
+        PlaylistReadPrivate = 1 << 0,
 
         /// <summary>
         /// Include collaborative playlists when requesting a user's playlists.
         /// </summary>
-        PlaylistReadCollaborative = 2,
+        PlaylistReadCollaborative = 1 << 1,
 
         /// <summary>
         /// Write access to a user's public playlists.
         /// </summary>
-        PlaylistModifyPublic = 4,
+        PlaylistModifyPublic = 1 << 2,
 
         /// <summary>
         /// Write access to a user's private playlists.
         /// </summary>
-        PlaylistModifyPrivate = 8,
+        PlaylistModifyPrivate = 1 << 3,
 
         /// <summary>
         /// Upload playlist cover image.
         /// </summary>
-        UgcImageUpload = 16,
+        UgcImageUpload = 1 << 4,
 
         /// <summary>
         /// Write/delete access to the list of artists and other users that the user follows.
         /// </summary>
-        UserFollowModify = 32,
+        UserFollowModify = 1 << 5,
 
         /// <summary>
         /// Read access to the list of artists and other users that the user follows.
         /// </summary>
-        UserFollowRead = 64,
+        UserFollowRead = 1 << 6,
 
         /// <summary>
         /// Read access to a user's "Your Music" library.
         /// </summary>
-        UserLibraryRead = 128,
+        UserLibraryRead = 1 << 7,
 
         /// <summary>
         /// Write/delete access to a user's "Your Music" library.
         /// </summary>
-        UserLibraryModify = 265,
+        UserLibraryModify = 1 << 8,
 
         /// <summary>
         /// Read access to user’s subscription details (type of user account).
         /// </summary>
-        UserReadPrivate = 512,
+        UserReadPrivate = 1 << 9,
 
         /// <summary>
         /// Read access to the user's birthdate.
         /// </summary>
-        UserReadBirthdate = 1024,
+        UserReadBirthdate = 1 << 10,
 
         /// <summary>
         /// Read access to user’s email address.
         /// </summary>
-        UserReadEmail = 2048,
+        UserReadEmail = 1 << 11,
 
         /// <summary>
         /// Read access to a user's top artists and tracks.
         /// </summary>
-        UserTopRead = 4098,
+        UserTopRead = 1 << 12,
 
         /// <summary>
         /// Read access to a user's playback state.
         /// </summary>
-        UserReadPlaybackState = 8196,
+        UserReadPlaybackState = 1 << 13,
 
         /// <summary>
         /// Control playback on Spotify clients and Spotify Connect devices.
         /// </summary>
-        UserModifyPlaybackState = 16392,
+        UserModifyPlaybackState = 1 << 14,
 
         /// <summary>
         /// Read access to a user's currently playing track
         /// </summary>
-        UserReadCurrentlyPlaying = 32784,
+        UserReadCurrentlyPlaying = 1 << 15,
 
         /// <summary>
         /// Read access to a user's recently played items.
         /// </summary>
-        UserReadRecentlyPlayed = 65568,
+        UserReadRecentlyPlayed = 1 << 16,
 
         /// <summary>
         /// Request access to all scopes.
         /// </summary>
-        All = ~1,
+        All = ~1
     }
 }
