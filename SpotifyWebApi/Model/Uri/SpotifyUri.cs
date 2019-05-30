@@ -64,8 +64,7 @@
                         this.Id = split[2];
                         break;
                     case UriType.Playlist:
-                        this.UserId = split[2];
-                        this.Id = split[4];
+                        this.Id = split[2];
                         break;
                     case UriType.Local:
                         break;
