@@ -64,7 +64,14 @@
                         this.Id = split[2];
                         break;
                     case UriType.Playlist:
-                        this.Id = split[2];
+                        if (split.Length == 5)
+                        {
+                            this.Id = split[4];
+                        }
+                        else
+                        {
+                            this.Id = split[2];
+                        }
                         break;
                     case UriType.Local:
                         break;
@@ -96,6 +103,7 @@
         /// Gets the user identifier.
         /// </summary>
         [DataMember]
+        [Obsolete("The userId property isn't needed anymore for creating a Playlist Uri.")]
         public string UserId { get; private set; }
 
         /// <summary>
@@ -131,9 +139,7 @@
         /// Creates a <see cref="SpotifyUri"/> from the given id and type.
         /// </summary>
         /// <param name="id">The id.</param>
-        /// <param name="type">The <see cref="UriType"/>.
-        /// Note this can not be <see cref="UriType.Playlist"/>, if you want to create a playlist uri use
-        /// <see cref="Make(string)"/> or <see cref="Make(string, string)"/></param>
+        /// <param name="type">The <see cref="UriType"/>.</param>
         /// <returns>A new instance of <see cref="SpotifyUri"/>.</returns>
         public static SpotifyUri Make(string id, UriType type)
         {
@@ -150,7 +156,7 @@
                 case UriType.Album:
                     return new SpotifyUri($"spotify:album:{id}");
                 case UriType.Playlist:
-                    throw new NotSupportedException("UriType Playlist is not supported.");
+                    return new SpotifyUri($"spotify:playlist:{id}");
                 case UriType.Local:
                     throw new NotSupportedException("UriType Local is not supported.");
                 default:
@@ -165,12 +171,13 @@
         /// <param name="playlistId">The playlist id.</param>
         /// <returns>A new instance of <see cref="SpotifyUri"/>.
         /// Note: this will always be of <see cref="UriType.Playlist"/>.</returns>
+        [Obsolete("The userId property isn't needed anymore for creating a Playlist Uri. Users should now just use `Make(string id, UriType type)` or Make(string uri).")]
         public static SpotifyUri Make(string userId, string playlistId)
         {
             if (string.IsNullOrEmpty(userId)) throw new ArgumentException("userId is null or empty.");
             if (string.IsNullOrEmpty(playlistId)) throw new ArgumentException("playlistId is null or empty.");
 
-            return new SpotifyUri($"spotify:user:{userId}:playlist:{playlistId}");
+            return new SpotifyUri($"spotify:playlist:{playlistId}");
         }
 
         /// <summary>
@@ -209,7 +216,9 @@
             this.FullUri = i.FullUri;
             this.Id = i.Id;
             this.Type = i.Type;
+#pragma warning disable
             this.UserId = i.UserId;
+#pragma warning restore
         }
 
         #endregion Methods

@@ -7,7 +7,7 @@
     <authors>Pim Merks</authors>
     <owners>Pim Merks</owners>
     <description>A Spotify Web API wrapper.</description>
-    <copyright>Copyright 2018</copyright>
+    <copyright>Copyright 2019</copyright>
 
     <iconUrl>https://raw.githubusercontent.com/pimmerks/SpotifyWebApi/master/SpotifyIcon.png</iconUrl>
     <projectUrl>https://github.com/pimmerks/SpotifyWebApi</projectUrl>
