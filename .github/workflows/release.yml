@@ -1,8 +1,9 @@
-name: Build
+name: Release
 
 on:
   push:
-  pull_request:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
 
 jobs:
   build:
