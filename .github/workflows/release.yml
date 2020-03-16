@@ -30,3 +30,18 @@ jobs:
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
+
+    - name: Process version of the tag
+      id: version
+      uses: ncipollo/semantic-version-action@v1
+
+    - name: Pack nuget package
+      env:
+        version: ${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}.${{ steps.version.outputs.patch }}
+      run: dotnet pack --configuration Release --output build --include-symbols --include-source -p:Version=$version
+    
+    - name: Publish nuget package
+      with: # Set the secret as an input
+        api_key: ${{ secrets.NUGET_API_KEY }}
+        source: ${{ secrets.NUGET_URI }}
+      run: dotnet nuget push build/*.nupkg --source $source --api-key $api_key
