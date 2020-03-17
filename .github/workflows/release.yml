@@ -6,8 +6,8 @@ on:
       - v[0-9]+.[0-9]+.[0-9]+
 
 jobs:
-  build:
-    name: Build
+  release:
+    name: Release ${{ github.ref }}
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
       with:
         dotnet-version: 3.1.101
 
-    - name: Restore packages
+    - name: Restore cache
       uses: actions/cache@v1
       with:
         path: ~/.nuget/packages
@@ -35,13 +35,13 @@ jobs:
       id: version
       uses: ncipollo/semantic-version-action@v1
 
-    - name: Pack nuget package
+    - name: Pack package
       env:
         version: ${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}.${{ steps.version.outputs.patch }}
-      run: dotnet pack --configuration Release --output build --include-symbols --include-source -p:Version=$version
+      run: dotnet pack --configuration Release --output build --include-symbols --include-source -p:Version=$version -p:SymbolPackageFormat=snupkg
     
-    - name: Publish nuget package
-      with: # Set the secret as an input
+    - name: Publish package
+      env:
         api_key: ${{ secrets.NUGET_API_KEY }}
         source: ${{ secrets.NUGET_URI }}
       run: dotnet nuget push build/*.nupkg --source $source --api-key $api_key

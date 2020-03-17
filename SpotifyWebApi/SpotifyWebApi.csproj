@@ -3,27 +3,33 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\netstandard2.0\SpotifyWebApi.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SpotifyWebApiTest.xml</DocumentationFile>
 
     <AssemblyName>SpotifyWebApi</AssemblyName>
     <RootNamespace>SpotifyWebApi</RootNamespace>
 
+    <!-- Nuget -->
+    <PackageId>SpotifyWebApi-Core</PackageId>
+    <Title>Spotify Web Api</Title>
     <Authors>Pim Merks</Authors>
     <Company>Pim Merks</Company>
-    <PackageId>SpotifyWebApi-Core</PackageId>
-    <Description>A Spotify Web API wrapper for C#.</Description>
+    <Description>A Spotify Web API wrapper for C#. View the changelog here: https://github.com/pimmerks/SpotifyWebApi/blob/master/CHANGELOG.md</Description>
     <Copyright>Pim Merks</Copyright>
-    <RepositoryType>Github</RepositoryType>
+    <PackageIcon>ICON.png</PackageIcon>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+
     <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
-<!--    <PackageIcon>https://raw.githubusercontent.com/pimmerks/SpotifyWebApi/master/SpotifyIcon.png</PackageIcon>-->
     <PackageProjectUrl>https://github.com/pimmerks/SpotifyWebApi</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageTags>Spotify SpotifyWebApi Web Api REST Spotify WebApi Net Core Standard Framework</PackageTags>
+    <PackageTags>Spotify;SpotifyWebApi;Web;Api;REST;Spotify;WebApi;Net;Core;Standard;Framework</PackageTags>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
+    <RepositoryBranch>master</RepositoryBranch>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\SpotifyIcon.png" Pack="true" PackagePath="ICON.png" />
     <None Include="..\LICENSE.md" Pack="true" PackagePath="LICENSE.md" />
   </ItemGroup>
 
