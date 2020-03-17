@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+
+jobs:
+  release:
+    name: Release ${{ github.ref }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
+    - name: Restore cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+
+    - name: Restore packages
+      run: dotnet restore --use-lock-file --locked-mode
+
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+
+    - name: Process version of the tag
+      id: version
+      uses: ncipollo/semantic-version-action@v1
+
+    - name: Pack package
+      env:
+        version: ${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}.${{ steps.version.outputs.patch }}
+      run: dotnet pack --configuration Release --output build --include-symbols --include-source -p:Version=$version -p:SymbolPackageFormat=snupkg
+    
+    - name: Publish package
+      env:
+        api_key: ${{ secrets.NUGET_API_KEY }}
+        source: ${{ secrets.NUGET_URI }}
+      run: dotnet nuget push build/*.nupkg --source $source --api-key $api_key
