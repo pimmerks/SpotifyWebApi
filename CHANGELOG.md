@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.0.11
+ - Change Scopes enum to bit shift style in order to make it easier to spot typos
+
+## v0.0.10
+
+## v0.0.9
+ - Fixed a JSON deserialisation exception when trying to deserialise the timestamp into an int.
+
 ## v0.0.8
 **Note:** This version might introduce some breaking changes.
  - Merged all projects to one project.
