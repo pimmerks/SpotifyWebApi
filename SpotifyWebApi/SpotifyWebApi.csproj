@@ -20,7 +20,6 @@
 
     <RepositoryUrl>https://github.com/pimmerks/SpotifyWebApi</RepositoryUrl>
     <PackageProjectUrl>https://github.com/pimmerks/SpotifyWebApi</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>Spotify;SpotifyWebApi;Web;Api;REST;Spotify;WebApi;Net;Core;Standard;Framework</PackageTags>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
