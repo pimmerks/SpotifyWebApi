@@ -39,7 +39,6 @@ namespace SpotifyWebApiTest.Model
         {
             Assert.Throws<ArgumentException>(() => SpotifyUri.Make(""));
             Assert.Throws<ArgumentException>(() => SpotifyUri.Make("", UriType.Album));
-            Assert.Throws<NotSupportedException>(() => SpotifyUri.Make("Test", UriType.Playlist));
             Assert.Throws<InvalidUriException>(() => SpotifyUri.Make("a:a:a:a:a"));
             Assert.Throws<InvalidUriException>(() => SpotifyUri.Make("spotify:::"));
         }
@@ -56,7 +55,7 @@ namespace SpotifyWebApiTest.Model
             Assert.Equal(UriType.Track, u1.Type);
             Assert.Equal("spotify:track:0ZGZTut99seZYeJTLy7QZG", u1.FullUri);
             Assert.Equal(UriType.Playlist, u2.Type);
-            Assert.Equal("spotify:user:1141820105:playlist:2vIxq3ZWHDDgrVfAzmIbDf", u2.FullUri);
+            Assert.Equal("spotify:playlist:2vIxq3ZWHDDgrVfAzmIbDf", u2.FullUri);
         }
     }
 }
