@@ -31,6 +31,6 @@ namespace SpotifyWebApi.Auth
         /// <summary>
         /// Gets or sets the authentication scopes.
         /// </summary>
-        public Scope Scopes { get; set; }
+        public string Scopes { get; set; }
     }
 }

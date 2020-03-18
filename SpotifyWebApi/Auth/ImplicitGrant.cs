@@ -26,20 +26,11 @@ namespace SpotifyWebApi.Auth
         /// <returns>The url that the user can use to authenticate this application.</returns>
         public static string GetUrl(AuthParameters parameters, string state)
         {
-            var scopes = string.Join(
-                " ",
-                parameters.Scopes.ToString()
-                          .Split(new[] { ", " }, StringSplitOptions.None)
-                          .Select(i => (int)Enum.Parse(parameters.Scopes.GetType(), i))
-                          .Cast<Scope>()
-                          .Select(x => x.AsString())
-                          .ToList());
-
             return $"https://accounts.spotify.com/authorize/?" +
                    $"client_id={parameters.ClientId}" +
                    $"&response_type=token" +
                    $"&redirect_uri={parameters.RedirectUri}" +
-                   $"&scope={scopes}" +
+                   $"&scope={parameters.Scopes}" +
                    $"&state={state}" +
                    $"&show_dialog={(parameters.ShowDialog ? "true" : "false")}";
         }

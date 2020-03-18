@@ -1,11 +1,15 @@
 namespace SpotifyWebApi.Auth
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.IO;
     using System.Linq;
     using System.Net;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Text;
+    using System.Threading.Tasks;
     using Business;
     using Model.Auth;
     using Model.Enum;
@@ -26,22 +30,37 @@ namespace SpotifyWebApi.Auth
         /// <returns>The url that the user can use to authenticate this application.</returns>
         public static string GetUrl(AuthParameters parameters, string state)
         {
-            var scopes = string.Join(
-                " ",
-                parameters.Scopes.ToString()
-                    .Split(new[] { ", " }, StringSplitOptions.None)
-                    .Select(i => (int)Enum.Parse(parameters.Scopes.GetType(), i))
-                    .Cast<Scope>()
-                    .Select(x => x.AsString())
-                    .ToList());
-
             return $"https://accounts.spotify.com/authorize/?" +
                    $"client_id={parameters.ClientId}" +
                    $"&response_type=code" +
                    $"&redirect_uri={parameters.RedirectUri}" +
-                   $"&scope={scopes}" +
+                   $"&scope={parameters.Scopes}" +
                    $"&state={state}" +
                    $"&show_dialog={(parameters.ShowDialog ? "true" : "false")}";
+        }
+
+        public static async Task<Token> ProcessCallbackAsync(AuthParameters parameters, string code)
+        {
+            using var httpClient = new HttpClient();
+
+            var response = await httpClient.PostAsync(
+                "https://accounts.spotify.com/api/token",
+                new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("grant_type", "authorization_code"),
+                    new KeyValuePair<string, string>("code", code),
+                    new KeyValuePair<string, string>("redirect_uri", parameters.RedirectUri),
+                    new KeyValuePair<string, string>("client_id", parameters.ClientId),
+                    new KeyValuePair<string, string>("client_secret", parameters.ClientSecret),
+                }));
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(responseContent);
+            }
+
+            return JsonConvert.DeserializeObject<Token>(responseContent);
         }
 
         /// <summary>
