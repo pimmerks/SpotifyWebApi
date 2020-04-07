@@ -13,7 +13,7 @@
     <Title>Spotify Web Api</Title>
     <Authors>Pim Merks</Authors>
     <Company>Pim Merks</Company>
-    <Description>A Spotify Web API wrapper for C#. View the changelog here: https://github.com/pimmerks/SpotifyWebApi/blob/master/CHANGELOG.md</Description>
+    <Description>A Spotify Web API wrapper for C#. View the changelog here: https://github.com/pimmerks/SpotifyWebApi/releases</Description>
     <Copyright>Pim Merks</Copyright>
     <PackageIcon>ICON.png</PackageIcon>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
