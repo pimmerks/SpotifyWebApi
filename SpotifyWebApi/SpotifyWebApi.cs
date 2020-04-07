@@ -51,7 +51,7 @@ namespace SpotifyWebApi
         public IPlaylistApi Playlist => new PlaylistApi(this.Token);
 
         /// <inheritdoc />
-        public ISearchApi Search => new SearchApi(this.Token);
+        public ISearchApi Search => throw new NotImplementedException("This api is not yet implemented!");
 
         /// <inheritdoc />
         public ITrackApi Track => new TrackApi(this.Token);
@@ -61,5 +61,11 @@ namespace SpotifyWebApi
 
         /// <inheritdoc />
         public IUserProfileApi UserProfile => new UserProfileApi(this.Token);
+
+        /// <inheritdoc />
+        public void SetToken(Token token)
+        {
+            this.UpdateToken(token);
+        }
     }
 }

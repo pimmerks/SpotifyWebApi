@@ -1,4 +1,4 @@
-namespace SpotifyWebApi.Model.Enum
+﻿namespace SpotifyWebApi.Model.Enum
 {
     /// <summary>
     /// The <see cref="ContextType"/>.

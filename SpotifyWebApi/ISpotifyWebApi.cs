@@ -11,6 +11,7 @@
     using Api.Track;
     using Api.UserLibrary;
     using Api.UserProfile;
+    using Model.Auth;
 
     /// <summary>
     /// The <see cref="ISpotifyWebApi"/>.
@@ -71,5 +72,11 @@
         /// Gets the implementation of <see cref="IUserProfileApi"/>.
         /// </summary>
         IUserProfileApi UserProfile { get; }
+
+        /// <summary>
+        /// Allows for setting a new token after refreshing it.
+        /// </summary>
+        /// <param name="token">The refreshed <see cref="Token"/>.</param>
+        void SetToken(Token token);
     }
 }

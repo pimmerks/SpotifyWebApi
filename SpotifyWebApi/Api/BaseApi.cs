@@ -37,9 +37,7 @@ namespace SpotifyWebApi.Api
         /// <summary>
         /// Gets the <see cref="Token"/>.
         /// </summary>
-        protected Token Token { get; }
-
-        // TODO: Add Api GET,POST,ETC methods here.
+        protected Token Token { get; private set; }
 
         #region Static methods
 
@@ -78,5 +76,18 @@ namespace SpotifyWebApi.Api
         }
 
         #endregion Static methods
+
+        /// <summary>
+        /// Updates the token when you refreshed it.
+        /// </summary>
+        /// <param name="token">The updated token.</param>
+        protected void UpdateToken(Token token)
+        {
+            // Validate token
+            Validation.ValidateToken(token);
+            this.Token = token;
+        }
+
+        // TODO: Add Api GET,POST,ETC methods here.
     }
 }
