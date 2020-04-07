@@ -75,6 +75,12 @@ namespace SpotifyWebApi.Auth
             return JsonConvert.DeserializeObject<Token>(responseContent);
         }
 
+        /// <summary>
+        /// Requests a refresh token from the spotify web api.
+        /// </summary>
+        /// <param name="parameters">The authentication parameters.</param>
+        /// <param name="oldToken">The old token.</param>
+        /// <returns>A new refreshed token.</returns>
         public static async Task<Token> RefreshTokenAsync(AuthParameters parameters, Token oldToken)
         {
             if (string.IsNullOrEmpty(oldToken.RefreshToken))
@@ -93,7 +99,6 @@ namespace SpotifyWebApi.Auth
             httpClient.DefaultRequestHeaders.TryAddWithoutValidation(
                 "Authorization",
                 "Basic " + ApiHelper.Base64Encode($"{parameters.ClientId}:{parameters.ClientSecret}"));
-
 
             var response = await httpClient.PostAsync("https://accounts.spotify.com/api/token", requestContent);
 
