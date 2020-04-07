@@ -75,6 +75,37 @@ namespace SpotifyWebApi.Auth
             return JsonConvert.DeserializeObject<Token>(responseContent);
         }
 
+        public static async Task<Token> RefreshTokenAsync(AuthParameters parameters, Token oldToken)
+        {
+            if (string.IsNullOrEmpty(oldToken.RefreshToken))
+            {
+                throw new ValidationException("Refresh token was null or empty!");
+            }
+
+            using var httpClient = new HttpClient();
+
+            var requestContent = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("grant_type", "refresh_token"),
+                new KeyValuePair<string, string>("refresh_token", oldToken.RefreshToken),
+            });
+
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation(
+                "Authorization",
+                "Basic " + ApiHelper.Base64Encode($"{parameters.ClientId}:{parameters.ClientSecret}"));
+
+
+            var response = await httpClient.PostAsync("https://accounts.spotify.com/api/token", requestContent);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(responseContent);
+            }
+
+            return JsonConvert.DeserializeObject<Token>(responseContent);
+        }
+
         /// <summary>
         /// Processes the callback and returns the <see cref="Token"/>.
         /// </summary>

@@ -17,12 +17,22 @@
         private string clientSecret;
         private string clientId;
         private string redirectUri;
+        private AuthParameters parameters;
 
         public Program(IConfiguration configuration)
         {
             this.clientId = configuration["Spotify:ClientId"];
             this.clientSecret = configuration["Spotify:ClientSecret"];
             this.redirectUri = configuration["Spotify:RedirectUri"];
+            
+            parameters = new AuthParameters
+            {
+                ClientId = this.clientId,
+                ClientSecret = this.clientSecret,
+                RedirectUri = this.redirectUri,
+                Scopes = Scopes.All,
+                ShowDialog = true
+            };
         }
 
         public async Task Run()
@@ -55,6 +65,17 @@
                 Console.Write($"{device.Name}, ");
             }
             
+            Console.WriteLine("Refreshing token...");
+            var newToken = await AuthorizationCode.RefreshTokenAsync(this.parameters, token);
+            Console.WriteLine($"old: {token.AccessToken}");
+            Console.WriteLine($"new: {newToken.AccessToken}");
+
+            api.SetToken(newToken);
+            
+            me = await api.UserProfile.GetMe();
+            
+            Console.WriteLine($"Hello {me.DisplayName}");
+
             Console.ReadLine();
         }
 
@@ -62,16 +83,9 @@
         {
             var state = Guid.NewGuid().ToString(); // Save this state because you must check it later
 
-            var parameters = new AuthParameters
-            {
-                ClientId = this.clientId,
-                ClientSecret = this.clientSecret,
-                RedirectUri = this.redirectUri,
-                Scopes = Scopes.All,
-                ShowDialog = true
-            };
+            
 
-            var url = AuthorizationCode.GetUrl(parameters, state);
+            var url = AuthorizationCode.GetUrl(this.parameters, state);
             
             Console.WriteLine("Opening url...");
             Console.WriteLine(url);
@@ -100,7 +114,7 @@
                 throw new Exception("State did not match!");
             }
 
-            var token = await AuthorizationCode.ProcessCallbackAsync(parameters, retrievedCode);
+            var token = await AuthorizationCode.ProcessCallbackAsync(this.parameters, retrievedCode);
 
             return token;
         }

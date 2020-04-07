@@ -35,9 +35,20 @@ namespace SpotifyWebApi.Api
         }
 
         /// <summary>
+        /// Updates the token when you refreshed it.
+        /// </summary>
+        /// <param name="token">The updated token.</param>
+        protected void UpdateToken(Token token)
+        {
+            // Validate token
+            Validation.ValidateToken(token);
+            this.Token = token;
+        }
+
+        /// <summary>
         /// Gets the <see cref="Token"/>.
         /// </summary>
-        protected Token Token { get; }
+        protected Token Token { get; private set; }
 
         // TODO: Add Api GET,POST,ETC methods here.
 

@@ -61,5 +61,11 @@ namespace SpotifyWebApi
 
         /// <inheritdoc />
         public IUserProfileApi UserProfile => new UserProfileApi(this.Token);
+
+        /// <inheritdoc />
+        public void SetToken(Token token)
+        {
+            this.UpdateToken(token);
+        }
     }
 }
