@@ -17,9 +17,8 @@
         /// <remarks>
         /// A valid access token from the Spotify Accounts service: see the Web API Authorization Guide for details.
         /// The access token must have been issued on behalf of the current user.
-        /// Reading the user’s email address requires the <see cref="Scope.UserReadEmail"/> scope;
-        /// reading country and product subscription level requires the <see cref="Scope.UserReadPrivate"/> scope.
-        /// Reading the user’s birthdate requires the <see cref="Scope.UserReadBirthdate"/> scope.
+        /// Reading the user’s email address requires the <see cref="Scopes.UserReadEmail"/> scope;
+        /// reading country and product subscription level requires the <see cref="Scopes.UserReadPrivate"/> scope.
         /// </remarks>
         Task<PrivateUser> GetMe();
 

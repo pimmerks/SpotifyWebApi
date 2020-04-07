@@ -39,8 +39,20 @@ namespace SpotifyWebApi.Auth
                    $"&show_dialog={(parameters.ShowDialog ? "true" : "false")}";
         }
 
-        public static async Task<Token> ProcessCallbackAsync(AuthParameters parameters, string code)
+        /// <summary>
+        /// Processes the callback and returns the <see cref="Token"/> async.
+        /// </summary>
+        /// <param name="parameters">The parameters used in <see cref="GetUrl"/>.</param>
+        /// <param name="code">The retrieved code.</param>
+        /// <param name="error">The retrieved error.</param>
+        /// <returns>The new token.</returns>
+        public static async Task<Token> ProcessCallbackAsync(AuthParameters parameters, string code, string error = "")
         {
+            if (!string.IsNullOrWhiteSpace(error))
+            {
+                throw new Exception(error);
+            }
+
             using var httpClient = new HttpClient();
 
             var response = await httpClient.PostAsync(

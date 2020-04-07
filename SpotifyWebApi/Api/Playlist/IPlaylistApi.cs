@@ -63,8 +63,8 @@
         /// <returns>The created <see cref="FullPlaylist"/>.</returns>
         /// <remarks>
         /// Note: that the playlist will be empty until you add tracks.
-        /// Note: To be able to create private playlists, the user must have granted the <see cref="Scope.PlaylistModifyPrivate"/> scope.
-        /// Note: To create collaborative playlists you must have granted <see cref="Scope.PlaylistModifyPrivate"/> and <see cref="Scope.PlaylistModifyPublic"/> scopes.
+        /// Note: To be able to create private playlists, the user must have granted the <see cref="Scopes.PlaylistModifyPrivate"/> scope.
+        /// Note: To create collaborative playlists you must have granted <see cref="Scopes.PlaylistModifyPrivate"/> and <see cref="Scopes.PlaylistModifyPublic"/> scopes.
         /// </remarks>
         Task<FullPlaylist> CreatePlaylist(
             SpotifyUri user, string name, bool @public = true, bool collaborative = false, string description = "");

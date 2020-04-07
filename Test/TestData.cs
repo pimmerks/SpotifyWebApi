@@ -50,7 +50,7 @@ namespace SpotifyWebApiTest
             {
                 ClientId = clientId,
                 ClientSecret = clientSecret,
-                Scopes = Scope.All
+                Scopes = Scopes.All
             });
         }
 
