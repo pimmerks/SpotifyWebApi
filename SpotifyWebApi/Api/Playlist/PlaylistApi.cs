@@ -2,8 +2,6 @@ namespace SpotifyWebApi.Api.Playlist
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
     using Business;
     using Model;
@@ -85,10 +83,23 @@ namespace SpotifyWebApi.Api.Playlist
         }
 
         /// <inheritdoc />
-        public Task<FullPlaylist> CreatePlaylist(
-            SpotifyUri user, string name, bool @public, bool collaborative, string description)
+        public async Task<FullPlaylist> CreatePlaylist(
+            SpotifyUri user, string name, bool @public, string description)
         {
-            throw new NotImplementedException();
+            var r = await ApiClient.PostAsync<FullPlaylist>(
+                MakeUri($"users/{user.Id}/playlists"),
+                new PlaylistCreate
+                {
+                    Name = name,
+                    Public = @public,
+                    Description = description,
+                }, this.Token);
+
+            if (r.Response is FullPlaylist playlist)
+            {
+                return playlist;
+            }
+            return new FullPlaylist();
         }
 
         /// <inheritdoc />
