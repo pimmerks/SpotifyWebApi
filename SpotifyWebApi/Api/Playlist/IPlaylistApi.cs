@@ -53,21 +53,18 @@
 
         /// <summary>
         /// Create a playlist for a Spotify user.
-        /// See Remarks for <paramref name="public"/> and <paramref name="collaborative"/> parameters.
         /// </summary>
         /// <param name="user">The <see cref="SpotifyUri"/> of the user.</param>
         /// <param name="name">The name for the new playlist, for example "Your Coolest Playlist". This name does not need to be unique; a user may have several playlists with the same name.</param>
         /// <param name="public">Optional. If true the playlist will be public, if false it will be private.</param>
-        /// <param name="collaborative">Optional. If true the playlist will be collaborative. Note that to create a collaborative playlist you must also set public to false.</param>
         /// <param name="description">Optional. Value for playlist description as displayed in Spotify Clients and in the Web API.</param>
         /// <returns>The created <see cref="FullPlaylist"/>.</returns>
         /// <remarks>
         /// Note: that the playlist will be empty until you add tracks.
         /// Note: To be able to create private playlists, the user must have granted the <see cref="Scopes.PlaylistModifyPrivate"/> scope.
-        /// Note: To create collaborative playlists you must have granted <see cref="Scopes.PlaylistModifyPrivate"/> and <see cref="Scopes.PlaylistModifyPublic"/> scopes.
         /// </remarks>
         Task<FullPlaylist> CreatePlaylist(
-            SpotifyUri user, string name, bool @public = true, bool collaborative = false, string description = "");
+            SpotifyUri user, string name, bool @public = true, string description = "");
 
         /// <summary>
         /// Add one or more tracks to a user’s playlist.
