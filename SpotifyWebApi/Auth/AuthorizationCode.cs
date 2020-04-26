@@ -55,7 +55,7 @@ namespace SpotifyWebApi.Auth
 
             using var httpClient = new HttpClient();
 
-            var response = await httpClient.PostAsync(
+            using var response = await httpClient.PostAsync(
                 "https://accounts.spotify.com/api/token",
                 new FormUrlEncodedContent(new[]
                 {
@@ -100,7 +100,7 @@ namespace SpotifyWebApi.Auth
                 "Authorization",
                 "Basic " + ApiHelper.Base64Encode($"{parameters.ClientId}:{parameters.ClientSecret}"));
 
-            var response = await httpClient.PostAsync("https://accounts.spotify.com/api/token", requestContent);
+            using var response = await httpClient.PostAsync("https://accounts.spotify.com/api/token", requestContent);
 
             var responseContent = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
@@ -146,7 +146,7 @@ namespace SpotifyWebApi.Auth
                 stream.Write(data, 0, data.Length);
             }
 
-            var response = (HttpWebResponse)req.GetResponse();
+            using var response = (HttpWebResponse)req.GetResponse();
 
             // Get the stream containing content returned by the server.
             var dataStream = response.GetResponseStream();
@@ -200,7 +200,7 @@ namespace SpotifyWebApi.Auth
                 stream.Write(data, 0, data.Length);
             }
 
-            var response = (HttpWebResponse)req.GetResponse();
+            using var response = (HttpWebResponse)req.GetResponse();
 
             // Get the stream containing content returned by the server.
             var dataStream = response.GetResponseStream();

@@ -24,15 +24,13 @@ namespace SpotifyWebApi.Business
         /// <returns>The response of the HTTP GET.</returns>
         public static async Task<WebResponse> GetAsync<T>(Uri uri, Token token)
         {
-            using (var client = MakeHttpClient(token))
-            {
-                var response = await client.GetAsync(uri);
-                var responseString = await response.Content.ReadAsStringAsync();
+            using var client = MakeHttpClient(token);
+            using var response = await client.GetAsync(uri);
+            var responseString = await response.Content.ReadAsStringAsync();
 
-                Validation.ValidateResponseCode(response.StatusCode, responseString);
+            Validation.ValidateResponseCode(response.StatusCode, responseString);
 
-                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
-            }
+            return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
         }
 
         /// <summary>
@@ -45,17 +43,15 @@ namespace SpotifyWebApi.Business
         /// <returns>The response of the HTTP POST.</returns>
         public static async Task<WebResponse> PostAsync<T>(Uri uri, object body, Token token = null)
         {
-            using (var client = MakeHttpClient(token))
-            {
-                var content = new StringContent(SerializeObject(body), Encoding.UTF8, "application/json");
+            using var client = MakeHttpClient(token);
+            using var content = new StringContent(SerializeObject(body), Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync(uri, content);
-                var responseString = await response.Content.ReadAsStringAsync();
+            using var response = await client.PostAsync(uri, content);
+            var responseString = await response.Content.ReadAsStringAsync();
 
-                Validation.ValidateResponseCode(response.StatusCode, responseString);
+            Validation.ValidateResponseCode(response.StatusCode, responseString);
 
-                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
-            }
+            return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
         }
 
         /// <summary>
@@ -68,17 +64,15 @@ namespace SpotifyWebApi.Business
         /// <returns>The response of the HTTP PUT.</returns>
         public static async Task<WebResponse> PutAsync<T>(Uri uri, object body, Token token = null)
         {
-            using (var client = MakeHttpClient(token))
-            {
-                var content = new StringContent(SerializeObject(body), Encoding.UTF8, "application/json");
+            using var client = MakeHttpClient(token);
+            using var content = new StringContent(SerializeObject(body), Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync(uri, content);
-                var responseString = await response.Content.ReadAsStringAsync();
+            using var response = await client.PutAsync(uri, content);
+            var responseString = await response.Content.ReadAsStringAsync();
 
-                Validation.ValidateResponseCode(response.StatusCode, responseString);
+            Validation.ValidateResponseCode(response.StatusCode, responseString);
 
-                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
-            }
+            return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
         }
 
         /// <summary>
@@ -90,15 +84,13 @@ namespace SpotifyWebApi.Business
         /// <returns>The response of the HTTP DELETE.</returns>
         public static async Task<WebResponse> DeleteAsync<T>(Uri uri, Token token = null)
         {
-            using (var client = MakeHttpClient(token))
-            {
-                var response = await client.DeleteAsync(uri);
-                var responseString = await response.Content.ReadAsStringAsync();
+            using var client = MakeHttpClient(token);
+            using var response = await client.DeleteAsync(uri);
+            var responseString = await response.Content.ReadAsStringAsync();
 
-                Validation.ValidateResponseCode(response.StatusCode, responseString);
+            Validation.ValidateResponseCode(response.StatusCode, responseString);
 
-                return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
-            }
+            return WebResponse.Make(DeserializeObject<T>(responseString), response.StatusCode);
         }
 
         /// <summary>
@@ -108,9 +100,8 @@ namespace SpotifyWebApi.Business
         /// <returns>A newly created <see cref="HttpClient"/> containing the authentication provided by the token.</returns>
         private static HttpClient MakeHttpClient(Token token = null)
         {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Add(
-                MediaTypeWithQualityHeaderValue.Parse("application/x-www-form-urlencoded"));
+            using var client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/x-www-form-urlencoded"));
 
             if (token != null)
                 client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(token.ToHeaderString());
