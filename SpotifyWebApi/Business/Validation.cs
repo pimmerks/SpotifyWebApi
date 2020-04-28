@@ -69,29 +69,18 @@
         /// <param name="response">The response of the http request.</param>
         public static void ValidateResponseCode(HttpStatusCode statusCode, string response)
         {
-            switch (statusCode)
+            throw statusCode switch
             {
-                case HttpStatusCode.BadRequest:
-                    throw new BadRequestException(response);
-                case HttpStatusCode.Unauthorized:
-                    throw new UnauthorizedAccessException(response);
-                case HttpStatusCode.Forbidden:
-                    throw new ForbiddenException(response);
-                case HttpStatusCode.NotFound:
-                    throw new NotFoundException(response);
-                case HttpStatusCode.InternalServerError:
-                    throw new InternalServerErrorException(response);
-                case HttpStatusCode.BadGateway:
-                    throw new BadGatewayException(response);
-                case HttpStatusCode.ServiceUnavailable:
-                    throw new ServiceUnavailableException(response);
-            }
-
-            // This status code is not in the HttpStatusCode Enum
-            if ((int)statusCode == 429)
-            {
-                throw new TooManyRequestsException(response);
-            }
+                HttpStatusCode.BadRequest => new BadRequestException(response),
+                HttpStatusCode.Unauthorized => new UnauthorizedAccessException(response),
+                HttpStatusCode.Forbidden => new ForbiddenException(response),
+                HttpStatusCode.NotFound => new NotFoundException(response),
+                HttpStatusCode.InternalServerError => new InternalServerErrorException(response),
+                HttpStatusCode.BadGateway => new BadGatewayException(response),
+                HttpStatusCode.ServiceUnavailable => new ServiceUnavailableException(response),
+                HttpStatusCode.TooManyRequests => new TooManyRequestsException(response),
+                _ => new Exception(response) // Default
+            };
         }
     }
 }

@@ -6,6 +6,7 @@ namespace SpotifyWebApi.Auth
     using System.IO;
     using System.Linq;
     using System.Net;
+    using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
     using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace SpotifyWebApi.Auth
         /// </summary>
         /// <param name="parameters">The <see cref="AuthParameters"/> used for this token.</param>
         /// <returns>A valid <see cref="Token"/>.</returns>
+        [Obsolete("Please use the new async method. This method will get removed.")]
         public static Token GetToken(AuthParameters parameters)
         {
             var req = ApiHelper.CreateRequest(new Uri("https://accounts.spotify.com/api/token"));
@@ -60,6 +62,41 @@ namespace SpotifyWebApi.Auth
             var json = reader.ReadToEnd();
 
             var token = JsonConvert.DeserializeObject<Token>(json);
+            token.CanAccessPersonalData = false;
+            token.AuthenticationType = TokenAuthenticationType.ClientCredentials;
+
+            return token;
+        }
+
+        /// <summary>
+        /// Retrieves a valid token from the Spotify web api using the Client Credentials flow.
+        /// </summary>
+        /// <param name="parameters">The <see cref="AuthParameters"/> used for this token.</param>
+        /// <returns>A valid <see cref="Token"/>.</returns>
+        public static async Task<Token> GetTokenAsync(AuthParameters parameters)
+        {
+            using var httpClient = new HttpClient();
+
+            var requestContent = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("grant_type", "client_credentials"),
+            });
+
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation(
+                "Authorization",
+                "Basic " + ApiHelper.Base64Encode($"{parameters.ClientId}:{parameters.ClientSecret}"));
+
+            using var response = await httpClient.PostAsync(
+                "https://accounts.spotify.com/api/token", requestContent);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(responseContent);
+            }
+
+            var token = JsonConvert.DeserializeObject<Token>(responseContent);
             token.CanAccessPersonalData = false;
             token.AuthenticationType = TokenAuthenticationType.ClientCredentials;
 

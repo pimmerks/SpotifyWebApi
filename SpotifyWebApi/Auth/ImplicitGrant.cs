@@ -1,7 +1,3 @@
-// <copyright file="ImplicitGrant.cs" company="companyPlaceholder">
-// Copyright (c) companyPlaceholder. All rights reserved.
-// </copyright>
-
 namespace SpotifyWebApi.Auth
 {
     using System;
@@ -38,8 +34,8 @@ namespace SpotifyWebApi.Auth
         /// <summary>
         /// Creates a token from the callback url.
         /// </summary>
-        /// <param name="accessToken">The accesstoken.</param>
-        /// <param name="tokenType">The tokentype.</param>
+        /// <param name="accessToken">The access token.</param>
+        /// <param name="tokenType">The token type.</param>
         /// <param name="expiresIn">The expires in.</param>
         /// <returns>A valid <see cref="Token"/>.</returns>
         public static Token Callback(string accessToken, string tokenType, int expiresIn)

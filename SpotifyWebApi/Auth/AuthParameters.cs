@@ -1,7 +1,5 @@
 namespace SpotifyWebApi.Auth
 {
-    using Model.Enum;
-
     /// <summary>
     /// The <see cref="AuthParameters"/>.
     /// </summary>
@@ -24,7 +22,7 @@ namespace SpotifyWebApi.Auth
         public string RedirectUri { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating wheter to show the login screen every time the user is requested to login.
+        /// Gets or sets a value indicating whether to show the login screen every time the user is requested to login.
         /// </summary>
         public bool ShowDialog { get; set; }
 

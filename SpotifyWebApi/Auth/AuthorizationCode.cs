@@ -26,7 +26,7 @@ namespace SpotifyWebApi.Auth
         /// </summary>
         /// <param name="parameters">The <see cref="AuthParameters"/> to use while creating the url.</param>
         /// <param name="state">The state to use while creating the url.
-        /// For more info see 'https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow'</param>
+        /// For more info see https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow</param>
         /// <returns>The url that the user can use to authenticate this application.</returns>
         public static string GetUrl(AuthParameters parameters, string state)
         {
@@ -72,7 +72,9 @@ namespace SpotifyWebApi.Auth
                 throw new Exception(responseContent);
             }
 
-            return JsonConvert.DeserializeObject<Token>(responseContent);
+            var result = JsonConvert.DeserializeObject<Token>(responseContent);
+            result.AuthenticationType = TokenAuthenticationType.AuthorizationCode;
+            return result;
         }
 
         /// <summary>
@@ -108,7 +110,10 @@ namespace SpotifyWebApi.Auth
                 throw new Exception(responseContent);
             }
 
-            return JsonConvert.DeserializeObject<Token>(responseContent);
+            var newToken = JsonConvert.DeserializeObject<Token>(responseContent);
+            newToken.RefreshToken = oldToken.RefreshToken;
+            newToken.AuthenticationType = TokenAuthenticationType.AuthorizationCode;
+            return newToken;
         }
 
         /// <summary>
@@ -118,6 +123,7 @@ namespace SpotifyWebApi.Auth
         /// <param name="code">The retrieved code.</param>
         /// <param name="error">The retrieved error.</param>
         /// <returns>The new token.</returns>
+        [Obsolete("Please use the new async method. This method will get removed.")]
         public static Token ProcessCallback(AuthParameters parameters, string code, string error = "")
         {
             var req = ApiHelper.CreateRequest(new Uri("https://accounts.spotify.com/api/token"));
@@ -168,6 +174,7 @@ namespace SpotifyWebApi.Auth
         /// <param name="parameters">The authentication parameters.</param>
         /// <param name="oldToken">The old token.</param>
         /// <returns>A new refreshed token.</returns>
+        [Obsolete("Please use the new async method. This method will get removed.")]
         public static Token RefreshToken(AuthParameters parameters, Token oldToken)
         {
             if (string.IsNullOrEmpty(oldToken.RefreshToken))
