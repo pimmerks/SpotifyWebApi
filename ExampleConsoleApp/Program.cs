@@ -14,30 +14,18 @@
 
     public class Program
     {
-        private string clientSecret;
-        private string clientId;
-        private string redirectUri;
-        private AuthParameters parameters;
+        private readonly IConfiguration configuration;
+        private readonly SpotifyAuthentication spotifyAuthentication;
 
-        public Program(IConfiguration configuration)
+        public Program(IConfiguration configuration, SpotifyAuthentication spotifyAuthentication)
         {
-            this.clientId = configuration["Spotify:ClientId"];
-            this.clientSecret = configuration["Spotify:ClientSecret"];
-            this.redirectUri = configuration["Spotify:RedirectUri"];
-            
-            parameters = new AuthParameters
-            {
-                ClientId = this.clientId,
-                ClientSecret = this.clientSecret,
-                RedirectUri = this.redirectUri,
-                Scopes = Scopes.All,
-                ShowDialog = true
-            };
+            this.configuration = configuration;
+            this.spotifyAuthentication = spotifyAuthentication;
         }
 
         public async Task Run()
         {
-            var token = await this.GetToken();
+            var token = await this.spotifyAuthentication.GetToken();
 
             Console.Clear();
             Console.WriteLine("Successfully logged in!");
@@ -50,12 +38,8 @@
             
             var playlists = await api.Playlist.GetMyPlaylists();
             Console.WriteLine("Your playlists:");
-            foreach (var simplePlaylist in playlists)
-            {
-                Console.Write($"{simplePlaylist.Name}, ");
-            }
+            Console.WriteLine(string.Join(", ", playlists.Select(x => x.Name)));
 
-            Console.WriteLine();
             Console.WriteLine();
 
             var devices = await api.Player.GetAvailableDevices();
@@ -65,71 +49,18 @@
                 Console.Write($"{device.Name}, ");
             }
             
-            Console.WriteLine("Refreshing token...");
-            var newToken = await AuthorizationCode.RefreshTokenAsync(this.parameters, token);
-            Console.WriteLine($"old: {token.AccessToken}");
-            Console.WriteLine($"new: {newToken.AccessToken}");
-
-            api.SetToken(newToken);
-            
-            me = await api.UserProfile.GetMe();
-            
-            Console.WriteLine($"Hello {me.DisplayName}");
+            // Console.WriteLine("Refreshing token...");
+            // var newToken = await AuthorizationCode.RefreshTokenAsync(this.parameters, token);
+            // Console.WriteLine($"old: {token.AccessToken}");
+            // Console.WriteLine($"new: {newToken.AccessToken}");
+            //
+            // api.SetToken(newToken);
+            //
+            // me = await api.UserProfile.GetMe();
+            //
+            // Console.WriteLine($"Hello {me.DisplayName}");
 
             Console.ReadLine();
-        }
-
-        public async Task<Token> GetToken()
-        {
-            var state = Guid.NewGuid().ToString(); // Save this state because you must check it later
-
-            
-
-            var url = AuthorizationCode.GetUrl(this.parameters, state);
-            
-            Console.WriteLine("Opening url...");
-            Console.WriteLine(url);
-            
-            var ps = new ProcessStartInfo(url)
-            { 
-                UseShellExecute = true, 
-                Verb = "open" 
-            };
-            Process.Start(ps);
-            
-            var queryString = await this.StartServerAndRetrieveAuthCode();
-
-            // The retrieved callback:
-            var retrievedState = queryString["state"];
-            var retrievedCode = queryString["code"];
-            var retrievedError = queryString["error"];
-
-            if (retrievedError != null)
-            {
-                throw new Exception(retrievedError);
-            }
-
-            if (state != retrievedState)
-            {
-                throw new Exception("State did not match!");
-            }
-
-            var token = await AuthorizationCode.ProcessCallbackAsync(this.parameters, retrievedCode);
-
-            return token;
-        }
-
-        public async Task<NameValueCollection> StartServerAndRetrieveAuthCode(string url = "http://localhost:8080/")
-        {
-            var listener = new HttpListener();
-            listener.Prefixes.Add("http://localhost:8080/");
-            listener.Start();
-
-            var context = await listener.GetContextAsync();
-
-            listener.Stop();
-
-            return context.Request.QueryString;
         }
     }
 }
