@@ -100,7 +100,7 @@ namespace SpotifyWebApi.Business
         /// <returns>A newly created <see cref="HttpClient"/> containing the authentication provided by the token.</returns>
         private static HttpClient MakeHttpClient(Token token = null)
         {
-            using var client = new HttpClient();
+            var client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/x-www-form-urlencoded"));
 
             if (token != null)
