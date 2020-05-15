@@ -1,16 +1,11 @@
 ﻿namespace ExampleConsoleApp
 {
     using System;
-    using System.Collections.Specialized;
-    using System.Diagnostics;
     using System.Linq;
-    using System.Net;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Configuration;
     using SpotifyWebApi;
-    using SpotifyWebApi.Auth;
-    using SpotifyWebApi.Model.Auth;
-    using SpotifyWebApi.Model.Enum;
+    using SpotifyWebApi.Model.Uri;
 
     public class Program
     {
@@ -30,7 +25,6 @@
             Console.Clear();
             Console.WriteLine("Successfully logged in!");
 
-            // Use the api with access to personal data.
             var api = new SpotifyWebApi(token);
             var me = await api.UserProfile.GetMe();
             
@@ -44,11 +38,13 @@
 
             var devices = await api.Player.GetAvailableDevices();
             Console.WriteLine("Your devices:");
-            foreach (var device in devices)
-            {
-                Console.Write($"{device.Name}, ");
-            }
-            
+            Console.WriteLine(string.Join(", ", devices.Select(x => x.Name)));
+
+            var tracks = await api.Playlist.GetPlaylistTracks(playlists.First().Uri);
+            Console.WriteLine($"Tracks in playlist {playlists.First().Name}:");
+            Console.WriteLine(string.Join(", ", tracks.Select(x => x.Track.Name)));
+
+
             // Console.WriteLine("Refreshing token...");
             // var newToken = await AuthorizationCode.RefreshTokenAsync(this.parameters, token);
             // Console.WriteLine($"old: {token.AccessToken}");

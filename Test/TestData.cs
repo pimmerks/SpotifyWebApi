@@ -46,12 +46,13 @@ namespace SpotifyWebApiTest
 
         private Token GetClientCredentialsToken(string clientId, string clientSecret)
         {
-            return ClientCredentials.GetToken(new AuthParameters
-            {
-                ClientId = clientId,
-                ClientSecret = clientSecret,
-                Scopes = Scopes.All
-            });
+            return null;
+            // return ClientCredentials.GetToken(new AuthParameters
+            // {
+            //     ClientId = clientId,
+            //     ClientSecret = clientSecret,
+            //     Scopes = Scopes.All
+            // });
         }
 
         private Token GetImplicitGrantToken(string clientId)

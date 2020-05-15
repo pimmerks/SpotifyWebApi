@@ -20,7 +20,7 @@
         /// Default: 0 (the first object).
         /// Maximum offset: 100.000. Use with limit to get the next set of playlists.</param>
         /// <returns>A list of <see cref="SimplePlaylist"/>s.</returns>
-        Task<IList<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults = -1, int offset = 0);
+        Task<Paging<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults = -1, int offset = 0);
 
         /// <summary>
         /// Get a list of the playlists owned or followed by the current Spotify user.
@@ -30,7 +30,7 @@
         /// Default: 0 (the first object).
         /// Maximum offset: 100.000. Use with limit to get the next set of playlists.</param>
         /// <returns>A list of <see cref="SimplePlaylist"/>s.</returns>
-        Task<IList<SimplePlaylist>> GetMyPlaylists(int maxResults = -1, int offset = 0);
+        Task<Paging<SimplePlaylist>> GetMyPlaylists(int maxResults = -1, int offset = 0);
 
         /// <summary>
         /// Get a playlist owned by a Spotify user.
@@ -44,12 +44,16 @@
         /// Get full details of the tracks of a playlist owned by a Spotify user.
         /// </summary>
         /// <param name="playlistUri">The <see cref="SpotifyUri"/> for the playlist.</param>
-        /// <param name="maxResults">Optional. The maximum results to return, or -1 to retrieve all items.</param>
-        /// <param name="offset">Optional. The index of the first track to return. Default: 0 (the first object).</param>
+        /// <param name="limit">Optional. The maximum results to return. Default: 100</param>
+        /// <param name="offset">Optional. The index of the first page to return. Default: 0 (the first object).</param>
         /// <param name="market">Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
-        /// <returns>A list of <see cref="PlaylistTrack"/> objects.</returns>
-        Task<IList<PlaylistTrack>> GetPlaylistTracks(
-            SpotifyUri playlistUri, int maxResults = -1, int offset = 0, string market = null);
+        /// <param name="fields">Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned.
+        /// For more info, please read: https://developer.spotify.com/documentation/web-api/reference/playlists/get-playlists-tracks/</param>
+        /// <param name="additionalTypes">Optional. A comma-separated list of item types that your client supports besides the default <c>track</c> type.
+        /// Valid types are: <c>track</c> and <c>episode</c>.</param>
+        /// <returns>A page of <see cref="PlaylistTrack"/> objects.</returns>
+        Task<Paging<PlaylistTrack>> GetPlaylistTracks(
+            SpotifyUri playlistUri, int limit = 100, int offset = 0, string market = null, string fields = null, string additionalTypes = null);
 
         /// <summary>
         /// Create a playlist for a Spotify user.

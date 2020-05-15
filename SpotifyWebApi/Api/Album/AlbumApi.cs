@@ -2,6 +2,7 @@ namespace SpotifyWebApi.Api.Album
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using Business;
     using Model;
@@ -25,53 +26,28 @@ namespace SpotifyWebApi.Api.Album
         }
 
         /// <inheritdoc />
-        public async Task<FullAlbum> GetAlbum(SpotifyUri albumUri, string market)
+        public async Task<FullAlbum> GetAlbum(SpotifyUri albumUri, string? market)
         {
-            var r = await ApiClient.GetAsync<FullAlbum>(
-                        MakeUri(
-                            $"albums/{albumUri.Id}",
-                            ("market", market)),
-                        this.Token);
-
-            if (r.Response is FullAlbum album)
-            {
-                return album;
-            }
-            return new FullAlbum();
+            return await this.GetAsync<FullAlbum>($"albums/{albumUri.Id}");
         }
 
         /// <inheritdoc />
-        public async Task<IList<FullAlbum>> GetAlbums(IList<SpotifyUri> albumUris, string market)
+        public async Task<IList<FullAlbum>> GetAlbums(IList<SpotifyUri> albumUris, string? market)
         {
-            // Because we support more then 50 albums uris as input.
-            // but the spotify api only supports a maximum of 50,
-            // lets fix that by creating multiple lists of 50.
-            var lists = albumUris.ChunkBy(50);
+            Validation.ValidateList(albumUris, nameof(albumUris), max: 50);
 
-            var res = new List<FullAlbum>();
+            var albumIds = string.Join(",", albumUris.Select(x => x.Id).ToArray());
 
-            foreach (var l in lists)
-            {
-                var s = string.Join(",", l.Select(x => x.Id).ToArray());
+            this.AddQueryParameters(
+                "albums",
+                new KeyValuePair<string, string>("ids", albumIds),
+                new KeyValuePair<string, string>("market", market));
 
-                var r = await ApiClient.GetAsync<MultipleAlbums>(
-                        MakeUri(
-                            $"albums",
-                            ("ids", s),
-                            ("market", market)),
-                        this.Token);
-
-                if (r.Response is MultipleAlbums albums)
-                {
-                    res.AddRange(albums.Albums);
-                }
-            }
-
-            return res;
+            return (await this.GetAsync<MultipleAlbums>("albums?ids=")).Albums;
         }
 
         /// <inheritdoc />
-        public async Task<IList<SimpleTrack>> GetAlbumTracks(SpotifyUri albumUri, string market)
+        public async Task<IList<SimpleTrack>> GetAlbumTracks(SpotifyUri albumUri, string? market)
         {
             var r = await ApiClient.GetAsync<Paging<SimpleTrack>>(
                         MakeUri(

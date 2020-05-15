@@ -23,20 +23,16 @@ namespace SpotifyWebApi.Api.Playlist
         }
 
         /// <inheritdoc />
-        public async Task<IList<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults, int offset = 0)
+        public async Task<Paging<SimplePlaylist>> GetUsersPlaylist(SpotifyUri user, int maxResults, int offset = 0)
         {
             var r = await ApiClient.GetAsync<Paging<SimplePlaylist>>(
                         MakeUri($"users/{user.Id}/playlists?limit=50&offset={offset}"), this.Token);
 
-            if (r.Response is Paging<SimplePlaylist> res)
-            {
-                return await res.LoadToList(this.Token, maxResults);
-            }
             return new List<SimplePlaylist>();
         }
 
         /// <inheritdoc />
-        public async Task<IList<SimplePlaylist>> GetMyPlaylists(int maxResults, int offset = 0)
+        public async Task<Paging<SimplePlaylist>> GetMyPlaylists(int maxResults, int offset = 0)
         {
             var r = await ApiClient.GetAsync<Paging<SimplePlaylist>>(
                         MakeUri($"me/playlists?limit=50&offset={offset}"), this.Token);
@@ -66,20 +62,18 @@ namespace SpotifyWebApi.Api.Playlist
         }
 
         /// <inheritdoc />
-        public async Task<IList<PlaylistTrack>> GetPlaylistTracks(
-            SpotifyUri playlistUri, int maxResults, int offset, string market)
+        public async Task<Paging<PlaylistTrack>> GetPlaylistTracks(
+            SpotifyUri playlistUri, int limit = 100, int offset = 0, string market = null, string fields = null, string additionalTypes = null)
         {
             var r = await ApiClient.GetAsync<Paging<PlaylistTrack>>(
                         MakeUri(
-                            $"playlists/{playlistUri.Id}/tracks?limit=100&offset={offset}",
+                            $"playlists/{playlistUri.Id}/tracks?limit={limit}&offset={offset}",
+                            ("fields", fields),
+                            ("additional_types", additionalTypes),
                             ("market", market)),
                         this.Token);
 
-            if (r.Response is Paging<PlaylistTrack> res)
-            {
-                return await res.LoadToList(this.Token, maxResults);
-            }
-            return new List<PlaylistTrack>();
+            return r.Response as Paging<PlaylistTrack>;
         }
 
         /// <inheritdoc />

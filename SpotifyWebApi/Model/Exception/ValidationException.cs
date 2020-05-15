@@ -9,14 +9,14 @@ namespace SpotifyWebApi.Model.Exception
     /// <summary>
     /// The <see cref="ValidationException"/>.
     /// </summary>
-    public class ValidationException : Exception
+    public class ValidationException : ArgumentException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationException"/> class.
         /// </summary>
         /// <param name="message">The validation message.</param>
-        public ValidationException(string message)
-            : base(message)
+        public ValidationException(string message, string paramName)
+            : base(message, paramName)
         {
         }
     }

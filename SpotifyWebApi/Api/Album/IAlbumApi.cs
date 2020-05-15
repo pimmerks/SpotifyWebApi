@@ -16,7 +16,7 @@
         /// <param name="albumUri">The <see cref="SpotifyUri"/> for the album</param>
         /// <param name="market">Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
         /// <returns>The retrieved <see cref="FullAlbum"/>.</returns>
-        Task<FullAlbum> GetAlbum(SpotifyUri albumUri, string market = "");
+        Task<FullAlbum> GetAlbum(SpotifyUri albumUri, string? market = null);
 
         /// <summary>
         /// Get Spotify catalog information for multiple albums identified by their Spotify URIs.
@@ -24,7 +24,7 @@
         /// <param name="albumUris">A list of the Spotify URIs for the albums. Maximum: 20 IDs.</param>
         /// <param name="market">Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
         /// <returns>The retrieved <see cref="FullAlbum"/>s.</returns>
-        Task<IList<FullAlbum>> GetAlbums(IList<SpotifyUri> albumUris, string market = "");
+        Task<IList<FullAlbum>> GetAlbums(IList<SpotifyUri> albumUris, string? market = null);
 
         /// <summary>
         /// Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
@@ -32,6 +32,6 @@
         /// <param name="albumUri">The <see cref="SpotifyUri"/> for the album</param>
         /// <param name="market">Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
         /// <returns>The retrieved tracks.</returns>
-        Task<IList<SimpleTrack>> GetAlbumTracks(SpotifyUri albumUri, string market = "");
+        Task<IList<SimpleTrack>> GetAlbumTracks(SpotifyUri albumUri, string? market = null);
     }
 }
