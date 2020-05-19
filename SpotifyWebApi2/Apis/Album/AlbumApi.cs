@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Business;
     using Model.Authentication;
+    using Model.Objects.Albums;
 
     public class AlbumApi : IAlbumApi
     {
@@ -17,13 +18,13 @@
             this.httpClient = httpClient;
         }
 
-        public async Task<string> GetAlbumAsync(string id, string? market = null)
+        public async Task<Album> GetAlbumAsync(string id, string? market = null)
         {
             var uri = UriHelper.FromUri($"albums/{id}")
                                .AddParameter("market", market)
                                .Uri;
 
-            return await this.httpClient.GetAsync<string>(uri);
+            return await this.httpClient.GetAsync<Album>(uri);
         }
     }
 }

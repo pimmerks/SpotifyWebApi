@@ -8,18 +8,18 @@ namespace Spotify.WebApi.Model.Objects
         /// International Article Number
         /// </summary>
         [JsonPropertyName("ean")]
-        public string Ean { get; private set; }
+        public string Ean { get; set; }
 
         /// <summary>
         /// International Standard Recording Code
         /// </summary>
         [JsonPropertyName("isrc")]
-        public string Isrc { get; private set; }
+        public string Isrc { get; set; }
 
         /// <summary>
         /// Universal Product Code
         /// </summary>
         [JsonPropertyName("upc")]
-        public string Upc { get; private set; }
+        public string Upc { get; set; }
     }
 }

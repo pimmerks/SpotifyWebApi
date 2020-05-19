@@ -94,15 +94,6 @@
             };
         }
 
-        /// <summary>
-        /// Creates a header string from this instance.
-        /// </summary>
-        /// <returns>The web header string.</returns>
-        public string ToHeaderString()
-        {
-            return this.Type + " " + this.AccessToken;
-        }
-
         /// <inheritdoc />
         public override string ToString()
         {

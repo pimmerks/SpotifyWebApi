@@ -11,12 +11,12 @@ namespace Spotify.WebApi.Model.Objects.Tracks
         /// If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.
         /// </summary>
         [JsonPropertyName("added_at")]
-        public DateTime AddedAt { get; private set; }
+        public DateTime AddedAt { get; set; }
 
         /// <summary>
         /// Information about the track.
         /// </summary>
         [JsonPropertyName("track")]
-        public Track Track { get; private set; }
+        public Track Track { get; set; }
     }
 }

@@ -10,18 +10,18 @@ namespace Spotify.WebApi.Model.Objects.Playback
         /// The context the track was played from.
         /// </summary>
         [JsonPropertyName("context")]
-        public Context Context { get; private set; }
+        public Context Context { get; set; }
 
         /// <summary>
         /// The date and time the track was played.
         /// </summary>
         [JsonPropertyName("played_at")]
-        public DateTime PlayedAt { get; private set; }
+        public DateTime PlayedAt { get; set; }
 
         /// <summary>
         /// The track the user listened to.
         /// </summary>
         [JsonPropertyName("track")]
-        public SimpleTrack Track { get; private set; }
+        public SimpleTrack Track { get; set; }
     }
 }

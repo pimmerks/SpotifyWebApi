@@ -36,22 +36,22 @@
         /// <summary>
         /// Gets the domain.
         /// </summary>
-        public string Domain { get; private set; }
+        public string Domain { get; set; }
 
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets the identifier.
         /// </summary>
-        public string Id { get; private set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets the full URI.
         /// </summary>
-        public string FullUri { get; private set; }
+        public string FullUri { get; set; }
 
         #endregion Properties
         

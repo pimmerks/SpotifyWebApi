@@ -8,6 +8,6 @@ namespace Spotify.WebApi.Model.Objects
         /// The cursor to use as key to find the next page of items.
         /// </summary>
         [JsonPropertyName("after")]
-        public string After { get; private set; }
+        public string After { get; set; }
     }
 }
