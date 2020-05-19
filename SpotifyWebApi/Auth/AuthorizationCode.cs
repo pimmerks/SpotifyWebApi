@@ -4,15 +4,12 @@ namespace SpotifyWebApi.Auth
     using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.IO;
-    using System.Linq;
     using System.Net;
     using System.Net.Http;
-    using System.Net.Http.Headers;
     using System.Text;
     using System.Threading.Tasks;
     using Business;
     using Model.Auth;
-    using Model.Enum;
     using Model.Exception;
     using Newtonsoft.Json;
 
