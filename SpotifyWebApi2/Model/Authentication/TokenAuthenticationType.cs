@@ -18,6 +18,6 @@
         /// <summary>
         /// Token generated using Implicit Grant.
         /// </summary>
-        ImplicitGrant = 2
+        ImplicitGrant = 2,
     }
 }

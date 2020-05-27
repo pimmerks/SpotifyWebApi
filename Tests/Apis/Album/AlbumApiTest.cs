@@ -34,7 +34,7 @@
                 })
                 .Verifiable();
             
-            var albumApi = new AlbumApi(Token.Make(""), new HttpClient(handlerMock.Object));
+            var albumApi = new AlbumApi(Token.Make(""), new HttpClient(handlerMock.Object), new Serializer());
 
             // Act
             var album = await albumApi.GetAlbumAsync("0sNOF9WDwhWunNAHPD3Baj");

@@ -1,5 +1,6 @@
 namespace Spotify.WebApi.Model.Objects.Albums
 {
+    using System;
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
     using Artists;
@@ -89,7 +90,7 @@ namespace Spotify.WebApi.Model.Objects.Albums
         /// The date the album was first released, for example “1981-12-15”. Depending on the precision, it might be shown as “1981” or “1981-12”.
         /// </summary>
         [JsonPropertyName("release_date")]
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
         /// <summary>
         /// The precision with which release_date value is known: “year” , “month” , or “day”.
@@ -113,6 +114,6 @@ namespace Spotify.WebApi.Model.Objects.Albums
         /// The Spotify URI for the album.
         /// </summary>
         [JsonPropertyName("uri")]
-        public string Uri { get; set; }
+        public SpotifyUri Uri { get; set; }
     }
 }

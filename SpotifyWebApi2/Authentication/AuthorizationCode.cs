@@ -67,7 +67,7 @@ namespace Spotify.WebApi.Authentication
                 throw new Exception(responseContent);
             }
 
-            return Serializer.Deserialize<Token>(responseContent);
+            return new Serializer().Deserialize<Token>(responseContent);
         }
 
         // /// <summary>

@@ -2,19 +2,42 @@
 {
     using System.Text.Json;
 
-    internal static class Serializer
+    /// <summary>
+    /// Serializer for serializing JSON to any object.
+    /// </summary>
+    public class Serializer
     {
-        public static string Serialize<T>(T obj)
+        private JsonSerializerOptions options;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Serializer"/> class.
+        /// </summary>
+        public Serializer()
         {
-            return JsonSerializer.Serialize<T>(obj);
+            this.options = new JsonSerializerOptions();
+            this.options.Converters.Add(new SpotifyUriConverter());
         }
 
-        public static T Deserialize<T>(string json)
+        /// <summary>
+        /// Serializes an object to a json string.
+        /// </summary>
+        /// <param name="obj">The object to serialize.</param>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <returns>A json string.</returns>
+        public string Serialize<T>(T obj)
         {
-            return JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions
-            {
-                IgnoreNullValues = true
-            });
+            return JsonSerializer.Serialize<T>(obj, this.options);
+        }
+
+        /// <summary>
+        /// Deserializes a json string to an object.
+        /// </summary>
+        /// <param name="json">The json to deserialize.</param>
+        /// <typeparam name="T">The object type.</typeparam>
+        /// <returns>The newly created object.</returns>
+        public T Deserialize<T>(string json)
+        {
+            return JsonSerializer.Deserialize<T>(json, this.options);
         }
     }
 }

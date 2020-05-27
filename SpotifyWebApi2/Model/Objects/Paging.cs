@@ -9,7 +9,7 @@ namespace Spotify.WebApi.Model.Objects
         /// A link to the Web API endpoint returning the full result of the request
         /// </summary>
         [JsonPropertyName("href")]
-        public string Href { get; set; }
+        public string? Href { get; set; }
 
         /// <summary>
         /// The requested data.
@@ -27,7 +27,7 @@ namespace Spotify.WebApi.Model.Objects
         /// URL to the next page of items. ( null if none)
         /// </summary>
         [JsonPropertyName("next")]
-        public string Next { get; set; }
+        public string? Next { get; set; }
 
         /// <summary>
         /// The offset of the items returned (as set in the query or by default)
@@ -39,7 +39,7 @@ namespace Spotify.WebApi.Model.Objects
         /// URL to the previous page of items. ( null if none)
         /// </summary>
         [JsonPropertyName("previous")]
-        public string Previous { get; set; }
+        public string? Previous { get; set; }
 
         /// <summary>
         /// The total number of items available to return.

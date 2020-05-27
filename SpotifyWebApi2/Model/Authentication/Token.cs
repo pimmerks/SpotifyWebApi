@@ -77,7 +77,7 @@
             string tokenType = "Bearer",
             int expiresIn = 3600,
             DateTime? tokenGenerated = null,
-            string scopes = null,
+            string? scopes = null,
             bool canAccessPersonalData = true,
             TokenAuthenticationType authenticationType = TokenAuthenticationType.AuthorizationCode)
         {
@@ -90,7 +90,7 @@
                 TokenGenerated = tokenGenerated ?? DateTime.UtcNow,
                 Scopes = scopes,
                 CanAccessPersonalData = canAccessPersonalData,
-                AuthenticationType = authenticationType
+                AuthenticationType = authenticationType,
             };
         }
 

@@ -46,26 +46,13 @@
 
             Assert.Equal($"{ISpotifyWebApi.BaseUri}", uriBuilder.Uri.ToString());
         }
-        
+
         [Fact]
-        public void AddParameter_ThrowsWhenOverridingParam()
+        public void AddParameter_AddsCommaSeparatedValuesWithoutHtmlEncoding()
         {
             var uriBuilder = new UriBuilder(ISpotifyWebApi.BaseUri);
-
-            uriBuilder.AddParameter("test", "test");
-            Assert.Throws<BaseSpotifyException>(
-                () => uriBuilder.AddParameter("test", "test"));
-        }
-        
-        [Fact]
-        public void AddParameter_DoesNotThrowWithIgnoreOverride()
-        {
-            var uriBuilder = new UriBuilder(ISpotifyWebApi.BaseUri);
-
-            uriBuilder.AddParameter("test", "test");
-            uriBuilder.AddParameter("test", "override", true);
-            
-            Assert.Equal($"{ISpotifyWebApi.BaseUri}?test=override", uriBuilder.Uri.ToString());
+            uriBuilder.AddParameter("test", "1,2,3,4");
+            Assert.Equal($"{ISpotifyWebApi.BaseUri}?test=1,2,3,4", uriBuilder.Uri.ToString());
         }
     }
 }

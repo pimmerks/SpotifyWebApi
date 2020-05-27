@@ -5,9 +5,11 @@
         <AssemblyName>Spotify.WebApi</AssemblyName>
         <RootNamespace>Spotify.WebApi</RootNamespace>
         <Nullable>enable</Nullable>
+        <CodeAnalysisRuleSet>Project.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
       <PackageReference Include="System.Text.Json" Version="4.7.2" />
     </ItemGroup>
 

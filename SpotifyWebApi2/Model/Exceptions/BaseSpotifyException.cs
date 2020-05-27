@@ -11,7 +11,7 @@
             : base(message)
         {
         }
-        
+
         public BaseSpotifyException(string? message, Exception innerException)
             : base(message, innerException)
         {
