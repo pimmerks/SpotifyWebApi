@@ -89,5 +89,6 @@ var tracks = await spotify.Playlist.GetPlaylistTracks(id);
 ```
 
 ## TODO:
- - TODO: Add documentation  
- - TODO: Add api examples
+ - [ ] Add documentation  
+ - [ ] Add api examples
+ - [ ] Implement more endpoints
