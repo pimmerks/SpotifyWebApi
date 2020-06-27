@@ -2,6 +2,9 @@ namespace Spotify.WebApi.Model.Objects.Tracks
 {
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// Audio features class.
+    /// </summary>
     public class AudioFeatures
     {
         /// <summary>

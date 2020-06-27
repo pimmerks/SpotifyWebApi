@@ -3,6 +3,9 @@ namespace Spotify.WebApi.Model.Objects
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A category.
+    /// </summary>
     public class Category
     {
         /// <summary>

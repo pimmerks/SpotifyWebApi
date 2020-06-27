@@ -2,10 +2,13 @@ namespace Spotify.WebApi.Model.Objects.Playlists
 {
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
-    using Albums;
-    using Tracks;
-    using Users;
+    using Spotify.WebApi.Model.Objects.Albums;
+    using Spotify.WebApi.Model.Objects.Tracks;
+    using Spotify.WebApi.Model.Objects.Users;
 
+    /// <summary>
+    /// A playlist.
+    /// </summary>
     public class Playlist
     {
         /// <summary>

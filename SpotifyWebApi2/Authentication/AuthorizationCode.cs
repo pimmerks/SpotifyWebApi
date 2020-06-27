@@ -8,8 +8,8 @@ namespace Spotify.WebApi.Authentication
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
-    using Business;
-    using Model.Authentication;
+    using Spotify.WebApi.Business;
+    using Spotify.WebApi.Model.Authentication;
 
     /// <summary>
     /// The <see cref="AuthorizationCode"/>.

@@ -2,8 +2,11 @@ namespace Spotify.WebApi.Model.Objects.Users
 {
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
-    using Albums;
+    using Spotify.WebApi.Model.Objects.Albums;
 
+    /// <summary>
+    /// A private user.
+    /// </summary>
     public class PrivateUser
     {
         /// <summary>

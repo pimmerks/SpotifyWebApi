@@ -3,6 +3,9 @@ namespace Spotify.WebApi.Model.Objects.Albums
     using System;
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A saved album.
+    /// </summary>
     public class SavedAlbum
     {
         /// <summary>

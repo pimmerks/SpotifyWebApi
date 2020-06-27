@@ -1,10 +1,13 @@
-﻿﻿namespace Spotify.WebApi.Model
+﻿namespace Spotify.WebApi.Model
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Exceptions;
+    using Spotify.WebApi.Model.Exceptions;
 
+    /// <summary>
+    /// The Spotify Uri.
+    /// </summary>
     public class SpotifyUri
     {
         /// <summary>
@@ -23,39 +26,33 @@
             var split = uri.Split(':');
             if (split.Length != 3)
             {
-                throw new BaseSpotifyException($"Invalid uri {uri}");
+                throw new SpotifyUriException($"Invalid uri {uri}");
             }
 
             this.Domain = split[0];
             this.Type = split[1];
             this.Id = split[2];
         }
-        
-        #region Properties
 
         /// <summary>
-        /// Gets the domain.
+        /// Gets or sets the domain.
         /// </summary>
         public string Domain { get; set; }
 
         /// <summary>
-        /// Gets the type.
+        /// Gets or sets the type.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets the identifier.
+        /// Gets or sets the identifier.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets the full URI.
+        /// Gets or sets the full URI.
         /// </summary>
         public string FullUri { get; set; }
-
-        #endregion Properties
-        
-        #region Conversion
 
         /// <summary>
         /// Implicit operator to convert a string to a <see cref="SpotifyUri"/>.
@@ -75,10 +72,6 @@
             return uri.FullUri;
         }
 
-        #endregion Conversion
-        
-        #region Methods
-
         /// <summary>
         /// Creates a <see cref="SpotifyUri"/> from the given uri.
         /// </summary>
@@ -86,7 +79,11 @@
         /// <returns>A new instance of <see cref="SpotifyUri"/>.</returns>
         public static SpotifyUri Make(string uri)
         {
-            if (string.IsNullOrEmpty(uri)) throw new ArgumentException("Uri is null or empty.");
+            if (string.IsNullOrEmpty(uri))
+            {
+                throw new ArgumentException("Uri is null or empty.");
+            }
+
             return new SpotifyUri(uri);
         }
 
@@ -102,7 +99,5 @@
 
         /// <inheritdoc />
         public override string ToString() => this.FullUri;
-
-        #endregion Methods
     }
 }

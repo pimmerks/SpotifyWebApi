@@ -3,6 +3,9 @@
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// Internal class for wrapping the MultipleAlbums response.
+    /// </summary>
     internal class MultipleAlbums
     {
         [JsonPropertyName("albums")]

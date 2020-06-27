@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\SpotifyWebApi2\Project.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SpotifyWebApiTest.xml</DocumentationFile>
 
     <AssemblyName>SpotifyWebApi</AssemblyName>

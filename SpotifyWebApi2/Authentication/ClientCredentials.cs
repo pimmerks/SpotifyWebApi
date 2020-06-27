@@ -6,7 +6,7 @@ namespace Spotify.WebApi.Authentication
     using System.Net;
     using System.Text;
     using System.Threading.Tasks;
-    using Model.Authentication;
+    using Spotify.WebApi.Model.Authentication;
 
     /// <summary>
     /// The <see cref="ClientCredentials"/>.

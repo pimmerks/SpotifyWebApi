@@ -2,9 +2,12 @@ namespace Spotify.WebApi.Model.Objects.Tracks
 {
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
-    using Albums;
-    using Artists;
+    using Spotify.WebApi.Model.Objects.Albums;
+    using Spotify.WebApi.Model.Objects.Artists;
 
+    /// <summary>
+    /// A track.
+    /// </summary>
     public class Track : PlayableBase
     {
         /// <summary>
@@ -42,7 +45,7 @@ namespace Spotify.WebApi.Model.Objects.Tracks
         /// </summary>
         [JsonPropertyName("explicit")]
         public bool Explicit { get; set; }
-        
+
         /// <summary>
         /// Known external IDs for the track.
         /// </summary>

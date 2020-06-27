@@ -2,8 +2,11 @@ namespace Spotify.WebApi.Model.Objects.Playback
 {
     using System;
     using System.Text.Json.Serialization;
-    using Tracks;
+    using Spotify.WebApi.Model.Objects.Tracks;
 
+    /// <summary>
+    /// The play history.
+    /// </summary>
     public class PlayHistory
     {
         /// <summary>

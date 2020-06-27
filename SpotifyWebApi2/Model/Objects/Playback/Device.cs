@@ -2,6 +2,9 @@ namespace Spotify.WebApi.Model.Objects.Playback
 {
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A device.
+    /// </summary>
     public class Device
     {
         /// <summary>

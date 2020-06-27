@@ -3,8 +3,8 @@ namespace Spotify.WebApi.Tests
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using Model.Authentication;
-    using WebApi;
+    using Spotify.WebApi;
+    using Spotify.WebApi.Model.Authentication;
     using Xunit;
 
     public class UnitTest1
@@ -17,7 +17,7 @@ namespace Spotify.WebApi.Tests
             var s = new SpotifyWebApi(token, client);
 
             var album = await s.Album.GetAlbumAsync("4aawyAB9vmqN3uQ7FjRGTy");
-            var albums = await s.Album.GetAlbumsAsync(new List<string> {"4aawyAB9vmqN3uQ7FjRGTy", "4gaWk8Dxttn5CvKAN5kRYR"}, "ES");
+            var albums = await s.Album.GetAlbumsAsync(new List<string> { "4aawyAB9vmqN3uQ7FjRGTy", "4gaWk8Dxttn5CvKAN5kRYR" }, "ES");
             var tracks = await s.Album.GetAlbumsTrackAsync("4aawyAB9vmqN3uQ7FjRGTy", 0, 5);
         }
     }

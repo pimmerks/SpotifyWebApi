@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyWebApi", "SpotifyWebApi\SpotifyWebApi.csproj", "{CCD1CAF9-1E3E-42C7-8BBA-A9522C56942D}"
 EndProject
@@ -12,15 +12,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Folder", "Solution
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		README.md = README.md
-		Solution.ruleset = Solution.ruleset
 		SpotifyIcon.png = SpotifyIcon.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleConsoleApp", "ExampleConsoleApp\ExampleConsoleApp.csproj", "{2B3BE9FE-CAAC-4EFB-8EBB-2AEA23229592}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleConsoleApp", "ExampleConsoleApp\ExampleConsoleApp.csproj", "{2B3BE9FE-CAAC-4EFB-8EBB-2AEA23229592}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebApi2", "SpotifyWebApi2\SpotifyWebApi2.csproj", "{61B68A4A-8C7A-48F7-A719-3969BDD1BB24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyWebApi2", "SpotifyWebApi2\SpotifyWebApi2.csproj", "{61B68A4A-8C7A-48F7-A719-3969BDD1BB24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{AFC5C0EC-9B77-4AA5-B7B4-F3BEABE57548}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{AFC5C0EC-9B77-4AA5-B7B4-F3BEABE57548}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

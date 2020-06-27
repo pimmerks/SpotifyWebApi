@@ -2,9 +2,12 @@ namespace Spotify.WebApi.Model.Objects.Tracks
 {
     using System;
     using System.Text.Json.Serialization;
-    using Episodes;
-    using Users;
+    using Spotify.WebApi.Model.Objects.Episodes;
+    using Spotify.WebApi.Model.Objects.Users;
 
+    /// <summary>
+    /// A playlist track.
+    /// </summary>
     public class PlaylistTrack
     {
         /// <summary>

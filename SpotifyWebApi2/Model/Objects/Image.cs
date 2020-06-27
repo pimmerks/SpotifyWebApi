@@ -2,6 +2,9 @@
 {
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// An image.
+    /// </summary>
     public class Image
     {
         [JsonPropertyName("height")]

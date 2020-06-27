@@ -2,6 +2,9 @@ namespace Spotify.WebApi.Model.Objects.Episodes
 {
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A resume point.
+    /// </summary>
     public class ResumePoint
     {
         /// <summary>

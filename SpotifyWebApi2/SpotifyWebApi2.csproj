@@ -4,8 +4,13 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <AssemblyName>Spotify.WebApi</AssemblyName>
         <RootNamespace>Spotify.WebApi</RootNamespace>
-        <Nullable>enable</Nullable>
+        <Nullable>annotations</Nullable>
         <CodeAnalysisRuleSet>Project.ruleset</CodeAnalysisRuleSet>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SpotifyWebApiTest.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>D:\Git\SpotifyWebApi\SpotifyWebApi2\Spotify.WebApi.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>

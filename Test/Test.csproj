@@ -5,7 +5,7 @@
     <IsPackable>false</IsPackable>
     <AssemblyName>SpotifyWebApiTest</AssemblyName>
     <RootNamespace>SpotifyWebApiTest</RootNamespace>
-    <CodeAnalysisRuleSet>..\Solution.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\SpotifyWebApi2\Project.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Debug\$(TargetFramework)\SpotifyWebApiTest.xml</DocumentationFile>
   </PropertyGroup>
 

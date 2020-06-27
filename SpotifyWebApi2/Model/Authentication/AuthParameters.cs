@@ -1,12 +1,19 @@
 namespace Spotify.WebApi.Model.Authentication
 {
-    using WebApi.Authentication;
+    using Spotify.WebApi.Authentication;
 
     /// <summary>
     /// Authentication parameters for authenticating with the Spotify web api.
     /// </summary>
     public class AuthParameters
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthParameters"/> class.
+        /// </summary>
+        /// <param name="clientId">The client id.</param>
+        /// <param name="clientSecret">The client secret.</param>
+        /// <param name="redirectUri">The redirect uri.</param>
+        /// <param name="scopes">The authentication scopes.</param>
         public AuthParameters(string clientId, string clientSecret, string redirectUri, string scopes)
         {
             this.ClientId = clientId;

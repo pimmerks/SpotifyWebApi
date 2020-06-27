@@ -28,6 +28,5 @@
     <Rule Id="SA1638" Action="None" />
     <Rule Id="SA1640" Action="None" />
     <Rule Id="SA1641" Action="None" />
-    <Rule Id="SA1623" Action="None" />
   </Rules>
 </RuleSet>

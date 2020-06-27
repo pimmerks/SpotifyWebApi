@@ -1,33 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Spotify Web Api Ruleset" Description="Contains the default rules used for this solution." ToolsVersion="15.0">
-    <Include Path="minimumrecommendedrules.ruleset" Action="Default" />
-<!--    <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">-->
-<!--        <Rule Id="IDE0003" Action="None" />-->
-<!--        <Rule Id="IDE0004" Action="Warning" />-->
-<!--    </Rules>-->
-<!--    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">-->
-<!--        <Rule Id="SA1009" Action="None" />-->
-<!--        <Rule Id="SA1118" Action="None" />-->
-<!--        <Rule Id="SA1124" Action="None" />-->
-<!--        <Rule Id="SA1303" Action="None" />-->
-<!--        <Rule Id="SA1311" Action="None" />-->
-<!--        <Rule Id="SA1501" Action="None" />-->
-<!--        <Rule Id="SA1502" Action="None" />-->
-<!--        <Rule Id="SA1503" Action="None" />-->
-<!--        <Rule Id="SA1504" Action="None" />-->
-<!--        <Rule Id="SA1512" Action="None" />-->
-<!--        <Rule Id="SA1513" Action="None" />-->
-<!--        <Rule Id="SA1515" Action="None" />-->
-<!--        <Rule Id="SA1623" Action="None" />-->
-<!--        <Rule Id="SA1625" Action="None" />-->
-<!--        <Rule Id="SA1633" Action="None" />-->
-<!--        <Rule Id="SA1634" Action="None" />-->
-<!--        <Rule Id="SA1635" Action="None" />-->
-<!--        <Rule Id="SA1636" Action="None" />-->
-<!--        <Rule Id="SA1637" Action="None" />-->
-<!--        <Rule Id="SA1638" Action="None" />-->
-<!--        <Rule Id="SA1640" Action="None" />-->
-<!--        <Rule Id="SA1641" Action="None" />-->
-<!--        <Rule Id="SA1623" Action="None" />-->
-<!--    </Rules>-->
+<RuleSet Name="New Rule Set" Description=" " ToolsVersion="16.0">
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+    <Rule Id="CS1633" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1610" Action="None" />
+    <Rule Id="SA1623" Action="None" />
+    <Rule Id="SA1624" Action="None" />
+    <Rule Id="SA1633" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="xunit.analyzers" RuleNamespace="xunit.analyzers">
+    <Rule Id="xUnit1000" Action="None" />
+    <Rule Id="xUnit1001" Action="None" />
+    <Rule Id="xUnit1002" Action="None" />
+    <Rule Id="xUnit1003" Action="None" />
+    <Rule Id="xUnit1004" Action="None" />
+    <Rule Id="xUnit1005" Action="None" />
+    <Rule Id="xUnit1006" Action="None" />
+    <Rule Id="xUnit1007" Action="None" />
+    <Rule Id="xUnit1008" Action="None" />
+    <Rule Id="xUnit1009" Action="None" />
+    <Rule Id="xUnit1010" Action="None" />
+    <Rule Id="xUnit1011" Action="None" />
+    <Rule Id="xUnit1012" Action="None" />
+    <Rule Id="xUnit1013" Action="None" />
+    <Rule Id="xUnit1014" Action="None" />
+    <Rule Id="xUnit1015" Action="None" />
+    <Rule Id="xUnit1016" Action="None" />
+    <Rule Id="xUnit1017" Action="None" />
+    <Rule Id="xUnit1018" Action="None" />
+    <Rule Id="xUnit1019" Action="None" />
+    <Rule Id="xUnit1020" Action="None" />
+    <Rule Id="xUnit1021" Action="None" />
+    <Rule Id="xUnit1022" Action="None" />
+    <Rule Id="xUnit1023" Action="None" />
+    <Rule Id="xUnit1024" Action="None" />
+    <Rule Id="xUnit1025" Action="None" />
+    <Rule Id="xUnit1026" Action="None" />
+    <Rule Id="xUnit2000" Action="None" />
+    <Rule Id="xUnit2001" Action="None" />
+    <Rule Id="xUnit2002" Action="None" />
+    <Rule Id="xUnit2003" Action="None" />
+    <Rule Id="xUnit2004" Action="None" />
+    <Rule Id="xUnit2005" Action="None" />
+    <Rule Id="xUnit2006" Action="None" />
+    <Rule Id="xUnit2007" Action="None" />
+    <Rule Id="xUnit2008" Action="None" />
+    <Rule Id="xUnit2009" Action="None" />
+    <Rule Id="xUnit2010" Action="None" />
+    <Rule Id="xUnit2011" Action="None" />
+    <Rule Id="xUnit2012" Action="None" />
+    <Rule Id="xUnit2013" Action="None" />
+    <Rule Id="xUnit2014" Action="None" />
+    <Rule Id="xUnit2015" Action="None" />
+    <Rule Id="xUnit2016" Action="None" />
+    <Rule Id="xUnit2017" Action="None" />
+    <Rule Id="xUnit2018" Action="None" />
+    <Rule Id="xUnit2019" Action="None" />
+    <Rule Id="xUnit3000" Action="None" />
+    <Rule Id="xUnit3001" Action="None" />
+  </Rules>
 </RuleSet>

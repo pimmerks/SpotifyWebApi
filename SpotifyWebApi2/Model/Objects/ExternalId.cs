@@ -2,6 +2,9 @@ namespace Spotify.WebApi.Model.Objects
 {
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// External ids.
+    /// </summary>
     public class ExternalId
     {
         /// <summary>

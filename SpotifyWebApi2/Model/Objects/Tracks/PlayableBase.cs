@@ -1,8 +1,11 @@
 ﻿namespace Spotify.WebApi.Model.Objects.Tracks
 {
     using System.Text.Json.Serialization;
-    using Albums;
+    using Spotify.WebApi.Model.Objects.Albums;
 
+    /// <summary>
+    /// Base class for playable objects.
+    /// </summary>
     public abstract class PlayableBase
     {
         /// <summary>
@@ -10,7 +13,7 @@
         /// </summary>
         [JsonPropertyName("name")]
         public string Name { get; set; }
-        
+
         /// <summary>
         /// The object type, "track", "episode", etc.
         /// </summary>
@@ -22,7 +25,7 @@
         /// </summary>
         [JsonPropertyName("uri")]
         public string Uri { get; set; }
-        
+
         /// <summary>
         /// A link to the Web API endpoint providing full details of the track/episode.
         /// </summary>

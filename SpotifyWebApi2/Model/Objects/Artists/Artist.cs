@@ -2,9 +2,12 @@ namespace Spotify.WebApi.Model.Objects.Artists
 {
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
-    using Albums;
-    using Users;
+    using Spotify.WebApi.Model.Objects.Albums;
+    using Spotify.WebApi.Model.Objects.Users;
 
+    /// <summary>
+    /// An artist.
+    /// </summary>
     public class Artist
     {
         /// <summary>

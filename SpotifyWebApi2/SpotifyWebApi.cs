@@ -30,6 +30,6 @@
         }
 
         /// <inheritdoc/>
-        public IAlbumApi Album => new AlbumApi(this.Token, this.client, this.serializer);
+        public IAlbumApi Album => new AlbumApi(this.Token, this.Client, this.Serializer);
     }
 }

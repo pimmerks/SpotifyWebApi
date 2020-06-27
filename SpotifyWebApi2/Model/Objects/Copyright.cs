@@ -2,6 +2,9 @@
 {
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A copyright.
+    /// </summary>
     public class Copyright
     {
         /// <summary>

@@ -1,8 +1,8 @@
 ﻿namespace Spotify.WebApi.Tests.Business
 {
     using System;
-    using Model.Exceptions;
-    using WebApi.Business;
+    using Spotify.WebApi.Business;
+    using Spotify.WebApi.Model.Exceptions;
     using Xunit;
 
     public class UriBuilderExtensionsTest
@@ -14,7 +14,7 @@
             uriBuilder.AddParameter("test", "test");
             Assert.Equal($"{ISpotifyWebApi.BaseUri}?test=test", uriBuilder.Uri.ToString());
         }
-        
+
         [Fact]
         public void AddParameter_AddsMultipleParametersToUri()
         {
@@ -25,7 +25,7 @@
 
             Assert.Equal($"{ISpotifyWebApi.BaseUri}?test1=1&test2=2", uriBuilder.Uri.ToString());
         }
-        
+
         [Fact]
         public void AddParameter_AddsMultipleParametersToUriFluently()
         {
@@ -36,7 +36,7 @@
 
             Assert.Equal($"{ISpotifyWebApi.BaseUri}?test1=1&test2=2", uriBuilder.Uri.ToString());
         }
-        
+
         [Fact]
         public void AddParameter_DoesNotAddNullValuesToUri()
         {

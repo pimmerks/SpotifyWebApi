@@ -3,6 +3,9 @@
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A simplified artist.
+    /// </summary>
     public class SimpleArtist
     {
         /// <summary>

@@ -5,12 +5,12 @@
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Model.Authentication;
-    using Model.Objects.Albums;
     using Moq;
     using Moq.Protected;
-    using WebApi.Apis.Album;
-    using WebApi.Business;
+    using Spotify.WebApi.Apis.Album;
+    using Spotify.WebApi.Business;
+    using Spotify.WebApi.Model.Authentication;
+    using Spotify.WebApi.Model.Objects.Albums;
     using Xunit;
 
     public class AlbumApiTest
@@ -33,8 +33,8 @@
                     Content = new StringContent(AlbumApiTest.GetAlbumResult),
                 })
                 .Verifiable();
-            
-            var albumApi = new AlbumApi(Token.Make(""), new HttpClient(handlerMock.Object), new Serializer());
+
+            var albumApi = new AlbumApi(Token.Make(string.Empty), new HttpClient(handlerMock.Object), new Serializer());
 
             // Act
             var album = await albumApi.GetAlbumAsync("0sNOF9WDwhWunNAHPD3Baj");
@@ -43,7 +43,7 @@
             Assert.NotNull(album);
             Assert.Equal("album", album.Type);
         }
-        
+
         private const string GetAlbumResult = @"{
   ""album_type"" : ""album"",
   ""artists"" : [ {

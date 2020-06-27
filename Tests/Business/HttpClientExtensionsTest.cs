@@ -1,8 +1,8 @@
 ﻿namespace Spotify.WebApi.Tests.Business
 {
     using System.Net.Http;
-    using Model.Authentication;
-    using WebApi.Business;
+    using Spotify.WebApi.Business;
+    using Spotify.WebApi.Model.Authentication;
     using Xunit;
 
     public class HttpClientExtensionsTest

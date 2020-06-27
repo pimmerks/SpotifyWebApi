@@ -2,10 +2,13 @@ namespace Spotify.WebApi.Model.Objects.Episodes
 {
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
-    using Albums;
-    using Shows;
-    using Tracks;
+    using Spotify.WebApi.Model.Objects.Albums;
+    using Spotify.WebApi.Model.Objects.Shows;
+    using Spotify.WebApi.Model.Objects.Tracks;
 
+    /// <summary>
+    /// An episode.
+    /// </summary>
     public class Episode : PlayableBase
     {
         /// <summary>

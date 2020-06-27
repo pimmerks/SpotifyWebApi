@@ -3,6 +3,10 @@ namespace Spotify.WebApi.Model.Objects
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A paging object.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Paging<T>
     {
         /// <summary>

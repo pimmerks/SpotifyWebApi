@@ -1,8 +1,11 @@
 namespace Spotify.WebApi.Model.Objects.Playback
 {
     using System.Text.Json.Serialization;
-    using Albums;
+    using Spotify.WebApi.Model.Objects.Albums;
 
+    /// <summary>
+    /// The playback context.
+    /// </summary>
     public class Context
     {
         /// <summary>

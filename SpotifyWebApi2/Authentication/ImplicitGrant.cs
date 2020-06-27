@@ -1,6 +1,6 @@
 namespace Spotify.WebApi.Authentication
 {
-    using Model.Authentication;
+    using Spotify.WebApi.Model.Authentication;
 
     /// <summary>
     /// The <see cref="ImplicitGrant"/>.

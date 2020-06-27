@@ -3,6 +3,9 @@ namespace Spotify.WebApi.Model.Objects.Tracks
     using System;
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A saved track.
+    /// </summary>
     public class SavedTrack
     {
         /// <summary>

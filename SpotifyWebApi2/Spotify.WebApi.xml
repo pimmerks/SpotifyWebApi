@@ -1,0 +1,2117 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Spotify.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Spotify.WebApi.Apis.Album.AlbumApi">
+            <inheritdoc cref="T:Spotify.WebApi.Apis.Album.IAlbumApi" />
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.AlbumApi.#ctor(Spotify.WebApi.Model.Authentication.Token,System.Net.Http.HttpClient,Spotify.WebApi.Business.Serializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Apis.Album.AlbumApi"/> class.
+            </summary>
+            <param name="token">A <see cref="T:Spotify.WebApi.Model.Authentication.Token"/>.</param>
+            <param name="httpClient">An instance of a <see cref="T:System.Net.Http.HttpClient"/>.</param>
+            <param name="serializer">The <see cref="T:Spotify.WebApi.Business.Serializer"/>.</param>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.AlbumApi.GetAlbumAsync(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.AlbumApi.GetAlbumsTrackAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.AlbumApi.GetAlbumsAsync(System.Collections.Generic.List{System.String},System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Spotify.WebApi.Apis.Album.IAlbumApi">
+            <summary>
+            Main interface for the Album Api.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.IAlbumApi.GetAlbumAsync(Spotify.WebApi.Model.SpotifyUri,System.String)">
+            <summary>
+            Get Spotify catalog information for a single album.
+            </summary>
+            <param name="uri">The <see cref="T:Spotify.WebApi.Model.SpotifyUri"/> for the album.</param>
+            <param name="market">Optional. An ISO 3166-1 alpha-2 country code or the string from_token.
+            Provide this parameter if you want to apply Track Relinking.</param>
+            <returns>A <see cref="T:Spotify.WebApi.Model.Objects.Albums.Album"/>.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.IAlbumApi.GetAlbumAsync(System.String,System.String)">
+            <summary>
+            Get Spotify catalog information for a single album.
+            </summary>
+            <param name="id">The Spotify Id for the album.</param>
+            <param name="market">Optional. An ISO 3166-1 alpha-2 country code or the string from_token.
+            Provide this parameter if you want to apply Track Relinking.</param>
+            <returns>A <see cref="T:Spotify.WebApi.Model.Objects.Albums.Album"/>.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.IAlbumApi.GetAlbumsTrackAsync(Spotify.WebApi.Model.SpotifyUri,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the
+            number of tracks returned.
+            </summary>
+            <param name="uri">The <see cref="T:Spotify.WebApi.Model.SpotifyUri"/> for the album.</param>
+            <param name="limit">Optional. The maximum number of tracks to return. Default: 20. Minimum: 1. Maximum: 50.
+            </param>
+            <param name="offset">Optional. The index of the first track to return. Default: 0 (the first object).
+            Use with limit to get the next set of tracks.</param>
+            <param name="market">Optional. An ISO 3166-1 alpha-2 country code or the string from_token.
+            Provide this parameter if you want to apply Track Relinking.</param>
+            <returns>A <see cref="T:Spotify.WebApi.Model.Objects.Paging`1"/>.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.IAlbumApi.GetAlbumsTrackAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the
+            number of tracks returned.
+            </summary>
+            <param name="id">The Spotify Id for the album.</param>
+            <param name="limit">Optional. The maximum number of tracks to return. Default: 20. Minimum: 1. Maximum: 50.
+            </param>
+            <param name="offset">Optional. The index of the first track to return. Default: 0 (the first object).
+            Use with limit to get the next set of tracks.</param>
+            <param name="market">Optional. An ISO 3166-1 alpha-2 country code or the string from_token.
+            Provide this parameter if you want to apply Track Relinking.</param>
+            <returns>A <see cref="T:Spotify.WebApi.Model.Objects.Paging`1"/>.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.IAlbumApi.GetAlbumsAsync(System.Collections.Generic.List{Spotify.WebApi.Model.SpotifyUri},System.String)">
+            <summary>
+            Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+            </summary>
+            <param name="ids">Required. A list of <see cref="T:Spotify.WebApi.Model.SpotifyUri"/> for the albums. Maximum: 20 IDs.</param>
+            <param name="market">Optional. An ISO 3166-1 alpha-2 country code or the string from_token.
+            Provide this parameter if you want to apply Track Relinking.</param>
+            <returns>A list of <see cref="T:Spotify.WebApi.Model.Objects.Albums.Album"/>s.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.IAlbumApi.GetAlbumsAsync(System.String[])">
+            <summary>
+            Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+            </summary>
+            <param name="ids">Required. A list of Spotify Ids for the albums. Maximum: 20 IDs.</param>
+            <returns>A list of <see cref="T:Spotify.WebApi.Model.Objects.Albums.Album"/>s.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Apis.Album.IAlbumApi.GetAlbumsAsync(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+            </summary>
+            <param name="ids">Required. A list oof Spotify Ids for the albums. Maximum: 20 IDs.</param>
+            <param name="market">Optional. An ISO 3166-1 alpha-2 country code or the string from_token.
+            Provide this parameter if you want to apply Track Relinking.</param>
+            <returns>A list of <see cref="T:Spotify.WebApi.Model.Objects.Albums.Album"/>s.</returns>
+        </member>
+        <member name="T:Spotify.WebApi.Authentication.AuthorizationCode">
+            <summary>
+            The <see cref="T:Spotify.WebApi.Authentication.AuthorizationCode"/>.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Authentication.AuthorizationCode.GetUrl(Spotify.WebApi.Model.Authentication.AuthParameters,System.String)">
+            <summary>
+            Retrieves the authentication url for authenticating with the spotify web api.
+            </summary>
+            <param name="parameters">The <see cref="T:Spotify.WebApi.Model.Authentication.AuthParameters"/> to use while creating the url.</param>
+            <param name="state">The state to use while creating the url.
+            For more info see 'https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow'</param>
+            <returns>The url that the user can use to authenticate this application.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Authentication.AuthorizationCode.ProcessCallbackAsync(Spotify.WebApi.Model.Authentication.AuthParameters,System.String,System.String)">
+            <summary>
+            Processes the callback and returns the <see cref="T:Spotify.WebApi.Model.Authentication.Token"/> async.
+            </summary>
+            <param name="parameters">The parameters used in <see cref="M:Spotify.WebApi.Authentication.AuthorizationCode.GetUrl(Spotify.WebApi.Model.Authentication.AuthParameters,System.String)"/>.</param>
+            <param name="code">The retrieved code.</param>
+            <param name="error">The retrieved error.</param>
+            <returns>The new token.</returns>
+        </member>
+        <member name="T:Spotify.WebApi.Authentication.ClientCredentials">
+            <summary>
+            The <see cref="T:Spotify.WebApi.Authentication.ClientCredentials"/>.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Authentication.ClientCredentials.GetTokenAsync(Spotify.WebApi.Model.Authentication.AuthParameters)">
+            <summary>
+            Retrieves a valid token from the Spotify web api.
+            </summary>
+            <param name="parameters">The <see cref="T:Spotify.WebApi.Model.Authentication.AuthParameters"/> used for this token.</param>
+            <returns>A valid <see cref="T:Spotify.WebApi.Model.Authentication.Token"/>.</returns>
+        </member>
+        <member name="T:Spotify.WebApi.Authentication.ImplicitGrant">
+            <summary>
+            The <see cref="T:Spotify.WebApi.Authentication.ImplicitGrant"/>.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Authentication.ImplicitGrant.GetUrl(Spotify.WebApi.Model.Authentication.AuthParameters,System.String)">
+            <summary>
+            Retrieves the authentication url for authenticating with the spotify web api.
+            </summary>
+            <param name="parameters">The <see cref="T:Spotify.WebApi.Model.Authentication.AuthParameters"/> to use while creating the url.</param>
+            <param name="state">The state to use while creating the url.
+            For more info see 'https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow'</param>
+            <returns>The url that the user can use to authenticate this application.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Authentication.ImplicitGrant.Callback(System.String,System.String,System.Int32)">
+            <summary>
+            Creates a token from the callback url.
+            </summary>
+            <param name="accessToken">The access token.</param>
+            <param name="tokenType">The token type.</param>
+            <param name="expiresIn">The expires in.</param>
+            <returns>A valid <see cref="T:Spotify.WebApi.Model.Authentication.Token"/>.</returns>
+        </member>
+        <member name="T:Spotify.WebApi.Business.HttpClientExtensions">
+            <summary>
+            Extension methods for the <see cref="T:System.Net.Http.HttpClient"/>.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Business.HttpClientExtensions.AddToken(System.Net.Http.HttpClient,Spotify.WebApi.Model.Authentication.Token)">
+            <summary>
+            Adds the authorization header of a <see cref="T:Spotify.WebApi.Model.Authentication.Token"/> to this http client.
+            </summary>
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient"/> to add this token to.</param>
+            <param name="token">The token to add.</param>
+        </member>
+        <member name="T:Spotify.WebApi.Business.Serializer">
+            <summary>
+            Serializer for serializing JSON to any object.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Business.Serializer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Business.Serializer"/> class.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Business.Serializer.Serialize``1(``0)">
+            <summary>
+            Serializes an object to a json string.
+            </summary>
+            <param name="obj">The object to serialize.</param>
+            <typeparam name="T">The type.</typeparam>
+            <returns>A json string.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Business.Serializer.Deserialize``1(System.String)">
+            <summary>
+            Deserializes a json string to an object.
+            </summary>
+            <param name="json">The json to deserialize.</param>
+            <typeparam name="T">The object type.</typeparam>
+            <returns>The newly created object.</returns>
+        </member>
+        <member name="T:Spotify.WebApi.Business.SpotifyBaseClient">
+            <summary>
+            Spotify base client.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Business.SpotifyBaseClient.#ctor(System.Net.Http.HttpClient,Spotify.WebApi.Model.Authentication.Token,Spotify.WebApi.Business.Serializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Business.SpotifyBaseClient"/> class.
+            </summary>
+            <param name="client">An instance of a <see cref="T:System.Net.Http.HttpClient"/>.</param>
+            <param name="token">A <see cref="P:Spotify.WebApi.Business.SpotifyBaseClient.Token"/>.</param>
+            <param name="serializer">The <see cref="T:Spotify.WebApi.Business.Serializer"/>.</param>
+        </member>
+        <member name="P:Spotify.WebApi.Business.SpotifyBaseClient.Token">
+            <summary>
+            Gets the token.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Business.SpotifyBaseClient.Client">
+            <summary>
+            Gets the http client.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Business.SpotifyBaseClient.Serializer">
+            <summary>
+            Gets the <see cref="P:Spotify.WebApi.Business.SpotifyBaseClient.Serializer"/>.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Business.SpotifyBaseClient.UpdateToken(Spotify.WebApi.Model.Authentication.Token)">
+            <summary>
+            Updates a token.
+            </summary>
+            <param name="newToken">The new token.</param>
+        </member>
+        <member name="M:Spotify.WebApi.Business.SpotifyBaseClient.GetAsync``1(System.Uri)">
+            <summary>
+            Send a GET request to the specified uri.
+            </summary>
+            <param name="uri">The uri.</param>
+            <typeparam name="T">The expected return type.</typeparam>
+            <returns>An object of type T.</returns>
+        </member>
+        <member name="T:Spotify.WebApi.Business.SpotifyUriConverter">
+            <inheritdoc />
+        </member>
+        <member name="M:Spotify.WebApi.Business.SpotifyUriConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Spotify.WebApi.Business.SpotifyUriConverter.Write(System.Text.Json.Utf8JsonWriter,Spotify.WebApi.Model.SpotifyUri,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Spotify.WebApi.Business.UriBuilderExtensions">
+            <summary>
+            Extension methods for a <see cref="T:System.UriBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Business.UriBuilderExtensions.AddParameter``1(System.UriBuilder,System.String,System.Nullable{``0})">
+            <summary>
+            Adds the specified parameter to the Query String.
+            </summary>
+            <param name="uriBuilder">The uri builder.</param>
+            <param name="paramName">Name of the parameter to add.</param>
+            <param name="paramValue">Value for the parameter to add.</param>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <returns>Url with added parameter.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Business.UriBuilderExtensions.AddParameter(System.UriBuilder,System.String,System.String)">
+            <summary>
+            Adds the specified parameter to the Query String.
+            </summary>
+            <param name="uriBuilder">The uri builder.</param>
+            <param name="paramName">Name of the parameter to add.</param>
+            <param name="paramValue">Value for the parameter to add.</param>
+            <returns>Url with added parameter.</returns>
+        </member>
+        <member name="T:Spotify.WebApi.Business.UriHelper">
+            <summary>
+            Static uri helper class.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Business.UriHelper.FromUri(System.String)">
+            <summary>
+            Creates an <see cref="T:System.UriBuilder"/> with the default <see cref="F:Spotify.WebApi.ISpotifyWebApi.BaseUri"/>.
+            </summary>
+            <param name="relativeUri">The relative uri to add to the base uri.</param>
+            <returns>The created <see cref="T:System.UriBuilder"/>.</returns>
+        </member>
+        <member name="T:Spotify.WebApi.ISpotifyWebApi">
+            <summary>
+            Main Spotify Web Api interface.
+            </summary>
+        </member>
+        <member name="F:Spotify.WebApi.ISpotifyWebApi.BaseUri">
+            <summary>
+            The default base uri of the Spotify Web Api.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.ISpotifyWebApi.Album">
+            <summary>
+            Gets the <see cref="T:Spotify.WebApi.Apis.Album.IAlbumApi"/>.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Authentication.AuthParameters">
+            <summary>
+            Authentication parameters for authenticating with the Spotify web api.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Model.Authentication.AuthParameters.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Model.Authentication.AuthParameters"/> class.
+            </summary>
+            <param name="clientId">The client id.</param>
+            <param name="clientSecret">The client secret.</param>
+            <param name="redirectUri">The redirect uri.</param>
+            <param name="scopes">The authentication scopes.</param>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.AuthParameters.ClientId">
+            <summary>
+            Gets or sets the authentication client id.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.AuthParameters.ClientSecret">
+            <summary>
+            Gets or sets the authentication client secret.
+            Note that this is only used for the <see cref="T:Spotify.WebApi.Authentication.AuthorizationCode"/> flow.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.AuthParameters.RedirectUri">
+            <summary>
+            Gets or sets the authentication redirect uri.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.AuthParameters.ShowDialog">
+            <summary>
+            Gets or sets a value indicating whether to show the login screen every time the user is requested to login.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.AuthParameters.Scopes">
+            <summary>
+            Gets or sets the authentication scopes.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Authentication.Token">
+            <summary>
+            The <see cref="T:Spotify.WebApi.Model.Authentication.Token" /> class.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Model.Authentication.Token.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Model.Authentication.Token"/> class.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.AccessToken">
+            <summary>
+            Gets or sets the access token.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.Scopes">
+            <summary>
+            Gets or sets the scope.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.ExpiresIn">
+            <summary>
+            Gets or sets the expires in.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.RefreshToken">
+            <summary>
+            Gets or sets the refresh token.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.TokenGenerated">
+            <summary>
+            Gets the token generated.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.IsExpired">
+            <summary>
+            Gets a value indicating whether this instance is expired.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.CanAccessPersonalData">
+            <summary>
+            Gets a value indicating wheter this token can be used to access personal data.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Authentication.Token.AuthenticationType">
+            <summary>
+            Gets a value indicating the authentication type of this token.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Model.Authentication.Token.Make(System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime},System.String,System.Boolean,Spotify.WebApi.Model.Authentication.TokenAuthenticationType)">
+            <summary>
+            Creates a token.
+            </summary>
+            <param name="accessToken">The access token.</param>
+            <param name="refreshToken">The refresh token.</param>
+            <param name="tokenType">The token type.</param>
+            <param name="expiresIn">The expires in value.</param>
+            <param name="tokenGenerated">The datetime the token was generated.</param>
+            <param name="scopes">The scopes of the token.</param>
+            <param name="canAccessPersonalData">If the token can access personal data.</param>
+            <param name="authenticationType">The authentication type of the token.</param>
+            <returns>The newly made <see cref="T:Spotify.WebApi.Model.Authentication.Token"/>.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Model.Authentication.Token.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Spotify.WebApi.Model.Authentication.TokenAuthenticationType">
+            <summary>
+            Enum defining token types.
+            </summary>
+        </member>
+        <member name="F:Spotify.WebApi.Model.Authentication.TokenAuthenticationType.AuthorizationCode">
+            <summary>
+            Token generated using Authorization Code.
+            </summary>
+        </member>
+        <member name="F:Spotify.WebApi.Model.Authentication.TokenAuthenticationType.ClientCredentials">
+            <summary>
+            Token generated using Client Credentials.
+            </summary>
+        </member>
+        <member name="F:Spotify.WebApi.Model.Authentication.TokenAuthenticationType.ImplicitGrant">
+            <summary>
+            Token generated using Implicit Grant.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Exceptions.BaseSpotifyException">
+            <summary>
+            Base class for all spotify exceptions.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Model.Exceptions.BaseSpotifyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Model.Exceptions.BaseSpotifyException"/> class.
+            </summary>
+            <param name="message">An optional message.</param>
+        </member>
+        <member name="M:Spotify.WebApi.Model.Exceptions.BaseSpotifyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Model.Exceptions.BaseSpotifyException"/> class.
+            </summary>
+            <param name="message">An optional message.</param>
+            <param name="innerException">An optional inner <see cref="T:System.Exception"/>.</param>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Exceptions.SpotifyUriException">
+            <summary>
+            Exception can be thrown on all uri errors.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Model.Exceptions.SpotifyUriException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Model.Exceptions.SpotifyUriException"/> class.
+            </summary>
+            <param name="message">An optional message.</param>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Albums.Album">
+            <summary>
+            An album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.AlbumType">
+            <summary>
+            The type of the album: album, single, or compilation.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Artists">
+            <summary>
+            The artists of the album. Each artist object includes a link in href to more detailed information about the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.AvailableMarkets">
+            <summary>
+            The markets in which the album is available: ISO 3166-1 alpha-2 country codes. Note that an album is considered available in a market when at least 1 of its tracks is available in that market.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Copyrights">
+            <summary>
+            The copyright statements of the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.ExternalIds">
+            <summary>
+            Known external IDs for the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.ExternalUrls">
+            <summary>
+            Known external URLs for this album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Genres">
+            <summary>
+            A list of the genres used to classify the album. For example: “Prog Rock” , “Post-Grunge”. (If not yet classified, the array is empty.)
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Id">
+            <summary>
+            The Spotify ID for the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Images">
+            <summary>
+            The cover art for the album in various sizes, widest first.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Label">
+            <summary>
+            The label for the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Name">
+            <summary>
+            The name of the album. In case of an album takedown, the value may be an empty string.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Popularity">
+            <summary>
+            The popularity of the album. The value will be between 0 and 100, with 100 being the most popular. The popularity is calculated from the popularity of the album’s individual tracks.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.ReleaseDate">
+            <summary>
+            The date the album was first released, for example “1981-12-15”. Depending on the precision, it might be shown as “1981” or “1981-12”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.ReleaseDatePrecision">
+            <summary>
+            The precision with which release_date value is known: “year” , “month” , or “day”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Tracks">
+            <summary>
+            The tracks of the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Type">
+            <summary>
+            The object type: “album”
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.Album.Uri">
+            <summary>
+            The Spotify URI for the album.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Albums.MultipleAlbums">
+            <summary>
+            Internal class for wrapping the MultipleAlbums response.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Albums.SavedAlbum">
+            <summary>
+            A saved album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SavedAlbum.AddedAt">
+            <summary>
+            The date and time the album was saved
+            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
+            If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SavedAlbum.Album">
+            <summary>
+            Information about the album.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum">
+            <summary>
+            A simplified album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.AlbumGroup">
+            <summary>
+            The field is present when getting an artist’s albums. Possible values are “album”, “single”, “compilation”, “appears_on”. Compare to album_type this field represents relationship between the artist and the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.AlbumType">
+            <summary>
+            The type of the album: one of “album”, “single”, or “compilation”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.Artists">
+            <summary>
+            The artists of the album. Each artist object includes a link in href to more detailed information about the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.AvailableMarkets">
+            <summary>
+            The markets in which the album is available: ISO 3166-1 alpha-2 country codes. Note that an album is considered available in a market when at least 1 of its tracks is available in that market.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.ExternalUrls">
+            <summary>
+            Known external URLs for this album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.Id">
+            <summary>
+            The Spotify ID for the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.Images">
+            <summary>
+            The cover art for the album in various sizes, widest first.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.Name">
+            <summary>
+            The name of the album. In case of an album takedown, the value may be an empty string.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.Type">
+            <summary>
+            The object type: “album”
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleAlbum.Uri">
+            <summary>
+            The Spotify URI for the album.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Albums.SimpleArtist">
+            <summary>
+            A simplified artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleArtist.ExternalUrls">
+            <summary>
+            Known external URLs for this artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleArtist.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleArtist.Id">
+            <summary>
+            The Spotify ID for the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleArtist.Name">
+            <summary>
+            The name of the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleArtist.Type">
+            <summary>
+            The object type: "artist"
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Albums.SimpleArtist.Uri">
+            <summary>
+            The Spotify URI for the artist.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Albums.ExternalUrl">
+            <summary>
+            External urls.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Artists.Artist">
+            <summary>
+            An artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.ExternalUrls">
+            <summary>
+            Known external URLs for this artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Followers">
+            <summary>
+            Information about the followers of the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Genres">
+            <summary>
+            A list of the genres the artist is associated with. For example: "Prog Rock" , "Post-Grunge". (If not yet classified, the array is empty.)
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Id">
+            <summary>
+            The Spotify ID for the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Images">
+            <summary>
+            Images of the artist in various sizes, widest first.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Name">
+            <summary>
+            The name of the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Popularity">
+            <summary>
+            The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist’s popularity is calculated from the popularity of all the artist’s tracks.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Type">
+            <summary>
+            The object type: "artist"
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Artists.Artist.Uri">
+            <summary>
+            The Spotify URI for the artist.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Category">
+            <summary>
+            A category.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Category.Href">
+            <summary>
+            A link to the Web API endpoint returning full details of the category.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Category.Icons">
+            <summary>
+            The category icon, in various sizes.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Category.Id">
+            <summary>
+            The Spotify category ID of the category.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Category.Name">
+            <summary>
+            The name of the category.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Copyright">
+            <summary>
+            A copyright.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Copyright.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Copyright.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Cursor">
+            <summary>
+            A cursor.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Cursor.After">
+            <summary>
+            The cursor to use as key to find the next page of items.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.CursorPaging`1">
+            <summary>
+            A cursor paging object.
+            </summary>
+            <typeparam name="T">Type of items.</typeparam>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.CursorPaging`1.Cursors">
+            <summary>
+            The cursors used to find the next set of items.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.CursorPaging`1.Href">
+            <summary>
+            A link to the Web API endpoint returning the full result of the request.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.CursorPaging`1.Items">
+            <summary>
+            The requested data.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.CursorPaging`1.Limit">
+            <summary>
+            The maximum number of items in the response (as set in the query or by default).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.CursorPaging`1.Next">
+            <summary>
+            URL to the next page of items. ( null if none)
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.CursorPaging`1.Total">
+            <summary>
+            The total number of items available to return.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Episodes.Episode">
+            <summary>
+            An episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.AudioPreviewUrl">
+            <summary>
+            A URL to a 30 second preview (MP3 format) of the episode. null if not available.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.Description">
+            <summary>
+            A description of the episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.DurationMs">
+            <summary>
+            The episode length in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.Explicit">
+            <summary>
+            Whether or not the episode has explicit content (true = yes it does; false = no it does not OR unknown).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.Images">
+            <summary>
+            The cover art for the episode in various sizes, widest first.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.IsExternallyHosted">
+            <summary>
+            True if the episode is hosted outside of Spotify’s CDN.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.IsPlayable">
+            <summary>
+            True if the episode is playable in the given market. Otherwise false.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.Language">
+            <summary>
+            Note: This field is deprecated and might be removed in the future. Please use the languages field instead. The language used in the episode, identified by a ISO 639 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.Languages">
+            <summary>
+            A list of the languages used in the episode, identified by their ISO 639 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.ReleaseDate">
+            <summary>
+            The date the episode was first released, for example "1981-12-15". Depending on the precision, it might be shown as "1981" or "1981-12".
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.ReleaseDatePrecision">
+            <summary>
+            The precision with which release_date value is known: "year", "month", or "day".
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.ResumePoint">
+            <summary>
+            The user’s most recent position in the episode. Set if the supplied access token is a user token and has the scope user-read-playback-position.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.Episode.Show">
+            <summary>
+            The show on which the episode belongs.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Episodes.ResumePoint">
+            <summary>
+            A resume point.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.ResumePoint.FullyPlayed">
+            <summary>
+            Whether or not the episode has been fully played by the user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.ResumePoint.ResumePositionMs">
+            <summary>
+            The user’s most recent position in the episode in milliseconds.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode">
+            <summary>
+            A simplified episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.AudioPreviewUrl">
+            <summary>
+            A URL to a 30 second preview (MP3 format) of the episode. null if not available.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Description">
+            <summary>
+            A description of the episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.DurationMs">
+            <summary>
+            The episode length in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Explicit">
+            <summary>
+            Whether or not the episode has explicit content (true = yes it does; false = no it does not OR unknown).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.ExternalUrls">
+            <summary>
+            External URLs for this episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Id">
+            <summary>
+            The Spotify ID for the episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Images">
+            <summary>
+            The cover art for the episode in various sizes, widest first.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.IsExternallyHosted">
+            <summary>
+            True if the episode is hosted outside of Spotify’s CDN.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.IsPlayable">
+            <summary>
+            True if the episode is playable in the given market. Otherwise false.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Language">
+            <summary>
+            Note: This field is deprecated and might be removed in the future. Please use the languages field instead. The language used in the episode, identified by a ISO 639 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Languages">
+            <summary>
+            A list of the languages used in the episode, identified by their ISO 639 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Name">
+            <summary>
+            The name of the episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.ReleaseDate">
+            <summary>
+            The date the episode was first released, for example "1981-12-15". Depending on the precision, it might be shown as "1981" or "1981-12".
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.ReleaseDatePrecision">
+            <summary>
+            The precision with which release_date value is known: "year", "month", or "day".
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.ResumePoint">
+            <summary>
+            The user’s most recent position in the episode. Set if the supplied access token is a user token and has the scope ‘user-read-playback-position’.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Type">
+            <summary>
+            The object type: “episode”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Episodes.SimpleEpisode.Uri">
+            <summary>
+            The Spotify URI for the episode.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.ExternalId">
+            <summary>
+            External ids.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.ExternalId.Ean">
+            <summary>
+            International Article Number
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.ExternalId.Isrc">
+            <summary>
+            International Standard Recording Code
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.ExternalId.Upc">
+            <summary>
+            Universal Product Code
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Image">
+            <summary>
+            An image.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Paging`1">
+            <summary>
+            A paging object.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Paging`1.Href">
+            <summary>
+            A link to the Web API endpoint returning the full result of the request
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Paging`1.Items">
+            <summary>
+            The requested data.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Paging`1.Limit">
+            <summary>
+            The maximum number of items in the response (as set in the query or by default).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Paging`1.Next">
+            <summary>
+            URL to the next page of items. ( null if none)
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Paging`1.Offset">
+            <summary>
+            The offset of the items returned (as set in the query or by default)
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Paging`1.Previous">
+            <summary>
+            URL to the previous page of items. ( null if none)
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Paging`1.Total">
+            <summary>
+            The total number of items available to return.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Playback.Context">
+            <summary>
+            The playback context.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Context.ExternalUrls">
+            <summary>
+            External URLs for this context.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Context.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Context.Type">
+            <summary>
+            The object type, e.g. “artist”, “playlist”, “album”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Context.Uri">
+            <summary>
+            The Spotify URI for the context.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Playback.CurrentlyPlaying">
+            <summary>
+            A currently playing class.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.CurrentlyPlaying.Context">
+            <summary>
+            A Context Object. Can be null.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.CurrentlyPlaying.CurrentlyPlayingType">
+            <summary>
+            The object type of the currently playing item. Can be one of track, episode, ad or unknown.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.CurrentlyPlaying.IsPlaying">
+            <summary>
+            If something is currently playing, return true.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.CurrentlyPlaying.Item">
+            <summary>
+            The currently playing track or episode. Can be null.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.CurrentlyPlaying.ProgressMs">
+            <summary>
+            Progress into the currently playing track or episode. Can be null.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.CurrentlyPlaying.Timestamp">
+            <summary>
+            Unix Millisecond Timestamp when data was fetched
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Playback.Device">
+            <summary>
+            A device.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Device.Id">
+            <summary>
+            The device ID. This may be null.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Device.IsActive">
+            <summary>
+            If this device is the currently active device.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Device.IsPrivateSession">
+            <summary>
+            If this device is currently in a private session.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Device.IsRestricted">
+            <summary>
+            Whether controlling this device is restricted. At present if this is “true” then no Web API commands will be accepted by this device.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Device.Name">
+            <summary>
+            The name of the device.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Device.Type">
+            <summary>
+            Device type, such as “computer”, “smartphone” or “speaker”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.Device.VolumePercent">
+            <summary>
+            The current volume in percent. This may be null.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Playback.PlayHistory">
+            <summary>
+            The play history.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.PlayHistory.Context">
+            <summary>
+            The context the track was played from.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.PlayHistory.PlayedAt">
+            <summary>
+            The date and time the track was played.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playback.PlayHistory.Track">
+            <summary>
+            The track the user listened to.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Playlists.Playlist">
+            <summary>
+            A playlist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Collaborative">
+            <summary>
+            true if the owner allows other users to modify the playlist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.ExternalUrls">
+            <summary>
+            Known external URLs for this playlist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the playlist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Id">
+            <summary>
+            The Spotify ID for the playlist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Images">
+            <summary>
+            Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See Working with Playlists. Note: If returned, the source URL for the image (url) is temporary and will expire in less than a day.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Name">
+            <summary>
+            The name of the playlist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Owner">
+            <summary>
+            The user who owns the playlist
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Public">
+            <summary>
+            The playlist’s public/private status: true the playlist is public, false the playlist is private, null the playlist status is not relevant. For more about public/private status, see Working with Playlists
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.SnapshotId">
+            <summary>
+            The version identifier for the current playlist. Can be supplied in other requests to target a specific playlist version
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Tracks">
+            <summary>
+            A collection containing a link (href) to the Web API endpoint where full details of the playlist’s tracks can be retrieved, along with the total number of items in the playlist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Type">
+            <summary>
+            The object type: “playlist”
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Playlists.Playlist.Uri">
+            <summary>
+            The Spotify URI for the playlist.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.RecommendationSeed">
+            <summary>
+            Recommendation seed.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.RecommendationSeed.AfterFilteringSize">
+            <summary>
+            The number of tracks available after min_* and max_* filters have been applied.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.RecommendationSeed.AfterRelinkingSize">
+            <summary>
+            The number of tracks available after relinking for regional availability.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.RecommendationSeed.Href">
+            <summary>
+            A link to the full track or artist data for this seed. For tracks this will be a link to a Track Object. For artists a link to an Artist Object. For genre seeds, this value will be null.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.RecommendationSeed.Id">
+            <summary>
+            The id used to select this seed. This will be the same as the string used in the seed_artists, seed_tracks or seed_genres parameter.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.RecommendationSeed.InitialPoolSize">
+            <summary>
+            The number of recommended tracks available for this seed.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.RecommendationSeed.Type">
+            <summary>
+            The entity type of this seed. One of artist, track or genre.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.RecommendationsResponse">
+            <summary>
+            Recommendations response.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.RecommendationsResponse.Seeds">
+            <summary>
+            An array of recommendation seed objects.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.RecommendationsResponse.Tracks">
+            <summary>
+            An array of track object (simplified) ordered according to the parameters supplied.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Shows.SavedShow">
+            <summary>
+            A saved show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SavedShow.AddedAt">
+            <summary>
+            The date and time the show was saved.
+            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
+            If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SavedShow.Show">
+            <summary>
+            Information about the show.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Shows.Show">
+            <summary>
+            A show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.AvailableMarkets">
+            <summary>
+            A list of the countries in which the show can be played, identified by their ISO 3166-1 alpha-2 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Copyrights">
+            <summary>
+            The copyright statements of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Description">
+            <summary>
+            A description of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Episodes">
+            <summary>
+            A list of the show’s episodes.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Explicit">
+            <summary>
+            Whether or not the show has explicit content (true = yes it does; false = no it does not OR unknown).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.ExternalUrls">
+            <summary>
+            External URLs for this show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Id">
+            <summary>
+            The Spotify ID for the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Images">
+            <summary>
+            The cover art for the show in various sizes, widest first.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.IsExternallyHosted">
+            <summary>
+            True if all of the show’s episodes are hosted outside of Spotify’s CDN. This field might be null in some cases.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Languages">
+            <summary>
+            A list of the languages used in the show, identified by their ISO 639 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.MediaType">
+            <summary>
+            The media type of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Name">
+            <summary>
+            The name of the episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Publisher">
+            <summary>
+            The publisher of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Type">
+            <summary>
+            The object type: “show”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.Show.Uri">
+            <summary>
+            The Spotify URI for the show.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Shows.SimpleShow">
+            <summary>
+            A simplified show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.AvailableMarkets">
+            <summary>
+            A list of the countries in which the show can be played, identified by their ISO 3166-1 alpha-2 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Copyrights">
+            <summary>
+            The copyright statements of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Description">
+            <summary>
+            A description of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Explicit">
+            <summary>
+            Whether or not the show has explicit content (true = yes it does; false = no it does not OR unknown).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.ExternalUrls">
+            <summary>
+            External URLs for this show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Id">
+            <summary>
+            The Spotify ID for the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Images">
+            <summary>
+            The cover art for the show in various sizes, widest first.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.IsExternallyHosted">
+            <summary>
+            True if all of the show’s episodes are hosted outside of Spotify’s CDN. This field might be null in some cases.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Languages">
+            <summary>
+            A list of the languages used in the show, identified by their ISO 639 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.MediaType">
+            <summary>
+            The media type of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Name">
+            <summary>
+            The name of the episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Publisher">
+            <summary>
+            The publisher of the show.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Type">
+            <summary>
+            The object type: “show”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Shows.SimpleShow.Uri">
+            <summary>
+            The Spotify URI for the show.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures">
+            <summary>
+            Audio features class.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Acousticness">
+            <summary>
+            A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.AnalysisUrl">
+            <summary>
+            An HTTP URL to access the full audio analysis of this track. An access token is required to access this data.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Danceability">
+            <summary>
+            Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.DurationMs">
+            <summary>
+            The duration of the track in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Energy">
+            <summary>
+            Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Id">
+            <summary>
+            The Spotify ID for the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Instrumentalness">
+            <summary>
+            Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly “vocal”. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Key">
+            <summary>
+            The key the track is in. Integers map to pitches using standard Pitch Class notation . E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Liveness">
+            <summary>
+            Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Loudness">
+            <summary>
+            The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Mode">
+            <summary>
+            Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Speechiness">
+            <summary>
+            Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Tempo">
+            <summary>
+            The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.TimeSignature">
+            <summary>
+            An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.TrackHref">
+            <summary>
+            A link to the Web API endpoint providing full details of the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Type">
+            <summary>
+            The object type: “audio_features”
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Uri">
+            <summary>
+            The Spotify URI for the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.AudioFeatures.Valence">
+            <summary>
+            A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Tracks.LinkedTrack">
+            <summary>
+            Linked track class.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.LinkedTrack.Type">
+            <summary>
+            The object type, "track", "episode", etc.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.LinkedTrack.Uri">
+            <summary>
+            The Spotify URI for the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.LinkedTrack.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the track/episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.LinkedTrack.Id">
+            <summary>
+            The Spotify ID for the track/episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.LinkedTrack.ExternalUrls">
+            <summary>
+            Known external URLs for this track.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Tracks.PlayableBase">
+            <summary>
+            Base class for playable objects.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlayableBase.Name">
+            <summary>
+            The name of the track or episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlayableBase.Type">
+            <summary>
+            The object type, "track", "episode", etc.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlayableBase.Uri">
+            <summary>
+            The Spotify URI for the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlayableBase.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the track/episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlayableBase.Id">
+            <summary>
+            The Spotify ID for the track/episode.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlayableBase.ExternalUrls">
+            <summary>
+            Known external URLs for this track.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Tracks.PlaylistTrack">
+            <summary>
+            A playlist track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlaylistTrack.AddedAt">
+            <summary>
+            The date and time the track or episode was added. Note that some very old playlists may return null in this field.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlaylistTrack.AddedBy">
+            <summary>
+            The Spotify user who added the track or episode. Note that some very old playlists may return null in this field.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlaylistTrack.IsLocal">
+            <summary>
+            Whether this track or episode is a local file or not.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.PlaylistTrack.Track">
+            <summary>
+            Information about the track or episode.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Tracks.SavedTrack">
+            <summary>
+            A saved track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SavedTrack.AddedAt">
+            <summary>
+            The date and time the track was saved.
+            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
+            If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SavedTrack.Track">
+            <summary>
+            Information about the track.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack">
+            <summary>
+            A simplified track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.Artists">
+            <summary>
+            The artists who performed the track. Each artist object includes a link in href to more detailed information about the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.AvailableMarkets">
+            <summary>
+            A list of the countries in which the track can be played, identified by their ISO 3166-1 alpha-2 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.DiscNumber">
+            <summary>
+            The disc number (usually 1 unless the album consists of more than one disc).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.DurationMs">
+            <summary>
+            The track length in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.Explicit">
+            <summary>
+            Whether or not the track has explicit lyrics ( true = yes it does; false = no it does not OR unknown).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.ExternalUrls">
+            <summary>
+            External URLs for this track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.Href">
+            <summary>
+            A link to the Web API endpoint providing full details of the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.Id">
+            <summary>
+            The Spotify ID for the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.IsPlayable">
+            <summary>
+            Part of the response when Track Relinking is applied. If true , the track is playable in the given market. Otherwise false.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.LinkedFrom">
+            <summary>
+            Part of the response when Track Relinking is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the linked_from object contains information about the originally requested track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.Name">
+            <summary>
+            The name of the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.PreviewUrl">
+            <summary>
+            A URL to a 30 second preview (MP3 format) of the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.TrackNumber">
+            <summary>
+            The number of the track. If an album has several discs, the track number is the number on the specified disc.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.Type">
+            <summary>
+            The object type: “track”.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.SimpleTrack.Uri">
+            <summary>
+            The Spotify URI for the track.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Tracks.Track">
+            <summary>
+            A track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.Album">
+            <summary>
+            The album on which the track appears. The album object includes a link in href to full information about the album.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.Artists">
+            <summary>
+            The artists who performed the track. Each artist object includes a link in href to more detailed information about the artist.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.AvailableMarkets">
+            <summary>
+            A list of the countries in which the track can be played, identified by their ISO 3166-1 alpha-2 code.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.DiscNumber">
+            <summary>
+            The disc number (usually 1 unless the album consists of more than one disc).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.DurationMs">
+            <summary>
+            The track length in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.Explicit">
+            <summary>
+            Whether or not the track has explicit lyrics ( true = yes it does; false = no it does not OR unknown).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.ExternalIds">
+            <summary>
+            Known external IDs for the track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.IsPlayable">
+            <summary>
+            Part of the response when Track Relinking is applied. If true , the track is playable in the given market. Otherwise false.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.LinkedFrom">
+            <summary>
+            Part of the response when Track Relinking is applied, and the requested track has been replaced with different track. The track in the linked_from object contains information about the originally requested track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.Popularity">
+            <summary>
+            The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. Note that the popularity value may lag actual popularity by a few days: the value is not updated in real time.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.PreviewUrl">
+            <summary>
+            A link to a 30 second preview (MP3 format) of the track. Can be null
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.Restrictions">
+            <summary>
+            Part of the response when Track Relinking is applied, the original track is not available in the given market, and Spotify did not have any tracks to relink it with. The track response will still contain metadata for the original track, and a restrictions object containing the reason why the track is not available: "restrictions" : {"reason" : "market"}
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.Track.TrackNumber">
+            <summary>
+            The number of the track. If an album has several discs, the track number is the number on the specified disc.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack">
+            <summary>
+            A tuneable track.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Acousticness">
+            <summary>
+            A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Danceability">
+            <summary>
+            Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.DurationMs">
+            <summary>
+            The duration of the track in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Energy">
+            <summary>
+            Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Instrumentalness">
+            <summary>
+            Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly “vocal”. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Key">
+            <summary>
+            The key the track is in. Integers map to pitches using standard Pitch Class notation. E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Liveness">
+            <summary>
+            Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Loudness">
+            <summary>
+            The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Mode">
+            <summary>
+            Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Popularity">
+            <summary>
+            The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. Note: When applying track relinking via the market parameter, it is expected to find relinked tracks with popularities that do not match min_*, max_*and target_* popularities. These relinked tracks are accurate replacements for unplayable tracks with the expected popularity scores. Original, non-relinked tracks are available via the linked_from attribute of the relinked track response.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Speechiness">
+            <summary>
+            Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Tempo">
+            <summary>
+            The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.TimeSignature">
+            <summary>
+            An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Tracks.TuneableTrack.Valence">
+            <summary>
+            A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Users.Followers">
+            <summary>
+            The <see cref="T:Spotify.WebApi.Model.Objects.Users.Followers" /> class.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.Followers.Href">
+            <summary>
+            Gets or sets the href.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.Followers.Total">
+            <summary>
+            Gets or sets the total.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Users.PrivateUser">
+            <summary>
+            A private user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Country">
+            <summary>
+            The country of the user, as set in the user’s account profile. An ISO 3166-1 alpha-2 country code. This field is only available when the current user has granted access to the user-read-private scope.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.DisplayName">
+            <summary>
+            The name displayed on the user’s profile. null if not available.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Email">
+            <summary>
+            The user’s email address, as entered by the user when creating their account. Important! This email address is unverified; there is no proof that it actually belongs to the user. This field is only available when the current user has granted access to the user-read-email scope.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.ExternalUrls">
+            <summary>
+            Known external URLs for this user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Followers">
+            <summary>
+            Information about the followers of the user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Href">
+            <summary>
+            A link to the Web API endpoint for this user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Id">
+            <summary>
+            The Spotify user ID for the user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Images">
+            <summary>
+            The user’s profile image.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Product">
+            <summary>
+            The user’s Spotify subscription level: “premium”, “free”, etc. (The subscription level “open” can be considered the same as “free”.) This field is only available when the current user has granted access to the user-read-private scope.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Type">
+            <summary>
+            The object type: “user”
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PrivateUser.Uri">
+            <summary>
+            The Spotify URI for the user.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.Objects.Users.PublicUser">
+            <summary>
+            A public user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PublicUser.DisplayName">
+            <summary>
+            The name displayed on the user’s profile. null if not available.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PublicUser.ExternalUrls">
+            <summary>
+            Known public external URLs for this user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PublicUser.Followers">
+            <summary>
+            Information about the followers of this user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PublicUser.Href">
+            <summary>
+            A link to the Web API endpoint for this user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PublicUser.Id">
+            <summary>
+            The Spotify user ID for this user.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PublicUser.Images">
+            <summary>
+            The user’s profile image.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PublicUser.Type">
+            <summary>
+            The object type: “user”
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.Objects.Users.PublicUser.Uri">
+            <summary>
+            The Spotify URI for this user.
+            </summary>
+        </member>
+        <member name="T:Spotify.WebApi.Model.SpotifyUri">
+            <summary>
+            The Spotify Uri.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Model.SpotifyUri.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.Model.SpotifyUri"/> class.
+            </summary>
+            <param name="uri">The URI.</param>
+            <exception cref="T:System.Exception">
+            Uri is incorrect.
+            or
+            Uri is not a spotify uri.
+            </exception>
+        </member>
+        <member name="P:Spotify.WebApi.Model.SpotifyUri.Domain">
+            <summary>
+            Gets or sets the domain.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.SpotifyUri.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.SpotifyUri.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:Spotify.WebApi.Model.SpotifyUri.FullUri">
+            <summary>
+            Gets or sets the full URI.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.Model.SpotifyUri.op_Implicit(System.String)~Spotify.WebApi.Model.SpotifyUri">
+            <summary>
+            Implicit operator to convert a string to a <see cref="T:Spotify.WebApi.Model.SpotifyUri"/>.
+            </summary>
+            <param name="uri">The uri to convert.</param>
+        </member>
+        <member name="M:Spotify.WebApi.Model.SpotifyUri.op_Implicit(Spotify.WebApi.Model.SpotifyUri)~System.String">
+            <summary>
+            Implicit operator to convert a <see cref="T:Spotify.WebApi.Model.SpotifyUri"/> to a string.
+            </summary>
+            <param name="uri">The uri to convert.</param>
+        </member>
+        <member name="M:Spotify.WebApi.Model.SpotifyUri.Make(System.String)">
+            <summary>
+            Creates a <see cref="T:Spotify.WebApi.Model.SpotifyUri"/> from the given uri.
+            </summary>
+            <param name="uri">The spotify uri.</param>
+            <returns>A new instance of <see cref="T:Spotify.WebApi.Model.SpotifyUri"/>.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Model.SpotifyUri.MakeList(System.String[])">
+            <summary>
+            Creates a list of <see cref="T:Spotify.WebApi.Model.SpotifyUri"/>s for the given uris.
+            </summary>
+            <param name="uri">A list of uris.</param>
+            <returns>A list of <see cref="T:Spotify.WebApi.Model.SpotifyUri"/>.</returns>
+        </member>
+        <member name="M:Spotify.WebApi.Model.SpotifyUri.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Spotify.WebApi.SpotifyWebApi">
+            <summary>
+            The main Spotify web Api class.
+            </summary>
+        </member>
+        <member name="M:Spotify.WebApi.SpotifyWebApi.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.SpotifyWebApi"/> class without token.
+            </summary>
+            <param name="httpClient">A <see cref="T:System.Net.Http.HttpClient"/> that will not be disposed.</param>
+        </member>
+        <member name="M:Spotify.WebApi.SpotifyWebApi.#ctor(Spotify.WebApi.Model.Authentication.Token,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spotify.WebApi.SpotifyWebApi"/> class.
+            </summary>
+            <param name="token">A <see cref="T:Spotify.WebApi.Model.Authentication.Token"/>.</param>
+            <param name="httpClient">A <see cref="T:System.Net.Http.HttpClient"/> that will not be disposed.</param>
+        </member>
+        <member name="P:Spotify.WebApi.SpotifyWebApi.Album">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

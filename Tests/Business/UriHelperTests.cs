@@ -1,6 +1,6 @@
 ﻿namespace Spotify.WebApi.Tests.Business
 {
-    using WebApi.Business;
+    using Spotify.WebApi.Business;
     using Xunit;
 
     public class UriHelperTests

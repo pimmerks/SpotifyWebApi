@@ -2,6 +2,9 @@ namespace Spotify.WebApi.Model.Objects.Tracks
 {
     using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A tuneable track.
+    /// </summary>
     public class TuneableTrack
     {
         /// <summary>

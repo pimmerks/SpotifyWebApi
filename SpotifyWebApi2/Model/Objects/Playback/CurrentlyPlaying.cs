@@ -1,9 +1,12 @@
 namespace Spotify.WebApi.Model.Objects.Playback
 {
     using System.Text.Json.Serialization;
-    using Episodes;
-    using Tracks;
+    using Spotify.WebApi.Model.Objects.Episodes;
+    using Spotify.WebApi.Model.Objects.Tracks;
 
+    /// <summary>
+    /// A currently playing class.
+    /// </summary>
     public class CurrentlyPlaying
     {
         /// <summary>

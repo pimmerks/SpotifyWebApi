@@ -1,8 +1,11 @@
 ﻿namespace Spotify.WebApi.Model.Objects.Tracks
 {
     using System.Text.Json.Serialization;
-    using Albums;
+    using Spotify.WebApi.Model.Objects.Albums;
 
+    /// <summary>
+    /// Linked track class.
+    /// </summary>
     public class LinkedTrack
     {
         /// <summary>
@@ -16,7 +19,7 @@
         /// </summary>
         [JsonPropertyName("uri")]
         public string Uri { get; set; }
-        
+
         /// <summary>
         /// A link to the Web API endpoint providing full details of the track/episode.
         /// </summary>

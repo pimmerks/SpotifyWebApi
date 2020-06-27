@@ -2,8 +2,11 @@ namespace Spotify.WebApi.Model.Objects
 {
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
-    using Tracks;
+    using Spotify.WebApi.Model.Objects.Tracks;
 
+    /// <summary>
+    /// Recommendations response.
+    /// </summary>
     public class RecommendationsResponse
     {
         /// <summary>
