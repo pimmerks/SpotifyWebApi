@@ -38,5 +38,11 @@
         /// </summary>
         [JsonProperty("uri")]
         public SpotifyUri Uri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total count.
+        /// </summary>
+        [JsonProperty("total")]
+        public int Total { get; set; }
     }
 }
