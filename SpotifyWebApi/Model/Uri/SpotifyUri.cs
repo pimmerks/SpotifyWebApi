@@ -19,11 +19,7 @@
         /// Initializes a new instance of the <see cref="SpotifyUri"/> class.
         /// </summary>
         /// <param name="uri">The URI.</param>
-        /// <exception cref="Exception">
-        /// Uri was not correct!
-        /// or
-        /// Uri was not a spotify uri!
-        /// </exception>
+        /// <exception cref="InvalidUriException">Uri was not correct or Uri was not a spotify uri.</exception>
         private SpotifyUri(string uri)
         {
             this.FullUri = uri;
@@ -45,7 +41,7 @@
                     }
                     catch (Exception)
                     {
-                        throw new InvalidUriException("Uri was not correct!");
+                        throw new InvalidUriException("Uri was not correct");
                     }
                 }
 
@@ -79,7 +75,7 @@
             }
             else
             {
-                throw new InvalidUriException($"The provided uri is not a spotify uri (uri: {uri}).");
+                throw new InvalidUriException($"The provided uri is not a spotify uri (uri: {uri})");
             }
         }
 
@@ -143,25 +139,18 @@
         /// <returns>A new instance of <see cref="SpotifyUri"/>.</returns>
         public static SpotifyUri Make(string id, UriType type)
         {
-            if (string.IsNullOrEmpty(id)) throw new ArgumentException("id is null or empty.");
+            if (string.IsNullOrEmpty(id)) throw new ArgumentException("id is null or empty", nameof(id));
 
-            switch (type)
+            return type switch
             {
-                case UriType.User:
-                    return new SpotifyUri($"spotify:user:{id}");
-                case UriType.Track:
-                    return new SpotifyUri($"spotify:track:{id}");
-                case UriType.Artist:
-                    return new SpotifyUri($"spotify:artist:{id}");
-                case UriType.Album:
-                    return new SpotifyUri($"spotify:album:{id}");
-                case UriType.Playlist:
-                    return new SpotifyUri($"spotify:playlist:{id}");
-                case UriType.Local:
-                    throw new NotSupportedException("UriType Local is not supported.");
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
-            }
+                UriType.User => new SpotifyUri($"spotify:user:{id}"),
+                UriType.Track => new SpotifyUri($"spotify:track:{id}"),
+                UriType.Artist => new SpotifyUri($"spotify:artist:{id}"),
+                UriType.Album => new SpotifyUri($"spotify:album:{id}"),
+                UriType.Playlist => new SpotifyUri($"spotify:playlist:{id}"),
+                UriType.Local => throw new NotSupportedException("UriType Local is not supported."),
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown UriType"),
+            };
         }
 
         /// <summary>
@@ -205,7 +194,7 @@
         public override string ToString() => this.FullUri;
 
         /// <summary>
-        /// This method is called after the object is completely deserialized. Use it instead of the constructror.
+        /// This method is called after the object is completely deserialized. Use it instead of the constructor.
         /// </summary>
         /// <param name="context">The streaming context.</param>
         [OnDeserialized]
