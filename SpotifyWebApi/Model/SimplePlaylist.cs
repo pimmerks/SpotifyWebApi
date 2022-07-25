@@ -67,7 +67,7 @@
         /// Gets or sets the tracks.
         /// </summary>
         [JsonProperty("tracks")]
-        public LinkedFrom Tracks { get; set; }
+        public PlaylistTracksRef Tracks { get; set; }
 
         /// <summary>
         /// Gets or sets the type.
